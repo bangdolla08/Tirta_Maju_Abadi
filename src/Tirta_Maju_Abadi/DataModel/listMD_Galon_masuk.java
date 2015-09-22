@@ -38,7 +38,7 @@ public class listMD_Galon_masuk {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Galon_masuk");
+            rs=db.getRs("select * from galon_masuk");
             while(rs.next()){
                 listDB.add(new MD_Galon_masuk(rs.getInt("No_urut"), 
                         rs.getInt("Banyak_masuk"), 

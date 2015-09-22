@@ -6,6 +6,9 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,9 +19,10 @@ public class MD_Mobil {
     private String nopol, type, driver, helper, milik;
     private MD_Pegawai driverMD,HelperMD;
     private database db=new database();
-
+    private List<MD_Ban> listBan=new ArrayList<MD_Ban>();
     public MD_Mobil(int driverint, int helperInt, String nopol, String type,String milik,database db) {
         this.db=db;
+        listBan.clear();
         this.driverint = driverint;
         this.helperInt = helperInt;
         listMD_Pegawai ldb=new listMD_Pegawai(db);
@@ -27,10 +31,14 @@ public class MD_Mobil {
         this.milik=milik;
         driverMD=ldb.getMDByID(driverint);
         HelperMD=ldb.getMDByID(helperInt);
+        setBanDB();
     }
-
+    public void addlistMD_ban(MD_Ban ban){
+        listBan.add(ban);
+    }
     public MD_Mobil() {
         this.db=null;
+        listBan.clear();
         this.driverint = 0;
         this.helperInt = 0;
         //listMD_Pegawai ldb=new listMD_Pegawai(db);
@@ -39,6 +47,16 @@ public class MD_Mobil {
         this.milik=null;
         driverMD=new MD_Pegawai();
         HelperMD=new MD_Pegawai();
+    }
+    
+    private void setBanDB(){
+        try {
+            ResultSet rs=db.getRs("select * from ban where nopol='"+nopol+"'");
+            while (rs.next()) {                
+                addlistMD_ban(new MD_Ban(nopol, rs.getString("posisi"), rs.getString("no_seri"), rs.getString("tgl_pasang")));
+            }
+        } catch (Exception e) {
+        }
     }
          
     public String getNopol() {

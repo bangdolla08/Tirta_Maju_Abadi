@@ -30,7 +30,7 @@ public class listMD_Pesan_barang {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Pesan_barang");
+            rs=db.getRs("select * from pesan_barang");
             while(rs.next()){
                 listDB.add(new MD_Pesan_barang(rs.getString("No_po"), 
                         rs.getString("No_pesan"), 

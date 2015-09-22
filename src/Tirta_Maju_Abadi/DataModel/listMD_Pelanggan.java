@@ -40,7 +40,7 @@ public class listMD_Pelanggan {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Pelanggan");
+            rs=db.getRs("select * from pelanggan");
             while(rs.next()){
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
