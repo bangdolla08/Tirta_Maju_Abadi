@@ -22,7 +22,7 @@ public class Triasta_Maju_Abadi {
        System.out.print("sjhk");
         System.err.println("flkdklfj");
         //System.err.println("flkdklfj");
-        System.err.println("ahdjkfahkjf");
+        System.err.println("hwdkjsahdkhaskjdgskajhdkjasgdkjasgdkja");
     }
     
 }
