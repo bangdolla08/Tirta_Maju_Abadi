@@ -8,7 +8,7 @@ package Tirta_Maju_Abadi.View;
  *
  * @author jepank's
  */
-public class Armada extends javax.swing.JFrame {
+public class Armada extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Mobil_Mo
