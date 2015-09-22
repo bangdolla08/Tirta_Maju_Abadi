@@ -5,6 +5,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +19,23 @@ public class listMD_Produk {
     private database db;
     private ResultSet rs;
     private List<MD_Produk> listDB=new ArrayList<MD_Produk>();
+     private loadAllData lD;
     
-    public listMD_Produk(ResultSet rs,database db){
+     public listMD_Produk(ResultSet rs,database db){
         this.db=db;
         listDB.clear();
         try {
             while(rs.next()){
                 listDB.add(new MD_Produk(rs.getInt("Id_produk"), 
                         rs.getString("Nama_produk"), 
-                        rs.getString("Harga_pokok")));
+                        rs.getString("Harga_pokok"), lD));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
-    public listMD_Produk(database db){
+    public listMD_Produk(database db, loadAllData lD){
+        this.lD=lD;
         this.db=db;
         listDB.clear();
         try {
@@ -40,7 +43,7 @@ public class listMD_Produk {
             while(rs.next()){
                 listDB.add(new MD_Produk(rs.getInt("Id_produk"), 
                         rs.getString("Nama_produk"), 
-                        rs.getString("Harga_pokok")));
+                        rs.getString("Harga_pokok"), lD));
             }
         } catch (Exception e) {
             System.out.print(e);

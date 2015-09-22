@@ -7,7 +7,7 @@ public class loadAllData {
     private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db);
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
-    private listMD_Full_penjualan listMD_Full_penjualan1=new listMD_Full_penjualan(db);
+    private listMD_Full_penjualan listMD_Full_penjualan1=new listMD_Full_penjualan(db, this);
     private listMD_Galon_cacat listMD_Galon_cacat1=new listMD_Galon_cacat(db);
     private listMD_Galon_keluar listMD_Galon_keluar1=new listMD_Galon_keluar(db);
     private listMD_Galon_masuk listMD_Galon_masuk1=new listMD_Galon_masuk(db);
@@ -22,10 +22,10 @@ public class loadAllData {
     private listMD_Nota_pesan listMD_Nota_pesan1=new listMD_Nota_pesan(db);
     private listMD_Pegawai listMD_Pegawai1=new listMD_Pegawai(db);
     private listMD_Pelanggan listMD_Pelanggan1=new listMD_Pelanggan(db);
-    private listMD_Penjualan_po listMD_Penjualan_po1=new listMD_Penjualan_po(db);
+    private listMD_Penjualan_po listMD_Penjualan_po1=new listMD_Penjualan_po(db, this);
     private listMD_Pesan_barang listMD_Pesan_barang1=new listMD_Pesan_barang(db);
     private listMD_Po_bahan_dasar listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
-    private listMD_Produk listMD_Produk1=new listMD_Produk(db);
+    private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
 
     public listMD_Bahan_mentah getListMD_Bahan_mentah() {

@@ -5,6 +5,8 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 /**
  *
  * @author NEEZAR
@@ -12,8 +14,10 @@ package Tirta_Maju_Abadi.DataModel;
 public class MD_Full_penjualan {
     private int Id_produk, Banyak;
     private String No_nota;
+    private loadAllData lD;
     
-    public MD_Full_penjualan(int Id_produk, int Banyak, String No_nota){
+    public MD_Full_penjualan(int Id_produk, int Banyak, String No_nota, loadAllData lD){
+        this.lD=lD;
         this.Id_produk=Id_produk;
         this.No_nota=No_nota;
         this.Banyak=Banyak;
@@ -22,6 +26,10 @@ public class MD_Full_penjualan {
         this.Id_produk=0;
         this.Banyak=0;
         this.No_nota=null;
+    }
+    
+    public MD_Produk getMD_produk(){
+        return lD.getListMD_Produk().getMDByID(Id_produk);
     }
     
     public int getId_Produk(){

@@ -4,6 +4,8 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 /**
  *
  * @author jepank's
@@ -11,8 +13,10 @@ package Tirta_Maju_Abadi.DataModel;
 public class MD_Produk {
     private int Id_produk;
     private String Nama_produk,Harga_pokok;
+    private loadAllData lD;
     
-    public MD_Produk(int Id_produk, String Nama_produk, String Harga_pokok){
+    public MD_Produk(int Id_produk, String Nama_produk, String Harga_pokok, loadAllData lD){
+        this.lD=lD;
         this.Id_produk=Id_produk;
         this.Nama_produk=Nama_produk;
         this.Harga_pokok=Harga_pokok;
