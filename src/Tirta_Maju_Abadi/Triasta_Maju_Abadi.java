@@ -20,7 +20,6 @@ public class Triasta_Maju_Abadi {
     public static void main(String[] args) {
        new loadAllData();
        System.out.print("sjhk");
-        System.err.println("flkdklfj");
         //System.err.println("flkdklfj");
         System.err.println("hwdkjsahdkhaskjdgskajhdkjasgdkjasgdkja");
     }
