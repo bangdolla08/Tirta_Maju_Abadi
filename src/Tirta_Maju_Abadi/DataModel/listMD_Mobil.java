@@ -26,9 +26,9 @@ public class listMD_Mobil {
             ResultSet rs=db.getRs("select * from mobil");
             while(rs.next()){
                 //public MD_Mobil(int driverint, int helperInt, String nopol, String type) {
-                listDB.add(new MD_Mobil(rs.getInt("driver"),rs.getInt("helper"),rs.getString("nopol"), 
-                        rs.getString("type"), 
-                        rs.getString("milik"),db));
+                listDB.add(new MD_Mobil(rs.getInt("Driver"),rs.getInt("Helper"),rs.getString("Nopol"), 
+                        rs.getString("Type"), 
+                        rs.getString("Milik"),db));
             }
         } catch (Exception e) {
             System.out.print(e);

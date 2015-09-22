@@ -24,9 +24,9 @@ public class listMD_Keterangan_Km {
         try {
             ResultSet rs=db.getRs("select * from keterangan_km");
             while(rs.next()){
-                listDB.add(new MD_Keterangan_Km(rs.getInt("id_bo"), 
-                        rs.getInt("km"), 
-                        rs.getInt("posisi_km")));
+                listDB.add(new MD_Keterangan_Km(rs.getInt("Id_bo"), 
+                        rs.getInt("Km"), 
+                        rs.getInt("Posisi_km")));
             }
         } catch (Exception e) {
             System.out.print(e);

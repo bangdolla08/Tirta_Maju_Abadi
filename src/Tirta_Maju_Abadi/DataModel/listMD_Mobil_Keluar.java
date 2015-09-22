@@ -25,9 +25,9 @@ public class listMD_Mobil_Keluar {
         try {
             ResultSet rs=db.getRs("select * from mobil_keluar");
             while(rs.next()){
-                listDB.add(new MD_Mobil_Keluar(rs.getInt("id_bo"), 
-                        rs.getString("tgl"), 
-                        rs.getString("nopol"),rs.getString("tujuan")));
+                listDB.add(new MD_Mobil_Keluar(rs.getInt("Id_bo"), 
+                        rs.getString("Tgl"), 
+                        rs.getString("Nopol"),rs.getString("Tujuan")));
             }
         } catch (Exception e) {
             System.out.println(e);

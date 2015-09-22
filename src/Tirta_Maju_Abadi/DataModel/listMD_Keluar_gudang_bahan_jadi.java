@@ -27,7 +27,7 @@ public class listMD_Keluar_gudang_bahan_jadi {
                 listDB.add(new MD_Keluar_gudang_bahan_jadi(rs.getString("No_nota"), 
                         rs.getString("No_surat_jalan"), 
                         rs.getInt("Banyak"), 
-                        rs.getString("nopol"), 
+                        rs.getString("Nopol"), 
                         rs.getInt("Id_produk")));
             }
         } catch (Exception e) {

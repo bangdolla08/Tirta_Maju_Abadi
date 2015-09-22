@@ -25,9 +25,9 @@ public class listMD_Keterangan {
         try {
             ResultSet rs=db.getRs("select * from keterangan");
             while(rs.next()){
-                listDB.add(new MD_Keterangan(rs.getInt("id_bo"), 
-                        rs.getInt("harga"), 
-                        rs.getString("keterangan")));
+                listDB.add(new MD_Keterangan(rs.getInt("Id_bo"), 
+                        rs.getInt("Harga"), 
+                        rs.getString("Keterangan")));
             }
         } catch (Exception e) {
             System.out.print(e);
