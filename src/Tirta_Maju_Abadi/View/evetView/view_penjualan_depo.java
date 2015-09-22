@@ -10,7 +10,6 @@ import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
 import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamWriterFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;

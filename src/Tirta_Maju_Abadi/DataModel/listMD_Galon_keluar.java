@@ -38,7 +38,7 @@ public class listMD_Galon_keluar {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Galon_keluar");
+            rs=db.getRs("select * from galon_keluar");
             while(rs.next()){
                 listDB.add(new MD_Galon_keluar(rs.getInt("No_urut"),
                         rs.getInt("Banyak_keluar"), 
