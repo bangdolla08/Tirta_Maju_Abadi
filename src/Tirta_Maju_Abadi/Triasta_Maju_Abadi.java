@@ -21,6 +21,7 @@ public class Triasta_Maju_Abadi {
        new loadAllData();
        System.out.print("sjhk");
         System.err.println("flkdklfj");
+        System.err.println("flkdklfj");
     }
     
 }
