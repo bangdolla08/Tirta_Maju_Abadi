@@ -48,6 +48,17 @@ public class listMD_Harga_pelanggan {
         }
     }
     
+      public MD_Harga_pelanggan getByIDAndProduk(int id_pelanggan,int id_produk){
+        MD_Harga_pelanggan pilih=new MD_Harga_pelanggan();
+        for(MD_Harga_pelanggan mdhp : listDB){
+            if(mdhp.getId_pelanggan()==id_pelanggan&&mdhp.getId_produk()==id_produk){
+                pilih=mdhp;
+                break;
+            }
+        }
+        return pilih;
+    }
+     
     public MD_Harga_pelanggan getMDByID(int Id_pelanggan){
         MD_Harga_pelanggan pilih=new MD_Harga_pelanggan();
         for(MD_Harga_pelanggan mdhp : listDB){

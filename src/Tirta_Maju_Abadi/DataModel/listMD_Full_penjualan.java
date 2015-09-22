@@ -5,6 +5,7 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,10 @@ import java.util.List;
  * @author NEEZAR
  */
 public class listMD_Full_penjualan {
-     private database db;
+    private database db;
     private ResultSet rs;
     private List<MD_Full_penjualan> listDB=new ArrayList<MD_Full_penjualan>();
+    private loadAllData lD;
     
     public listMD_Full_penjualan(ResultSet rs,database db){
         this.db=db;
@@ -24,14 +26,15 @@ public class listMD_Full_penjualan {
             while(rs.next()){
                 listDB.add(new MD_Full_penjualan(rs.getInt("Id_produk"), 
                         rs.getInt("Banyak"), 
-                        rs.getString("No_nota")));
+                        rs.getString("No_nota"), lD));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
     
-    public listMD_Full_penjualan(database db){
+    public listMD_Full_penjualan(database db, loadAllData lD){
+        this.lD=lD;
         this.db=db;
         listDB.clear();
         try {
@@ -39,7 +42,7 @@ public class listMD_Full_penjualan {
             while(rs.next()){
                 listDB.add(new MD_Full_penjualan(rs.getInt("Id_produk"), 
                         rs.getInt("Banyak"), 
-                        rs.getString("No_nota")));
+                        rs.getString("No_nota"), lD));
             }
         } catch (Exception e) {
             System.out.print(e);
