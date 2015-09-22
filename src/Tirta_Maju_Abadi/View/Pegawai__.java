@@ -9,12 +9,12 @@ package Tirta_Maju_Abadi.View;
  *
  * @author NEEZAR
  */
-public class Pegawai_1 extends javax.swing.JInternalFrame {
+public class Pegawai__ extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Pegawai
      */
-    public Pegawai_1() {
+    public Pegawai__() {
         initComponents();
     }
 

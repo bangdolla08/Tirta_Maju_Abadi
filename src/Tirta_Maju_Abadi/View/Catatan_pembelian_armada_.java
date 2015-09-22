@@ -9,12 +9,12 @@ package Tirta_Maju_Abadi.View;
  *
  * @author NEEZAR
  */
-public class Catatan_pembelian_armada_1 extends javax.swing.JInternalFrame {
+public class Catatan_pembelian_armada_ extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Catatan_pembelian_armada
      */
-    public Catatan_pembelian_armada_1() {
+    public Catatan_pembelian_armada_() {
         initComponents();
     }
 

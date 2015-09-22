@@ -5,7 +5,7 @@
  */
 package Tirta_Maju_Abadi.View;
 
-import Tirta_Maju_Abadi_tool.jdesktopPane;
+import Tirta_Maju_Abadi.toll.jdesktopPane;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -64,7 +64,7 @@ public class Form_utama_TMA_1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jdesktopPane1 = new Tirta_Maju_Abadi_tool.jdesktopPane();
+        jdesktopPane1 = new Tirta_Maju_Abadi.toll.jdesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -253,6 +253,6 @@ public class Form_utama_TMA_1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private Tirta_Maju_Abadi_tool.jdesktopPane jdesktopPane1;
+    private Tirta_Maju_Abadi.toll.jdesktopPane jdesktopPane1;
     // End of variables declaration//GEN-END:variables
 }

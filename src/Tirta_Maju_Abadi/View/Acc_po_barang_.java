@@ -9,12 +9,12 @@ package Tirta_Maju_Abadi.View;
  *
  * @author NEEZAR
  */
-public class Acc_po_barang_1 extends javax.swing.JInternalFrame {
+public class Acc_po_barang_ extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Acc_po_bahan_dasar
      */
-    public Acc_po_barang_1() {
+    public Acc_po_barang_() {
         initComponents();
     }
 
@@ -75,7 +75,7 @@ public class Acc_po_barang_1 extends javax.swing.JInternalFrame {
         }
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/acc.png"))); // NOI18N
-        jButton1.setText("Approve");
+        jButton1.setText("ACC");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -87,7 +87,7 @@ public class Acc_po_barang_1 extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(

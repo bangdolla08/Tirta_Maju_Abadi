@@ -210,7 +210,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
   <SubComponents>
-    <Container class="Tirta_Maju_Abadi_tool.jdesktopPane" name="jdesktopPane1">
+    <Container class="Tirta_Maju_Abadi.toll.jdesktopPane" name="jdesktopPane1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card2"/>

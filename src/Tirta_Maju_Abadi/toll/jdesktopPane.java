@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tirta_Maju_Abadi_tool;
+package Tirta_Maju_Abadi.toll;
 
 import java.awt.Graphics;
 import java.awt.Image;
