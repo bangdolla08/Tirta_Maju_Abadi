@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Tirta_Maju_Abadi.DataModel;
 
-/**
- *
- * @author PUTRA
- */
 public class MD_Ban {
     private String nopol, posisi, noseri, tgl_pasang;
     

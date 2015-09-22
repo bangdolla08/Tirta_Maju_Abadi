@@ -37,7 +37,7 @@ public class listMD_Galon_cacat {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Galon_cacat");
+            rs=db.getRs("select * from galon_cacat");
             while(rs.next()){
                 listDB.add(new MD_Galon_cacat(rs.getInt("No_urut"), 
                         rs.getString("Treatment"), 

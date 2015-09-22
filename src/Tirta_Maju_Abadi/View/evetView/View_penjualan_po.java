@@ -21,7 +21,6 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import sun.security.x509.AttributeNameEnumeration;
 /**
  *
  * @author NEEZAR
