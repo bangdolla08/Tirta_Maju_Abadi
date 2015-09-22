@@ -9,7 +9,7 @@ package Tirta_Maju_Abadi.View;
  *
  * @author NEEZAR
  */
-public class Form_utama_TMA extends javax.swing.JFrame {
+public class Form_utama_TMA extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Form_utama_TMA
