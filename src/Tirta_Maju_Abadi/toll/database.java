@@ -23,6 +23,7 @@ public class database {
     }
     public ResultSet getRs(String a){
         try{
+            //rs.close();
             rs=st.executeQuery(a);
         }catch(Exception e){
             System.out.println("Pesan Error : " + e);
