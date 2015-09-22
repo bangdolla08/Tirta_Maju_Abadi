@@ -16,7 +16,7 @@ import javax.swing.JInternalFrame;
  *
  * @author NEEZAR
  */
-public class Form_utama_TMA_1 extends javax.swing.JFrame {
+public class Form_utama_TMA extends javax.swing.JFrame {
     
     
     Penjualan_depo pd=new Penjualan_depo();
@@ -24,7 +24,7 @@ public class Form_utama_TMA_1 extends javax.swing.JFrame {
     /**
      * Creates new form Form_utama_TMA
      */
-    public Form_utama_TMA_1() {
+    public Form_utama_TMA() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, screenSize.width, screenSize.height);
         initComponents();
@@ -216,21 +216,23 @@ public class Form_utama_TMA_1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA_1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_utama_TMA_1().setVisible(true);
+                new Form_utama_TMA().setVisible(true);
             }
         });
     }
