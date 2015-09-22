@@ -15,6 +15,7 @@ public class Triasta_Maju_Abadi {
 
     /**
      * @param args the command line arguments
+     putra
      */
     public static void main(String[] args) {
        new loadAllData();
