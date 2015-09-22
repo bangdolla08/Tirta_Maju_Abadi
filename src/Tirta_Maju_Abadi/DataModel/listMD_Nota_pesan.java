@@ -38,7 +38,7 @@ public class listMD_Nota_pesan {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Nota_pesan");
+            rs=db.getRs("select * from nota_pesan");
             while(rs.next()){
                 listDB.add(new MD_Nota_pesan(rs.getString("No_pemesanan"), 
                         rs.getString("Harga"), 

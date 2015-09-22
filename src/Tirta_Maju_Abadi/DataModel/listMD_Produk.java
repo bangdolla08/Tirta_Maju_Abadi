@@ -39,7 +39,7 @@ public class listMD_Produk {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from admin");
+            rs=db.getRs("select * from produk");
             while(rs.next()){
                 listDB.add(new MD_Produk(rs.getInt("Id_produk"), 
                         rs.getString("Nama_produk"), 

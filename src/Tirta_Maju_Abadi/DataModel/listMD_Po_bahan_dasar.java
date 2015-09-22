@@ -38,7 +38,7 @@ public class listMD_Po_bahan_dasar {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Po_bahan_dasar");
+            rs=db.getRs("select * from po_bahan_dasar");
             while(rs.next()){
                 listDB.add(new MD_Po_bahan_dasar(rs.getString("No_po"), 
                         rs.getDate("tanggal"), 
