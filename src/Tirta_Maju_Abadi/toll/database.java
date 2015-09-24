@@ -26,7 +26,7 @@ public class database {
             //rs.close();
             rs=st.executeQuery(a);
         }catch(Exception e){
-            System.out.println("Pesan Error : " + e);
+            System.err.println("Pesan Error : " + e);
         }
         return rs;
     }
@@ -36,7 +36,7 @@ public class database {
             st.executeUpdate(a);
             return true;
         } catch (Exception e) {
-            System.out.println("Pesan Error : " + e);
+            System.err.println("Pesan Error : " + e);
             return false;
         }
     }
