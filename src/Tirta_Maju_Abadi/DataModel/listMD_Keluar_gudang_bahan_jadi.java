@@ -39,7 +39,7 @@ public class listMD_Keluar_gudang_bahan_jadi {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Keluar_gudang_bahan_jadi");
+            rs=db.getRs("select * from keluar_gudang_bahan_jadi");
             while(rs.next()){
                 listDB.add(new MD_Keluar_gudang_bahan_jadi(rs.getString("No_nota"), 
                         rs.getString("No_surat_jalan"), 

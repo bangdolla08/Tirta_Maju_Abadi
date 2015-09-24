@@ -15,7 +15,7 @@ public class listMD_Pegawai {
         this.db=db;
         try {
             listDB.clear();
-            rs=db.getRs("select * from pegawai tanggal_masuk ASC");
+            rs=db.getRs("select * from pegawai ORDER BY tanggal_masuk ASC");
             while(rs.next()){
                 listDB.add(
                         new MD_Pegawai(

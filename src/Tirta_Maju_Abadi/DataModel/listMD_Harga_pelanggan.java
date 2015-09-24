@@ -37,7 +37,7 @@ public class listMD_Harga_pelanggan {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Harga_pelanggan");
+            rs=db.getRs("select * from harga_pelanggan");
             while(rs.next()){
                 listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getInt("Id_produk"), 

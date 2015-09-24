@@ -14,7 +14,7 @@ public class listMD_Full_po_bahan_dasar {
         this.db=db;
         try {
             listDB.clear();
-            rs=db.getRs("select * from full_po_bahan_dasar No_po ASC");
+            rs=db.getRs("select * from full_po_bahan_dasar ORDER BY No_po ASC");
             while(rs.next()){
                 listDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),

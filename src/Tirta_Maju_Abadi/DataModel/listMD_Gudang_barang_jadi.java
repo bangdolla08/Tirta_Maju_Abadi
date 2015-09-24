@@ -39,7 +39,7 @@ public class listMD_Gudang_barang_jadi {
         this.db=db;
         listDB.clear();
         try {
-            rs=db.getRs("select * from Gudang_barang_jadi");
+            rs=db.getRs("select * from gudang_barang_jadi");
             while(rs.next()){
                 listDB.add(new MD_Gudang_barang_jadi(rs.getInt("Id_produk"), 
                         rs.getInt("Banyak"), 
