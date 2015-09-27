@@ -4,13 +4,31 @@
  * and open the template in the editor.
  */
 package Tirta_Maju_Abadi.View;
+import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
+import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
+import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
+import Tirta_Maju_Abadi.View.evetView.View_penjualan_po;
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 /**
  *
  * @author NEEZAR
  */
 public class Penjualan_depo extends javax.swing.JInternalFrame {
-private database db=new database();
+    private MD_Penjualan_po mpel=new MD_Penjualan_po();
+    private View_penjualan_po vpp;
+    private database db;
+    private listMD_Penjualan_po lppo;
+    private Date date=new Date();
+    private loadAllData ld;
+    private loadAllData lad;
     /**
      * Creates new form Penjualan_depo
      */
@@ -18,6 +36,33 @@ private database db=new database();
         initComponents();
     }
 
+    public Penjualan_depo(loadAllData lad) {
+        this.lad=lad;
+        initComponents();        
+        vpp=new View_penjualan_po(tbl_penjualan_depo.getModel(), lppo, db, f_total);
+        tbl_penjualan_depo.setModel(vpp.getdtm());
+        vpp.list(c_nm_barang);
+    }
+    
+     public void list(modelTextFilt mtf){
+        List<list2Values> list=new ArrayList<>();
+        for(MD_Pelanggan mp:ld.getListMD_Pelanggan().getAll()){
+            list.add(new list2Values(mp.getNama(), mp.getId_Pelanggan()));
+        }
+        mtf.setText(list);
+    }
+    private void setMpel(){
+        mpel.setNo_nota(f_no_nota.getText());
+        int nm=Integer.valueOf(f_nm_pelanggan.getText());
+        mpel.setId_pelanggan(nm);
+    }
+    
+     public void tambah(){
+        list2Values ls=(list2Values)c_nm_barang.getSelectedItem();
+        MD_Full_penjualan mdfbb=new MD_Full_penjualan(ls.getIsinya(), f_total.getInteger(), f_no_nota.toString(),lad);//dul ini yang no_nota kalau di 
+        vpp.set_TableBawah(mdfbb);                                                                                    //penjualan PO itu no_po disini                  
+        mpel.listMD_Full_penjualan(mdfbb);                                                                            //tak kasih no nota soalnya didesignnya gak ada no po              
+    }                                                                                                                 //trus yang nm_pelanggan itu kalu didesign itu textfilt  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
