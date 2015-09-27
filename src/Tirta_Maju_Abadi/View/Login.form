@@ -67,8 +67,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="modelTextFilt2" pref="187" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt1" max="32767" attributes="0"/>
+                              <Component id="f_password" pref="187" max="32767" attributes="0"/>
+                              <Component id="f_username" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -83,12 +83,12 @@
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_username" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_password" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -120,9 +120,9 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_username">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_password">
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

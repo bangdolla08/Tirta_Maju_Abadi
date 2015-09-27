@@ -66,9 +66,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                              <Component id="jDateChooser1" pref="206" max="32767" attributes="0"/>
-                              <Component id="modelChuser1" max="32767" attributes="0"/>
+                              <Component id="f_no_bo" max="32767" attributes="0"/>
+                              <Component id="d_tanggal" pref="206" max="32767" attributes="0"/>
+                              <Component id="d_nopol" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -85,17 +85,17 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt1" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_no_bo" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                      <Component id="d_tanggal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelChuser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="d_nopol" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
@@ -130,15 +130,15 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt2" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="f_pembayaran" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt3" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="f_estimasi_harga" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt4" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Component id="f_banyak" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -157,11 +157,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_pembayaran" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_estimasi_harga" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_banyak" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -179,16 +179,16 @@
                 <Property name="text" type="java.lang.String" value="Pembayaran"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_pembayaran">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Estimasi Harga"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_estimasi_harga">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTextFilt3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="f_estimasi_hargaActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -196,7 +196,7 @@
                 <Property name="text" type="java.lang.String" value="Banyak"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_banyak">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -205,7 +205,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="t_bo_mobil">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -279,11 +279,11 @@
             <Property name="text" type="java.lang.String" value="Nopol"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_bo">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="d_nopol">
         </Component>
       </SubComponents>
     </Container>

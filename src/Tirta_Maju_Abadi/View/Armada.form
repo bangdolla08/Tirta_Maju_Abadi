@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -66,15 +65,15 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt4" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt3" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt2" max="32767" attributes="0"/>
+                              <Component id="f_nopol" max="32767" attributes="0"/>
+                              <Component id="f_tunjangan" max="32767" attributes="0"/>
+                              <Component id="f_nama_helper" max="32767" attributes="0"/>
+                              <Component id="f_nama_driver" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" pref="59" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="modelChuser1" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="c_bulan" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -88,23 +87,23 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelChuser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_nopol" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="c_bulan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_nama_driver" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_nama_helper" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_tunjangan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -124,9 +123,9 @@
             <Property name="text" type="java.lang.String" value="Bulan"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nopol">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_bulan">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -138,12 +137,12 @@
             <Property name="text" type="java.lang.String" value="Nama Driver"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nama_driver">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nama_helper">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
@@ -153,7 +152,7 @@
             <Property name="text" type="java.lang.String" value="Tunjangan     Rp."/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_tunjangan">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
@@ -210,7 +209,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="t_armada">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="3" rowCount="4">
@@ -226,12 +225,12 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="150" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="150" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>

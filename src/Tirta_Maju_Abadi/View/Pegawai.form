@@ -72,14 +72,14 @@
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt2" max="32767" attributes="0"/>
+                              <Component id="f_no_pegawai" max="32767" attributes="0"/>
+                              <Component id="f_nama" max="32767" attributes="0"/>
                               <Component id="jScrollPane1" pref="176" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt3" max="32767" attributes="0"/>
-                              <Component id="jDateChooser1" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt4" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt5" max="32767" attributes="0"/>
-                              <Component id="jDateChooser2" max="32767" attributes="0"/>
+                              <Component id="f_tempat_lahir" max="32767" attributes="0"/>
+                              <Component id="d_tanggal_lahir" max="32767" attributes="0"/>
+                              <Component id="no_telepon" max="32767" attributes="0"/>
+                              <Component id="f_email" max="32767" attributes="0"/>
+                              <Component id="d_tanggal_masuk" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -97,12 +97,12 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt1" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_no_pegawai" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt2" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_nama" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -112,27 +112,27 @@
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_tempat_lahir" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                              <Component id="d_tanggal_lahir" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt4" min="-2" max="-2" attributes="0"/>
+                              <Component id="no_telepon" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_email" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                              <Component id="d_tanggal_masuk" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jScrollPane2" max="32767" attributes="0"/>
@@ -185,9 +185,9 @@
             <Property name="text" type="java.lang.String" value="Tanggal Masuk"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_pegawai">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nama">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -196,7 +196,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="tex_area_alamat">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -204,15 +204,15 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_tempat_lahir">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal_lahir">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="no_telepon">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt5">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_email">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+        <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal_masuk">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -221,7 +221,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="jList1">
+            <Component class="javax.swing.JList" name="L_nama_pegawai">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>

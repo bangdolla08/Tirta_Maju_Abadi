@@ -70,7 +70,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDateChooser1" min="-2" pref="170" max="-2" attributes="0"/>
+                  <Component id="d_penjualan_depo" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -80,10 +80,10 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="modelChuser1" max="32767" attributes="0"/>
+                      <Component id="c_pembayaran" max="32767" attributes="0"/>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <Component id="modelTextFilt2" alignment="1" max="32767" attributes="0"/>
-                      <Component id="modelTextFilt1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="f_nm_pelanggan" alignment="1" max="32767" attributes="0"/>
+                      <Component id="f_no_nota" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -96,17 +96,17 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_no_nota" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                          <Component id="d_penjualan_depo" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_nm_pelanggan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -116,7 +116,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelChuser1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="c_pembayaran" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -129,7 +129,7 @@
             <Property name="text" type="java.lang.String" value="Tanggal"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="d_penjualan_depo">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -158,7 +158,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="tex_area_alamat">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -166,11 +166,11 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_nota">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nm_pelanggan">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_pembayaran">
         </Component>
       </SubComponents>
     </Container>
@@ -199,11 +199,11 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="modelChuser2" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="c_nm_barang" min="-2" pref="222" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt4" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="f_banyak" min="-2" pref="200" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -217,9 +217,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="modelTextFilt5" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt6" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt7" pref="204" max="32767" attributes="0"/>
+                              <Component id="f_total" max="32767" attributes="0"/>
+                              <Component id="f_pembayaran" max="32767" attributes="0"/>
+                              <Component id="f_kembali" pref="204" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -234,26 +234,26 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_banyak" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelChuser2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="c_nm_barang" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="145" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_total" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_pembayaran" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_kembali" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -271,7 +271,7 @@
             <Property name="text" type="java.lang.String" value="Banyak "/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_banyak">
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -291,7 +291,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tbl_penjualan_depo">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
@@ -353,16 +353,16 @@
             <Property name="text" type="java.lang.String" value="Kembali"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt5">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_total">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt6">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_pembayaran">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt7">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_kembali">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTextFilt7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="f_kembaliActionPerformed"/>
           </Events>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_nm_barang">
         </Component>
       </SubComponents>
     </Container>
