@@ -12,12 +12,22 @@ public class MD_Bo_barang {
     private int no_bo;
     private Date tanggal;
     private int no_pegawai;
+    private int id_pegawai_acc;
     private MD_Pegawai md_pgw;
     private List<MD_Full_Bo_barang> listFull=new ArrayList<MD_Full_Bo_barang>();
 
     public void addlistFull(MD_Full_Bo_barang tmp){
         listFull.add(tmp);
     }
+
+    public int getId_pegawai_acc() {
+        return id_pegawai_acc;
+    }
+
+    public void setId_pegawai_acc(int id_pegawai_acc) {
+        this.id_pegawai_acc = id_pegawai_acc;
+    }
+    
 
     public int getNo_bo() {
         return no_bo;
@@ -54,18 +64,27 @@ public class MD_Bo_barang {
     public List<MD_Full_Bo_barang> getListFull() {
         return listFull;
     }
-
-    public MD_Bo_barang(int no_bo, Date tanggal, int no_pegawai) {
+    
+    public MD_Bo_barang(){
         this.no_bo = no_bo;
         this.tanggal = tanggal;
         this.no_pegawai = no_pegawai;
+        this.id_pegawai_acc=id_pegawai_acc;
     }
 
-    public MD_Bo_barang(database db, int no_bo, Date tanggal, int no_pegawai) {
+    public MD_Bo_barang(int no_bo, Date tanggal, int no_pegawai, int id_pegawai_acc) {
+        this.no_bo = no_bo;
+        this.tanggal = tanggal;
+        this.no_pegawai = no_pegawai;
+        this.id_pegawai_acc=id_pegawai_acc;
+    }
+
+    public MD_Bo_barang(database db, int no_bo, Date tanggal, int no_pegawai, int id_pegwai_acc) {
         this.db = db;
         this.no_bo = no_bo;
         this.tanggal = tanggal;
         this.no_pegawai = no_pegawai;
+        this.id_pegawai_acc=id_pegwai_acc;
         listAdd();
     }
     
