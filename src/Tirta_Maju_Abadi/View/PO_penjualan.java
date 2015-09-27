@@ -39,9 +39,12 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
         initComponents();        
         vpp=new View_penjualan_po(jTable1.getModel(), lppo, db, modelTextFilt3);
         jTable1.setModel(vpp.getdtm());
+        vpp.list(modelChuser2);
     }
-
-  public void list(ModelChuser mc){
+    public void reseyt(){
+        
+    }
+    public void list(ModelChuser mc){
         List<list2Values> list=new ArrayList<>();
         for(MD_Pelanggan mp:ld.getListMD_Pelanggan().getAll()){
             list.add(new list2Values(mp.getNama(), mp.getId_Pelanggan()));
@@ -150,7 +153,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -163,11 +166,12 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(modelTextFilt3, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -209,7 +213,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
                             .addComponent(modelChuser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 298, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -259,6 +263,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        tambah();
     }//GEN-LAST:event_jButton1ActionPerformed
     private loadAllData lad;
     public void tambah(){

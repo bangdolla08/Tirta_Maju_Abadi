@@ -9,7 +9,6 @@ import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
 import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
 import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
-import Tirta_Maju_Abadi.DataModel.listMD_Full_penjualan;
 import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
 import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
@@ -26,12 +25,15 @@ import javax.swing.table.TableModel;
  * @author NEEZAR
  */
 public class View_penjualan_po {
+    
     private DefaultTableModel dtm=new DefaultTableModel();
     private listMD_Penjualan_po listmD_penjulanPO;
     private database db;
     private MD_Penjualan_po mdp;
     private modelTextFilt totalText;
     private loadAllData lD;
+    private modelTextFilt textfiltNoNota;
+    
     public View_penjualan_po(TableModel dtm, listMD_Penjualan_po listmD_Penjualan_po, database db,modelTextFilt total){
         this.dtm=(DefaultTableModel) dtm;
         this.listmD_penjulanPO=listmD_Penjualan_po;
