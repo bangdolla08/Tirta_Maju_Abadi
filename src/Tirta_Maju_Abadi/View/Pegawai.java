@@ -5,6 +5,10 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.View.evetView.View_pegawai;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 /**
  *
  * @author NEEZAR
@@ -14,10 +18,21 @@ public class Pegawai extends javax.swing.JInternalFrame {
     /**
      * Creates new form Pegawai
      */
-    public Pegawai() {
+    private View_pegawai vp;
+    public Pegawai(database db,loadAllData lad) {
         initComponents();
+        vp=new View_pegawai(L_nama_pegawai.getModel(), db, lad,f_no_pegawai);
+        L_nama_pegawai.setModel(vp.getDefaultListModel());
     }
-
+    
+    private void reset(){
+       f_email.reset();
+       f_nama.reset();
+       f_no_pegawai.reset();
+       f_tempat_lahir.reset();
+       tex_area_alamat.setText("");
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +82,8 @@ public class Pegawai extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Tanggal Masuk");
 
+        f_no_pegawai.setEditable(false);
+
         tex_area_alamat.setColumns(20);
         tex_area_alamat.setRows(5);
         jScrollPane1.setViewportView(tex_area_alamat);
@@ -74,6 +91,11 @@ public class Pegawai extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(L_nama_pegawai);
 
         jButton1.setText("Insert");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,6 +191,10 @@ public class Pegawai extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

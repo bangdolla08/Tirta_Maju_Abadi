@@ -40,7 +40,7 @@ public class modelTextFilt extends JTextField{
     public String getString(){
         return getText();
     }
-    public void setFromInt(int angka){
+    public void setText(int angka){
         setText(""+angka);
     }
     public void setText(Object obj){
