@@ -227,14 +227,8 @@
           </Events>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="modelTextFilt1"/>
-          </Properties>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="modelTextFilt2"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
