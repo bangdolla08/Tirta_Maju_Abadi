@@ -51,14 +51,7 @@ public class MD_Penjualan_po {
     }
     public void listMD_Full_penjualan(MD_Full_penjualan tmp){
         listFull.clear();
-        try {
-            rs=db.getRs("select * from full_penjualan where No_nota='"+No_nota+"'");
-            while(rs.next()){
-                listFull.add(tmp);
-            }
-        } catch (Exception e) {
-            System.out.print(e);
-        }
+        listFull.add(tmp);
     } 
 
     public List<MD_Full_penjualan> getListFull() {
