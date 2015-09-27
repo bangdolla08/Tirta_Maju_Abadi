@@ -9,12 +9,16 @@ import Tirta_Maju_Abadi.DataModel.MD_Full_Bo_barang;
 import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
 import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
 import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.View.evetView.View_penjualan_po;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -26,6 +30,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
     private database db;
     private listMD_Penjualan_po lppo;
     private Date date=new Date();
+    private loadAllData ld;
     /**
      * Creates new form PO_penjualan
      */
@@ -36,10 +41,16 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
         jTable1.setModel(vpp.getdtm());
     }
 
-  
+  public void list(ModelChuser mc){
+        List<list2Values> list=new ArrayList<>();
+        for(MD_Pelanggan mp:ld.getListMD_Pelanggan().getAll()){
+            list.add(new list2Values(mp.getNama(), mp.getId_Pelanggan()));
+        }
+        mc.setModel(list);
+    }
     private void setMpel(){
         mpel.setNo_nota(modelTextFilt1.getText());
-        mpel.setId_pelanggan(WIDTH);
+        mpel.setId_pelanggan((int) modelChuser1.getSelectedItem());
     }
             
     @SuppressWarnings("unchecked")
