@@ -30,16 +30,16 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_search = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        t_pencarian_pelanggan = new javax.swing.JTable();
+        c_seacrh_by = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Pencarian Pelanggan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         jLabel1.setText("Search by ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_pencarian_pelanggan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,20 +58,20 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
+        t_pencarian_pelanggan.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(t_pencarian_pelanggan);
+        if (t_pencarian_pelanggan.getColumnModel().getColumnCount() > 0) {
+            t_pencarian_pelanggan.getColumnModel().getColumn(0).setResizable(false);
+            t_pencarian_pelanggan.getColumnModel().getColumn(0).setPreferredWidth(5);
+            t_pencarian_pelanggan.getColumnModel().getColumn(1).setResizable(false);
+            t_pencarian_pelanggan.getColumnModel().getColumn(1).setPreferredWidth(150);
+            t_pencarian_pelanggan.getColumnModel().getColumn(2).setResizable(false);
+            t_pencarian_pelanggan.getColumnModel().getColumn(2).setPreferredWidth(150);
+            t_pencarian_pelanggan.getColumnModel().getColumn(3).setResizable(false);
+            t_pencarian_pelanggan.getColumnModel().getColumn(3).setPreferredWidth(100);
         }
 
-        modelChuser1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nama", "Hari", "Alamat", "No Telpon" }));
+        c_seacrh_by.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nama", "Hari", "Alamat", "No Telpon" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,9 +84,9 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(c_seacrh_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(f_search, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,8 +95,8 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(c_seacrh_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -124,11 +124,11 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_seacrh_by;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_search;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
+    private javax.swing.JTable t_pencarian_pelanggan;
     // End of variables declaration//GEN-END:variables
 }

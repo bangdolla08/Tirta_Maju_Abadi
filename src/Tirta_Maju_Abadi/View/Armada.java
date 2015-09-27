@@ -29,20 +29,20 @@ public class Armada extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        f_nopol = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        c_bulan = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_nama_driver = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_nama_helper = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel5 = new javax.swing.JLabel();
-        modelTextFilt4 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_tunjangan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        t_armada = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Armada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
@@ -54,17 +54,17 @@ public class Armada extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Nama Driver");
 
-        modelTextFilt2.setEditable(false);
+        f_nama_driver.setEditable(false);
 
-        modelTextFilt3.setEditable(false);
+        f_nama_helper.setEditable(false);
 
         jLabel5.setText("Tunjangan     Rp.");
 
-        modelTextFilt4.setEditable(false);
+        f_tunjangan.setEditable(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Armada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0)))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_armada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -83,13 +83,16 @@ public class Armada extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getColumn(0).setResizable(false);
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-        jTable1.getColumnModel().getColumn(1).setResizable(false);
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-        jTable1.getColumnModel().getColumn(2).setResizable(false);
+        t_armada.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(t_armada);
+        if (t_armada.getColumnModel().getColumnCount() > 0) {
+            t_armada.getColumnModel().getColumn(0).setResizable(false);
+            t_armada.getColumnModel().getColumn(0).setPreferredWidth(5);
+            t_armada.getColumnModel().getColumn(1).setResizable(false);
+            t_armada.getColumnModel().getColumn(1).setPreferredWidth(150);
+            t_armada.getColumnModel().getColumn(2).setResizable(false);
+            t_armada.getColumnModel().getColumn(2).setPreferredWidth(150);
+        }
 
         jButton1.setText("Approve");
 
@@ -131,14 +134,14 @@ public class Armada extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(f_nopol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(f_tunjangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(f_nama_helper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(f_nama_driver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(29, 29, 29)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(c_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,20 +151,20 @@ public class Armada extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_nopol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(c_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelTextFilt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_nama_driver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_nama_helper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_tunjangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -186,6 +189,11 @@ public class Armada extends javax.swing.JInternalFrame {
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_bulan;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nama_driver;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nama_helper;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nopol;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_tunjangan;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -195,11 +203,6 @@ public class Armada extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt4;
+    private javax.swing.JTable t_armada;
     // End of variables declaration//GEN-END:variables
 }

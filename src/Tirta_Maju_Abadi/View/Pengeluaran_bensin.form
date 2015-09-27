@@ -66,8 +66,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                              <Component id="modelChuser1" pref="267" max="32767" attributes="0"/>
+                              <Component id="f_no_surat_jalan" max="32767" attributes="0"/>
+                              <Component id="f_nopol" pref="267" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -82,12 +82,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_no_surat_jalan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelChuser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_nopol" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
@@ -107,7 +107,7 @@
             <Property name="text" type="java.lang.String" value="Nopol"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_surat_jalan">
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -133,23 +133,23 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelTextFilt3" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="f_POM" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelTextFilt4" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="f_no_nota" min="-2" pref="84" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelTextFilt5" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="f_km" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelTextFilt6" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="f_liter" min="-2" pref="84" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelTextFilt7" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="f_harga" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -161,7 +161,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButton2" pref="141" max="32767" attributes="0"/>
-                                  <Component id="modelTextFilt8" max="32767" attributes="0"/>
+                                  <Component id="f_total" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -175,15 +175,15 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_POM" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_no_nota" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_km" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_liter" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_harga" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -191,7 +191,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_total" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -206,37 +206,37 @@
                 <Property name="text" type="java.lang.String" value="POM"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_POM">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="No Nota"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_nota">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="KM"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt5">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_km">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Liter"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt6">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_liter">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Harga"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt7">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_harga">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTextFilt7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="f_hargaActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -246,7 +246,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="t_pengeluaran_bensin">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="7" rowCount="4">
@@ -318,7 +318,7 @@
                 <Property name="text" type="java.lang.String" value="Total"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt8">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_total">
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
@@ -330,7 +330,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="f_nopol">
         </Component>
       </SubComponents>
     </Container>

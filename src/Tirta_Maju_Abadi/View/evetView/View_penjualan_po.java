@@ -12,6 +12,7 @@ import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
 import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
+import Tirta_Maju_Abadi.View.Penjualan_depo;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class View_penjualan_po {
         mc.setModel(list);
     }
     
-    public void simpanpenjulanpo(){
+    public void simpanpenjulanpo(MD_Penjualan_po po){
         db.setDB("insert into penjualan_po set id_marketing='"+mdp.getId_marketing()+"',"
         +"id_pelanggan='"+mdp.getId_pelanggan()+"',"
         +"no_nota='"+mdp.getNo_nota()+"',"

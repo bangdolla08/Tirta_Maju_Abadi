@@ -69,9 +69,9 @@
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                      <Component id="modelChuser1" max="32767" attributes="0"/>
-                      <Component id="jDateChooser1" pref="216" max="32767" attributes="0"/>
+                      <Component id="f_no_po" max="32767" attributes="0"/>
+                      <Component id="f_tujuan" max="32767" attributes="0"/>
+                      <Component id="d_tanggal" pref="216" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -83,17 +83,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_no_po" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelChuser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_tujuan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                      <Component id="d_tanggal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
               </Group>
@@ -116,11 +116,11 @@
             <Property name="text" type="java.lang.String" value="Tanggal"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_po">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="f_tujuan">
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal">
         </Component>
       </SubComponents>
     </Container>
@@ -174,7 +174,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="t_po_perusahaan">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="4">

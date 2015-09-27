@@ -31,19 +31,19 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_no_nota = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_type_pembayaran = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        t_pembayaran_tagihan = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        modelTextFilt4 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt5 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_total = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_bayar = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        d_tanggal = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        d_datang_tanggal = new com.toedter.calendar.JDateChooser();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Pembayaran Tagihan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
@@ -53,15 +53,15 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Datang Tanggal");
 
-        modelTextFilt2.addActionListener(new java.awt.event.ActionListener() {
+        f_type_pembayaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modelTextFilt2ActionPerformed(evt);
+                f_type_pembayaranActionPerformed(evt);
             }
         });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Pembayaran Tagihan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_pembayaran_tagihan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -80,16 +80,16 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
+        t_pembayaran_tagihan.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(t_pembayaran_tagihan);
+        if (t_pembayaran_tagihan.getColumnModel().getColumnCount() > 0) {
+            t_pembayaran_tagihan.getColumnModel().getColumn(0).setResizable(false);
+            t_pembayaran_tagihan.getColumnModel().getColumn(0).setPreferredWidth(5);
+            t_pembayaran_tagihan.getColumnModel().getColumn(1).setResizable(false);
+            t_pembayaran_tagihan.getColumnModel().getColumn(1).setPreferredWidth(200);
+            t_pembayaran_tagihan.getColumnModel().getColumn(2).setResizable(false);
+            t_pembayaran_tagihan.getColumnModel().getColumn(3).setResizable(false);
+            t_pembayaran_tagihan.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jLabel4.setText("Total");
@@ -112,17 +112,17 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113)
+                        .addComponent(f_total, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(modelTextFilt5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(f_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))))
+                            .addComponent(d_tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,14 +134,14 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
-                        .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(f_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
-                        .addComponent(modelTextFilt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(f_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(d_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -159,9 +159,9 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt3, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                            .addComponent(f_no_nota, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(f_type_pembayaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(d_datang_tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -171,16 +171,16 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_no_nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(modelTextFilt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_type_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(d_datang_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -205,14 +205,19 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void modelTextFilt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelTextFilt2ActionPerformed
+    private void f_type_pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_type_pembayaranActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_modelTextFilt2ActionPerformed
+    }//GEN-LAST:event_f_type_pembayaranActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser d_datang_tanggal;
+    private com.toedter.calendar.JDateChooser d_tanggal;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_bayar;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_nota;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_total;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_type_pembayaran;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -222,11 +227,6 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt4;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt5;
+    private javax.swing.JTable t_pembayaran_tagihan;
     // End of variables declaration//GEN-END:variables
 }

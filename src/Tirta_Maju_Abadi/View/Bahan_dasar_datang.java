@@ -30,25 +30,25 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        t_bahan_dasar_dtang = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel5 = new javax.swing.JLabel();
-        modelTextFilt4 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        f_no_po = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_surat_jalan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        c_supllier = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Bahan Dasar Yang Datang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Bahan Dasar Yang Datang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_bahan_dasar_dtang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -67,15 +67,15 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(5);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+        t_bahan_dasar_dtang.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(t_bahan_dasar_dtang);
+        if (t_bahan_dasar_dtang.getColumnModel().getColumnCount() > 0) {
+            t_bahan_dasar_dtang.getColumnModel().getColumn(0).setResizable(false);
+            t_bahan_dasar_dtang.getColumnModel().getColumn(0).setPreferredWidth(5);
+            t_bahan_dasar_dtang.getColumnModel().getColumn(1).setResizable(false);
+            t_bahan_dasar_dtang.getColumnModel().getColumn(1).setPreferredWidth(200);
+            t_bahan_dasar_dtang.getColumnModel().getColumn(2).setResizable(false);
+            t_bahan_dasar_dtang.getColumnModel().getColumn(2).setPreferredWidth(100);
         }
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
@@ -101,11 +101,11 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(f_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5)
                                 .addGap(10, 10, 10)
-                                .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1))
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -119,9 +119,9 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jLabel4)
-                    .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(f_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -150,10 +150,10 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(f_no_po, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(modelChuser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                                .addComponent(modelTextFilt2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(c_supllier, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                                .addComponent(f_surat_jalan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -163,15 +163,15 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_no_po, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(modelTextFilt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_supllier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(174, 174, 174))
@@ -190,7 +190,7 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -199,6 +199,11 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_supllier;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nama_barang;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_po;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_surat_jalan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -209,11 +214,6 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt4;
+    private javax.swing.JTable t_bahan_dasar_dtang;
     // End of variables declaration//GEN-END:variables
 }

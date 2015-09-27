@@ -24,36 +24,26 @@
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="modelChuser2" pref="182" max="32767" attributes="0"/>
-                                  <Component id="modelChuser1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="modelTextFilt1" alignment="1" max="32767" attributes="0"/>
-                              </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="modelChuser3" min="-2" pref="182" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="c_driver" pref="182" max="32767" attributes="0"/>
+                              <Component id="c_type" alignment="0" max="32767" attributes="0"/>
+                              <Component id="f_nopol" alignment="1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="c_helper" min="-2" pref="182" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,22 +55,22 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_nopol" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelChuser2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="c_driver" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelChuser3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="c_helper" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelChuser1" alignment="3" max="32767" attributes="0"/>
+                          <Component id="c_type" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -136,7 +126,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="t_armada">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
@@ -228,12 +218,12 @@
         <Property name="text" type="java.lang.String" value="Type"/>
       </Properties>
     </Component>
-    <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+    <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nopol">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jLabel1)"/>
       </AuxValues>
     </Component>
-    <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+    <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_type">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -245,7 +235,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="modelChuser1ItemStateChanged"/>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="c_typeItemStateChanged"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -253,9 +243,9 @@
         <Property name="text" type="java.lang.String" value="Helper"/>
       </Properties>
     </Component>
-    <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser2">
+    <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_driver">
     </Component>
-    <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser3">
+    <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_helper">
     </Component>
   </SubComponents>
 </Form>
