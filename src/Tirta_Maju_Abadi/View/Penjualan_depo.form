@@ -81,11 +81,9 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="modelChuser1" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                          <Component id="modelTextFilt2" alignment="1" max="32767" attributes="0"/>
-                          <Component id="modelTextFilt1" alignment="1" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="modelTextFilt2" alignment="1" max="32767" attributes="0"/>
+                      <Component id="modelTextFilt1" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -200,9 +198,9 @@
                       <Component id="jScrollPane2" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt3" min="-2" pref="200" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="modelChuser2" min="-2" pref="222" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="modelTextFilt4" min="-2" pref="200" max="-2" attributes="0"/>
@@ -235,10 +233,10 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="modelChuser2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="145" max="-2" attributes="0"/>
@@ -268,8 +266,6 @@
             <Property name="text" type="java.lang.String" value="Nama Barang"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="text" type="java.lang.String" value="Banyak "/>
@@ -284,6 +280,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Tambahkan"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -362,6 +361,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modelTextFilt7ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser2">
         </Component>
       </SubComponents>
     </Container>

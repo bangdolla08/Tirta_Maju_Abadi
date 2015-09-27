@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package Tirta_Maju_Abadi.View;
-
+import Tirta_Maju_Abadi.toll.database;
 /**
  *
  * @author NEEZAR
  */
 public class Penjualan_depo extends javax.swing.JInternalFrame {
-
+private database db=new database();
     /**
      * Creates new form Penjualan_depo
      */
@@ -41,7 +41,6 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
         modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel7 = new javax.swing.JLabel();
         modelTextFilt4 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jButton1 = new javax.swing.JButton();
@@ -53,6 +52,7 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
         modelTextFilt5 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         modelTextFilt6 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         modelTextFilt7 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        modelChuser2 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jButton2 = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Penjualan Depo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
@@ -89,10 +89,9 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(modelChuser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addComponent(modelTextFilt2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1)
+                    .addComponent(modelTextFilt2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,6 +128,11 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,9 +189,9 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modelChuser2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,10 +217,10 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(modelTextFilt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(modelChuser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,6 +274,11 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_modelTextFilt7ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -292,9 +301,9 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser2;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt4;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt5;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt6;

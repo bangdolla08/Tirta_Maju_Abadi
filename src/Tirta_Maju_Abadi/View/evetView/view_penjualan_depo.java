@@ -58,16 +58,17 @@ public class view_penjualan_depo {
         mpo.listMD_Full_penjualan(mfp);
         dtm.addRow(vct);
     }
-    
+    List<list2Values> list=new ArrayList<>();
     public void list(ModelChuser mc){
-        List<list2Values> list=new ArrayList<>();
+        //List<list2Values> list=new ArrayList<>();
          for(MD_Produk mp:ld.getListMD_Produk().getAll()){
             list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
         }
         mc.setModel(list);
     }
     
-     public void simpanpenjulanpo(){
+     public void simpanpenjulanpo(MD_Penjualan_po mp){
+         mpo=mp;
         db.setDB("insert into penjualan_po set id_marketing='"+mpo.getId_marketing()+"',"
         +"id_pelanggan='"+mpo.getId_pelanggan()+"',"
         +"no_nota='"+mpo.getNo_nota()+"',"
