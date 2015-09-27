@@ -66,8 +66,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt2" pref="186" max="32767" attributes="0"/>
+                              <Component id="f_no_po" pref="186" max="32767" attributes="0"/>
+                              <Component id="d_tanggal" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -82,12 +82,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_no_po" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="d_tanggal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
@@ -107,9 +107,7 @@
             <Property name="text" type="java.lang.String" value="Tanggal"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
-        </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_po">
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -136,11 +134,11 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelChuser1" min="-2" pref="167" max="-2" attributes="0"/>
+                              <Component id="c_nama_barang" min="-2" pref="167" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modelTextFilt4" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="f_permintaan" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
@@ -149,7 +147,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButton2" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="modelTextFilt5" min="-2" pref="181" max="-2" attributes="0"/>
+                                      <Component id="f_target_pengiriman" min="-2" pref="181" max="-2" attributes="0"/>
                                       <EmptySpace pref="17" max="32767" attributes="0"/>
                                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -168,11 +166,11 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_permintaan" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelChuser1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_target_pengiriman" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="c_nama_barang" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -180,7 +178,7 @@
                       <Component id="jScrollPane1" min="-2" pref="113" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -196,7 +194,7 @@
                 <Property name="text" type="java.lang.String" value="Permintaan"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_permintaan">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -205,7 +203,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="t_po_bahan_dasar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -275,12 +273,14 @@
                 <Property name="text" type="java.lang.String" value="Target Pengiriman"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt5">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_target_pengiriman">
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_nama_barang">
             </Component>
           </SubComponents>
         </Container>
+        <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
