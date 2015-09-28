@@ -72,5 +72,13 @@ public class View_pegawai {
             JOptionPane.showMessageDialog(null, "Data Gagal Di Simpan");
         }
     }
-    
+    public void updateUserNamePassword(MD_Pegawai tmp){
+        if(db.setDB("update pegawai set username='"+tmp.getEmail()+"',"
+                + "password='"+tmp.getNo_telpon()+"' where no_pegawai='"+tmp.getNo_pegawai()+"'")){
+            JOptionPane.showMessageDialog(null, "Data Berhasil Di Simpan");
+        }else{
+            JOptionPane.showMessageDialog(null, "Data Gagal Di Simpan");
+        }
+    }
+        
 }

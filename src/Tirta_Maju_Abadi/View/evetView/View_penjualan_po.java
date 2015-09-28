@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Tirta_Maju_Abadi.View.evetView;
 
 import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
@@ -21,10 +16,8 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-/**
- *
- * @author NEEZAR
- */
+
+
 public class View_penjualan_po {
     
     private DefaultTableModel dtm=new DefaultTableModel();
