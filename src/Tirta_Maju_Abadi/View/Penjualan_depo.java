@@ -283,7 +283,7 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/penjualan.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/pesan.png"))); // NOI18N
         jButton2.setText("Jual");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

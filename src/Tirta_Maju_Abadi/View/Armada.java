@@ -94,6 +94,7 @@ public class Armada extends javax.swing.JInternalFrame {
             t_armada.getColumnModel().getColumn(2).setPreferredWidth(150);
         }
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/acc.png"))); // NOI18N
         jButton1.setText("Approve");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
