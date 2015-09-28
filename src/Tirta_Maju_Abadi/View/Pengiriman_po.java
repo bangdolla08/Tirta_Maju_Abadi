@@ -5,19 +5,67 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
+import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
+import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
+import Tirta_Maju_Abadi.View.evetView.View_penjualan_po;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 /**
  *
  * @author NEEZAR
  */
 public class Pengiriman_po extends javax.swing.JInternalFrame {
-
+    private MD_Penjualan_po mpel=new MD_Penjualan_po();
+    private View_penjualan_po vpp;
+    private database db;
+    private listMD_Penjualan_po lppo;
+    private Date date=new Date();
+    private loadAllData ld;
+    private loadAllData lad;
     /**
      * Creates new form NewJInternalFrame
      */
     public Pengiriman_po() {
         initComponents();
     }
-
+    public Pengiriman_po(loadAllData lad) {
+        this.lad=lad;
+        initComponents();        
+        vpp=new View_penjualan_po(t_pengiriman_bo.getModel(), lppo, db, f_banyak);
+        t_pengiriman_bo.setModel(vpp.getdtm());
+        vpp.list(c_nama_barang);
+        vpp.list(c_supplier);
+    }
+    
+      public void list(ModelChuser mc){
+        List<list2Values> list=new ArrayList<>();
+        for(MD_Produk mp:ld.getListMD_Produk().getAll()){
+            list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
+        }
+        mc.setModel(list);
+    }
+    private void setMpel(){
+        mpel.setNo_nota(f_no_po.getText());
+        int brg=Integer.valueOf(c_nama_barang.getSelectedItemS());
+        mpel.setId_pelanggan(brg);
+    }
+    
+     public void tambah(){
+        list2Values ls=(list2Values)c_nama_barang.getSelectedItem();
+        MD_Full_penjualan mdfbb=new MD_Full_penjualan(ls.getIsinya(), f_no_po.getInteger(), f_banyak.toString(),lad);
+        vpp.set_TableBawah(mdfbb);                                                                                                     
+        mpel.listMD_Full_penjualan(mdfbb);                                                                            
+    }           
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
