@@ -26,7 +26,7 @@ public class listMD_Harga_pelanggan {
             while(rs.next()){
                 listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getInt("Id_produk"), 
-                        rs.getString("Harga")));
+                        rs.getInt("Harga")));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -41,7 +41,7 @@ public class listMD_Harga_pelanggan {
             while(rs.next()){
                 listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getInt("Id_produk"), 
-                        rs.getString("Harga")));
+                        rs.getInt("Harga")));
             }        
         } catch (Exception e) {
             System.out.print(e);

@@ -30,7 +30,7 @@ public class listMD_Pelanggan {
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
                         rs.getString("Alamat"), 
-                        rs.getString("Tipe_pembayaran")));
+                        rs.getString("Tipe_pembayaran"),db));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -45,12 +45,13 @@ public class listMD_Pelanggan {
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
                         rs.getString("Alamat"), 
-                        rs.getString("Tipe_pembayaran")));
+                        rs.getString("Tipe_pembayaran"),db));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
+    
     public MD_Pelanggan getMDByID(int Id_pelanggan){
         MD_Pelanggan pilih=new MD_Pelanggan();
         for(MD_Pelanggan mdpe : listDB){

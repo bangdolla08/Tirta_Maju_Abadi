@@ -48,7 +48,7 @@ public class View_penjualan_po {
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
         vct.add(md_full.getMD_produk().getNama_produk());
-        int bnyk=md_full.getBanyak(),harga=Integer.parseInt(mdp.getHarga(md_full.getId_Produk()).getHarga());
+        int bnyk=md_full.getBanyak(),harga=mdp.getHarga(md_full.getId_Produk()).getHarga();
         vct.add(harga);
         vct.add(bnyk);
         vct.add(harga*bnyk);

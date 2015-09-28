@@ -11,17 +11,9 @@ package Tirta_Maju_Abadi.DataModel;
  */
 public class MD_Harga_pelanggan {
     private int Id_pelanggan, Id_produk;
-    private String Harga;
-    private MD_Pelanggan md_plg;
+    private int Harga;
 
-    public MD_Pelanggan getMd_plg() {
-        return md_plg;
-    }
-
-    public void setMd_plg(MD_Pelanggan md_plg) {
-        this.md_plg = md_plg;
-    }
-    public MD_Harga_pelanggan(int Id_pelanggan, int Id_produk, String Harga){
+    public MD_Harga_pelanggan(int Id_pelanggan, int Id_produk, int Harga){
         this.Id_pelanggan=Id_pelanggan;
         this.Id_produk=Id_produk;
         this.Harga=Harga;
@@ -30,7 +22,7 @@ public class MD_Harga_pelanggan {
     public MD_Harga_pelanggan(){
         this.Id_pelanggan=0;
         this.Id_produk=0;
-        this.Harga=null;
+        this.Harga=0;
     }
     
     public int getId_pelanggan(){
@@ -39,7 +31,7 @@ public class MD_Harga_pelanggan {
     public int getId_produk(){
         return Id_produk;
     }
-    public String getHarga(){
+    public int getHarga(){
         return Harga;
     }
     
@@ -49,7 +41,7 @@ public class MD_Harga_pelanggan {
     public void setId_produk(int Id_produk){
         this.Id_produk=Id_produk;
     }
-    public void setHarga(String Harga){
+    public void setHarga(int Harga){
         this.Harga=Harga;
     }
 }

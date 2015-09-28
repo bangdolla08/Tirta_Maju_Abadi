@@ -48,7 +48,7 @@ public class view_penjualan_depo {
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
         vct.add(mfp.getMD_produk().getNama_produk());
-        int banyak=mfp.getBanyak(),harga=Integer.parseInt(mpo.getHarga(mfp.getId_Produk()).getHarga());
+        int banyak=mfp.getBanyak(),harga=mpo.getHarga(mfp.getId_Produk()).getHarga();
         vct.add(banyak);
         vct.add(harga);
         vct.add(banyak*harga);
