@@ -13,6 +13,7 @@ import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
 import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
+import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
 import Tirta_Maju_Abadi.View.evetView.View_penjualan_po;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
@@ -44,16 +45,17 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
     public void reseyt(){
         
     }
-    public void list(ModelChuser mc){
+     public void list(modelTextFilt mtf){
         List<list2Values> list=new ArrayList<>();
         for(MD_Pelanggan mp:ld.getListMD_Pelanggan().getAll()){
             list.add(new list2Values(mp.getNama(), mp.getId_Pelanggan()));
         }
-        mc.setModel(list);
+        mtf.setText(list);
     }
     private void setMpel(){
         mpel.setNo_nota(f_no_po.getText());
-        mpel.setId_pelanggan((int) c_nm_pelanggan.getSelectedItem());
+        int nm=Integer.valueOf(f_nm_pelanggan.getText());
+        mpel.setId_pelanggan(nm);
     }
             
     @SuppressWarnings("unchecked")
@@ -65,7 +67,6 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         f_no_po = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        c_nm_pelanggan = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         d_tanggal_po = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -78,6 +79,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         f_total = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jButton2 = new javax.swing.JButton();
+        f_nm_pelanggan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "PO Penjualan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
@@ -166,12 +168,11 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(f_total, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(f_total, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -192,7 +193,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
                     .addComponent(f_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -210,10 +211,10 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(c_nm_pelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(f_no_po, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(d_tanggal_po, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                        .addGap(0, 298, Short.MAX_VALUE)))
+                            .addComponent(d_tanggal_po, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(f_nm_pelanggan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -226,7 +227,7 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(c_nm_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_nm_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -274,10 +275,10 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_nm_pelanggan;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_nm_produk;
     private com.toedter.calendar.JDateChooser d_tanggal_po;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nm_pelanggan;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_po;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_total;
     private javax.swing.JButton jButton1;

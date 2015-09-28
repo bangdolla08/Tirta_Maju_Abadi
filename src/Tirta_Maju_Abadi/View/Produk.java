@@ -51,8 +51,10 @@ public class Produk extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Harga Pokok");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton1.setText("Simpan");
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/edit.png"))); // NOI18N
         jButton2.setText("Ubah");
 
         jLabel4.setText("Rp.");
