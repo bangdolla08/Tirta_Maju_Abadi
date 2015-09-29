@@ -4,6 +4,7 @@ import Tirta_Maju_Abadi.DataModel.*;
 
 public class loadAllData {
     private database db=new database();
+    private MD_Pegawai mp;
     private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db);
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
@@ -27,6 +28,7 @@ public class loadAllData {
     private listMD_Po_bahan_dasar listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
+    
 
     public listMD_Bahan_mentah getListMD_Bahan_mentah() {
         return listMD_Bahan_mentah1;
