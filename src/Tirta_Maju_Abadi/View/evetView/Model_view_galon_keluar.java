@@ -35,7 +35,7 @@ public class Model_view_galon_keluar {
         dtm.setRowCount(0);
         for(MD_Galon_keluar md:listMD_galon_keluar.getAll()){
             Vector vct=new Vector();
-            vct.add(md.getNo_urut());
+            vct.add(md.getNo_surat_jalan());
             vct.add(md.getBanyak_keluar());
             vct.add(md.getTanggal());
             vct.add(md.getId_pelanggan());
@@ -44,7 +44,7 @@ public class Model_view_galon_keluar {
     }
     
     public void insertMetode(MD_Galon_keluar md){
-        if(db.setDB("insert into galon_keluar set no_urut='"+md.getNo_urut()+"', Banyak_keluar='"+
+        if(db.setDB("insert into galon_keluar set no_urut='"+md.getNo_surat_jalan()+"', Banyak_keluar='"+
                 md.getBanyak_keluar()+"', Tanggal='"+md.getTanggal()+"', Id_pelanggan='"+md.getId_pelanggan()+"'"))
             JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
         else

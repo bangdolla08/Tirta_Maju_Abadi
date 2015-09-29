@@ -51,10 +51,10 @@ public class listMD_Galon_keluar {
     }
     
     
-    public MD_Galon_keluar getMDByID(int No_urut){
+    public MD_Galon_keluar getMDByID(int No_surat_jalan){
         MD_Galon_keluar pilih=new MD_Galon_keluar();
         for(MD_Galon_keluar mdgk : listDB){
-            if(mdgk.getNo_urut()==No_urut){
+            if(mdgk.getNo_surat_jalan()==No_surat_jalan){
                 pilih=mdgk;
                 break;
             }
