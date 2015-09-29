@@ -5,6 +5,7 @@ import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -34,15 +35,37 @@ public class Model_view_Pelanggan {
                 + "Nama='"+mdp.getNama()+"',"
                 + "Alamat='"+mdp.getAlamat()+"',"
                 + "Tipe_pembayaran='"+mdp.getTipe_pembayaran()+"'")){
+            boolean tmp=true;
             for(MD_Harga_pelanggan mhp:mdp.getlistHarga()){
-                db.setDB("insert into harga_pelanggan set "
+                tmp=tmp&&db.setDB("insert into harga_pelanggan set "
                         + "Id_pelanggan='"+mdp.getId_Pelanggan()+"',"
                         + "Id_produk='"+mhp.getId_produk()+"',Harga='"+mhp.getHarga()+"'");
             }
+            if(!tmp)
+                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
         }else{
-            
+            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
     }
+    
+    public void update(){
+        if(db.setDB("update pelanggan set "
+                + "Nama='"+mdp.getNama()+"',"
+                + "Alamat='"+mdp.getAlamat()+"',"
+                + "Tipe_pembayaran='"+mdp.getTipe_pembayaran()+"' where Id_pelanggan='"+mdp.getId_Pelanggan()+"'")){
+            boolean tmp=true;
+            for(MD_Harga_pelanggan mhp:mdp.getlistHarga()){
+                tmp=tmp&&db.setDB("update harga_pelanggan set "
+                        + "Id_pelanggan='"+mdp.getId_Pelanggan()+"',"
+                        + "Id_produk='"+mhp.getId_produk()+"',Harga='"+mhp.getHarga()+"' where Id_pelanggan='"+mdp.getId_Pelanggan()+"'");
+            }
+            if(!tmp)
+                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+        }else{
+            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
+        }
+    }
+    
     public void reset(){
         for(MD_Pelanggan tmp:lD.getListMD_Pelanggan().getAll()){
             dlm.addElement(tmp);
