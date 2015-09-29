@@ -36,13 +36,13 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         f_nopol = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        f_type_produk = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel5 = new javax.swing.JLabel();
         f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         t_keberangkatan_armada = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Keberangkatan Armada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
@@ -52,20 +52,18 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nopol");
 
+        f_surat_jalan.setEditable(false);
+
+        f_nopol.setEditable(false);
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Keberangkatan Armada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        jLabel4.setText("Type Produk");
-
-        f_type_produk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                f_type_produkActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("Nama Barang");
 
         jLabel5.setText("Banyak");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
-        jButton1.setText("Tambahkan");
+        jButton1.setText("Simpan");
 
         t_keberangkatan_armada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +73,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "No", "Type Produk", "Banyak"
+                "No", "Nama Barang", "Banyak"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -100,6 +98,8 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/cetak.png"))); // NOI18N
         jButton2.setText("Print");
 
+        modelTextFilt1.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -110,7 +110,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(f_type_produk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -129,10 +129,10 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(f_type_produk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -201,17 +201,12 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void f_type_produkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_type_produkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_f_type_produkActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_po;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nopol;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_surat_jalan;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_type_produk;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -222,6 +217,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private javax.swing.JTable t_keberangkatan_armada;
     // End of variables declaration//GEN-END:variables
 }
