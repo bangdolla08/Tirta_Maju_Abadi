@@ -11,11 +11,11 @@ package Tirta_Maju_Abadi.DataModel;
  */
 public class MD_Keluar_gudang_bahan_mentah {
     private int Id_supplier,Banyak;
-    private int No_urut;
+    private int No_urut,Id_bahan;
     
     public MD_Keluar_gudang_bahan_mentah(int Id_supplier,
             int Banyak,
-            int No_urut){
+            int No_urut,int Id_bahan){
         this.Banyak=Banyak;
         this.No_urut=No_urut;
         this.Id_supplier=Id_supplier;
@@ -24,7 +24,18 @@ public class MD_Keluar_gudang_bahan_mentah {
         this.Id_supplier=0;
         this.Banyak=0;
         this.No_urut=0;
+        this.Id_bahan=Id_bahan=0;
     }
+
+    public int getId_bahan() {
+        return Id_bahan;
+    }
+
+    public void setId_bahan(int Id_bahan) {
+        this.Id_bahan = Id_bahan;
+    }
+    
+    
 
     public int getId_supplier() {
         return Id_supplier;

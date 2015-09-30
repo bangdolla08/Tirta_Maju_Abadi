@@ -30,8 +30,7 @@ public class listMD_Datang_bahan_dasar {
                         rs.getInt("No_masuk"),
                         rs.getInt("id_bahan"),
                         rs.getString("No_po"), 
-                        rs.getString("Surat_jalan"), 
-                        rs.getString("Fisik")));
+                        rs.getString("Surat_jalan")));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -49,8 +48,7 @@ public class listMD_Datang_bahan_dasar {
                         rs.getInt("No_masuk"),
                         rs.getInt("id_bahan"),
                         rs.getString("No_po"), 
-                        rs.getString("Surat_jalan"), 
-                        rs.getString("Fisik")));
+                        rs.getString("Surat_jalan")));
             }
         } catch (Exception e) {
             System.out.print(e);

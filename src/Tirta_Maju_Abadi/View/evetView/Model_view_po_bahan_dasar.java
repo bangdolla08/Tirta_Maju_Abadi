@@ -6,9 +6,14 @@ package Tirta_Maju_Abadi.View.evetView;
 
 import Tirta_Maju_Abadi.DataModel.MD_Full_po_bahan_dasar;
 import Tirta_Maju_Abadi.DataModel.MD_Po_bahan_dasar;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Po_bahan_dasar;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -36,9 +41,16 @@ public class Model_view_po_bahan_dasar {
         dtm.setRowCount(0);
     }
     
-    public int getNextID(){
-       // no.setText(lmp.getList().get(lmp.getList().size()-1).getNo_pegawai());
+    public int reset(){
         return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Bahan_mentah().getAll().size()-1).getNo_pegwai()+1;
+    }
+    
+    List<list2Values> list=new ArrayList<>();
+    public void list(ModelChuser mc){
+         for(MD_Produk mp:lD.getListMD_Produk().getAll()){
+            list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
+        }
+        mc.setModel(list);
     }
     
     
@@ -52,7 +64,7 @@ public class Model_view_po_bahan_dasar {
     
     
     public void Insert(){
-        if(db.setDB("insert into Po_bahan_dasar set No_po= '"+mpb.getNo_po()+"', tanggal='"+mpb.getTanggal()+
+        if(db.setDB("insert into po_bahan_dasar set No_po= '"+mpb.getNo_po()+"', tanggal='"+mpb.getTanggal()+
                 "', No_pegawai='"+mpb.getNo_pegwai()+"'")){
             boolean tmp=true;
             for(MD_Full_po_bahan_dasar mfp:mpb.getListfullDB()){

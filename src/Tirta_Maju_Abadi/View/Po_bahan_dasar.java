@@ -82,7 +82,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(t_po_bahan_dasar);
         if (t_po_bahan_dasar.getColumnModel().getColumnCount() > 0) {
             t_po_bahan_dasar.getColumnModel().getColumn(0).setResizable(false);
-            t_po_bahan_dasar.getColumnModel().getColumn(0).setPreferredWidth(1);
+            t_po_bahan_dasar.getColumnModel().getColumn(0).setPreferredWidth(50);
             t_po_bahan_dasar.getColumnModel().getColumn(1).setResizable(false);
             t_po_bahan_dasar.getColumnModel().getColumn(1).setPreferredWidth(200);
             t_po_bahan_dasar.getColumnModel().getColumn(2).setResizable(false);

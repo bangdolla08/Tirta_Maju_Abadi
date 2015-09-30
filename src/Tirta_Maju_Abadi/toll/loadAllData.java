@@ -28,6 +28,15 @@ public class loadAllData {
     private listMD_Po_bahan_dasar listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
+    private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
+
+    public listMD_Bo_barang getListMD_bo_barang() {
+        return listMD_bo_barang;
+    }
+
+    public void setListMD_bo_barang(listMD_Bo_barang listMD_bo_barang) {
+        this.listMD_bo_barang = listMD_bo_barang;
+    }
     
 
     public listMD_Bahan_mentah getListMD_Bahan_mentah() {

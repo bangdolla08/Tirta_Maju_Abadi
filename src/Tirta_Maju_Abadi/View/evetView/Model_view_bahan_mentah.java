@@ -8,6 +8,7 @@ import Tirta_Maju_Abadi.DataModel.MD_Bahan_metah;
 import Tirta_Maju_Abadi.DataModel.listMD_Bahan_mentah;
 import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,7 @@ public class Model_view_bahan_mentah {
     private listMD_Bahan_mentah listMD_bahan_mentah;
     private database db;
     private modelTextFilt id_bahan;
-    
+    private loadAllData lD;
     public Model_view_bahan_mentah(TableModel dtm, 
             listMD_Bahan_mentah listMD_bahan_mentah, database db, modelTextFilt id_bahan){
         this.dtm=(DefaultTableModel) dtm;
@@ -49,8 +50,9 @@ public class Model_view_bahan_mentah {
         }
     }
     
-    public void reset(){
+    public String reset(){
         id_bahan.setText(listMD_bahan_mentah.getAll().get(listMD_bahan_mentah.getAll().size()-1).getId_bahan());
+        return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Po_bahan_dasar().getAll().size()-1).getNo_po()+1;
     }
     
     public void Insert(MD_Bahan_metah md){
@@ -65,11 +67,11 @@ public class Model_view_bahan_mentah {
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan","Informasi",JOptionPane.INFORMATION_MESSAGE);
     }
     
-    public void Update(MD_Bahan_metah md, String Id_bahan){
+    public void Update(MD_Bahan_metah md){
         if(db.setDB("update into bahan_mentah set nama_bahan='"+md.getNama_bahan()+"', "
                 + "unit='"+md.getUnit()+"', stok='"+md.getStok()+"', "
                 + "limit_buffer='"+md.getLimit_buffer()+"', "
-                + "spesifikasi='"+md.getSpesifikasi()+"' where Id_bahan='"+Id_bahan+"'"))
+                + "spesifikasi='"+md.getSpesifikasi()+"' where Id_bahan='"+md.getId_bahan()+"'"))
             JOptionPane.showMessageDialog(null, "Data Berhasil Diubah","Informasi",JOptionPane.INFORMATION_MESSAGE);
         else
             JOptionPane.showMessageDialog(null, "Data Gagal Diubah","Informasi",JOptionPane.INFORMATION_MESSAGE);

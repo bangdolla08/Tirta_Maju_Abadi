@@ -59,7 +59,8 @@ public class Model_view_keluar_gudang_bahan_mentah {
         if(db.setDB("insert into keluar_gudang_bahan_mentah set "
                 + "Id_supplier='"+md.getId_supplier()+"',"
                 + " Banyak='"+md.getBanyak()+"',"
-                + " No_urut='"+md.getNo_urut()+"'"))
+                + " No_urut='"+md.getNo_urut()+"',"
+                + "Id_bahan='"+md.getId_bahan()+"'"))
             JOptionPane.showMessageDialog(null, "Data Berhasil Simpan","Informasi",JOptionPane.INFORMATION_MESSAGE);
         else
             JOptionPane.showMessageDialog(null, "Data Gagal Simpan","Informasi",JOptionPane.INFORMATION_MESSAGE);

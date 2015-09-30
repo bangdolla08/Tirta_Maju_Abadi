@@ -11,7 +11,7 @@ package Tirta_Maju_Abadi.DataModel;
  */
 public class MD_Datang_bahan_dasar {
     
-    private String No_po, Surat_jalan, Fisik;
+    private String No_po, Surat_jalan;
     private int Id_supplier, Banyak,No_masuk,id_bahan;
 
     public int getId_bahan() {
@@ -25,19 +25,16 @@ public class MD_Datang_bahan_dasar {
     public MD_Datang_bahan_dasar(int Banyak,
             int Id_supplier,int No_masuk,int id_bahan,
             String No_po,
-            String Surat_jalan,
-            String Fisik){
+            String Surat_jalan){
         this.id_bahan=id_bahan;
         this.Banyak=Banyak;
         this.Id_supplier=Id_supplier;
-        this.Fisik=Fisik;
         this.Surat_jalan=Surat_jalan;
         this.No_po=No_po;
         this.No_masuk=No_masuk;
     }
     public MD_Datang_bahan_dasar(){
         this.Surat_jalan=null;
-        this.Fisik=null;
         this.No_po=null;
         this.Id_supplier=0;
         this.Banyak=0;
@@ -60,9 +57,6 @@ public class MD_Datang_bahan_dasar {
         return Surat_jalan;
     }
 
-    public String getFisik() {
-        return Fisik;
-    }
 
     public int getId_supplier() {
         return Id_supplier;
@@ -80,9 +74,6 @@ public class MD_Datang_bahan_dasar {
         this.Surat_jalan = Surat_jalan;
     }
 
-    public void setFisik(String Fisik) {
-        this.Fisik = Fisik;
-    }
 
     public void setId_supplier(int Id_supplier) {
         this.Id_supplier = Id_supplier;

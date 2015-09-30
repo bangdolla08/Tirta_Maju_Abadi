@@ -5,9 +5,15 @@
 package Tirta_Maju_Abadi.View.evetView;
 
 import Tirta_Maju_Abadi.DataModel.MD_Bo_barang;
+import Tirta_Maju_Abadi.DataModel.MD_Full_Bo_barang;
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Bo_barang;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,7 +42,20 @@ public class Model_view_bo_barang {
         return dtm;
     }
     
-    public void isidata(){
+    public int reset(){
+        return lD.getListMD_bo_barang().getAll().get(lD.getListMD_bo_barang().getAll().size()-1).getNo_bo()+1;
+    }
+    
+    List<list2Values> list=new ArrayList<>();
+    public void list(ModelChuser mc){
+         for(MD_Pegawai mp:lD.getListMD_Pegawai().getList()){
+            list.add(new list2Values(mp.getNama(), mp.getNo_pegawai()));
+        }
+        mc.setModel(list);
+    }
+    
+    
+/*    public void isidata(){
         dtm.setRowCount(0);
         for(MD_Bo_barang md:listMD_bo_barang.getAll()){
             Vector vct=new Vector();
@@ -47,21 +66,38 @@ public class Model_view_bo_barang {
             dtm.addRow(vct);
         }
     }
-    
-    public void insertMetode(MD_Bo_barang md){
-        if(db.setDB("insert into bo_barang set no_bo='"+md.getNo_bo()+"', tanggal='"+
-                md.getTanggal()+"', no_pegawai='"+md.getNo_pegawai()+"', id_pegawai_acc='"+md.getId_pegawai_acc()+"'"))
-            JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+*/    
+    public void Insert(){
+        if(db.setDB("insert into bo_barang set no_bo='"+mbb.getNo_bo()+"', tanggal='"+
+                mbb.getTanggal()+"', no_pegawai='"+mbb.getNo_pegawai()+"', id_pegawai_acc='"+mbb.getId_pegawai_acc()+"'")){
+            boolean tmp=true;
+            for(MD_Full_Bo_barang mfb:mbb.getListFull()){
+                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set No_bo='"+mbb.getNo_bo()+"', "
+                        + "id_barang='"+mfb.getNama_barang()+"', estimasi='"+mfb.getEstimasi_harga()+"'");
+            }
+            if(!tmp){
+                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            }else{
+                JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
+            }
+        }
     }
     
-    public void editMetode(MD_Bo_barang md, String No_bo){
-        if(db.setDB("update into bo_barang set tanggal='"+md.getTanggal()+
-                "', no_pegawai='"+md.getNo_pegawai()+"', id_pegawai_acc='"+md.getId_pegawai_acc()+
-                "' where no_bo='"+No_bo+"'"))
-            JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+    public void Update(){
+        if(db.setDB("update into bo_barang set tanggal='"+
+                mbb.getTanggal()+"', no_pegawai='"+mbb.getNo_pegawai()+"',"
+                + " id_pegawai_acc='"+mbb.getId_pegawai_acc()+"' where no_bo='"+mbb.getNo_bo()+"'")){
+            boolean tmp=true;
+            for(MD_Full_Bo_barang mfb:mbb.getListFull()){
+                tmp=tmp&&db.setDB("update into full_po_bahan_dasar set"
+                        + "id_barang='"+mfb.getNama_barang()+"', "
+                        + "estimasi='"+mfb.getEstimasi_harga()+"' where No_bo='"+mbb.getNo_bo()+"'");
+            }
+            if(!tmp){
+                JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
+            }else{
+                JOptionPane.showMessageDialog(null, "Data Gagal Diubah");
+            }
+        }
     }
 }

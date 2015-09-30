@@ -28,7 +28,8 @@ public class listMD_Keluar_gudang_bahan_mentah {
             while(rs.next()){
                 listDB.add(new MD_Keluar_gudang_bahan_mentah(rs.getInt("Id_supplier"),
                 rs.getInt("Banyak"),
-                rs.getInt("No_urut")));
+                rs.getInt("No_urut"),
+                rs.getInt("Id_bahan")));
             }
         }catch(Exception e){
             System.out.println(e);
@@ -43,7 +44,8 @@ public class listMD_Keluar_gudang_bahan_mentah {
             while(rs.next()){
                 listDB.add(new MD_Keluar_gudang_bahan_mentah(rs.getInt("Id_supplier"),
                     rs.getInt("Banyak"),
-                    rs.getInt("No_urut")));
+                    rs.getInt("No_urut"),
+                    rs.getInt("Id_bahan")));
             }        } catch (Exception e) {
             System.out.print(e);
         }
