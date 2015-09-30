@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Tirta_Maju_Abadi.View;
 
 import Tirta_Maju_Abadi.toll.jdesktopPane;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,8 +16,9 @@ import javax.swing.JInternalFrame;
 public class Form_utama_TMA extends javax.swing.JFrame {
     
     
-    Penjualan_depo pd=new Penjualan_depo();
-    Mobil mo=new Mobil();
+    private Penjualan_depo pd;
+    private Mobil mo;
+    private loadAllData lad;
     /**
      * Creates new form Form_utama_TMA
      */
@@ -28,8 +26,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, screenSize.width, screenSize.height);
         initComponents();
+        lad=new loadAllData();
+        pd=new Penjualan_depo(lad);
+        mo=new Mobil();
         centerForm(pd);
-         centerForm(mo);
+        centerForm(mo);
     }
     
      public void centerForm(JInternalFrame jin){

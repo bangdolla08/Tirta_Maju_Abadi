@@ -37,7 +37,7 @@ public class Model_view_po_bahan_dasar {
     }
     
     public int getNextID(){
-        no.setText(lmp.getList().get(lmp.getList().size()-1).getNo_pegawai());
+       // no.setText(lmp.getList().get(lmp.getList().size()-1).getNo_pegawai());
         return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Bahan_mentah().getAll().size()-1).getNo_pegwai()+1;
     }
     

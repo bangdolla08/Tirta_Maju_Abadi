@@ -78,6 +78,7 @@ public class MD_Bo_barang {
         this.no_pegawai = no_pegawai;
         this.id_pegawai_acc=id_pegawai_acc;
     }
+    
 
     public MD_Bo_barang(database db, int no_bo, Date tanggal, int no_pegawai, int id_pegwai_acc) {
         this.db = db;

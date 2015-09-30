@@ -10,8 +10,9 @@ package Tirta_Maju_Abadi.DataModel;
  * @author NEEZAR
  */
 public class MD_Datang_bahan_dasar {
-        private String No_po, Surat_jalan, Fisik;
-        private int Id_supplier, Banyak,No_masuk,id_bahan;
+    
+    private String No_po, Surat_jalan, Fisik;
+    private int Id_supplier, Banyak,No_masuk,id_bahan;
 
     public int getId_bahan() {
         return id_bahan;
@@ -21,27 +22,27 @@ public class MD_Datang_bahan_dasar {
         this.id_bahan = id_bahan;
     }
         
-        public MD_Datang_bahan_dasar(int Banyak,
-                int Id_supplier,int No_masuk,int id_bahan,
-                String No_po,
-                String Surat_jalan,
-                String Fisik){
-            this.id_bahan=id_bahan;
-            this.Banyak=Banyak;
-            this.Id_supplier=Id_supplier;
-            this.Fisik=Fisik;
-            this.Surat_jalan=Surat_jalan;
-            this.No_po=No_po;
-            this.No_masuk=No_masuk;
-        }
-        public MD_Datang_bahan_dasar(){
-            this.Surat_jalan=null;
-            this.Fisik=null;
-            this.No_po=null;
-            this.Id_supplier=0;
-            this.Banyak=0;
-            this.No_masuk=0;
-        }
+    public MD_Datang_bahan_dasar(int Banyak,
+            int Id_supplier,int No_masuk,int id_bahan,
+            String No_po,
+            String Surat_jalan,
+            String Fisik){
+        this.id_bahan=id_bahan;
+        this.Banyak=Banyak;
+        this.Id_supplier=Id_supplier;
+        this.Fisik=Fisik;
+        this.Surat_jalan=Surat_jalan;
+        this.No_po=No_po;
+        this.No_masuk=No_masuk;
+    }
+    public MD_Datang_bahan_dasar(){
+        this.Surat_jalan=null;
+        this.Fisik=null;
+        this.No_po=null;
+        this.Id_supplier=0;
+        this.Banyak=0;
+        this.No_masuk=0;
+    }
 
     public int getNo_masuk() {
         return No_masuk;
