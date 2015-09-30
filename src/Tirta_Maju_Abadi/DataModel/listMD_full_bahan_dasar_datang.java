@@ -17,14 +17,14 @@ import java.util.List;
 public class listMD_full_bahan_dasar_datang {
     private database db;
     private ResultSet rs;
-    private List<MD_Full_po_bahan_dasar_datang> listDB=new ArrayList<MD_Full_po_bahan_dasar_datang>();
+    private List<MD_Full_datang_Bahan_dasar> listDB=new ArrayList<MD_Full_datang_Bahan_dasar>();
     
     public listMD_full_bahan_dasar_datang(ResultSet rs,database db){
         this.db=db;
         listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Full_po_bahan_dasar_datang(rs.getInt("No_masuk"), 
+                listDB.add(new MD_Full_datang_Bahan_dasar(rs.getInt("No_masuk"), 
                         rs.getInt("Id_barang_dasar_datang"), 
                         rs.getInt("Banyak"),
                         rs.getInt("Fisik")));
@@ -40,7 +40,7 @@ public class listMD_full_bahan_dasar_datang {
         try {
             rs=db.getRs("select * from full_po_bahan_dasar_datang");
             while(rs.next()){
-                listDB.add(new MD_Full_po_bahan_dasar_datang(rs.getInt("No_masuk"), 
+                listDB.add(new MD_Full_datang_Bahan_dasar(rs.getInt("No_masuk"), 
                         rs.getInt("Id_barang_dasar_datang"), 
                         rs.getInt("Banyak"),
                         rs.getInt("Fisik")));
@@ -50,9 +50,9 @@ public class listMD_full_bahan_dasar_datang {
         }
     }
     
-      public MD_Full_po_bahan_dasar_datang getByNo(int No_masuk,int Id_barang){
-        MD_Full_po_bahan_dasar_datang pilih=new MD_Full_po_bahan_dasar_datang();
-        for(MD_Full_po_bahan_dasar_datang mdfp : listDB){
+      public MD_Full_datang_Bahan_dasar getByNo(int No_masuk,int Id_barang){
+        MD_Full_datang_Bahan_dasar pilih=new MD_Full_datang_Bahan_dasar();
+        for(MD_Full_datang_Bahan_dasar mdfp : listDB){
             if(mdfp.getNo_masuk()==No_masuk&&mdfp.getId_barang_dasar_datang()==Id_barang){
                 pilih=mdfp;
                 break;
@@ -61,9 +61,9 @@ public class listMD_full_bahan_dasar_datang {
         return pilih;
     }
      
-    public MD_Full_po_bahan_dasar_datang getMDByID(int No_masuk){
-        MD_Full_po_bahan_dasar_datang pilih=new MD_Full_po_bahan_dasar_datang();
-        for(MD_Full_po_bahan_dasar_datang mdfp : listDB){
+    public MD_Full_datang_Bahan_dasar getMDByID(int No_masuk){
+        MD_Full_datang_Bahan_dasar pilih=new MD_Full_datang_Bahan_dasar();
+        for(MD_Full_datang_Bahan_dasar mdfp : listDB){
             if(mdfp.getNo_masuk()==No_masuk){
                 pilih=mdfp;
                 break;
@@ -72,7 +72,7 @@ public class listMD_full_bahan_dasar_datang {
         return pilih;
     }
     
-    public List<MD_Full_po_bahan_dasar_datang> getAll(){
+    public List<MD_Full_datang_Bahan_dasar> getAll(){
         return listDB;
     }
 }

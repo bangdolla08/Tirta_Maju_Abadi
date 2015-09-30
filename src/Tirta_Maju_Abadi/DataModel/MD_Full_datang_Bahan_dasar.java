@@ -11,17 +11,17 @@ import Tirta_Maju_Abadi.toll.loadAllData;
  *
  * @author jepank's
  */
-public class MD_Full_po_bahan_dasar_datang {
+public class MD_Full_datang_Bahan_dasar {
     private int No_masuk, Id_barang_dasar_datang, Banyak, Fisik;
     
-    public MD_Full_po_bahan_dasar_datang(int No_masuk, int Id_barang_dasar_datang, int Banyak, int Fisik){
+    public MD_Full_datang_Bahan_dasar(int No_masuk, int Id_barang_dasar_datang, int Banyak, int Fisik){
         this.No_masuk=No_masuk;
         this.Id_barang_dasar_datang=Id_barang_dasar_datang;
         this.Banyak=Banyak;
         this.Fisik=Fisik;
     }
     
-    public MD_Full_po_bahan_dasar_datang(){
+    public MD_Full_datang_Bahan_dasar(){
         this.No_masuk=0;
         this.Id_barang_dasar_datang=0;
         this.Banyak=0;
