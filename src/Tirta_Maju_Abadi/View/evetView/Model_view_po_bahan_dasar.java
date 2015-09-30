@@ -4,6 +4,7 @@
  */
 package Tirta_Maju_Abadi.View.evetView;
 
+import Tirta_Maju_Abadi.DataModel.MD_Full_po_bahan_dasar;
 import Tirta_Maju_Abadi.DataModel.MD_Po_bahan_dasar;
 import Tirta_Maju_Abadi.DataModel.listMD_Po_bahan_dasar;
 import Tirta_Maju_Abadi.toll.database;
@@ -27,16 +28,16 @@ public class Model_view_po_bahan_dasar {
     private listMD_Po_bahan_dasar listMD_po_bahan_dasar;
     private database db;
     
-    public Model_view_po_bahan_dasar(TableModel tm, ListModel lm, database db, loadAllData lD, MD_Po_bahan_dasar mpb){
+    public Model_view_po_bahan_dasar(TableModel tm, database db, loadAllData lD, MD_Po_bahan_dasar mpb){
         this.lD=lD;
         this.mpb=mpb;
-        dlm=(DefaultListModel)lm;
         dtm=(DefaultTableModel) tm;
-        this.listMD_po_bahan_dasar=listMD_po_bahan_dasar;
         this.db=db;
+        dtm.setRowCount(0);
     }
     
     public int getNextID(){
+        no.setText(lmp.getList().get(lmp.getList().size()-1).getNo_pegawai());
         return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Bahan_mentah().getAll().size()-1).getNo_pegwai()+1;
     }
     
@@ -45,31 +46,40 @@ public class Model_view_po_bahan_dasar {
         return dtm;
     }
     
+    public ListModel getDTL(){
+        return dlm;
+    }
+    
+    
     public void Insert(){
-        dtm.setRowCount(0);
-        for(MD_Po_bahan_dasar md:listMD_po_bahan_dasar.getAll()){
-            Vector vct=new Vector();
-            vct.add(md.getNo_po());
-            vct.add(md.getTanggal());
-            vct.add(md.getNo_pegwai());
-            dtm.addRow(vct);
+        if(db.setDB("insert into Po_bahan_dasar set No_po= '"+mpb.getNo_po()+"', tanggal='"+mpb.getTanggal()+
+                "', No_pegawai='"+mpb.getNo_pegwai()+"'")){
+            boolean tmp=true;
+            for(MD_Full_po_bahan_dasar mfp:mpb.getListfullDB()){
+                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set No_po='"+mpb.getNo_po()+
+                        "', id_barang='"+mfp.getId_barang()+"', banyak='"+mfp.getBanyak()+"', Rencana_kirim='"+mfp.getRencana_kirim()+"'");
+            }
+            if(!tmp){
+                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            }else{
+                JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
+            }
         }
     }
-    
-    public void insertMetode(MD_Po_bahan_dasar md){
-        if(db.setDB("insert into Po_bahan_dasar set No_po= '"+md.getNo_po()+"', tanggal='"+md.getTanggal()+
-                "', No_pegawai='"+md.getNo_pegwai()+"'"))
-            JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        
-    }
-    
-    public void editMetode(MD_Po_bahan_dasar md, String No_po){
-        if(db.setDB("insert into Po_bahan_dasar set tangal='"+md.getTanggal()+"', No_pegawai='"+md.getNo_pegwai()+
-                "' where No_po='"+No_po+"'"))
-            JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+
+        public void Update(){
+        if(db.setDB("update into Po_bahan_dasar set tanggal='"+mpb.getTanggal()+
+                "', No_pegawai='"+mpb.getNo_pegwai()+"' where No_po= '"+mpb.getNo_po()+"'")){
+            boolean tmp=true;
+            for(MD_Full_po_bahan_dasar mfp:mpb.getListfullDB()){
+                tmp=tmp&&db.setDB("update into full_po_bahan_dasar set id_barang='"+mfp.getId_barang()+"', banyak='"+mfp.getBanyak()+
+                        "', Rencana_kirim='"+mfp.getRencana_kirim()+"' where No_po='"+mpb.getNo_po()+"'");
+            }
+            if(!tmp){
+                JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
+            }else{
+                JOptionPane.showMessageDialog(null, "Data Gagal Diubah");
+            }
+        }
     }
 }

@@ -29,7 +29,8 @@ public class listMD_Pelanggan {
             while(rs.next()){
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
-                        rs.getString("Alamat"), 
+                        rs.getString("Alamat"),
+                        rs.getString("No_telepon"),
                         rs.getString("Tipe_pembayaran"),db));
             }
         } catch (Exception e) {
@@ -45,6 +46,7 @@ public class listMD_Pelanggan {
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
                         rs.getString("Alamat"), 
+                        rs.getString("No_telepon"),
                         rs.getString("Tipe_pembayaran"),db));
             }
         } catch (Exception e) {

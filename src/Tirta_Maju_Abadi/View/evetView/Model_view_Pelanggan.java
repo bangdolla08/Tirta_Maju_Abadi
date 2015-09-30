@@ -33,7 +33,7 @@ public class Model_view_Pelanggan {
     public void Insert(){
         if(db.setDB("insert into pelanggan set "
                 + "Nama='"+mdp.getNama()+"',"
-                + "Alamat='"+mdp.getAlamat()+"',"
+                + "Alamat='"+mdp.getAlamat()+"',No_telepon='"+mdp.getNo_telepon()+"',"
                 + "Tipe_pembayaran='"+mdp.getTipe_pembayaran()+"'")){
             boolean tmp=true;
             for(MD_Harga_pelanggan mhp:mdp.getlistHarga()){
@@ -51,7 +51,7 @@ public class Model_view_Pelanggan {
     public void update(){
         if(db.setDB("update pelanggan set "
                 + "Nama='"+mdp.getNama()+"',"
-                + "Alamat='"+mdp.getAlamat()+"',"
+                + "Alamat='"+mdp.getAlamat()+"',No_telepon='"+mdp.getNo_telepon()+"',"
                 + "Tipe_pembayaran='"+mdp.getTipe_pembayaran()+"' where Id_pelanggan='"+mdp.getId_Pelanggan()+"'")){
             boolean tmp=true;
             for(MD_Harga_pelanggan mhp:mdp.getlistHarga()){

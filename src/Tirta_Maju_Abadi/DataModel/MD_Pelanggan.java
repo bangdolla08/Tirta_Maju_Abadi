@@ -16,14 +16,15 @@ import java.util.List;
  */
 public class MD_Pelanggan {
     private int Id_pelanggan;
-    private String Nama,Alamat,Tipe_pembayaran;
+    private String Nama,Alamat,Tipe_pembayaran,No_telepon;
     private List<MD_Harga_pelanggan> listHargag=new ArrayList<MD_Harga_pelanggan>();
     private database db;
     public MD_Pelanggan(int Id_pelanggan, String Nama,
-            String Alamat, String Tipe_pembayaran,database db){
+            String Alamat, String Tipe_pembayaran,String No_telepon,database db){
         this.Id_pelanggan=Id_pelanggan;
         this.Nama=Nama;
         this.Alamat=Alamat;
+        this.No_telepon=No_telepon;
         this.Tipe_pembayaran=Tipe_pembayaran;
         this.db=db;
         listHargag.clear();
@@ -60,9 +61,17 @@ public class MD_Pelanggan {
         this.Id_pelanggan=0;
         this.Nama=null;
         this.Alamat=null;
+        this.No_telepon=No_telepon;
         this.Tipe_pembayaran=null;
     }
-    
+
+    public String getNo_telepon() {
+        return No_telepon;
+    }
+
+    public void setNo_telepon(String No_telepon) {
+        this.No_telepon = No_telepon;
+    }
    public int getId_Pelanggan(){
         return Id_pelanggan;
     }

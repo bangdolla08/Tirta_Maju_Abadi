@@ -7,6 +7,7 @@ package Tirta_Maju_Abadi.View.evetView;
 import Tirta_Maju_Abadi.DataModel.MD_Bo_barang;
 import Tirta_Maju_Abadi.DataModel.listMD_Bo_barang;
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,14 +18,18 @@ import javax.swing.table.TableModel;
  * @author jepank's
  */
 public class Model_view_bo_barang {
+    private MD_Bo_barang mbb;
+    private loadAllData lD;
     private DefaultTableModel dtm=new DefaultTableModel();
     private listMD_Bo_barang listMD_bo_barang;
     private database db;
     
-    public Model_view_bo_barang(TableModel dtm, listMD_Bo_barang listMD_bo_barang, database db){
-        this.dtm=(DefaultTableModel) dtm;
-        this.listMD_bo_barang=listMD_bo_barang;
+    public Model_view_bo_barang(TableModel tm, database db, loadAllData lD, MD_Bo_barang mbb){
+        this.dtm=(DefaultTableModel) tm;
+        this.lD=lD;
+        this.mbb=mbb;
         this.db=db;
+        dtm.setRowCount(0);
     }
     
     public DefaultTableModel getdtm(){
