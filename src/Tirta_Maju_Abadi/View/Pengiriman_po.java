@@ -19,6 +19,7 @@ import Tirta_Maju_Abadi.toll.loadAllData;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import Tirta_Maju_Abadi.View.evetView.View_pengiriman_po;
 
 /**
  *
@@ -32,6 +33,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
     private Date date=new Date();
     private loadAllData ld;
     private loadAllData lad;
+    private View_pengiriman_po kirimpo;
     /**
      * Creates new form NewJInternalFrame
      */
@@ -101,6 +103,11 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         t_pengiriman_bo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,6 +140,11 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/cetak.png"))); // NOI18N
         jButton2.setText("Print");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -211,6 +223,21 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        tambah();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(c_nama_barang.equals("Galon")){
+            kirimpo.simpan_produkGalon();
+        }
+        else{
+            vpp.simpanpenjulanpo(mpel);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

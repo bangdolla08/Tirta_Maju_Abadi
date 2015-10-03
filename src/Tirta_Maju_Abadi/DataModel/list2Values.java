@@ -17,6 +17,12 @@ public class list2Values {
         this.isinya = isinya;
     }
 
+    public list2Values(String stringNya) {
+        this.stringNya=stringNya;
+    }
+    
+    
+
     public String getStringNya() {
         return stringNya;
     }

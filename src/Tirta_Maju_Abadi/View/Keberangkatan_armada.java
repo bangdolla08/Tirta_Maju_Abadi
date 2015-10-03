@@ -4,20 +4,70 @@
  * and open the template in the editor.
  */
 package Tirta_Maju_Abadi.View;
-
+import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
+import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.listMD_Penjualan_po;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
+import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
+import Tirta_Maju_Abadi.View.evetView.View_penjualan_po;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import Tirta_Maju_Abadi.View.evetView.view_keberangkatan_armada;
 /**
  *
  * @author NEEZAR
  */
 public class Keberangkatan_armada extends javax.swing.JInternalFrame {
-
+    private MD_Penjualan_po mpel=new MD_Penjualan_po();
+    private View_penjualan_po vpp;
+    private view_keberangkatan_armada ka;
+    private database db;
+    private listMD_Penjualan_po lppo;
+    private Date date=new Date();
+    private loadAllData ld;
     /**
      * Creates new form Keberangkatan_armada
      */
     public Keberangkatan_armada() {
         initComponents();
     }
-
+    
+    private loadAllData lad;
+    
+    
+    public Keberangkatan_armada(loadAllData lad) {
+        this.lad=lad;
+        initComponents();        
+        vpp=new View_penjualan_po(t_keberangkatan_armada.getModel(), lppo, db, f_banyak);
+        t_keberangkatan_armada.setModel(vpp.getdtm());
+        ka.list(f_nama_barang);
+    }
+    public void reseyt(){
+        
+    }
+     public void list(modelTextFilt mtf){
+        List<list2Values> list=new ArrayList<>();
+        for(MD_Penjualan_po mp:ld.getListMD_Penjualan_po().getAll()){
+            list.add(new list2Values(mp.getNo_po()));
+        }
+        mtf.setText(list);
+    }
+    private void setMpel(){
+        mpel.setNo_nota(f_no_po.getText());
+    }
+    
+    public void tambah(){
+        int nbar=Integer.valueOf(f_nama_barang.getText());
+        MD_Full_penjualan mdfbb=new MD_Full_penjualan( nbar, f_banyak.getInteger(), f_no_po.getString(),lad);
+        ka.set_TableBawah(mdfbb);
+        mpel.listMD_Full_penjualan(mdfbb);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +92,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         t_keberangkatan_armada = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Keberangkatan Armada", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
@@ -64,6 +114,11 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Simpan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         t_keberangkatan_armada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,7 +153,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/cetak.png"))); // NOI18N
         jButton2.setText("Print");
 
-        modelTextFilt1.setEditable(false);
+        f_nama_barang.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,7 +165,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(f_nama_barang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -132,7 +187,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -201,9 +256,15 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ka.simpanpenjulanpo(mpel);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nama_barang;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_po;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nopol;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_surat_jalan;
@@ -217,7 +278,6 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private javax.swing.JTable t_keberangkatan_armada;
     // End of variables declaration//GEN-END:variables
 }
