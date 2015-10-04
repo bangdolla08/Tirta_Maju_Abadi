@@ -19,7 +19,7 @@ public class loadAllData {
     private listMD_Keterangan listMD_Keterangan1=new listMD_Keterangan(db);
     private listMD_Keterangan_Km listMD_Keterangan_Km1=new listMD_Keterangan_Km(db);
     private listMD_Mobil listMD_Mobil1=new listMD_Mobil(db);
-    private listMD_Mobil_Keluar listMD_Mobil_Keluar1=new listMD_Mobil_Keluar(db);
+    private listMD_Mobil_Keluar listMD_Mobil_Keluar1=new listMD_Mobil_Keluar(db,this);
     private listMD_Nota_pesan listMD_Nota_pesan1=new listMD_Nota_pesan(db);
     private listMD_Pegawai listMD_Pegawai1=new listMD_Pegawai(db);
     private listMD_Pelanggan listMD_Pelanggan1=new listMD_Pelanggan(db);
@@ -29,7 +29,8 @@ public class loadAllData {
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
     private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
-
+    
+    
     public listMD_Bo_barang getListMD_bo_barang() {
         return listMD_bo_barang;
     }

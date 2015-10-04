@@ -6,6 +6,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 
 /**
  *
@@ -15,15 +16,16 @@ public class MD_Mobil_Keluar {
     private int id_bo;
     private String tgl,nopol, tujuan;
     private MD_Mobil mdmobil;
-    private database db=new database();
+    
     public MD_Mobil_Keluar(){
+        
     }
     
-    public MD_Mobil_Keluar(int id_bo,String tgl,String nopol, String tujuan)
+    public MD_Mobil_Keluar(int id_bo,String tgl,String nopol, String tujuan,database db,loadAllData lad)
     {
         this.id_bo=id_bo;
         this.nopol=nopol;
-        this.mdmobil=new listMD_Mobil(db).getMDByID(nopol);
+        this.mdmobil=lad.getListMD_Mobil().getMDByID(nopol);
         this.tgl=tgl;
         this.tujuan=tujuan;
     }

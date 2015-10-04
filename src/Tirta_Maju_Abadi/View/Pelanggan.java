@@ -4,6 +4,7 @@ import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
 import Tirta_Maju_Abadi.View.evetView.Model_view_Pelanggan;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import javax.swing.JTable;
 
 
 public class Pelanggan extends javax.swing.JInternalFrame {
@@ -19,7 +20,16 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         mvp=new Model_view_Pelanggan(t_Harga.getModel(), L_nama_pelanggan.getModel(), this.db,lad , mp);
     }
     private void reset(){
-        
+        t_Harga.setModel(mvp.getDTM());
+        L_nama_pelanggan.setModel(mvp.getDTL());
+        tex_area_alamat.setText("");
+        f_nama.setText("");
+        f_no_telepon.setText("");
+        resetFull();
+    }
+    private void resetFull(){
+        f_harga.setText("");
+        C_nama_produk.setSelectedIndex(0);        
     }
     private void insertTable(){
         
@@ -146,6 +156,8 @@ public class Pelanggan extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        f_id_pelanggan.setEditable(false);
 
         tex_area_alamat.setColumns(20);
         tex_area_alamat.setRows(5);

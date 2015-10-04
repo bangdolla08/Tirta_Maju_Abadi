@@ -288,6 +288,9 @@
           </SubComponents>
         </Container>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_id_pelanggan">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nama">
         </Component>

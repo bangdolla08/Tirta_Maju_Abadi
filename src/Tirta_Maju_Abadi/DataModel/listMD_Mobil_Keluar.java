@@ -6,6 +6,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class listMD_Mobil_Keluar {
     private List<MD_Mobil_Keluar> listDB = new ArrayList<MD_Mobil_Keluar>();
     private ResultSet rs;
 
-    public listMD_Mobil_Keluar(database db){
+    public listMD_Mobil_Keluar(database db,loadAllData lad){
         this.db=db;
         listDB.clear();
         try {
@@ -27,21 +28,21 @@ public class listMD_Mobil_Keluar {
             while(rs.next()){
                 listDB.add(new MD_Mobil_Keluar(rs.getInt("Id_bo"), 
                         rs.getString("Tgl"), 
-                        rs.getString("Nopol"),rs.getString("Tujuan")));
+                        rs.getString("Nopol"),rs.getString("Tujuan"),db,lad));
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
     
-    public listMD_Mobil_Keluar(ResultSet rs,database db){
+    public listMD_Mobil_Keluar(ResultSet rs,database db,loadAllData lad){
         this.db=db;
     listDB.clear();
         try {
             while(rs.next()){
                 listDB.add(new MD_Mobil_Keluar(rs.getInt("id_bo"), 
                         rs.getString("tgl"), 
-                        rs.getString("nopol"),rs.getString("tujuan")));
+                        rs.getString("nopol"),rs.getString("tujuan"),db,lad));
             }
         } catch (Exception e) {
             System.out.print(e);
