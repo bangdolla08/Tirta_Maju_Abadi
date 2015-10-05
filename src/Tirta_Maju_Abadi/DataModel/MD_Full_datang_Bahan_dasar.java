@@ -13,6 +13,7 @@ import Tirta_Maju_Abadi.toll.loadAllData;
  */
 public class MD_Full_datang_Bahan_dasar {
     private int No_masuk, Id_barang_dasar_datang, Banyak, Fisik;
+    private loadAllData lD;
     
     public MD_Full_datang_Bahan_dasar(int No_masuk, int Id_barang_dasar_datang, int Banyak, int Fisik){
         this.No_masuk=No_masuk;
@@ -28,6 +29,10 @@ public class MD_Full_datang_Bahan_dasar {
         this.Fisik=0;
     }
 
+    public  MD_Produk getMD_Produk(){
+        return lD.getListMD_Produk().getMDByID(Id_barang_dasar_datang);
+    }
+    
     public int getNo_masuk() {
         return No_masuk;
     }

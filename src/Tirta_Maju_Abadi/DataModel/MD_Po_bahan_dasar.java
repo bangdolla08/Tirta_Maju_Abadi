@@ -53,6 +53,11 @@ public class MD_Po_bahan_dasar {
         lsd=new listMD_Pegawai(db);
     }
     
+    public void listMD_Full_po_bahan_dasar(MD_Full_po_bahan_dasar tmp){
+        listfullDB.clear();
+        listfullDB.add(tmp);
+    }
+    
     public void listMD_Full_po_bahan_dasar() {
         try {
             listfullDB.clear();
@@ -60,9 +65,9 @@ public class MD_Po_bahan_dasar {
             while(rs.next()){
                 listfullDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),
-                                rs.getString("Rencana_Kirim"),
                                 rs.getInt("id_barang"),
-                                rs.getInt("banyak"))
+                                rs.getInt("banyak"),
+                                rs.getString("Rencana_Kirim"))
                         );
             }
         } catch (Exception e) {

@@ -5,17 +5,57 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Datang_bahan_dasar;
+import Tirta_Maju_Abadi.DataModel.MD_Full_datang_Bahan_dasar;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.listMD_Datang_bahan_dasar;
+import Tirta_Maju_Abadi.View.evetView.Model_view_datang_barang_dasar;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.Date;
+
 /**
  *
  * @author NEEZAR
  */
 public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
 
+    private MD_Datang_bahan_dasar mdb=new MD_Datang_bahan_dasar();
+    private Model_view_datang_barang_dasar mvd;
+    private database db;
+    private listMD_Datang_bahan_dasar ldb;
+    private Date date=new Date();
+    private loadAllData ld;
+    private loadAllData lad;
+    
+    
     /**
      * Creates new form Bahan_dasar_datang
      */
     public Bahan_dasar_datang() {
         initComponents();
+    }
+    
+    
+    public void Bahan_dasar_datang(loadAllData lad){
+        this.lad=lad;
+        initComponents();
+        mvd=new Model_view_datang_barang_dasar(t_bahan_dasar_dtang.getModel(), db, ld, mdb);
+        t_bahan_dasar_dtang.setModel(mvd.getDtm());
+        mvd.listSup(c_supllier);
+        mvd.listProd(c_produk);
+    }
+    
+    
+    public void setMdb(){
+        mdb.setNo_po(f_no_po.getText());
+    }
+    
+    public void tambah(){
+        list2Values l2s=(list2Values)c_produk.getSelectedItem();
+        MD_Full_datang_Bahan_dasar mfdb=new MD_Full_datang_Bahan_dasar(mvd.getNextID(),l2s.getIsinya(), f_banyak.getInteger(), t_fisik.getInteger());
+        mvd.setTabel(mfdb);
+        mdb.isiListDb();
     }
 
     /**
@@ -35,9 +75,9 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        c_produk = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jLabel6 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        t_fisik = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,6 +123,11 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Nama Barang");
 
@@ -101,7 +146,7 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(c_produk, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,7 +154,7 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(t_fisik, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -124,9 +169,9 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(c_produk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(t_fisik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -140,6 +185,11 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,8 +256,20 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setMdb();
+        tambah();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        mvd.Insert();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_produk;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_supllier;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_po;
@@ -223,8 +285,7 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private javax.swing.JTable t_bahan_dasar_dtang;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt t_fisik;
     // End of variables declaration//GEN-END:variables
 }

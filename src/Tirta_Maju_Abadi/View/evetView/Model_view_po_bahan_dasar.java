@@ -45,6 +45,17 @@ public class Model_view_po_bahan_dasar {
         return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Bahan_mentah().getAll().size()-1).getNo_pegwai()+1;
     }
     
+    public void setTabel(MD_Full_po_bahan_dasar mfp){
+        Vector vct=new Vector();
+        vct.add(dtm.getRowCount()+1);
+        vct.add(mfp.getModel_produk().getNama_produk());
+        int banyak=mfp.getBanyak();
+        vct.add(banyak);
+        String target=mfp.getRencana_kirim();
+        vct.add(target);
+        dtm.addRow(vct);
+    }
+    
     List<list2Values> list=new ArrayList<>();
     public void list(ModelChuser mc){
          for(MD_Produk mp:lD.getListMD_Produk().getAll()){

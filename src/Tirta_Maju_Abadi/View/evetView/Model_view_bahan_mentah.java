@@ -24,6 +24,7 @@ public class Model_view_bahan_mentah {
     private database db;
     private modelTextFilt id_bahan;
     private loadAllData lD;
+    private MD_Bahan_metah md;
     public Model_view_bahan_mentah(TableModel dtm, 
             listMD_Bahan_mentah listMD_bahan_mentah, database db, modelTextFilt id_bahan){
         this.dtm=(DefaultTableModel) dtm;
@@ -55,7 +56,7 @@ public class Model_view_bahan_mentah {
         return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Po_bahan_dasar().getAll().size()-1).getNo_po()+1;
     }
     
-    public void Insert(MD_Bahan_metah md){
+    public void Insert(){
         if(db.setDB("insert into bahan_mentah set id_bahan='"+md.getId_bahan()+"', "
                 + "nama_bahan='"+md.getNama_bahan()+"', "
                 + "unit='"+md.getUnit()+"', "
@@ -67,7 +68,7 @@ public class Model_view_bahan_mentah {
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan","Informasi",JOptionPane.INFORMATION_MESSAGE);
     }
     
-    public void Update(MD_Bahan_metah md){
+    public void Update(){
         if(db.setDB("update into bahan_mentah set nama_bahan='"+md.getNama_bahan()+"', "
                 + "unit='"+md.getUnit()+"', stok='"+md.getStok()+"', "
                 + "limit_buffer='"+md.getLimit_buffer()+"', "

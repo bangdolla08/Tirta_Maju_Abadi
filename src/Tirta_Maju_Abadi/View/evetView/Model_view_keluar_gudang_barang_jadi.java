@@ -46,7 +46,7 @@ public class Model_view_keluar_gudang_barang_jadi {
         }
     }
     
-    public void insertMetode(MD_Keluar_gudang_bahan_jadi md){
+    public void Insert(MD_Keluar_gudang_bahan_jadi md){
         if(db.setDB("insert into keluar_gudang_barang_jadi set No_nota='"+md.getNo_nota()+
                 "', No_surat_jalan='"+md.getNo_surat_jalan()+"', Banyak='"+md.getBanyak()+
                 "', Nopol='"+md.getNopol()+"', Id_produk='"+md.getId_produk()+"'"))
@@ -55,12 +55,12 @@ public class Model_view_keluar_gudang_barang_jadi {
             JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
     }
     
-    public void editMetode(MD_Keluar_gudang_bahan_jadi md, String No_surat_jalan){
-        if(db.setDB("update into keluar_gudang_barang_jadi set No_nota='"+md.getNo_nota()+
-                "', Banyak='"+md.getBanyak()+"', Nopol='"+md.getNopol()+
-                "', Id_produk='"+md.getId_produk()+"' where No_surat_jalan='"+No_surat_jalan+"'"))
-            JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-    }
+//    public void editMetode(MD_Keluar_gudang_bahan_jadi md, String No_surat_jalan){
+//        if(db.setDB("update into keluar_gudang_barang_jadi set No_nota='"+md.getNo_nota()+
+//                "', Banyak='"+md.getBanyak()+"', Nopol='"+md.getNopol()+
+//                "', Id_produk='"+md.getId_produk()+"' where No_surat_jalan='"+No_surat_jalan+"'"))
+//            JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+//        else
+//            JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+//    }
 }

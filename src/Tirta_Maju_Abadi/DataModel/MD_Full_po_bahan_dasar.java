@@ -1,18 +1,25 @@
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 public class MD_Full_po_bahan_dasar {
     private String no_po,rencana_kirim;
     private int id_barang,banyak;
     private MD_Bahan_metah md_bahan_mentah;
+    private loadAllData lD;
 
     public MD_Full_po_bahan_dasar() {
     }
     
-    public MD_Full_po_bahan_dasar(String no_po, String rencana_kirim, int id_barang, int banyak) {
+    public MD_Full_po_bahan_dasar(String no_po, int id_barang, int banyak, String rencana_kirim) {
         this.no_po = no_po;
         this.rencana_kirim = rencana_kirim;
         this.id_barang = id_barang;
         this.banyak = banyak;
+    }
+    
+    public MD_Produk getModel_produk(){
+        return lD.getListMD_Produk().getMDByID(id_barang);
     }
 
     public String getNo_po() {

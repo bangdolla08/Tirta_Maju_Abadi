@@ -18,9 +18,9 @@ public class listMD_Full_po_bahan_dasar {
             while(rs.next()){
                 listDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),
-                                rs.getString("Rencana_Kirim"),
                                 rs.getInt("id_barang"),
-                                rs.getInt("banyak"))
+                                rs.getInt("banyak"),
+                                rs.getString("Rencana_Kirim"))
                         );
             }
         } catch (Exception e) {
@@ -34,9 +34,9 @@ public class listMD_Full_po_bahan_dasar {
             while(rs.next()){
                 listDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),
-                                rs.getString("Rencana_Kirim"),
                                 rs.getInt("id_barang"),
-                                rs.getInt("banyak"))
+                                rs.getInt("banyak"),
+                                rs.getString("Rencana_Kirim"))
                         );
             }
         } catch (Exception e) {

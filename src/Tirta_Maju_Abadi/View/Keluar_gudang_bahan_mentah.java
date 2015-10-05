@@ -5,12 +5,17 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Keluar_gudang_bahan_mentah;
+import Tirta_Maju_Abadi.View.evetView.Model_view_keluar_gudang_bahan_mentah;
+
 /**
  *
  * @author jepank's
  */
 public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
-
+    private Model_view_keluar_gudang_bahan_mentah mvk;
+    private MD_Keluar_gudang_bahan_mentah mkg;
+    
     /**
      * Creates new form Keluar_gudang_bahan_mentah
      */
@@ -46,6 +51,11 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,6 +111,11 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        mvk.Insert(mkg);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

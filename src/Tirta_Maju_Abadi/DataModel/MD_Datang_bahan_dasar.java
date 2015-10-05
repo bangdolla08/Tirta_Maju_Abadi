@@ -18,7 +18,17 @@ public class MD_Datang_bahan_dasar {
     
     private String No_po, Surat_jalan;
     private int Id_supplier, Banyak,No_masuk,id_bahan;
-    private List<MD_Full_datang_Bahan_dasar> listDB=new ArrayList<MD_Full_datang_Bahan_dasar>();
+    private List<MD_Full_datang_Bahan_dasar> listDatang_bahan=new ArrayList<MD_Full_datang_Bahan_dasar>();
+
+    public List<MD_Full_datang_Bahan_dasar> getListDatang_bahan() {
+        return listDatang_bahan;
+    }
+
+    public void setListDatang_bahan(List<MD_Full_datang_Bahan_dasar> listDatang_bahan) {
+        this.listDatang_bahan = listDatang_bahan;
+    }
+
+    
     public int getId_bahan() {
         return id_bahan;
     }
@@ -37,7 +47,7 @@ public class MD_Datang_bahan_dasar {
         this.Surat_jalan=Surat_jalan;
         this.No_po=No_po;
         this.No_masuk=No_masuk;
-        listDB.clear();
+        listDatang_bahan.clear();
     }
     private database db;
     public MD_Datang_bahan_dasar(int Banyak,
@@ -53,8 +63,8 @@ public class MD_Datang_bahan_dasar {
         this.db=db;
         isiListDb();
     }
-    private void isiListDb(){
-        listDB.clear();        
+    public void isiListDb(){
+        listDatang_bahan.clear();        
         try {
             ResultSet rs=db.getRs("select * from full_po_bahan_dasar_datang where No_masuk='"+No_masuk+"' ");
             while(rs.next()){
@@ -68,7 +78,7 @@ public class MD_Datang_bahan_dasar {
         }
     }
     public void addTOList(MD_Full_datang_Bahan_dasar tm){
-        listDB.add(tm);
+        listDatang_bahan.add(tm);
     }
     public MD_Datang_bahan_dasar(){
         this.Surat_jalan=null;

@@ -124,6 +124,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Tambahkan"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser2">
         </Component>

@@ -4,12 +4,17 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Keluar_gudang_bahan_jadi;
+import Tirta_Maju_Abadi.View.evetView.Model_view_keluar_gudang_barang_jadi;
+
 /**
  *
  * @author jepank's
  */
 public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
 
+    private Model_view_keluar_gudang_barang_jadi mvkg;
+    private MD_Keluar_gudang_bahan_jadi mdg;
     /**
      * Creates new form Gudang_barang_jadi
      */
@@ -36,8 +41,8 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
         c_operator = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         c_shift = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         c_id_produk = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        c_banyak = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jButton1 = new javax.swing.JButton();
+        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,6 +62,11 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/kirim.png"))); // NOI18N
         jButton1.setText("Kirim");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,7 +82,7 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(c_id_produk, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                            .addComponent(c_banyak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -113,7 +123,7 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(c_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(jButton1)
                 .addGap(5, 5, 5))
@@ -135,12 +145,16 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        mvkg.Insert(mdg);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_banyak;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_id_produk;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_koordinator;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_operator;
@@ -152,5 +166,6 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     // End of variables declaration//GEN-END:variables
 }

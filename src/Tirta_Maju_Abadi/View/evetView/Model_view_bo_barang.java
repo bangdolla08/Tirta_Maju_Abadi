@@ -7,6 +7,7 @@ package Tirta_Maju_Abadi.View.evetView;
 import Tirta_Maju_Abadi.DataModel.MD_Bo_barang;
 import Tirta_Maju_Abadi.DataModel.MD_Full_Bo_barang;
 import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Bo_barang;
 import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
@@ -42,6 +43,15 @@ public class Model_view_bo_barang {
         return dtm;
     }
     
+    
+    public void setTabel(MD_Full_Bo_barang mfbb){
+        Vector vct=new Vector();
+        vct.add(dtm.getRowCount()+1);
+        vct.add(mfbb.getNama_barang());
+        vct.add(mfbb.getEstimasi_harga());
+        dtm.addRow(vct);
+    }
+    
     public int reset(){
         return lD.getListMD_bo_barang().getAll().get(lD.getListMD_bo_barang().getAll().size()-1).getNo_bo()+1;
     }
@@ -52,6 +62,14 @@ public class Model_view_bo_barang {
             list.add(new list2Values(mp.getNama(), mp.getNo_pegawai()));
         }
         mc.setModel(list);
+    }
+    
+    List<list2Values> listPro=new ArrayList<>();
+    public void listProd(ModelChuser mc){
+        for(MD_Produk mpro:lD.getListMD_Produk().getAll()){
+            listPro.add(new list2Values(mpro.getNama_produk(), mpro.getId_produk()));
+        }
+        mc.setModel(listPro);
     }
     
     

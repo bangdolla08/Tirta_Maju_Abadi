@@ -5,17 +5,54 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Bahan_metah;
+import Tirta_Maju_Abadi.DataModel.MD_Full_po_bahan_dasar;
+import Tirta_Maju_Abadi.DataModel.MD_Po_bahan_dasar;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.listMD_Po_bahan_dasar;
+import Tirta_Maju_Abadi.View.evetView.Model_view_po_bahan_dasar;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.Date;
+
 /**
  *
  * @author NEEZAR
  */
 public class Po_bahan_dasar extends javax.swing.JInternalFrame {
 
+    private MD_Po_bahan_dasar mpbd = new MD_Po_bahan_dasar();
+    private Model_view_po_bahan_dasar mvpb;
+    private database db;
+    private listMD_Po_bahan_dasar lpb;
+    private Date date = new Date();
+    private loadAllData ld;
+    private loadAllData lad;
+
     /**
      * Creates new form Po_bahan_dasar
      */
     public Po_bahan_dasar() {
         initComponents();
+    }
+
+    public Po_bahan_dasar(loadAllData lad) {
+        this.lad = lad;
+        initComponents();
+        mvpb = new Model_view_po_bahan_dasar(t_po_bahan_dasar.getModel(), db, ld, mpbd);
+        t_po_bahan_dasar.setModel(mvpb.getModel());
+        mvpb.list(c_nama_barang);
+    }
+
+    public void setMpbd() {
+        mpbd.setNo_po(f_no_po.getText());
+    }
+
+    public void tambah() {
+        list2Values l2s = (list2Values) c_nama_barang.getSelectedItem();
+        MD_Full_po_bahan_dasar mfpb = new MD_Full_po_bahan_dasar(f_no_po.toString(), l2s.getIsinya(), f_permintaan.getInteger(), targaet_peng.toString());
+        mvpb.setTabel(mfpb);
+        mpbd.listMD_Full_po_bahan_dasar(mfpb);
     }
 
     /**
@@ -43,7 +80,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
         c_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        targaet_peng = new javax.swing.JTextPane();
         d_tanggal = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
 
@@ -93,12 +130,17 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambah");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Unit");
 
         jLabel6.setText("Target Pengiriman");
 
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane2.setViewportView(targaet_peng);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -229,7 +271,14 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        mvpb.Insert();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setMpbd();
+        tambah();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,8 +298,8 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private javax.swing.JTable t_po_bahan_dasar;
+    private javax.swing.JTextPane targaet_peng;
     // End of variables declaration//GEN-END:variables
 }
