@@ -164,11 +164,14 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jButton2" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton2" pref="136" max="32767" attributes="0"/>
-                              <Component id="f_total_estimasi" max="32767" attributes="0"/>
+                              <Component id="f_total_estimasi" pref="136" max="32767" attributes="0"/>
+                              <Component id="jButton3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -196,9 +199,12 @@
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="f_total_estimasi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -300,6 +306,14 @@
               <Image iconType="3" name="/Tirta_Maju_Abadi/Images/simpan.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Simpan"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton3">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Tirta_Maju_Abadi/Images/Reset.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
         </Component>
       </SubComponents>

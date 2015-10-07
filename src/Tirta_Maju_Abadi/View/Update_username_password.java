@@ -50,8 +50,8 @@ public class Update_username_password extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Ulangi password Baru");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/cancel-icon.png"))); // NOI18N
-        jButton1.setText("Batal");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
+        jButton1.setText("Reset");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/edit.png"))); // NOI18N
         jButton2.setText("Perbarui");
