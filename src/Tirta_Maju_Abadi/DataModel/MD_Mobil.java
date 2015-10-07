@@ -36,6 +36,11 @@ public class MD_Mobil {
     public void addlistMD_ban(MD_Ban ban){
         listBan.add(ban);
     }
+    
+    public List<MD_Ban> getListFull()
+    {
+        return listBan;
+    }
     public MD_Mobil() {
         this.db=null;
         listBan.clear();

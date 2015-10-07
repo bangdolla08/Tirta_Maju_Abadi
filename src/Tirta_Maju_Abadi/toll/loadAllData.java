@@ -29,6 +29,15 @@ public class loadAllData {
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
     private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
+    private listMD_Bo_Mobil listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
+
+    public listMD_Bo_Mobil getListMD_bo_mobil() {
+        return listMD_bo_mobil;
+    }
+
+    public void setListMD_bo_mobil(listMD_Bo_Mobil listMD_bo_mobil) {
+        this.listMD_bo_mobil = listMD_bo_mobil;
+    }
     
     
     public listMD_Bo_barang getListMD_bo_barang() {
