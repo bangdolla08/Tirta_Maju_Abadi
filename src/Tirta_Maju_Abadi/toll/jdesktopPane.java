@@ -22,7 +22,7 @@ public class jdesktopPane extends JDesktopPane{
     public jdesktopPane(){
     
         try{
-            backImage=new javax.swing.ImageIcon(this.getClass().getResource("TMA.png")).getImage();
+            backImage=new javax.swing.ImageIcon(this.getClass().getResource("percobaan 2.png")).getImage();
         }catch(Exception e){
             
         }
