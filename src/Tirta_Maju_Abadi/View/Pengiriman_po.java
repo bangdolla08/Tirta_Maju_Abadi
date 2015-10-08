@@ -77,14 +77,14 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        l_nopo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        f_no_po = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_no_po = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(l_nopo);
         c_supplier = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        l_bnyak = new javax.swing.JLabel();
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(l_bnyak);
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         t_pengiriman_bo = new javax.swing.JTable();
@@ -92,7 +92,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
         c_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jButton3 = new javax.swing.JButton();
 
-        jLabel1.setText("No PO");
+        l_nopo.setText("No PO");
 
         jLabel2.setText("Supplier");
 
@@ -100,7 +100,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nama Barang");
 
-        jLabel4.setText("Banyak");
+        l_bnyak.setText("Banyak");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
@@ -163,7 +163,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(c_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(l_bnyak)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,7 +180,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(l_bnyak)
                     .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel3)
@@ -205,7 +205,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(l_nopo))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(c_supplier, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
@@ -218,7 +218,7 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(l_nopo)
                     .addComponent(f_no_po, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -256,12 +256,12 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel l_bnyak;
+    private javax.swing.JLabel l_nopo;
     private javax.swing.JTable t_pengiriman_bo;
     // End of variables declaration//GEN-END:variables
 }
