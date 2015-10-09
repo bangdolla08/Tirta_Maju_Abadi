@@ -20,9 +20,12 @@ public class list2Values {
     public list2Values(String stringNya) {
         this.stringNya=stringNya;
     }
-    
-    
 
+    @Override
+    public String toString() {
+        return stringNya; //To change body of generated methods, choose Tools | Templates.
+    }  
+    
     public String getStringNya() {
         return stringNya;
     }
@@ -46,7 +49,7 @@ public class list2Values {
             return false;
     }
     public boolean sama(String stringNya){
-        if(stringNya==this.stringNya)
+        if(stringNya.equals(this.stringNya))
             return true;
         else
             return false;

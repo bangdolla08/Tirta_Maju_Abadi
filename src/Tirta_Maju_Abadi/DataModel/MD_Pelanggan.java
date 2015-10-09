@@ -5,7 +5,9 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,26 +17,54 @@ import java.util.List;
  * @author NEEZAR
  */
 public class MD_Pelanggan {
-    private int Id_pelanggan;
-    private String Nama,Alamat,Tipe_pembayaran,No_telepon;
+    private int Id_pelanggan,Tipe_pembayaran;
+    private String Nama,Alamat,No_telepon;
     private List<MD_Harga_pelanggan> listHargag=new ArrayList<MD_Harga_pelanggan>();
     private database db;
+    private loadAllData lAD;
+    
+    private List<list2Values> list=new ArrayList<>();
+    public void list(ModelChuser mc){
+        mc.setModel(list);
+    }
+    private void setTypePembayaran(){
+        list.add(new list2Values("COD", 1));
+        list.add(new list2Values("Before Purching", 2));
+    }
+    public list2Values cariType(int a){
+        list2Values l2v=null;
+        for(list2Values l2vtmp :list){
+            if(l2vtmp.sama(a)){
+                l2v=l2vtmp;
+                break;
+            }                
+        }
+        return l2v;
+    }
+    @Override
+    public String toString() {
+        return getId_Pelanggan()+" | "+getNama(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public MD_Pelanggan(int Id_pelanggan, String Nama,
-            String Alamat, String Tipe_pembayaran,String No_telepon,database db){
+            String Alamat, int Tipe_pembayaran,String No_telepon,database db,loadAllData lAD){
         this.Id_pelanggan=Id_pelanggan;
+        setTypePembayaran();
         this.Nama=Nama;
         this.Alamat=Alamat;
         this.No_telepon=No_telepon;
         this.Tipe_pembayaran=Tipe_pembayaran;
         this.db=db;
         listHargag.clear();
+        this.lAD=lAD;
         setHarga();
     }
     public List<MD_Harga_pelanggan> getlistHarga(){
         return listHargag;
     }
     public MD_Pelanggan(int Id_pelanggan, String Nama,
-            String Alamat, String Tipe_pembayaran){
+            String Alamat, int Tipe_pembayaran){
+        setTypePembayaran();
         this.Id_pelanggan=Id_pelanggan;
         this.Nama=Nama;
         this.Alamat=Alamat;
@@ -46,7 +76,7 @@ public class MD_Pelanggan {
         try {
             ResultSet rs=db.getRs("select * from harga_pelanggan where Id_pelanggan='"+Id_pelanggan+"'");
             while (rs.next()) {      
-                addListHarga(new MD_Harga_pelanggan(Id_pelanggan, rs.getInt("Id_produk"), rs.getInt("Harga")));
+                addListHarga(new MD_Harga_pelanggan(Id_pelanggan, rs.getInt("Id_produk"), rs.getInt("Harga"),lAD));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -58,11 +88,12 @@ public class MD_Pelanggan {
     }
     
     public MD_Pelanggan(){
+        setTypePembayaran();
         this.Id_pelanggan=0;
         this.Nama=null;
         this.Alamat=null;
         this.No_telepon=No_telepon;
-        this.Tipe_pembayaran=null;
+        this.Tipe_pembayaran=0;
     }
 
     public String getNo_telepon() {
@@ -83,7 +114,7 @@ public class MD_Pelanggan {
        return Alamat;               
    }
    
-   public String getTipe_pembayaran(){
+   public int getTipe_pembayaran(){
        return Tipe_pembayaran;
    }
    
@@ -99,7 +130,7 @@ public class MD_Pelanggan {
        this.Alamat=Alamat;
    }
    
-   public void setTipe_pembayaran(String Tipe_pembayaran){
+   public void setTipe_pembayaran(int Tipe_pembayaran){
        this.Tipe_pembayaran=Tipe_pembayaran;
    }
 }

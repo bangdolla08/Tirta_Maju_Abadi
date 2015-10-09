@@ -24,9 +24,9 @@ public class listMD_Harga_pelanggan {
         listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
-                        rs.getInt("Id_produk"), 
-                        rs.getInt("Harga")));
+//                listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
+//                        rs.getInt("Id_produk"), 
+//                        rs.getInt("Harga")));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -39,9 +39,9 @@ public class listMD_Harga_pelanggan {
         try {
             rs=db.getRs("select * from harga_pelanggan");
             while(rs.next()){
-                listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
-                        rs.getInt("Id_produk"), 
-                        rs.getInt("Harga")));
+//                listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
+//                        rs.getInt("Id_produk"), 
+//                        rs.getInt("Harga")));
             }        
         } catch (Exception e) {
             System.out.print(e);

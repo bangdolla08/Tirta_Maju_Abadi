@@ -7,6 +7,7 @@ package Tirta_Maju_Abadi.DataModel;
 
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class listMD_Pelanggan {
     private database db;
     private ResultSet rs;
     private List<MD_Pelanggan> listDB=new ArrayList<MD_Pelanggan>();
-    
+    private loadAllData lad;
     public listMD_Pelanggan(ResultSet rs,database db){
         this.db=db;
         listDB.clear();
@@ -30,24 +31,25 @@ public class listMD_Pelanggan {
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
                         rs.getString("Alamat"),
-                        rs.getString("No_telepon"),
-                        rs.getString("Tipe_pembayaran"),db));
+                        rs.getInt("Tipe_pembayaran"),
+                        rs.getString("No_telepon"),db,lad));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
-    public listMD_Pelanggan(database db){
+    public listMD_Pelanggan(database db,loadAllData lad){
         this.db=db;
         listDB.clear();
+        this.lad=lad;
         try {
             rs=db.getRs("select * from pelanggan");
             while(rs.next()){
                 listDB.add(new MD_Pelanggan(rs.getInt("Id_pelanggan"), 
                         rs.getString("Nama"), 
-                        rs.getString("Alamat"), 
-                        rs.getString("No_telepon"),
-                        rs.getString("Tipe_pembayaran"),db));
+                        rs.getString("Alamat"),
+                        rs.getInt("Tipe_pembayaran"),
+                        rs.getString("No_telepon"),db,lad));
             }
         } catch (Exception e) {
             System.out.print(e);

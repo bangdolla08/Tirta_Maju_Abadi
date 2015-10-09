@@ -1,6 +1,7 @@
 
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.jdesktopPane;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import java.awt.Component;
@@ -19,6 +20,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Penjualan_depo pd;
     private Mobil mo;
     private loadAllData lad;
+    private Pelanggan plg;
+    private database db=new database();
     /**
      * Creates new form Form_utama_TMA
      */
@@ -27,10 +30,13 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         setBounds(0, 0, screenSize.width, screenSize.height);
         initComponents();
         lad=new loadAllData();
-        pd=new Penjualan_depo(lad);
-        mo=new Mobil();
-        centerForm(pd);
-        centerForm(mo);
+        plg=new Pelanggan(db, lad);
+        //pd=new Penjualan_depo(lad);
+        //mo=new Mobil();
+        
+//        centerForm(pd);
+//        centerForm(mo);
+        centerForm(plg);
     }
     
      public void centerForm(JInternalFrame jin){
@@ -146,7 +152,12 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenu1.setText("Akutansi");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.setText("Pelanggan");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem6);
 
         jMenuBar1.add(jMenu1);
@@ -199,6 +210,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         // TODO add your handling code here:
         ambil(mo);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        ambil(plg);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

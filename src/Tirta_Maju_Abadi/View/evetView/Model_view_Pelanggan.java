@@ -2,9 +2,16 @@ package Tirta_Maju_Abadi.View.evetView;
 
 import Tirta_Maju_Abadi.DataModel.MD_Harga_pelanggan;
 import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +23,23 @@ public class Model_view_Pelanggan {
     private database db;
     private loadAllData lD;
     private MD_Pelanggan mdp;
-
-    public Model_view_Pelanggan(TableModel tm,ListModel lm,database db, loadAllData lD, MD_Pelanggan mdp) {
+    private JList jl;
+    public Model_view_Pelanggan(TableModel tm,JList lm,database db, loadAllData lD, MD_Pelanggan mdp) {
         this.db = db;
         this.lD = lD;
         this.mdp = mdp;
-        dlm=(DefaultListModel) lm;
+        jl=lm;
+        //jl=new JList(dlm);
         dtm=(DefaultTableModel) tm;
         dtm.setRowCount(0);
+        reset();
+    }
+    public void listproduk(ModelChuser mc){
+        List<list2Values> list=new ArrayList<>();
+        for(MD_Produk mp:lD.getListMD_Produk().getAll()){
+            list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
+        }
+        mc.setModel(list);
     }
     
     public int getnextID(){
@@ -47,7 +63,17 @@ public class Model_view_Pelanggan {
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
     }
-    
+    public void setTableModel(MD_Pelanggan MP){
+        int i=0;
+        dtm.setRowCount(0);
+        for(MD_Harga_pelanggan mhp:MP.getlistHarga()){
+            Vector vct=new Vector();
+            vct.add(i);
+            vct.add(mhp.getMdP().getNama_produk());
+            vct.add(mhp.getHarga());
+            dtm.addRow(vct);
+        }            
+    }
     public void update(){
         if(db.setDB("update pelanggan set "
                 + "Nama='"+mdp.getNama()+"',"
@@ -67,8 +93,10 @@ public class Model_view_Pelanggan {
     }
     
     public void reset(){
+        int i=0;
+        dlm.clear();
         for(MD_Pelanggan tmp:lD.getListMD_Pelanggan().getAll()){
-            dlm.addElement(tmp);
+            dlm.add(i, tmp);
         }
         dtm.setRowCount(0);
     }
@@ -80,7 +108,4 @@ public class Model_view_Pelanggan {
     public ListModel getDTL(){
         return dlm;
     }
-    
-    
-    
 }

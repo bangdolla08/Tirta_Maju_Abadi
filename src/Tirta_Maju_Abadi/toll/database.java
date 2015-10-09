@@ -23,10 +23,11 @@ public class database {
     }
     public ResultSet getRs(String a){
         try{
-            //rs.close();
+            //rs.refreshRow();
+            st=cn.createStatement();
             rs=st.executeQuery(a);
         }catch(Exception e){
-            System.err.println("Pesan Error : " + e);
+            //System.err.println("Pesan Error : " + e);
         }
         return rs;
     }
