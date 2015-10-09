@@ -22,7 +22,7 @@ public class loadAllData {
     private listMD_Mobil_Keluar listMD_Mobil_Keluar1=new listMD_Mobil_Keluar(db,this);
     private listMD_Nota_pesan listMD_Nota_pesan1=new listMD_Nota_pesan(db);
     private listMD_Pegawai listMD_Pegawai1=new listMD_Pegawai(db);
-    private listMD_Pelanggan listMD_Pelanggan1=new listMD_Pelanggan(db);
+    private listMD_Pelanggan listMD_Pelanggan1=new listMD_Pelanggan(db,this);
     private listMD_Penjualan_po listMD_Penjualan_po1=new listMD_Penjualan_po(db, this);
     private listMD_Pesan_barang listMD_Pesan_barang1=new listMD_Pesan_barang(db);
     private listMD_Po_bahan_dasar listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
