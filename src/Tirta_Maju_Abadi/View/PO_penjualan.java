@@ -42,9 +42,16 @@ public class PO_penjualan extends javax.swing.JInternalFrame {
         t_penjualan.setModel(vpp.getdtm());
         vpp.list(c_nm_produk);
     }
-    public void reseyt(){
-        
+    
+    public void reset(){
+        f_no_po.setText("");
+        f_nm_pelanggan.setText("");
+        d_tanggal_po.setDate(null);
+        c_nm_produk.setSelectedItem("--Pilih--");
+        f_banyak.setText("");
+        f_total.setText("");
     }
+    
      public void list(modelTextFilt mtf){
         List<list2Values> list=new ArrayList<>();
         for(MD_Pelanggan mp:ld.getListMD_Pelanggan().getAll()){

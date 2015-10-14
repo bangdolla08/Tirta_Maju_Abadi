@@ -32,10 +32,11 @@ public class View_pengiriman_po {
     private loadAllData ld;
     private MD_Galon_keluar gk;
     
-    public View_pengiriman_po(TableModel dtm, listMD_Penjualan_po lmdppo,database db){
-        this.dtm=(DefaultTableModel) dtm;
+    public View_pengiriman_po(TableModel tm, listMD_Penjualan_po lmdppo,database db){
+        this.dtm=(DefaultTableModel) tm;
         this.lmdppo=lmdppo;
         this.db=db;
+        dtm.setRowCount(0);
     }
     
     public DefaultTableModel getdtm(){

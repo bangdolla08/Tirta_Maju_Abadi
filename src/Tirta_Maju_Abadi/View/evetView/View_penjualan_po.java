@@ -28,20 +28,15 @@ public class View_penjualan_po {
     private loadAllData lD;
     private modelTextFilt textfiltNoNota;
     
-    public View_penjualan_po(TableModel dtm, listMD_Penjualan_po listmD_Penjualan_po, database db,modelTextFilt total){
-        this.dtm=(DefaultTableModel) dtm;
+    public View_penjualan_po(TableModel tm, listMD_Penjualan_po listmD_Penjualan_po, database db,modelTextFilt total){
+        this.dtm=(DefaultTableModel) tm;
         this.listmD_penjulanPO=listmD_Penjualan_po;
         this.db=db;
+         dtm.setRowCount(0);
     } 
     
     public DefaultTableModel getdtm(){
         return dtm;
-    }
-    
-    public String reset(){
-        dtm.setRowCount(0);
-        //listmD_penjulanPO.getAll().size();
-        return "Ngikuti Peraturan No PO";
     }
     
     public void set_TableBawah(MD_Full_penjualan md_full){

@@ -48,9 +48,15 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
         t_keberangkatan_armada.setModel(vpp.getdtm());
         ka.list(f_nama_barang);
     }
-    public void reseyt(){
-        
+    
+    public void reset(){
+        f_no_po.setText("");
+        f_surat_jalan.setText("");
+        f_nopol.setText("");
+        f_nama_barang.setText("");
+        f_banyak.setText("");
     }
+    
      public void list(modelTextFilt mtf){
         List<list2Values> list=new ArrayList<>();
         for(MD_Penjualan_po mp:ld.getListMD_Penjualan_po().getAll()){

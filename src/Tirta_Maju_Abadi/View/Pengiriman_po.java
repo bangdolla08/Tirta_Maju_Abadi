@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import Tirta_Maju_Abadi.View.evetView.View_pengiriman_po;
+import com.sun.org.glassfish.external.statistics.annotations.Reset;
 
 /**
  *
@@ -28,6 +29,7 @@ import Tirta_Maju_Abadi.View.evetView.View_pengiriman_po;
 public class Pengiriman_po extends javax.swing.JInternalFrame {
     private MD_Penjualan_po mpel=new MD_Penjualan_po();
     private View_penjualan_po vpp;
+    private View_pengiriman_po vkirpo;
     private database db;
     private listMD_Penjualan_po lppo;
     private Date date=new Date();
@@ -40,10 +42,17 @@ public class Pengiriman_po extends javax.swing.JInternalFrame {
     public Pengiriman_po() {
         initComponents();
     }
+    
+    public void reset(){
+        f_no_po.setText("");
+        c_supplier.setSelectedItem("--Pilih--");
+        c_nama_barang.setSelectedItem("--Pilih--");
+        f_banyak.setText("");
+    }
     public Pengiriman_po(loadAllData lad) {
         this.lad=lad;
         initComponents();        
-        vpp=new View_penjualan_po(t_pengiriman_bo.getModel(), lppo, db, f_banyak);
+        vkirpo=new View_pengiriman_po(t_pengiriman_bo.getModel(), lppo, db);
         t_pengiriman_bo.setModel(vpp.getdtm());
         vpp.list(c_nama_barang);
         vpp.list(c_supplier);

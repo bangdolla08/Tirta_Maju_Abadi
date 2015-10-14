@@ -17,6 +17,7 @@ import Tirta_Maju_Abadi.toll.loadAllData;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import Tirta_Maju_Abadi.View.evetView.view_penjualan_depo;
 /**
  *
  * @author NEEZAR
@@ -35,7 +36,18 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
     public Penjualan_depo() {
         initComponents();
     }
-
+    
+    public void reset(){
+        f_no_nota.setText("");
+        f_nm_pelanggan.setText("");
+        tex_area_alamat.setText("");
+        c_pembayaran.setSelectedItem("--Pilih--");
+        c_nm_barang.setSelectedItem("--Pilih--");
+        f_banyak.setText("");
+        f_total.setText("");
+        f_pembayaran.setText("");
+        f_kembali.setText("");
+    }
     public Penjualan_depo(loadAllData lad) {
         this.lad=lad;
         initComponents();        

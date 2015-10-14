@@ -13,6 +13,7 @@ import Tirta_Maju_Abadi.toll.loadAllData;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import Tirta_Maju_Abadi.DataModel.MD_Full_penjualan;
+import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
 import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.listMD_Full_penjualan;
 import java.util.Vector;
@@ -20,6 +21,7 @@ import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import java.util.ArrayList;
 import java.util.List;
 import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.*;
 /**
  *
  * @author NEEZAR
@@ -34,10 +36,11 @@ public class view_penjualan_depo {
     private modelTextFilt pembayaran;
     private modelTextFilt kembalian;
     
-    public view_penjualan_depo(TableModel dtm, listMD_Penjualan_po lppo, database db, modelTextFilt mtf){
-       this.dtm=(DefaultTableModel) dtm;
+    public view_penjualan_depo(TableModel tm, listMD_Penjualan_po lppo, database db, modelTextFilt mtf){
+       this.dtm=(DefaultTableModel) tm;
        this.lppo=lppo;
        this.db=db;
+       dtm.setRowCount(0);
     }
     
     public DefaultTableModel getdtm(){

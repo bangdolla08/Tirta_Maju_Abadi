@@ -5,12 +5,15 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NEEZAR
  */
 public class ban10 extends javax.swing.JPanel {
-
+String[] updt={"Update"};
+String[] cncl={"Cancel"};
     /**
      * Creates new form ban10
      */
@@ -28,141 +31,176 @@ public class ban10 extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt4 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt5 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt6 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt7 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt8 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt9 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt10 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt11 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt12 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt13 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt14 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt15 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt16 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt17 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt18 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt19 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt20 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/chassisban10.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 11, -1, -1));
+        add(jLabel3);
+        jLabel3.setBounds(92, 55, 215, 465);
 
-        modelTextFilt1.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 80, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        add(jLabel1);
+        jLabel1.setBounds(320, 440, 29, 80);
 
-        modelTextFilt2.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 80, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        add(jLabel2);
+        jLabel2.setBounds(57, 33, 29, 81);
 
-        modelTextFilt3.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 80, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        add(jLabel4);
+        jLabel4.setBounds(315, 33, 29, 81);
 
-        modelTextFilt4.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 80, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        add(jLabel5);
+        jLabel5.setBounds(320, 260, 29, 81);
 
-        modelTextFilt5.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 80, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        add(jLabel6);
+        jLabel6.setBounds(50, 260, 29, 81);
 
-        modelTextFilt6.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 80, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        add(jLabel7);
+        jLabel7.setBounds(50, 440, 29, 81);
 
-        modelTextFilt7.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 70, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        add(jLabel8);
+        jLabel8.setBounds(90, 260, 29, 81);
 
-        modelTextFilt8.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 70, -1));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        add(jLabel9);
+        jLabel9.setBounds(90, 440, 29, 81);
 
-        modelTextFilt9.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 80, -1));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        add(jLabel10);
+        jLabel10.setBounds(280, 440, 29, 81);
 
-        modelTextFilt10.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 80, -1));
-
-        modelTextFilt11.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 80, -1));
-
-        modelTextFilt12.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 80, -1));
-
-        modelTextFilt13.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 80, -1));
-
-        modelTextFilt14.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 540, 80, -1));
-
-        modelTextFilt15.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt15, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, 80, -1));
-
-        modelTextFilt16.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, 80, -1));
-
-        modelTextFilt17.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 80, -1));
-
-        modelTextFilt18.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 80, -1));
-
-        modelTextFilt19.setBackground(new java.awt.Color(153, 255, 51));
-        add(modelTextFilt19, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 80, -1));
-
-        modelTextFilt20.setBackground(new java.awt.Color(255, 255, 102));
-        add(modelTextFilt20, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 80, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Keterangan :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
-
-        jTextField1.setBackground(new java.awt.Color(153, 255, 51));
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 20, -1));
-
-        jTextField2.setBackground(new java.awt.Color(255, 255, 102));
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 20, -1));
-
-        jLabel2.setText("Tanggal Pasang Ban");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, 20));
-
-        jLabel4.setText("No Seri Ban");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, -1, 20));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Ban.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        add(jLabel11);
+        jLabel11.setBounds(280, 260, 29, 81);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showOptionDialog(this,new insert_or_update_ban(), "Insert Dan Update Ban", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE,null, updt,cncl);
+    }//GEN-LAST:event_jLabel10MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt10;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt11;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt12;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt13;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt14;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt15;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt16;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt17;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt18;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt19;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt20;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt4;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt5;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt6;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt7;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt8;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt9;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
