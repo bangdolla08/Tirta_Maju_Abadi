@@ -33,6 +33,16 @@ public class MD_Mobil {
         HelperMD=ldb.getMDByID(helperInt);
         setBanDB();
     }
+    List<list2Values> list=new ArrayList<>();
+    
+    public List ListType()
+    {
+        list.add(new list2Values("ban 4", 0));
+        list.add(new list2Values("ban 6", 1));
+        list.add(new list2Values("ban 10", 2));
+        
+        return list;
+    }
     public void addlistMD_ban(MD_Ban ban){
         listBan.add(ban);
     }

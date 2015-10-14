@@ -7,8 +7,13 @@ package Tirta_Maju_Abadi.View.evetView;
 
 import Tirta_Maju_Abadi.DataModel.MD_Ban;
 import Tirta_Maju_Abadi.DataModel.MD_Mobil;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
@@ -27,12 +32,11 @@ private loadAllData lD;
 private MD_Mobil mdm;
 private MD_Ban mdb;
 
-public void Model_view_Mobil(TableModel tm,ListModel lm,database db, loadAllData lD, MD_Mobil mdm)
+public Model_view_Mobil(TableModel tm,database db, loadAllData lD, MD_Mobil mdm)
     {
     this.db = db;
     this.lD = lD;
     this.mdm = mdm;
-    dlm=(DefaultListModel) lm;
     dtm=(DefaultTableModel) tm;
     dtm.setRowCount(0);   
     }
@@ -78,10 +82,23 @@ public void Model_view_Mobil(TableModel tm,ListModel lm,database db, loadAllData
     }
     
     public void reset(){
+        int i=0;
+        dlm.clear();
         for(MD_Mobil tmp:lD.getListMD_Mobil().getAll()){
-            dlm.addElement(tmp);
+            dlm.add(i, tmp);
         }
         dtm.setRowCount(0);
+    }
+    
+    public void SetTable(MD_Mobil mobil)
+    {
+        Vector vct = new Vector();
+        vct.add(dtm.getRowCount()+1);
+        vct.add(mobil.getNopol());
+        vct.add(mobil.getDriver()+"&"+mobil.getHelper());
+        vct.add(mobil.getType());
+        dtm.addRow(vct);
+        
     }
     
     public DefaultTableModel getDTM(){
@@ -90,5 +107,13 @@ public void Model_view_Mobil(TableModel tm,ListModel lm,database db, loadAllData
     
     public ListModel getDTL(){
         return dlm;
+    }
+    
+    public void listDriver(ModelChuser mc){
+        List<list2Values> list=new ArrayList<>();
+        for(MD_Mobil md:lD.getListMD_Mobil().getAll()){
+            list.add(new list2Values(md.getDriver()));
+        }
+        mc.setModel(list);
     }
 }

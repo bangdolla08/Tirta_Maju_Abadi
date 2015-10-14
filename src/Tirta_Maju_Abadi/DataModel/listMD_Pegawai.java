@@ -45,6 +45,10 @@ public class listMD_Pegawai {
         return listDB;
     }
 
+    public List<MD_Pegawai> getListHelper() {
+        return listHelper;
+    }
+    
     public List<MD_Pegawai> getListDriver() {
         return listDriver;
     }

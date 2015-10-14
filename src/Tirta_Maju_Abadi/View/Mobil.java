@@ -6,19 +6,54 @@
 package Tirta_Maju_Abadi.View;
 
 import Tirta_Maju_Abadi.DataModel.MD_Mobil;
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.View.evetView.Model_view_Mobil;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author NEEZAR
  */
 public class Mobil extends javax.swing.JInternalFrame {
-
+    private Model_view_Mobil mvb;
+    private database db;
+    private loadAllData lad;
+    private MD_Mobil mm = new MD_Mobil();
     /**
      * Creates new form Mobil
      */
-    public Mobil() {
+    public Mobil(database db, loadAllData lad ) {
         initComponents();
+        this.db= db;
+        this.lad=lad;
+        mvb= new Model_view_Mobil(t_armada.getModel(),db,lad,mm);
+        
+        SetDriver();
         reset();
+    }
+    private void SetDriver()
+    {
+        for(MD_Pegawai tmp:lad.getListMD_Pegawai().getListDriver())
+        {
+            c_driver.addItem(tmp);
+        }
+    }
+    
+    private void SetHelper()
+    {
+        for(MD_Pegawai tmp:lad.getListMD_Pegawai().getListHelper())
+        {
+        c_helper.addItem(tmp);
+        }
+    }
+           
+    private void SetType()
+    {
+        c_type.addItem(mm.ListType());
     }
     private void reset(){
         f_nopol.reset();
