@@ -21,6 +21,12 @@ public class MD_Produk {
         this.Nama_produk=Nama_produk;
         this.Harga_pokok=Harga_pokok;
     }
+
+    @Override
+    public String toString() {
+        return Nama_produk; //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public MD_Produk(){
         this.Id_produk=0;
         this.Nama_produk=null;

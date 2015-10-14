@@ -1,6 +1,8 @@
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Harga_pelanggan;
 import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.View.evetView.Model_view_Pelanggan;
 import Tirta_Maju_Abadi.toll.database;
@@ -20,7 +22,13 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         this.lad=lad;
         mvp=new Model_view_Pelanggan(t_Harga.getModel(), L_nama_pelanggan, this.db,lad , mp);
         mp.list(c_type_pelanggan);
+        setNamaProduk();
         reset();
+    }
+    private void setNamaProduk(){
+        for(MD_Produk tmpMp:lad.getListMD_Produk().getAll()){
+            C_nama_produk.addItem(tmpMp);
+        }
     }
     private void reset(){
         mvp.reset();
@@ -36,9 +44,28 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         f_harga.setText("");
         C_nama_produk.setSelectedIndex(0);        
     }
-    private void insertTable(){
-        list2Values ls=(list2Values)C_nama_produk.getSelectedItem();
+    private void setMD_pelanggan(){
+        mp.setId_pelanggan(f_id_pelanggan.getInteger());
+        mp.setAlamat(tex_area_alamat.getText());
+        mp.setNama(f_nama.getText());
+        mp.setNo_telepon(f_no_telepon.getText());
+        mp.setTipe_pembayaran(c_type_pelanggan.getSelectedIndex());
+    }
+    private MD_Harga_pelanggan insertTable(){
+        setMD_pelanggan();
+        MD_Harga_pelanggan mhp=null;
+        MD_Produk tmpMP=(MD_Produk)C_nama_produk.getSelectedItem();
         int harga=f_harga.getInteger();
+        return new MD_Harga_pelanggan(harga, tmpMP, harga);
+    }
+    
+    private boolean cekKosong(){
+        return f_id_pelanggan.Kosongkah()
+                &&!tex_area_alamat.getText().equals("")
+                &&f_nama.Kosongkah()
+                &&f_no_telepon.Kosongkah()
+                &&c_type_pelanggan.getSelectedIndex()!=0
+                &&t_Harga.getRowCount()!=0;
     }
     
     @SuppressWarnings("unchecked")
@@ -184,6 +211,11 @@ public class Pelanggan extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/edit.png"))); // NOI18N
         jButton1.setText("Edit");
@@ -281,7 +313,7 @@ public class Pelanggan extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+        mvp.addtoTablemodel(insertTable());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void L_nama_pelangganMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_L_nama_pelangganMousePressed
@@ -290,11 +322,15 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         f_nama.setText(mp.getNama());
         f_no_telepon.setText(mp.getNo_telepon());
         tex_area_alamat.setText(mp.getAlamat());
-//        list2Values tmp=mp.cariType(mp.getTipe_pembayaran());
-//        System.out.println(tmp.getStringNya());
-        //cariType(mp.getTipe_pembayaran());
         c_type_pelanggan.setSelectedIndex(mp.getTipe_pembayaran());
+        mvp.setTableModel(mp);
     }//GEN-LAST:event_L_nama_pelangganMousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(cekKosong())
+            mvp.Insert();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser C_nama_produk;

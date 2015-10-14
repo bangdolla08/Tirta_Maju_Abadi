@@ -29,6 +29,12 @@ public class MD_Harga_pelanggan {
         this.Harga=Harga;
         this.mdP=ld.getListMD_Produk().getMDByID(Id_produk);
     }
+    public MD_Harga_pelanggan(int Id_pelanggan, MD_Produk mdP, int Harga){
+        this.Id_pelanggan=Id_pelanggan;
+        this.Id_produk=mdP.getId_produk();
+        this.Harga=Harga;
+        this.mdP=mdP;
+    }
     
     public MD_Harga_pelanggan(){
         this.Id_pelanggan=0;

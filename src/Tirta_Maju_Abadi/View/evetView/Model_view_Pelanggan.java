@@ -63,13 +63,23 @@ public class Model_view_Pelanggan {
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
     }
+    
+    public void addtoTablemodel(MD_Harga_pelanggan mdhp){
+        Vector vct=new Vector();
+        vct.add(dtm.getRowCount()+1);
+        vct.add(mdhp.getMdP().getNama_produk());
+        vct.add(mdhp.getHarga());
+        dtm.addRow(vct);
+        mdp.addListHarga(mdhp);
+    }
+    
     public void setTableModel(MD_Pelanggan MP){
         int i=0;
         dtm.setRowCount(0);
         for(MD_Harga_pelanggan mhp:MP.getlistHarga()){
             Vector vct=new Vector();
             vct.add(i);
-            vct.add(mhp.getMdP().getNama_produk());
+            vct.add(mhp.getMdP());
             vct.add(mhp.getHarga());
             dtm.addRow(vct);
         }            
