@@ -11,14 +11,15 @@ public class listMD_Pegawai {
     private database db;
     private ResultSet rs;
     private List<MD_Pegawai> listDB=new ArrayList<MD_Pegawai>();
+    private List<MD_Pegawai> listDriver =new ArrayList<MD_Pegawai>();
+    private List<MD_Pegawai> listHelper =new ArrayList<MD_Pegawai>();
     public listMD_Pegawai(database db){
         this.db=db;
         try {
             listDB.clear();
             rs=db.getRs("select * from pegawai ORDER BY tanggal_masuk ASC");
             while(rs.next()){
-                listDB.add(
-                        new MD_Pegawai(
+                MD_Pegawai plotPegw=new MD_Pegawai(
                             rs.getInt("no_pegawai"),
                             rs.getInt("jabatan"),
                             rs.getDate("tanggal_lahir"), 
@@ -28,13 +29,26 @@ public class listMD_Pegawai {
                             rs.getString("no_telepon"), 
                             rs.getString("username"), 
                             rs.getString("password"),rs.getString("email")
-                        ));
+                        );
+                listDB.add(plotPegw);
+                if(plotPegw.getJabatan()==10)
+                    listDriver.add(plotPegw);
+                if(plotPegw.getJabatan()==11)
+                    listHelper.add(plotPegw);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
+    public List<MD_Pegawai> getListDB() {
+        return listDB;
+    }
+
+    public List<MD_Pegawai> getListDriver() {
+        return listDriver;
+    }
+    
     public listMD_Pegawai(ResultSet rs,database db){
         this.db=db;
         try {

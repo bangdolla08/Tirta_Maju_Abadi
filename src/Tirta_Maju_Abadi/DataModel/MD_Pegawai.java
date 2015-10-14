@@ -17,7 +17,7 @@ public class MD_Pegawai {
         listTypePegawai.add(new list2Values("Super Admin", 0));
         listTypePegawai.add(new list2Values("Owner", 1));
         listTypePegawai.add(new list2Values("Driver", 10));
-        listTypePegawai.add(new list2Values("Helper", 10));
+        listTypePegawai.add(new list2Values("Helper", 11));
     }
     public String cariDarijabatan(int no){
         list2Values tmp=null;
@@ -70,6 +70,11 @@ public class MD_Pegawai {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return getNama(); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getNo_pegawai() {

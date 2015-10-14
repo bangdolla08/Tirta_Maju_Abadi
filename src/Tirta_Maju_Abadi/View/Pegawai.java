@@ -5,6 +5,7 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
 import Tirta_Maju_Abadi.View.evetView.View_pegawai;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
@@ -88,6 +89,11 @@ public class Pegawai extends javax.swing.JInternalFrame {
         tex_area_alamat.setRows(5);
         jScrollPane1.setViewportView(tex_area_alamat);
 
+        L_nama_pegawai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                L_nama_pegawaiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(L_nama_pegawai);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
@@ -134,7 +140,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -166,10 +172,10 @@ public class Pegawai extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
-                            .addComponent(d_tanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(d_tanggal_masuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -196,6 +202,13 @@ public class Pegawai extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void L_nama_pegawaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_L_nama_pegawaiMouseClicked
+        // TODO add your handling code here:
+        MD_Pegawai mptmp=(MD_Pegawai)L_nama_pegawai.getSelectedValue();
+        f_no_pegawai.setText(mptmp.getNo_pegawai());
+        
+    }//GEN-LAST:event_L_nama_pegawaiMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
