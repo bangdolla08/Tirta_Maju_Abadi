@@ -14,10 +14,19 @@ public class MD_Pegawai {
         cariJabatan();
     }
     private void cariJabatan(){
-        listTypePegawai.add(new list2Values("Super Admin", 0));
-        listTypePegawai.add(new list2Values("Owner", 1));
+        listTypePegawai.add(new list2Values("Super Admin", 1));
+        listTypePegawai.add(new list2Values("Owner", 2));
+        listTypePegawai.add(new list2Values("Kasir Pusat", 3));
+        listTypePegawai.add(new list2Values("Kasir Depo", 4));
+        listTypePegawai.add(new list2Values("Kasir Pabrik", 5));
+        listTypePegawai.add(new list2Values("Admin Gudang Bahan Mentah", 6));
+        listTypePegawai.add(new list2Values("Admin Gudang Bahan Jadi", 7));
+        listTypePegawai.add(new list2Values("Admin Gudang Bahan Jadi", 8));
+        listTypePegawai.add(new list2Values("Admin Gudang Bahan Jadi", 9));
         listTypePegawai.add(new list2Values("Driver", 10));
         listTypePegawai.add(new list2Values("Helper", 11));
+        listTypePegawai.add(new list2Values("Helper", 12));
+        listTypePegawai.add(new list2Values("Helper", 13));
     }
     public String cariDarijabatan(int no){
         list2Values tmp=null;

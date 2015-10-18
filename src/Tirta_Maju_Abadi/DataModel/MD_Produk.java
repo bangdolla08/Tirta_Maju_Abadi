@@ -56,4 +56,5 @@ public class MD_Produk {
     public void setHarga_pokok(String Harga_pokok) {
         this.Harga_pokok = Harga_pokok;
     }
+    
 }
