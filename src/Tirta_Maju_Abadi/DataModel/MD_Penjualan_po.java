@@ -17,17 +17,18 @@ import java.util.List;
  */
 public class MD_Penjualan_po {
     private int Id_pelanggan, Id_marketing;
-    private String No_nota, No_po;
+    private String No_nota, No_po,tanggalpesan;
     private ResultSet rs;
     private database db;
     private loadAllData lD;
     //private MD_Harga_pelanggan mhp;
-    public MD_Penjualan_po(int Id_marketing, int Id_pelanggan, String No_nota, String No_po,database db, loadAllData lD){
+    public MD_Penjualan_po(int Id_marketing, int Id_pelanggan, String No_nota, String No_po,String tanggalpesan,database db, loadAllData lD){
         this.lD=lD;
         this.Id_marketing=Id_marketing;
         this.Id_pelanggan=Id_pelanggan;
         this.No_nota=No_nota;
         this.No_po=No_po;
+        this.tanggalpesan=tanggalpesan;
         this.db=db;
         listFull.clear();
         listMD_Full_penjualan();
@@ -67,6 +68,15 @@ public class MD_Penjualan_po {
         this.Id_pelanggan=0;
         this.No_nota=null;
         this.No_po=null;
+        this.tanggalpesan=null;
+    }
+
+    public String getTanggalpesan() {
+        return tanggalpesan;
+    }
+
+    public void setTanggalpesan(String tanggalpesan) {
+        this.tanggalpesan = tanggalpesan;
     }
 
     public void setId_marketing(int Id_marketing) {
