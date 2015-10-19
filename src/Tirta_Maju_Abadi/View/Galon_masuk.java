@@ -5,6 +5,12 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Galon_masuk;
+import Tirta_Maju_Abadi.DataModel.listMD_Galon_masuk;
+import Tirta_Maju_Abadi.View.evetView.Model_view_galon_masuk;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 /**
  *
  * @author NEEZAR
@@ -14,8 +20,21 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
     /**
      * Creates new form Galon_keluar
      */
+    private MD_Galon_masuk mgm=new MD_Galon_masuk();
+    private Model_view_galon_masuk mvgm;
+    private listMD_Galon_masuk lgm;
+    private database db;
+    private loadAllData lad;
+    
     public Galon_masuk() {
         initComponents();
+    }
+    
+    public Galon_masuk(loadAllData lad){
+        this.lad=lad;
+        initComponents();
+        mvgm=new Model_view_galon_masuk(t_galon_masuk.getModel(), lgm, db, txt_surat_jalan);
+        t_galon_masuk.setModel(mvgm.getdtm());
     }
 
     /**
@@ -32,13 +51,13 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        txt_surat_jalan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        t_galon_masuk = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Galon Masuk", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
@@ -57,7 +76,7 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Galon Keluar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_galon_masuk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -76,13 +95,13 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        t_galon_masuk.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(t_galon_masuk);
+        if (t_galon_masuk.getColumnModel().getColumnCount() > 0) {
+            t_galon_masuk.getColumnModel().getColumn(0).setResizable(false);
+            t_galon_masuk.getColumnModel().getColumn(1).setResizable(false);
+            t_galon_masuk.getColumnModel().getColumn(2).setResizable(false);
+            t_galon_masuk.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -128,7 +147,7 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(31, 31, 31)
-                                .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
@@ -146,7 +165,7 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -181,6 +200,7 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        mvgm.Insert();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -194,9 +214,9 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
+    private javax.swing.JTable t_galon_masuk;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt txt_surat_jalan;
     // End of variables declaration//GEN-END:variables
 }
