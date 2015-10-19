@@ -29,7 +29,7 @@ public class Produk extends javax.swing.JInternalFrame {
     private void reset(){
         flipflopButton(true);
         f_id_produk.setText(mvp.reset());
-        t_barang.setModel(mvp.getDtm());
+        //t_barang.setModel(mvp.getDtm());
         f_harga_pokok.reset();
         f_nama_barang.reset();
         f_nama_barang.requestFocus(true);

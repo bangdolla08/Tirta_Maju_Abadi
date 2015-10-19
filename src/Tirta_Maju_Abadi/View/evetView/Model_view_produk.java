@@ -32,6 +32,7 @@ public class Model_view_produk {
     
     private int setIsiDataBase(){
         dtm.setRowCount(0);
+        
         int no=1;
         int lastID=0;
         for(MD_Produk tmpProduk:litProduk.getAll()){
