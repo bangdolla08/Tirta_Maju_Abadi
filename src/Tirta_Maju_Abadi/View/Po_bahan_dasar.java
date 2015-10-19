@@ -8,6 +8,7 @@ package Tirta_Maju_Abadi.View;
 import Tirta_Maju_Abadi.DataModel.MD_Bahan_metah;
 import Tirta_Maju_Abadi.DataModel.MD_Full_po_bahan_dasar;
 import Tirta_Maju_Abadi.DataModel.MD_Po_bahan_dasar;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Po_bahan_dasar;
 import Tirta_Maju_Abadi.View.evetView.Model_view_po_bahan_dasar;
@@ -42,18 +43,58 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
         mvpb = new Model_view_po_bahan_dasar(t_po_bahan_dasar.getModel(), db, ld, mpbd);
         t_po_bahan_dasar.setModel(mvpb.getModel());
         mvpb.list(c_nama_barang);
+        setNamaBarang();
+        reset();
+    }
+    private void setNamaBarang(){
+        for(MD_Produk Mdp:lad.getListMD_Produk().getAll()){
+            c_nama_barang.addItem(Mdp);
+        }
+    }
+    private void reset(){
+        mvpb.reset();
+        t_po_bahan_dasar.setModel(mvpb.getModel());
+        f_no_po.setText("");
+        resetFull();
+    }
+    private void resetFull(){
+        targaet_peng.setText("");
+        f_permintaan.setText("");
+        f_unit.setText("");
+        c_nama_barang.setSelectedIndex(0);
     }
 
     public void setMpbd() {
         mpbd.setNo_po(f_no_po.getText());
+        mpbd.setTanggal(d_tanggal.getDate());
+        
+    }
+    
+    private MD_Full_po_bahan_dasar insertTable(){
+        setMpbd();
+        MD_Full_po_bahan_dasar mfp=null;
+        MD_Produk mpp=(MD_Produk)c_nama_barang.getSelectedItem();
+        String no_po=f_no_po.getString();
+        int banyak=f_unit.getInteger();
+        int unit=f_unit.getInteger();
+        String target=targaet_peng.getText();
+        return new MD_Full_po_bahan_dasar(no_po, mpp, banyak, target);
+    }
+    
+    private boolean cek(){
+        return f_no_po.Kosongkah()
+                &&c_nama_barang.getSelectedIndex()!=0
+                &&targaet_peng.getText()!=null
+                &&f_permintaan.Kosongkah()
+                &&f_unit.Kosongkah();
     }
 
-    public void tambah() {
-        list2Values l2s = (list2Values) c_nama_barang.getSelectedItem();
-        MD_Full_po_bahan_dasar mfpb = new MD_Full_po_bahan_dasar(f_no_po.toString(), l2s.getIsinya(), f_permintaan.getInteger(), targaet_peng.toString());
-        mvpb.setTabel(mfpb);
-        mpbd.listMD_Full_po_bahan_dasar(mfpb);
-    }
+//    public void tambah() {
+//        list2Values l2s = (list2Values) c_nama_barang.getSelectedItem();
+//        MD_Full_po_bahan_dasar mfpb = new MD_Full_po_bahan_dasar(f_no_po.toString(), l2s.getIsinya(), f_permintaan.getInteger(), targaet_peng.toString());
+//        mvpb.setTabel(mfpb);
+//        mpbd.listMD_Full_po_bahan_dasar(mfpb);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,7 +119,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         c_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_unit = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jScrollPane2 = new javax.swing.JScrollPane();
         targaet_peng = new javax.swing.JTextPane();
         d_tanggal = new com.toedter.calendar.JDateChooser();
@@ -167,7 +208,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(f_unit, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                     .addComponent(f_permintaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jButton1))))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -188,7 +229,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(f_unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
@@ -277,13 +318,14 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        mvpb.Insert();
+        if(cek())
+            mvpb.Insert();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         setMpbd();
-        tambah();
+        mvpb.setTabel(insertTable());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -292,6 +334,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser d_tanggal;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_po;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_permintaan;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_unit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -305,7 +348,6 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
     private javax.swing.JTable t_po_bahan_dasar;
     private javax.swing.JTextPane targaet_peng;
     // End of variables declaration//GEN-END:variables

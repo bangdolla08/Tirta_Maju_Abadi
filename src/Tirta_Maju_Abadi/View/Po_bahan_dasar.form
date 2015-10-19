@@ -161,7 +161,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="modelTextFilt1" pref="140" max="32767" attributes="0"/>
+                                          <Component id="f_unit" pref="140" max="32767" attributes="0"/>
                                           <Component id="f_permintaan" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -191,7 +191,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="f_unit" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -293,7 +293,7 @@
             </Component>
             <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_nama_barang">
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_unit">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>

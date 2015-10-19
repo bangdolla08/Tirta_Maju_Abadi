@@ -11,6 +11,13 @@ public class MD_Full_po_bahan_dasar {
     public MD_Full_po_bahan_dasar() {
     }
     
+    public MD_Full_po_bahan_dasar(String no_po, MD_Produk mdp, int banyak, String rencana_kirim) {
+        this.no_po = no_po;
+        this.rencana_kirim = rencana_kirim;
+        this.id_barang = id_barang;
+        this.banyak = banyak;
+    }
+    
     public MD_Full_po_bahan_dasar(String no_po, int id_barang, int banyak, String rencana_kirim) {
         this.no_po = no_po;
         this.rencana_kirim = rencana_kirim;
