@@ -38,7 +38,7 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
     }
     
     public void reset(){
-        f_no_nota.setText("");
+        f_no_nota.setText(mpel.getNo_nota());
         f_nm_pelanggan.setText("");
         tex_area_alamat.setText("");
         c_pembayaran.setSelectedItem("--Pilih--");
@@ -67,6 +67,10 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
         mpel.setNo_nota(f_no_nota.getText());
         int nm=Integer.valueOf(f_nm_pelanggan.getText());
         mpel.setId_pelanggan(nm);
+    }
+    
+    public void tampil_no_nota(){
+        
     }
     
      public void tambah(){

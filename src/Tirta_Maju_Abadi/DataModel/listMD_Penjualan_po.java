@@ -31,7 +31,8 @@ public class listMD_Penjualan_po {
                 listDB.add(new MD_Penjualan_po(rs.getInt("Id_marketing"),
                         rs.getInt("Id_pelanggan"), 
                         rs.getString("No_nota"), 
-                        rs.getString("No_po_penjulan"), db, lD));
+                        rs.getString("No_po_penjulan"),
+                        rs.getString("tanggalpesan"), db, lD));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -48,7 +49,8 @@ public class listMD_Penjualan_po {
                 listDB.add(new MD_Penjualan_po(rs.getInt("Id_marketing"), 
                         rs.getInt("Id_pelanggan"),
                         rs.getString("No_nota"), 
-                        rs.getString("No_po_penjulan"),db, lD));            
+                        rs.getString("No_po_penjulan"),
+                        rs.getString("tanggalpesan"),db, lD));            
             }
         } catch (Exception e) {
             System.out.print(e);
