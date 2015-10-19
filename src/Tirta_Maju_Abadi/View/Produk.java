@@ -5,19 +5,45 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.View.evetView.Model_view_produk;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 /**
  *
  * @author bangdolla
  */
 public class Produk extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Produk
-     */
-    public Produk() {
+    private Model_view_produk mvp;
+    database db;
+    loadAllData lad;
+    public Produk(database db, loadAllData lad) {
         initComponents();
+        mvp=new Model_view_produk(t_barang.getModel(), db, lad);
+        this.db=db;
+        this.lad=lad;
+        reset();
     }
-
+    private void reset(){
+        flipflopButton(true);
+        f_id_produk.setText(mvp.reset());
+        t_barang.setModel(mvp.getDtm());
+        f_harga_pokok.reset();
+        f_nama_barang.reset();
+        f_nama_barang.requestFocus(true);
+    }
+    private void flipflopButton(boolean tmp){
+        jButton1.setEnabled(tmp);
+        jButton2.setEnabled(!tmp);
+    }
+    private MD_Produk getFiltTOMD(){
+        MD_Produk tmp=null;
+        if(f_nama_barang.Kosongkah()&&f_harga_pokok.Kosongkah())
+            tmp=new MD_Produk(f_id_produk.getInteger(), f_nama_barang.getString(), f_harga_pokok.getString(), lad);
+        return tmp;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,11 +55,11 @@ public class Produk extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jl_nama_barang = new javax.swing.JLabel();
         f_id_produk = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        f_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        jLabel3 = new javax.swing.JLabel();
-        f_harga_pokok = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_nama_barang);
+        jl_harga = new javax.swing.JLabel();
+        f_harga_pokok = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_harga);
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -42,21 +68,31 @@ public class Produk extends javax.swing.JInternalFrame {
         t_barang = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         jLabel1.setText("Id Barang");
 
-        jLabel2.setText("Nama Barang");
+        jl_nama_barang.setText("Nama Barang");
 
         f_id_produk.setEditable(false);
 
-        jLabel3.setText("Harga Pokok");
+        jl_harga.setText("Harga Pokok");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton1.setText("Simpan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/edit.png"))); // NOI18N
         jButton2.setText("Ubah");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Rp.");
 
@@ -69,9 +105,9 @@ public class Produk extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jl_harga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(jl_nama_barang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(f_id_produk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -95,11 +131,11 @@ public class Produk extends javax.swing.JInternalFrame {
                     .addComponent(f_id_produk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jl_nama_barang)
                     .addComponent(f_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jl_harga)
                     .addComponent(f_harga_pokok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,7 +145,7 @@ public class Produk extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "List Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 0, 0))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "List Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         t_barang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,6 +223,24 @@ public class Produk extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        MD_Produk tmp=getFiltTOMD();
+        if(tmp!=null){
+            mvp.setMD_Produk(tmp);
+            reset();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        MD_Produk tmp=getFiltTOMD();
+        if(tmp!=null){
+            mvp.setUpdateMD_Produk(tmp);
+            reset();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_harga_pokok;
@@ -196,12 +250,12 @@ public class Produk extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jl_harga;
+    private javax.swing.JLabel jl_nama_barang;
     private javax.swing.JTable t_barang;
     // End of variables declaration//GEN-END:variables
 }
