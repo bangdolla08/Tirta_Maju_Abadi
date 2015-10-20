@@ -36,12 +36,12 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         L_nama_pelanggan.setModel(mvp.getDTL());
         f_id_pelanggan.setText(mvp.getnextID());
         tex_area_alamat.setText("");
-        f_nama.setText("");
-        f_no_telepon.setText("");
+        f_nama.reset();
+        f_no_telepon.reset();
         resetFull();
     }
     private void resetFull(){
-        f_harga.setText("");
+        f_harga.reset();
         C_nama_produk.setSelectedIndex(0);        
     }
     private void setMD_pelanggan(){
@@ -90,7 +90,7 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         f_nama = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_nama_pelanggan);
         jScrollPane1 = new javax.swing.JScrollPane();
         tex_area_alamat = new javax.swing.JTextArea();
-        f_no_telepon = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_no_telepon = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_telp);
         c_type_pelanggan = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser(jl_type_pelanggan);
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -221,6 +221,11 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         jButton1.setText("Edit");
 
         jButton4.setText("Reset");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -314,6 +319,7 @@ public class Pelanggan extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         mvp.addtoTablemodel(insertTable());
+        resetFull();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void L_nama_pelangganMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_L_nama_pelangganMousePressed
@@ -328,9 +334,16 @@ public class Pelanggan extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(cekKosong())
+        if(cekKosong()){
             mvp.Insert();
+            reset();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser C_nama_produk;

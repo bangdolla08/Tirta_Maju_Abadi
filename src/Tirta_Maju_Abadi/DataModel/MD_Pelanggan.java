@@ -74,9 +74,16 @@ public class MD_Pelanggan {
     
     private void setHarga(){
         try {
-            ResultSet rs=db.getRs("select * from harga_pelanggan where Id_pelanggan='"+Id_pelanggan+"'");
-            while (rs.next()) {      
-                addListHarga(new MD_Harga_pelanggan(Id_pelanggan, rs.getInt("Id_produk"), rs.getInt("Harga"),lAD));
+            
+            //ResultSet rs=db.getRs("select * from harga_pelanggan where Id_pelanggan='"+Id_pelanggan+"'");
+            ///while (rs.next()) {      
+            for(MD_Harga_pelanggan mhp:lAD.getListMD_Harga_pelanggan().getAll()){
+//                System.out.println(mhp.getId_pelanggan()+"|"+mhp.getHarga());
+                if(mhp.getId_pelanggan()==Id_pelanggan){
+                    addListHarga(mhp);
+//                    System.out.println(mhp.getId_pelanggan()+"|"+mhp.getHarga());
+                }
+                //System.out.println(rs.getInt("Id_produk")+"|"+rs.getInt("Harga"));
             }
         } catch (Exception e) {
             System.out.println(e);

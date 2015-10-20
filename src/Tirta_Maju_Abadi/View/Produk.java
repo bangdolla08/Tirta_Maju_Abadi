@@ -166,6 +166,11 @@ public class Produk extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        t_barang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                t_barangMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(t_barang);
         if (t_barang.getColumnModel().getColumnCount() > 0) {
             t_barang.getColumnModel().getColumn(0).setResizable(false);
@@ -240,6 +245,15 @@ public class Produk extends javax.swing.JInternalFrame {
             reset();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void t_barangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_t_barangMousePressed
+        // TODO add your handling code here:
+        MD_Produk tmp=(MD_Produk) t_barang.getValueAt(t_barang.getSelectedRow(), 2);
+        f_id_produk.setText(tmp.getId_produk());
+        f_nama_barang.setText(tmp.getNama_produk());
+        f_harga_pokok.setText(tmp.getHarga_pokok());
+        flipflopButton(false);
+    }//GEN-LAST:event_t_barangMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

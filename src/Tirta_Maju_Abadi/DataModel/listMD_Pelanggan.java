@@ -20,11 +20,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class listMD_Pelanggan {
     private database db;
+    private database dbs;
     private ResultSet rs;
     private List<MD_Pelanggan> listDB=new ArrayList<MD_Pelanggan>();
     private loadAllData lad;
     public listMD_Pelanggan(ResultSet rs,database db){
         this.db=db;
+        this.dbs=db;
         listDB.clear();
         try {
             while(rs.next()){
@@ -32,7 +34,7 @@ public class listMD_Pelanggan {
                         rs.getString("Nama"), 
                         rs.getString("Alamat"),
                         rs.getInt("Tipe_pembayaran"),
-                        rs.getString("No_telepon"),db,lad));
+                        rs.getString("No_telepon"),dbs,lad));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -49,7 +51,7 @@ public class listMD_Pelanggan {
                         rs.getString("Nama"), 
                         rs.getString("Alamat"),
                         rs.getInt("Tipe_pembayaran"),
-                        rs.getString("No_telepon"),db,lad));
+                        rs.getString("No_telepon"),dbs,lad));
             }
         } catch (Exception e) {
             System.out.print(e);

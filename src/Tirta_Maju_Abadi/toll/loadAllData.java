@@ -5,6 +5,8 @@ import Tirta_Maju_Abadi.DataModel.*;
 public class loadAllData {
     private database db=new database();
     private MD_Pegawai mp;
+    private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
+    private listMD_Harga_pelanggan listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
     private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db);
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
@@ -13,7 +15,6 @@ public class loadAllData {
     private listMD_Galon_keluar listMD_Galon_keluar1=new listMD_Galon_keluar(db);
     private listMD_Galon_masuk listMD_Galon_masuk1=new listMD_Galon_masuk(db);
     private listMD_Gudang_barang_jadi listMD_Gudang_barang_jadi1=new listMD_Gudang_barang_jadi(db);
-    private listMD_Harga_pelanggan listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db);
     private listMD_Keluar_gudang_bahan_jadi listMD_Keluar_gudang_bahan_jadi1=new listMD_Keluar_gudang_bahan_jadi(db);
     private listMD_Keluar_gudang_bahan_mentah listMD_Keluar_gudang_bahan_mentah1=new listMD_Keluar_gudang_bahan_mentah(db);
     private listMD_Keterangan listMD_Keterangan1=new listMD_Keterangan(db);
@@ -26,11 +27,41 @@ public class loadAllData {
     private listMD_Penjualan_po listMD_Penjualan_po1=new listMD_Penjualan_po(db, this);
     private listMD_Pesan_barang listMD_Pesan_barang1=new listMD_Pesan_barang(db);
     private listMD_Po_bahan_dasar listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
-    private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
+    //private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
     private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
     private listMD_Bo_Mobil listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
 
+    public void reset(){
+        listMD_Bahan_mentah1=new listMD_Bahan_mentah(db);
+        listMD_Ban1=new listMD_Ban(db);
+        listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
+        listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
+        listMD_Full_penjualan1=new listMD_Full_penjualan(db, this);
+        listMD_Galon_cacat1=new listMD_Galon_cacat(db);
+        listMD_Galon_keluar1=new listMD_Galon_keluar(db);
+        listMD_Galon_masuk1=new listMD_Galon_masuk(db);
+        listMD_Gudang_barang_jadi1=new listMD_Gudang_barang_jadi(db);
+        listMD_Keluar_gudang_bahan_jadi1=new listMD_Keluar_gudang_bahan_jadi(db);
+        listMD_Keluar_gudang_bahan_mentah1=new listMD_Keluar_gudang_bahan_mentah(db);
+        listMD_Keterangan1=new listMD_Keterangan(db);
+        listMD_Keterangan_Km1=new listMD_Keterangan_Km(db);
+        listMD_Mobil1=new listMD_Mobil(db);
+        listMD_Mobil_Keluar1=new listMD_Mobil_Keluar(db,this);
+        listMD_Nota_pesan1=new listMD_Nota_pesan(db);
+        listMD_Pegawai1=new listMD_Pegawai(db);
+        listMD_Pelanggan1=new listMD_Pelanggan(db,this);
+        listMD_Penjualan_po1=new listMD_Penjualan_po(db, this);
+        listMD_Pesan_barang1=new listMD_Pesan_barang(db);
+        listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
+        listMD_Produk1=new listMD_Produk(db, this);
+        listMD_Suplier1=new listMD_Suplier(db);
+        listMD_bo_barang=new listMD_Bo_barang(db, this);
+        listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
+        
+    }
+    
+    
     public listMD_Bo_Mobil getListMD_bo_mobil() {
         return listMD_bo_mobil;
     }

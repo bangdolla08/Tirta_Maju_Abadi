@@ -6,6 +6,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,16 +33,17 @@ public class listMD_Harga_pelanggan {
             System.out.print(e);
         }
     }
-    
-     public listMD_Harga_pelanggan(database db){
+    private loadAllData lad;
+     public listMD_Harga_pelanggan(database db,loadAllData lad){
         this.db=db;
+        this.lad=lad;
         listDB.clear();
         try {
             rs=db.getRs("select * from harga_pelanggan");
             while(rs.next()){
-//                listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
-//                        rs.getInt("Id_produk"), 
-//                        rs.getInt("Harga")));
+                listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
+                        lad.getListMD_Produk().getMDByID(rs.getInt("Id_produk")), 
+                        rs.getInt("Harga")));
             }        
         } catch (Exception e) {
             System.out.print(e);

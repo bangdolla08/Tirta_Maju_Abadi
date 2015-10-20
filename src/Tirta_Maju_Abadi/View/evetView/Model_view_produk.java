@@ -23,6 +23,8 @@ public class Model_view_produk {
     }
     
     public int reset(){
+        lad.setListMD_Produk(new listMD_Produk(db, lad));
+        litProduk=lad.getListMD_Produk();
         return setIsiDataBase();
     }
     

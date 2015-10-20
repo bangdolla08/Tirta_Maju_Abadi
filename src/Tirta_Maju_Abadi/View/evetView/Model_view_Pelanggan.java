@@ -4,6 +4,7 @@ import Tirta_Maju_Abadi.DataModel.MD_Harga_pelanggan;
 import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
 import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
+import Tirta_Maju_Abadi.DataModel.listMD_Pelanggan;
 import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
@@ -57,8 +58,10 @@ public class Model_view_Pelanggan {
                         + "Id_pelanggan='"+mdp.getId_Pelanggan()+"',"
                         + "Id_produk='"+mhp.getId_produk()+"',Harga='"+mhp.getHarga()+"'");
             }
-            if(!tmp)
+            if(tmp){
                 JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+                lD.reset();
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
@@ -95,8 +98,10 @@ public class Model_view_Pelanggan {
                         + "Id_pelanggan='"+mdp.getId_Pelanggan()+"',"
                         + "Id_produk='"+mhp.getId_produk()+"',Harga='"+mhp.getHarga()+"' where Id_pelanggan='"+mdp.getId_Pelanggan()+"'");
             }
-            if(!tmp)
+            if(tmp){
                 JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+                lD.setListMD_Pelanggan(new listMD_Pelanggan(db, lD));
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
         }
