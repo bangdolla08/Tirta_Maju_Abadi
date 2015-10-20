@@ -26,19 +26,25 @@ import javax.swing.table.TableModel;
  */
 public class Model_view_Mobil {
 private DefaultTableModel dtm = new DefaultTableModel();
+private DefaultTableModel dtmb = new DefaultTableModel();
+
+    
 private DefaultListModel dlm = new DefaultListModel();
 private database db;
 private loadAllData lD;
 private MD_Mobil mdm;
 private MD_Ban mdb;
 
-public Model_view_Mobil(TableModel tm,database db, loadAllData lD, MD_Mobil mdm)
+public Model_view_Mobil(TableModel tm, TableModel bm,database db, loadAllData lD, MD_Mobil mdm)
     {
     this.db = db;
     this.lD = lD;
     this.mdm = mdm;
     dtm=(DefaultTableModel) tm;
-    dtm.setRowCount(0);   
+    dtm.setRowCount(0);
+    dtmb=(DefaultTableModel)bm;
+    dtmb.setRowCount(0);
+    
     }
 
     
@@ -83,11 +89,12 @@ public Model_view_Mobil(TableModel tm,database db, loadAllData lD, MD_Mobil mdm)
     
     public void reset(){
         int i=0;
-        dlm.clear();
+        /*dlm.clear();
         for(MD_Mobil tmp:lD.getListMD_Mobil().getAll()){
             dlm.add(i, tmp);
-        }
+        }*/
         dtm.setRowCount(0);
+        dtmb.setRowCount(0);
     }
     
     public void SetTable(MD_Mobil mobil)
@@ -99,6 +106,150 @@ public Model_view_Mobil(TableModel tm,database db, loadAllData lD, MD_Mobil mdm)
         vct.add(mobil.getType());
         dtm.addRow(vct);
         
+    }
+    
+    public void addtoTableModel(MD_Ban mb)
+    {
+    Vector vct = new Vector();
+    vct.add(dtmb.getRowCount()+1);
+    vct.add(mb.getNopol());
+    vct.add(mb.getPosisi());
+    vct.add(mb.getNoseri());
+    vct.add(mb.getTgl_pasang());
+    dtmb.addRow(vct);
+    }
+    
+    public void addBan4()
+    {
+        Vector vct = new Vector();
+        vct.add("1");
+        vct.add("");
+        vct.add("FL");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("2");
+        vct.add("");
+        vct.add("FR");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("3");
+        vct.add("");
+        vct.add("BL");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("4");
+        vct.add("");
+        vct.add("BR");
+        vct.add("");
+        dtmb.addRow(vct);
+    }
+    
+    public void addBan6()
+    {
+        Vector vct = new Vector();
+        vct.add("1");
+        vct.add("");
+        vct.add("FL");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("2");
+        vct.add("");
+        vct.add("FR");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("3");
+        vct.add("");
+        vct.add("ML");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("4");
+        vct.add("");
+        vct.add("MR");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        
+        vct.add("5");
+        vct.add("");
+        vct.add("BL");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("6");
+        vct.add("");
+        vct.add("BR");
+        vct.add("");
+        dtmb.addRow(vct);
+    }
+    
+    public void addBan10()
+    {
+        Vector vct = new Vector();
+        vct.add("1");
+        vct.add("");
+        vct.add("FL");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("2");
+        vct.add("");
+        vct.add("FR");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("3");
+        vct.add("");
+        vct.add("ML1");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("4");
+        vct.add("");
+        vct.add("ML2");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("5");
+        vct.add("");
+        vct.add("MR1");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("6");
+        vct.add("");
+        vct.add("MR2");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("7");
+        vct.add("");
+        vct.add("BL1");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("8");
+        vct.add("");
+        vct.add("BL2");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("9");
+        vct.add("");
+        vct.add("BR1");
+        vct.add("");
+        dtmb.addRow(vct);
+        
+        vct.add("10");
+        vct.add("");
+        vct.add("BR2");
+        vct.add("");
+        dtmb.addRow(vct);
     }
     
     public DefaultTableModel getDTM(){
@@ -115,5 +266,13 @@ public Model_view_Mobil(TableModel tm,database db, loadAllData lD, MD_Mobil mdm)
             list.add(new list2Values(md.getDriver()));
         }
         mc.setModel(list);
+    }
+    
+    public DefaultTableModel getDtmb() {
+        return dtmb;
+    }
+
+    public void setDtmb(DefaultTableModel dtmb) {
+        this.dtmb = dtmb;
     }
 }
