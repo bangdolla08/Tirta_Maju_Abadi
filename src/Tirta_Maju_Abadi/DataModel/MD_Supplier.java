@@ -95,6 +95,12 @@ public class MD_Supplier {
         return Ppn;
     }
 
+    @Override
+    public String toString() {
+        return getNama(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
     public String getNama() {
         return Nama;
     }

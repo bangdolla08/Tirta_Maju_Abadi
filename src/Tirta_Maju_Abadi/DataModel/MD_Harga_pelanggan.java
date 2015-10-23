@@ -35,6 +35,11 @@ public class MD_Harga_pelanggan {
         this.Harga=Harga;
         this.mdP=mdP;
     }
+
+    @Override
+    public String toString() {
+        return mdP.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public MD_Harga_pelanggan(){
         this.Id_pelanggan=0;

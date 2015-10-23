@@ -39,6 +39,7 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         f_nama.reset();
         f_no_telepon.reset();
         resetFull();
+        flipflop(true);
     }
     private void resetFull(){
         f_harga.reset();
@@ -50,6 +51,10 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         mp.setNama(f_nama.getText());
         mp.setNo_telepon(f_no_telepon.getText());
         mp.setTipe_pembayaran(c_type_pelanggan.getSelectedIndex());
+    }
+    private void flipflop(boolean status){
+        jButton1.setEnabled(!status);
+        jButton2.setEnabled(status);
     }
     private MD_Harga_pelanggan insertTable(){
         setMD_pelanggan();
@@ -133,6 +138,11 @@ public class Pelanggan extends javax.swing.JInternalFrame {
             }
         });
         t_Harga.getTableHeader().setReorderingAllowed(false);
+        t_Harga.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                t_HargaMousePressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(t_Harga);
         if (t_Harga.getColumnModel().getColumnCount() > 0) {
             t_Harga.getColumnModel().getColumn(0).setResizable(false);
@@ -330,6 +340,7 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         tex_area_alamat.setText(mp.getAlamat());
         c_type_pelanggan.setSelectedIndex(mp.getTipe_pembayaran());
         mvp.setTableModel(mp);
+        flipflop(false);
     }//GEN-LAST:event_L_nama_pelangganMousePressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -344,6 +355,11 @@ public class Pelanggan extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         reset();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void t_HargaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_t_HargaMousePressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_t_HargaMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser C_nama_produk;
