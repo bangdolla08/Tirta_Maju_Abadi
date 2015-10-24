@@ -19,7 +19,8 @@ public class listMD_Full_po_bahan_dasar {
                 listDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),
                                 rs.getInt("id_barang"),
-                                rs.getInt("banyak"),
+                                rs.getInt("permintaan"),
+                                rs.getString("unit"),
                                 rs.getString("Rencana_Kirim"))
                         );
             }
@@ -35,7 +36,8 @@ public class listMD_Full_po_bahan_dasar {
                 listDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),
                                 rs.getInt("id_barang"),
-                                rs.getInt("banyak"),
+                                rs.getInt("permintaan"),
+                                rs.getString("unit"),
                                 rs.getString("Rencana_Kirim"))
                         );
             }

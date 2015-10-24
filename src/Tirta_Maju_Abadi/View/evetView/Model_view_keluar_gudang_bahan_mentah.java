@@ -24,45 +24,28 @@ import javax.swing.table.TableModel;
  * @author jepank's
  */
 public class Model_view_keluar_gudang_bahan_mentah {
-    private DefaultTableModel dtm=new DefaultTableModel();
-    private listMD_Keluar_gudang_bahan_mentah listMD_keluar_gudang_bahan_mentah;
     private database db;
     private loadAllData lD;
+    private MD_Keluar_gudang_bahan_mentah mkd;
     
-    public Model_view_keluar_gudang_bahan_mentah(TableModel dtm, 
-            listMD_Keluar_gudang_bahan_mentah listMD_keluar_gudang_bahan_mentah, database db){
-            this.dtm=(DefaultTableModel) dtm;
-            this.listMD_keluar_gudang_bahan_mentah=listMD_keluar_gudang_bahan_mentah;
-            this.db=db;
+    public Model_view_keluar_gudang_bahan_mentah(MD_Keluar_gudang_bahan_mentah mkd, database db,loadAllData lad){
+        this.mkd=mkd;
+        this.db=db;
+        this.lD=lad;
     }
-    
-    public DefaultTableModel getdtm(){
-        return dtm;
-    }
-    
-    List<list2Values> list=new ArrayList<>();
-    public void listSupplier(ModelChuser mc){
-        for(MD_Supplier ms:lD.getListMD_Suplier().getList()){
-            list.add(new list2Values(ms.getNama(), ms.getId_supplier()));
-        }
-        mc.setModel(list);
-    }
-    public void listProduk(ModelChuser mc){
-        for(MD_Produk mp:lD.getListMD_Produk().getAll()){
-            list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
-        }
-        mc.setModel(list);
-    }
-            
-    
-    public void Insert(MD_Keluar_gudang_bahan_mentah md){
+
+    public void Insert(){
         if(db.setDB("insert into keluar_gudang_bahan_mentah set "
-                + "Id_supplier='"+md.getId_supplier()+"',"
-                + " Banyak='"+md.getBanyak()+"',"
-                + " No_urut='"+md.getNo_urut()+"',"
-                + "Id_bahan='"+md.getId_bahan()+"'"))
-            JOptionPane.showMessageDialog(null, "Data Berhasil Simpan","Informasi",JOptionPane.INFORMATION_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(null, "Data Gagal Simpan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+                + "Id_supplier='"+mkd.getId_supplier()+"',"
+                + " Banyak='"+mkd.getBanyak()+"',"
+                + " No_urut='"+mkd.getNo_urut()+"',"
+                + "Id_bahan='"+mkd.getId_bahan()+"'")){
+            boolean tmp=true;
+            if(tmp){
+                JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+                lD.reset();
+            }
+            }else
+                JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -5,6 +5,7 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -39,7 +40,23 @@ public class MD_Po_bahan_dasar {
     
     private ResultSet rs;
     
-    public MD_Po_bahan_dasar() {
+    
+    private List<list2Values> list=new ArrayList<>();
+    public void list(ModelChuser mc){
+        mc.setModel(list);
+    }
+
+    public List<list2Values> getList() {
+        return list;
+    }
+
+    public void setList(List<list2Values> list) {
+        this.list = list;
+    }
+    
+    private void setUnit(){
+        list.add(new list2Values("pcs",1));
+        list.add(new list2Values("box",2));
     }
     
     
@@ -51,6 +68,17 @@ public class MD_Po_bahan_dasar {
         listMD_Full_po_bahan_dasar();
         this.db=db;
         lsd=new listMD_Pegawai(db);
+        setUnit();
+    }
+    
+    public MD_Po_bahan_dasar(){
+        setUnit();
+        this.No_po=null;
+        this.no_pegwai=0;
+    }
+    
+    public void addToList(MD_Full_po_bahan_dasar mf){
+        listfullDB.add(mf);
     }
     
     public void listMD_Full_po_bahan_dasar(MD_Full_po_bahan_dasar tmp){
@@ -66,7 +94,8 @@ public class MD_Po_bahan_dasar {
                 listfullDB.add(
                         new MD_Full_po_bahan_dasar(rs.getString("No_po"),
                                 rs.getInt("id_barang"),
-                                rs.getInt("banyak"),
+                                rs.getInt("permintaan"),
+                                rs.getString("unit"),
                                 rs.getString("Rencana_Kirim"))
                         );
             }

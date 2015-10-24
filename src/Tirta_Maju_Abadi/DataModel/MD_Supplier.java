@@ -5,6 +5,8 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 /**
  *
  * @author NEEZAR

@@ -41,6 +41,8 @@ public class Templates {
 	public static final StyleBuilder columnTitleStyle;
 	public static final StyleBuilder groupStyle;
 	public static final StyleBuilder subtotalStyle;
+        public static final StyleBuilder bold14;
+        public static final StyleBuilder bold14Left;
 
 	public static final ReportTemplateBuilder reportTemplate;
 	public static final CurrencyType currencyType;
@@ -53,8 +55,13 @@ public class Templates {
 		italicStyle         = stl.style(rootStyle).italic();
 		boldCenteredStyle   = stl.style(boldStyle)
 		                         .setAlignment(HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+                bold14Left          = stl.style(boldStyle)
+                                          .setAlignment(HorizontalAlignment.LEFT, VerticalAlignment.TOP);
 		bold12CenteredStyle = stl.style(boldCenteredStyle)
 		                         .setFontSize(12);
+                bold14              = stl.style(bold14Left)
+                                        .setFontName("Arial").setFontSize(14);
+
 		bold18CenteredStyle = stl.style(boldCenteredStyle)
 		                         .setFontSize(18);
 		bold22CenteredStyle = stl.style(boldCenteredStyle)
@@ -101,10 +108,11 @@ public class Templates {
 		HyperLinkBuilder link = hyperLink("http://www.homemediaart.com");
 		dynamicReportsComponent =
 		  cmp.horizontalList(
-		  	cmp.image(Templates.class.getResource("Images/ACCBO.png")).setFixedDimension(60, 60),
+		  	cmp.image(Templates.class.getResource("../Images/ACCBO.png")).setFixedDimension(60, 60),
 		  	cmp.verticalList(
-		  		cmp.text("Nota Penjualan").setStyle(bold22CenteredStyle).setHorizontalAlignment(HorizontalAlignment.LEFT),
-		  		cmp.text("Home Media Art Phone Store Aplication").setStyle(italicStyle).setHyperLink(link))).setFixedWidth(300);
+		  		cmp.text("PT. Triasta Sejahtera").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT),
+                                cmp.text("No. Nota : ").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT)
+		  		.setHyperLink(link))).setFixedWidth(300);
 
 		footerComponent = cmp.pageXofY()
 		                     .setStyle(
@@ -119,9 +127,10 @@ public class Templates {
 		return cmp.horizontalList()
 		        .add(
 		        	dynamicReportsComponent,
-		        	cmp.text(label).setStyle(bold18CenteredStyle).setHorizontalAlignment(HorizontalAlignment.RIGHT))
+		        	cmp.text(label).setStyle(rootStyle).setHorizontalAlignment(HorizontalAlignment.JUSTIFIED))
+                                //cmp.text(label).setStyle(italicStyle).setHorizontalAlignment(HorizontalAlignment.JUSTIFIED))
 		        .newRow()
-		        .add(cmp.line())
+		        //.add(cmp.line())
 		        .newRow()
 		        .add(cmp.verticalGap(10));
 	}

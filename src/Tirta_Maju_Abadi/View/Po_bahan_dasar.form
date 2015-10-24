@@ -60,8 +60,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_no_po" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_tanggal" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -76,9 +76,9 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="101" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="94" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton3" min="-2" pref="101" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,12 +87,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_no_po" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="f_no_po" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_tanggal" min="-2" max="-2" attributes="0"/>
                       <Component id="d_tanggal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -108,17 +108,20 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jl_no_po">
           <Properties>
             <Property name="text" type="java.lang.String" value="No PO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jl_tanggal">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tanggal"/>
           </Properties>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_po">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_po)"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -144,8 +147,8 @@
                           <Component id="jScrollPane1" alignment="0" pref="538" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jl_target_pengiriman" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jl_nama_barang" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -156,13 +159,13 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl_permintaan" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jl_unit" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="f_unit" pref="140" max="32767" attributes="0"/>
-                                          <Component id="f_permintaan" max="32767" attributes="0"/>
+                                          <Component id="f_permintaan" pref="140" max="32767" attributes="0"/>
+                                          <Component id="f_unit" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -178,21 +181,21 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_nama_barang" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_permintaan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="f_permintaan" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="c_nama_barang" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_target_pengiriman" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jl_unit" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="f_unit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -210,17 +213,20 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="jl_nama_barang">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nama Barang"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="jl_permintaan">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Permintaan"/>
               </Properties>
             </Component>
             <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_permintaan">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_permintaan)"/>
+              </AuxValues>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -232,10 +238,11 @@
                 <Component class="javax.swing.JTable" name="t_po_bahan_dasar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="5" rowCount="4">
                         <Column editable="false" title="No" type="java.lang.Object"/>
                         <Column editable="false" title="Nama Barang" type="java.lang.Object"/>
                         <Column editable="false" title="Permintaan" type="java.lang.Object"/>
+                        <Column editable="false" title="Unit" type="java.lang.Object"/>
                         <Column editable="false" title="Target Pengiriman" type="java.lang.Object"/>
                       </Table>
                     </Property>
@@ -252,6 +259,11 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="false">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="false">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -281,19 +293,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="jl_unit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Unit"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="jl_target_pengiriman">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Target Pengiriman"/>
               </Properties>
             </Component>
             <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="c_nama_barang">
-            </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_unit">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser(jl_nama_barang)"/>
+              </AuxValues>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
@@ -306,9 +319,20 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_unit">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_unit)"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.toedter.calendar.JDateChooser()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
@@ -328,6 +352,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

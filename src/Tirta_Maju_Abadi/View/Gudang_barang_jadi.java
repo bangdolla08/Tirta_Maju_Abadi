@@ -4,23 +4,77 @@
  */
 package Tirta_Maju_Abadi.View;
 
-import Tirta_Maju_Abadi.DataModel.MD_Keluar_gudang_bahan_jadi;
+import Tirta_Maju_Abadi.DataModel.MD_Gudang_barang_jadi;
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.listMD_Gudang_barang_jadi;
+import Tirta_Maju_Abadi.View.evetView.Model_view_gudang_barang_jadi;
 import Tirta_Maju_Abadi.View.evetView.Model_view_keluar_gudang_barang_jadi;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 
 /**
  *
  * @author jepank's
  */
 public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
-
-    private Model_view_keluar_gudang_barang_jadi mvkg;
-    private MD_Keluar_gudang_bahan_jadi mdg;
+    
+    private Model_view_gudang_barang_jadi mvg;
+    private MD_Gudang_barang_jadi mgb=new MD_Gudang_barang_jadi();
+    private loadAllData lad;
+    private database db;
+    private listMD_Gudang_barang_jadi lgb;
     /**
      * Creates new form Gudang_barang_jadi
      */
-    public Gudang_barang_jadi() {
+    public Gudang_barang_jadi(database db, loadAllData lad) {
         initComponents();
+        this.lad=lad;
+        this.db=db;
+        mvg=new Model_view_gudang_barang_jadi(mgb, db, lad);
+        mgb.list(c_group);
+        setNamaProduk();
+        setNamaPegawai();
+        reset();
     }
+    
+    private void setNamaProduk(){
+        for(MD_Produk mp:lad.getListMD_Produk().getAll()){
+            c_id_produk.addItem(mp);
+        }
+    }
+    
+    private void setNamaPegawai(){
+        for(MD_Pegawai mpeg:lad.getListMD_Pegawai().getList()){
+            c_koordinator.addItem(mpeg);
+            c_operator.addItem(mpeg);
+        }
+    }
+    
+    private void reset(){
+        f_banyak.reset();
+        c_koordinator.setSelectedIndex(0);
+        c_operator.setSelectedIndex(0);
+        c_group.setSelectedIndex(0);
+        c_id_produk.setSelectedIndex(0);
+    }
+    
+    private void setMDGudang_barang(){
+        mgb.setKoordinator(c_koordinator.getSelectedItemS());
+        mgb.setOperator(c_operator.getSelectedItemS());
+        mgb.setGrup(c_group.getSelectedIndex());
+        mgb.setId_produk(c_id_produk.getSelectedIndex());
+        mgb.setBanyak(f_banyak.getInteger());
+    }
+    
+    private boolean cekKosong(){
+        return f_banyak.Kosongkah()
+                &&c_koordinator.Kosongkah()
+                &&c_operator.Kosongkah()
+                &&c_group.Kosongkah()
+                &&c_id_produk.Kosongkah();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,14 +90,14 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jl_banyak = new javax.swing.JLabel();
         c_koordinator = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         c_operator = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        c_shift = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         c_id_produk = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jButton1 = new javax.swing.JButton();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_banyak);
         jButton2 = new javax.swing.JButton();
+        c_group = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,13 +107,11 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Operator");
 
-        jLabel3.setText("Shift");
+        jLabel3.setText("Group");
 
-        jLabel4.setText("Id Produk");
+        jLabel4.setText("Nama Produk");
 
-        jLabel5.setText("Banyak");
-
-        c_shift.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Pilih--", "Shift 1", "Shift 2", "Shift 3" }));
+        jl_banyak.setText("Banyak");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/kirim.png"))); // NOI18N
         jButton1.setText("Kirim");
@@ -71,6 +123,11 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton2.setText("Reset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,35 +135,31 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jl_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addGap(39, 39, 39)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(c_id_produk, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(c_koordinator, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(c_shift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(c_operator, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                    .addComponent(c_id_produk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(c_koordinator, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(c_operator, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(c_group, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,16 +175,16 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(c_shift, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_group, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(c_id_produk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -146,9 +199,7 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -156,26 +207,35 @@ public class Gudang_barang_jadi extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        mvkg.Insert(mdg);
+        if(cekKosong()){
+            setMDGudang_barang();
+            mvg.Insert();
+            reset();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_group;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_id_produk;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_koordinator;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_operator;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_shift;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
+    private javax.swing.JLabel jl_banyak;
     // End of variables declaration//GEN-END:variables
 }

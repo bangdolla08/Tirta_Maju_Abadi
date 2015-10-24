@@ -1,8 +1,11 @@
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.toll.loadAllData;
+
 public class MD_Bahan_metah {
     private int id_bahan,stok,limit_buffer;
     private String nama_bahan,spesifikasi,unit;
+    private loadAllData lad;
     public MD_Bahan_metah() {
         this.id_bahan = 0;
         this.stok = 0;
@@ -12,13 +15,14 @@ public class MD_Bahan_metah {
         this.unit = null;
     }
     
-    public MD_Bahan_metah(int id_bahan, int stok, int limit_buffer, String nama_bahan, String spesifikasi, String unit) {
+    public MD_Bahan_metah(int id_bahan, int stok, int limit_buffer, String nama_bahan, String spesifikasi, String unit, loadAllData lad) {
         this.id_bahan = id_bahan;
         this.stok = stok;
         this.limit_buffer = limit_buffer;
         this.nama_bahan = nama_bahan;
         this.spesifikasi = spesifikasi;
         this.unit = unit;
+        this.lad=lad;
     }
     public MD_Bahan_metah(int stok, int limit_buffer, String nama_bahan, String spesifikasi, String unit) {
         this.stok = stok;

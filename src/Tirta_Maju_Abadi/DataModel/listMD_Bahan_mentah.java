@@ -1,6 +1,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +10,11 @@ public class listMD_Bahan_mentah {
     private List<MD_Bahan_metah> listDB=new ArrayList<MD_Bahan_metah>();
     private database db;
     private ResultSet rs;
+    private loadAllData lad;
 
-    public listMD_Bahan_mentah(database db) {
+    public listMD_Bahan_mentah(database db, loadAllData lad) {
         this.db=db;
+        this.lad=lad;
         listDB.clear();
         try {
             rs=db.getRs("select * from bahan_mentah ");
@@ -22,8 +25,7 @@ public class listMD_Bahan_mentah {
                         rs.getInt("limit_buffer"), 
                         rs.getString("nama_bahan"), 
                         rs.getString("unit"), 
-                        rs.getString("spesifikasi")
-                ));
+                        rs.getString("spesifikasi"), lad));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -40,8 +42,7 @@ public class listMD_Bahan_mentah {
                         rs.getInt("limit_buffer"), 
                         rs.getString("nama_bahan"), 
                         rs.getString("unit"), 
-                        rs.getString("spesifikasi")
-                ));
+                        rs.getString("spesifikasi"), lad));
             }
         } catch (Exception e) {
             System.out.print(e);

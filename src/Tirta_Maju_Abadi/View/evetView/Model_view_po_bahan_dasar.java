@@ -39,25 +39,30 @@ public class Model_view_po_bahan_dasar {
         dtm=(DefaultTableModel) tm;
         this.db=db;
         dtm.setRowCount(0);
+        reset();
     }
     
-    public int reset(){
+    public void reset(){
+        dtm.setRowCount(0);
+    }
+    
+    public int getNextID(){
         return lD.getListMD_Po_bahan_dasar().getAll().get(lD.getListMD_Bahan_mentah().getAll().size()-1).getNo_pegwai()+1;
     }
     
     public void setTabel(MD_Full_po_bahan_dasar mfp){
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
-        vct.add(mfp.getModel_produk().getNama_produk());
-        int banyak=mfp.getBanyak();
-        vct.add(banyak);
-        String target=mfp.getRencana_kirim();
-        vct.add(target);
+        vct.add(mfp.getMdp());
+        vct.add(mfp.getpermintaan());
+        vct.add(mfp.getRencana_kirim());
+        vct.add(mfp.getUnit());
         dtm.addRow(vct);
+        mpb.addToList(mfp);
     }
     
     List<list2Values> list=new ArrayList<>();
-    public void list(ModelChuser mc){
+    public void listProd(ModelChuser mc){
          for(MD_Produk mp:lD.getListMD_Produk().getAll()){
             list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
         }
@@ -79,11 +84,14 @@ public class Model_view_po_bahan_dasar {
                 "', No_pegawai='"+mpb.getNo_pegwai()+"'")){
             boolean tmp=true;
             for(MD_Full_po_bahan_dasar mfp:mpb.getListfullDB()){
-                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set No_po='"+mpb.getNo_po()+
-                        "', id_barang='"+mfp.getId_barang()+"', banyak='"+mfp.getBanyak()+"', Rencana_kirim='"+mfp.getRencana_kirim()+"'");
+                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set No_po='"+
+                        mpb.getNo_po()+"', id_barang='"+mfp.getId_barang()+
+                        "', permintaan='"+mfp.getpermintaan()+"', unit='"+mfp.getUnit()+
+                        "', Rencana_Kirim='"+mfp.getRencana_kirim()+"'");
             }
-            if(!tmp){
+            if(tmp){
                 JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+                lD.reset();
             }else{
                 JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
             }
@@ -95,8 +103,9 @@ public class Model_view_po_bahan_dasar {
                 "', No_pegawai='"+mpb.getNo_pegwai()+"' where No_po= '"+mpb.getNo_po()+"'")){
             boolean tmp=true;
             for(MD_Full_po_bahan_dasar mfp:mpb.getListfullDB()){
-                tmp=tmp&&db.setDB("update into full_po_bahan_dasar set id_barang='"+mfp.getId_barang()+"', banyak='"+mfp.getBanyak()+
-                        "', Rencana_kirim='"+mfp.getRencana_kirim()+"' where No_po='"+mpb.getNo_po()+"'");
+                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set No_po='"+mpb.getNo_po()+
+                        "'id_barang='"+mfp.getId_barang()+"', permintaan='"+mfp.getpermintaan()+"', "
+                        + "unit='"+mfp.getUnit()+"', Rencana_kirim='"+mfp.getRencana_kirim()+"'");
             }
             if(!tmp){
                 JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");

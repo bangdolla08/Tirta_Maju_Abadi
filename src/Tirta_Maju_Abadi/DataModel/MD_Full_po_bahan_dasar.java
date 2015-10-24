@@ -3,31 +3,40 @@ package Tirta_Maju_Abadi.DataModel;
 import Tirta_Maju_Abadi.toll.loadAllData;
 
 public class MD_Full_po_bahan_dasar {
-    private String no_po,rencana_kirim;
-    private int id_barang,banyak;
+    private String no_po,rencana_kirim,unit;
+    private int id_barang,permintaan;
     private MD_Bahan_metah md_bahan_mentah;
     private loadAllData lD;
+    private MD_Produk mdp;
 
     public MD_Full_po_bahan_dasar() {
     }
     
-    public MD_Full_po_bahan_dasar(String no_po, MD_Produk mdp, int banyak, String rencana_kirim) {
+    public MD_Full_po_bahan_dasar(String no_po, MD_Produk mdp, int permintaan, String unit, String rencana_kirim) {
+        this.no_po = no_po;
+        this.rencana_kirim = rencana_kirim;
+        this.permintaan = permintaan;
+        this.id_barang=mdp.getId_produk();
+        this.unit=unit;
+        this.mdp=mdp;
+    }
+    
+    public MD_Full_po_bahan_dasar(String no_po, int id_barang, int permintaan, String unit, String rencana_kirim) {
         this.no_po = no_po;
         this.rencana_kirim = rencana_kirim;
         this.id_barang = id_barang;
-        this.banyak = banyak;
+        this.permintaan = permintaan;
+        this.unit=unit;
+    }
+
+    public MD_Produk getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(MD_Produk mdp) {
+        this.mdp = mdp;
     }
     
-    public MD_Full_po_bahan_dasar(String no_po, int id_barang, int banyak, String rencana_kirim) {
-        this.no_po = no_po;
-        this.rencana_kirim = rencana_kirim;
-        this.id_barang = id_barang;
-        this.banyak = banyak;
-    }
-    
-    public MD_Produk getModel_produk(){
-        return lD.getListMD_Produk().getMDByID(id_barang);
-    }
 
     public String getNo_po() {
         return no_po;
@@ -53,11 +62,19 @@ public class MD_Full_po_bahan_dasar {
         this.id_barang = id_barang;
     }
 
-    public int getBanyak() {
-        return banyak;
+    public int getpermintaan() {
+        return permintaan;
     }
 
-    public void setBanyak(int banyak) {
-        this.banyak = banyak;
+    public void setPermintaan(int permintaan) {
+        this.permintaan = permintaan;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

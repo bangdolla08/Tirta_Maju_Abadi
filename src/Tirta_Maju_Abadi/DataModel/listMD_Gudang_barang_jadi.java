@@ -28,7 +28,7 @@ public class listMD_Gudang_barang_jadi {
                         rs.getInt("Banyak"), 
                         rs.getString("Koordinator"), 
                         rs.getString("Operator"), 
-                        rs.getString("Shift")));
+                        rs.getInt("Grup")));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -45,7 +45,7 @@ public class listMD_Gudang_barang_jadi {
                         rs.getInt("Banyak"), 
                         rs.getString("Koordinator"), 
                         rs.getString("Operator"), 
-                        rs.getString("Shift")));
+                        rs.getInt("Grup")));
             }        
         } catch (Exception e) {
             System.out.print(e);

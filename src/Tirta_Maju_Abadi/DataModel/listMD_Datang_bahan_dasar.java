@@ -5,6 +5,7 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,35 +21,30 @@ public class listMD_Datang_bahan_dasar {
     private ResultSet rs;
     private List<MD_Datang_bahan_dasar> listDB=new ArrayList<MD_Datang_bahan_dasar>();
     
-    public listMD_Datang_bahan_dasar(ResultSet rs,database db){
+    public listMD_Datang_bahan_dasar(ResultSet rs){
         this.db=db;
         listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Datang_bahan_dasar(rs.getInt("Banyak"), 
-                        rs.getInt("Id_supplier"), 
-                        rs.getInt("No_masuk"),
-                        rs.getInt("id_bahan"),
-                        rs.getString("No_po"), 
-                        rs.getString("Surat_jalan")));
+                listDB.add(new MD_Datang_bahan_dasar(rs.getString("No_po"), 
+                        rs.getString("Surat_jalan"), 
+                        rs.getInt("Id_supplier")));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
-    
+   private loadAllData lad;
     public listMD_Datang_bahan_dasar(database db){
         this.db=db;
+        this.lad=lad;
         listDB.clear();
         try {
             rs=db.getRs("select * from datang_bahan_dasar");
             while(rs.next()){
-                listDB.add(new MD_Datang_bahan_dasar(rs.getInt("Banyak"), 
-                        rs.getInt("Id_supplier"), 
-                        rs.getInt("No_masuk"),
-                        rs.getInt("id_bahan"),
-                        rs.getString("No_po"), 
-                        rs.getString("Surat_jalan")));
+                listDB.add(new MD_Datang_bahan_dasar(rs.getString("No_po"),
+                        rs.getString("Surat_jalan"),
+                        rs.getInt("Id_supplier")));
             }
         } catch (Exception e) {
             System.out.print(e);

@@ -5,6 +5,10 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author NEEZAR

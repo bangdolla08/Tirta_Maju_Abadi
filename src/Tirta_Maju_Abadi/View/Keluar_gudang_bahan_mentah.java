@@ -6,7 +6,11 @@
 package Tirta_Maju_Abadi.View;
 
 import Tirta_Maju_Abadi.DataModel.MD_Keluar_gudang_bahan_mentah;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.MD_Supplier;
 import Tirta_Maju_Abadi.View.evetView.Model_view_keluar_gudang_bahan_mentah;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 
 /**
  *
@@ -14,13 +18,49 @@ import Tirta_Maju_Abadi.View.evetView.Model_view_keluar_gudang_bahan_mentah;
  */
 public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
     private Model_view_keluar_gudang_bahan_mentah mvk;
-    private MD_Keluar_gudang_bahan_mentah mkg;
-    
+    private MD_Keluar_gudang_bahan_mentah mkg=new MD_Keluar_gudang_bahan_mentah();
+    private loadAllData lad;
+    private database db;
     /**
      * Creates new form Keluar_gudang_bahan_mentah
      */
-    public Keluar_gudang_bahan_mentah() {
+    public Keluar_gudang_bahan_mentah(database db, loadAllData lad) {
         initComponents();
+        this.db=db;
+        this.lad=lad;
+        mvk=new Model_view_keluar_gudang_bahan_mentah(mkg, db, lad);
+        setNamaProduk();
+        setNamSupplier();
+        reset();
+    }
+    
+    private void setNamSupplier(){
+        for(MD_Supplier ms:lad.getListMD_Suplier().getList()){
+            c_supplier.addItem(ms);
+        }
+    }
+    private void setNamaProduk(){
+        for(MD_Produk mp:lad.getListMD_Produk().getAll()){
+            c_nama_barang.addItem(mp);
+        }
+    }
+    
+    private void reset(){
+        f_banyak.reset();
+        c_supplier.setSelectedIndex(0);
+        c_nama_barang.setSelectedIndex(0);
+    }
+    
+    private void setMDKeluar_gudang(){
+        mkg.setId_supplier(c_supplier.getSelectedIndex());
+        mkg.setId_bahan(c_nama_barang.getSelectedIndex());
+        mkg.setBanyak(f_banyak.getInteger());
+    }
+    
+    private boolean cekKOsong(){
+        return c_supplier.Kosongkah()
+                &&c_nama_barang.Kosongkah()
+                &&f_banyak.Kosongkah();
     }
 
     /**
@@ -34,19 +74,19 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        jLabel2 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        c_supplier = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        jl_banyak = new javax.swing.JLabel();
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_banyak);
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        modelChuser2 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        c_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jButton2 = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 4), "Keluar Gudang Bahan Mentah", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jLabel1.setText("Nama Supplier");
 
-        jLabel2.setText("Banyak");
+        jl_banyak.setText("Banyak");
 
         jLabel3.setText("Nama Barang");
 
@@ -60,6 +100,11 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton2.setText("Reset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,16 +117,16 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2)
+                    .addComponent(jl_banyak)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(modelChuser1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(modelTextFilt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelChuser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(c_supplier, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(f_banyak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(c_nama_barang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,15 +135,15 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_supplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(modelChuser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_banyak)
+                    .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -122,19 +167,28 @@ public class Keluar_gudang_bahan_mentah extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        mvk.Insert(mkg);
+        if(cekKOsong()){
+            setMDKeluar_gudang();
+            mvk.Insert();
+            reset();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_nama_barang;
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_supplier;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
+    private javax.swing.JLabel jl_banyak;
     // End of variables declaration//GEN-END:variables
 }

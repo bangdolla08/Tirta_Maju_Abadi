@@ -32,25 +32,27 @@ public class Model_view_datang_barang_dasar {
     private loadAllData lD;
     private database db;
     private MD_Datang_bahan_dasar mdbd;
+    private MD_Full_datang_Bahan_dasar mfd;
     
     public Model_view_datang_barang_dasar(TableModel tm,database db, loadAllData lD, MD_Datang_bahan_dasar mdbd){
         this.db=db;
         this.lD=lD;
         this.mdbd=mdbd;
-        this.dlm=(DefaultListModel) dlm;
         this.dtm=(DefaultTableModel) tm;
         dtm.setRowCount(0);
-        
+        reset();
     }
     
     public void setTabel(MD_Full_datang_Bahan_dasar mdfd){
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
-        vct.add(mdfd.getMD_Produk().getNama_produk());
+        vct.add(mdfd.getMDP());
         vct.add(mdfd.getBanyak());
         vct.add(mdfd.getFisik());
         dtm.addRow(vct);
+        mdbd.addTOList(mdfd);
     }
+    
     
     List<list2Values> listSp=new ArrayList<>();
     public void listSup(ModelChuser mc){
@@ -69,7 +71,7 @@ public class Model_view_datang_barang_dasar {
     }
     
     public int getNextID(){
-        return lD.getListMD_Datang_bahan_dasar().getAll().get(lD.getListMD_Datang_bahan_dasar().getAll().size()-1).getId_bahan()+1;
+        return lD.getListMD_Datang_bahan_dasar().getAll().get(lD.getListMD_Datang_bahan_dasar().getAll().size()-1).getNo_masuk()+1;
     }
     
     
@@ -81,52 +83,31 @@ public class Model_view_datang_barang_dasar {
         return dlm;
     }
     
-//    public void reset(){
-//        for(MD_Datang_bahan_dasar tmp:lD.getListMD_Datang_bahan_dasar().getAll()){
-//            dlm.addElement(tmp);
-//        }
-//        dtm.setRowCount(0);
-//    }
+    public void reset(){
+        dtm.setRowCount(0);
+    }
     
-
     
     public void Insert(){
-        if(db.setDB("insert into datang_bahan_dasar set No_masuk='"+mdbd.getNo_masuk()+
-                "', No_po='"+mdbd.getNo_po()+"', id_bahan='"+mdbd.getId_bahan()+"', "
-                + "Banyak='"+mdbd.getBanyak()+"', "
-                + "Surat_jalan='"+mdbd.getSurat_jalan()+"'")){
+        if(db.setDB("insert into datang_bahan_dasar set No_po='"+mdbd.getNo_po()+"', "
+                + "Surat_jalan='"+mdbd.getSurat_jalan()+"', Id_supplier='"+mdbd.getId_supplier()+"'")){
             boolean tmp=true;
             for(MD_Full_datang_Bahan_dasar mfp:mdbd.getListDatang_bahan()){
                 tmp=tmp&&db.setDB("insert into full_po_bahan_dasar_datang set "
-                        + "No_masuk='"+mdbd.getNo_masuk()+"', "
-                        + "Id_barang_dasar_datang='"+mdbd.getId_bahan()+"',"
-                        + "Banyak='"+mdbd.getBanyak()+"',"
-                        + "Fisik='"+mfp.getFisik()+"'");
+                        + "Id_barang_dasar_datang='"+mfp.getId_barang_dasar_datang()+"' , "
+                        + "Banyak='"+mfp.getBanyak()+"' , "
+                        + "Fisik='"+mfp.getFisik()+" ' ");
+                //System.out.println("Full");
             }
-            if(!tmp){
-                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            if(tmp){
+                JOptionPane.showMessageDialog(null, "Data Berhasil diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
+                lD.reset();
+             }
+            //System.out.println("Datang Barang Dasar");
             }else{
-                JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
+                JOptionPane.showMessageDialog(null, "Data Gagal diinputkan","Informasi",JOptionPane.INFORMATION_MESSAGE);
             }
+            //lD.reset();
         }
-    }
-    
-    public void Update(){
-        if(db.setDB("update into datang_bahan_dasar set No_po='"+mdbd.getNo_po()+"', id_bahan='"+mdbd.getId_bahan()+"', Banyak='"+mdbd.getBanyak()+
-                "', Surat_jalan='"+mdbd.getSurat_jalan()+"' where "
-                + "No_masuk='"+mdbd.getNo_masuk()+"'")){
-            boolean tmp=true;
-            for(MD_Full_datang_Bahan_dasar mfp:mdbd.getListDatang_bahan()){
-                tmp=tmp&&db.setDB("update into full_po_bahan_dasar_datang set "
-                        + "Id_barang_dasar_datang='"+mdbd.getId_bahan()+"', "
-                        + "Banyak='"+mdbd.getBanyak()+"',"
-                        + "Fisik='"+mfp.getFisik()+"' where No_masuk='"+mdbd.getNo_masuk()+"'");
-            }
-            if(!tmp){
-                JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
-            }else{
-                JOptionPane.showMessageDialog(null, "Data Gagal Diubah");
-            }
-        }
-    }
+                    
 }

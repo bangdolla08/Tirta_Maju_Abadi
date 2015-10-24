@@ -23,6 +23,12 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Pelanggan plg;
     private database db=new database();
     private Produk pr;
+    private Bahan_dasar_datang bdd;
+    private Po_bahan_dasar pbd;
+    private Gudang_barang_jadi gbj;
+    private Keluar_gudang_bahan_mentah kgb;
+//    private Bahan_mentah b_mentah;
+//    private Pegawai pegawai;
     /**
      * Creates new form Form_utama_TMA
      */
@@ -33,6 +39,12 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         lad=new loadAllData();
         plg=new Pelanggan(db, lad);
         pr=new Produk(db, lad);
+        bdd=new Bahan_dasar_datang(db, lad);
+        pbd=new Po_bahan_dasar(db, lad);
+        gbj=new Gudang_barang_jadi(db, lad);
+        kgb=new Keluar_gudang_bahan_mentah(db, lad);
+ //       b_mentah=new Bahan_mentah(db, lad);
+//        pegawai=new Pegawai(db, lad);
         //pd=new Penjualan_depo(lad);
         //mo=new Mobil();
         
@@ -40,6 +52,12 @@ public class Form_utama_TMA extends javax.swing.JFrame {
 //        centerForm(mo);
         centerForm(plg);
         centerForm(pr);
+        centerForm(bdd);
+        centerForm(pbd);
+        centerForm(gbj);
+        centerForm(kgb);
+//        centerForm(b_mentah);
+//        centerForm(pegawai);
     }
     
      public void centerForm(JInternalFrame jin){
@@ -85,8 +103,12 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -152,11 +174,45 @@ public class Form_utama_TMA extends javax.swing.JFrame {
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/PObarang.png"))); // NOI18N
         jMenuItem4.setText("PO Barang");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/PObahandasar.png"))); // NOI18N
         jMenuItem5.setText("PO Bahan Dasar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
+
+        jMenuItem12.setText("Setoran Produksi");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem12);
+
+        jMenuItem13.setText("Bahan Mentah");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem13);
+
+        jMenuItem15.setText("Keluar Gudang Bahan Mentah");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem15);
 
         jMenuBar1.add(jMenu3);
 
@@ -171,6 +227,14 @@ public class Form_utama_TMA extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem6);
+
+        jMenuItem14.setText("Supplier");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem14);
 
         jMenuBar1.add(jMenu1);
 
@@ -233,6 +297,36 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         ambil(pr);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        ambil(bdd);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        ambil(pbd);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        ambil(gbj);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+        //ambil(b_mentah);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        //ambil(pegawai);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        ambil(kgb);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +376,10 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

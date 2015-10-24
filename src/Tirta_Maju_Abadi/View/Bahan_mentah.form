@@ -66,7 +66,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="modelTextFilt4" pref="165" max="32767" attributes="0"/>
+                                  <Component id="f_stock" pref="165" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -76,9 +76,9 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="modelTextFilt2" max="32767" attributes="0"/>
-                                      <Component id="modelTextFilt3" max="32767" attributes="0"/>
-                                      <Component id="t_id_bahan" max="32767" attributes="0"/>
+                                      <Component id="f_nama_bahan" max="32767" attributes="0"/>
+                                      <Component id="f_unit" max="32767" attributes="0"/>
+                                      <Component id="f_id_bahan" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -90,7 +90,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane3" max="32767" attributes="0"/>
-                              <Component id="modelTextFilt5" max="32767" attributes="0"/>
+                              <Component id="f_limit" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -105,14 +105,14 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_limit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="t_id_bahan" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_id_bahan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -143,17 +143,17 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_nama_bahan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_unit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="modelTextFilt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="f_stock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -183,13 +183,13 @@
             <Property name="text" type="java.lang.String" value="Limit Buffer"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nama_bahan">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_unit">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt4">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_stock">
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt5">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_limit">
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
@@ -301,7 +301,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea2">
+            <Component class="javax.swing.JTextArea" name="f_spesifikasi">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -336,7 +336,7 @@
             <Property name="text" type="java.lang.String" value="Id Bahan"/>
           </Properties>
         </Component>
-        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="t_id_bahan">
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_id_bahan">
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>

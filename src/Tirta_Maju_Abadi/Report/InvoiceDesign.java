@@ -27,7 +27,7 @@ import static net.sf.dynamicreports.report.builder.DynamicReports.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import net.sf.dynamicreports.examples.Templates;
+import Tirta_Maju_Abadi.Report.Templates;
 import net.sf.dynamicreports.jasper.builder.JasperReportBuilder;
 import net.sf.dynamicreports.report.base.expression.AbstractSimpleExpression;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
@@ -106,11 +106,13 @@ public class InvoiceDesign {
 				totalSum, sbt.sum(priceColumn), sbt.sum(vatColumn))
 			//band components
 			.title(
-				Templates.createTitleComponent("Invoice No.: " + data.getInvoice().getId()),
+				Templates.createTitleComponent("Surabaya, " + data.getInvoice().getId()+"\nKepada YTH: "+
+                                        "\nPaidi"+"\nAlamat"+"\nTelp."),
 				cmp.horizontalList().setStyle(stl.style(1)).setGap(1).add(
 					//cmp.hListCell(createCustomerComponent("Bill To", data.getInvoice().getBillTo())).heightFixedOnTop(),
-					cmp.hListCell(createCustomerComponent("", data.getInvoice().getShipTo())).heightFixedOnMiddle()),
-				cmp.verticalGap(10))
+                                        //cmp.hListCell(createCustomerComponent("Alamat", data.getInvoice().getShipTo())).heightFixedOnMiddle()),
+					//cmp.hListCell(createCustomerComponent("", data.getInvoice().getShipTo())).heightFixedOnMiddle()),
+				cmp.verticalGap(10)))
 			.pageFooter(
 				Templates.footerComponent)
 			.summary(

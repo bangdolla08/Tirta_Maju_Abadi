@@ -65,7 +65,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_no_bo" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -93,7 +93,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_no_bo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="f_no_bo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -146,15 +146,15 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel5" pref="116" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jl_estimasi_harga" pref="116" max="32767" attributes="0"/>
+                                  <Component id="jl_pembayaran" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jl_banyak" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="modelTextFilt1" max="32767" attributes="0"/>
-                                  <Component id="modelTextFilt2" pref="187" max="32767" attributes="0"/>
-                                  <Component id="modelTextFilt3" max="32767" attributes="0"/>
+                                  <Component id="f_pembayaran" max="32767" attributes="0"/>
+                                  <Component id="f_estimasi_harga" pref="187" max="32767" attributes="0"/>
+                                  <Component id="f_banyak" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="jButton2" max="32767" attributes="0"/>
@@ -169,18 +169,18 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_pembayaran" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="f_pembayaran" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_estimasi_harga" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_estimasi_harga" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="modelTextFilt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_banyak" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="f_banyak" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -239,26 +239,35 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="jl_pembayaran">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pembayaran"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt1">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_pembayaran">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_pembayaran)"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="jl_estimasi_harga">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Estimasi Harga"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt2">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_estimasi_harga">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_estimasi_harga)"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="jl_banyak">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Banyak"/>
               </Properties>
             </Component>
-            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="modelTextFilt3">
+            <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_banyak">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_banyak)"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
@@ -270,7 +279,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jl_no_bo">
           <Properties>
             <Property name="text" type="java.lang.String" value="No BO"/>
           </Properties>
@@ -299,6 +308,9 @@
           </Events>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_no_bo">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_bo)"/>
+          </AuxValues>
         </Component>
         <Component class="Tirta_Maju_Abadi.View.ModelSwing.ModelChuser" name="modelChuser1">
         </Component>

@@ -17,7 +17,7 @@ public class MD_Pesan_barang {
         this.No_pemesanan=No_pemesanan;
         this.Id_supplier=id_supplier;
         this.db=db;
-        MS=new listMD_Suplier(db).getSuplier(Id_supplier);
+        //MS=new listMD_Suplier(db).getSuplier(Id_supplier);
     }
     public MD_Pesan_barang(){
         this.No_po=null;

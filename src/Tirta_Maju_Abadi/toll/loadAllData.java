@@ -7,7 +7,7 @@ public class loadAllData {
     private MD_Pegawai mp;
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Harga_pelanggan listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
-    private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db);
+    private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
     private listMD_Full_penjualan listMD_Full_penjualan1=new listMD_Full_penjualan(db, this);
@@ -28,12 +28,13 @@ public class loadAllData {
     private listMD_Pesan_barang listMD_Pesan_barang1=new listMD_Pesan_barang(db);
     private listMD_Po_bahan_dasar listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
     //private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
-    private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db);
+    private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db,this);
+    private listMD_full_bahan_dasar_datang listMD_full_bahan_dasar_datang1=new listMD_full_bahan_dasar_datang(db, this);
     private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
     private listMD_Bo_Mobil listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
-
+    
     public void reset(){
-        listMD_Bahan_mentah1=new listMD_Bahan_mentah(db);
+        listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
         listMD_Ban1=new listMD_Ban(db);
         listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
         listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
@@ -55,10 +56,19 @@ public class loadAllData {
         listMD_Pesan_barang1=new listMD_Pesan_barang(db);
         listMD_Po_bahan_dasar1=new listMD_Po_bahan_dasar(db);
         listMD_Produk1=new listMD_Produk(db, this);
-        listMD_Suplier1=new listMD_Suplier(db);
+        listMD_Suplier1=new listMD_Suplier(db,this);
+        listMD_full_bahan_dasar_datang1=new listMD_full_bahan_dasar_datang(db, this);
         listMD_bo_barang=new listMD_Bo_barang(db, this);
         listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
         
+    }
+
+    public listMD_full_bahan_dasar_datang getListMD_full_bahan_dasar_datang1() {
+        return listMD_full_bahan_dasar_datang1;
+    }
+
+    public void setListMD_full_bahan_dasar_datang1(listMD_full_bahan_dasar_datang listMD_full_bahan_dasar_datang1) {
+        this.listMD_full_bahan_dasar_datang1 = listMD_full_bahan_dasar_datang1;
     }
     
     

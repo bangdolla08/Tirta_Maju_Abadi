@@ -1,6 +1,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +9,10 @@ import java.util.List;
 public class listMD_Suplier {
     private database db;
     private ResultSet rs;
+    private loadAllData lD;
     private List<MD_Supplier> listDB=new ArrayList<MD_Supplier>();
 
-    public listMD_Suplier(database db) {
+    public listMD_Suplier(database db, loadAllData lD) {
         this.db=db;
         try {
             rs=db.getRs("select * from supplier");
@@ -25,7 +27,7 @@ public class listMD_Suplier {
                                 rs.getString("No_telepon2"), 
                                 rs.getString("Email"), 
                                 rs.getString("No_rekening1"), 
-                                rs.getString("No_rekening2"))
+                                rs.getString("No_rekening2"), lD)
                 );
             }
         } catch (Exception e) {
@@ -47,7 +49,7 @@ public class listMD_Suplier {
                                 rs.getString("No_telepon2"), 
                                 rs.getString("Email"), 
                                 rs.getString("No_rekening1"), 
-                                rs.getString("No_rekening2"))
+                                rs.getString("No_rekening2"), lD)
                 );
             }
         } catch (Exception e) {

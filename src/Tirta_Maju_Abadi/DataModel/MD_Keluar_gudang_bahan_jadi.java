@@ -5,6 +5,10 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author NEEZAR
@@ -12,6 +16,7 @@ package Tirta_Maju_Abadi.DataModel;
 public class MD_Keluar_gudang_bahan_jadi {
     private String No_nota, No_surat_jalan,Nopol;
     private int Banyak,Id_produk;
+    
     
     public MD_Keluar_gudang_bahan_jadi(String No_nota, String No_surat_jalan,int Banyak,
             String Nopol,int Id_produk){
