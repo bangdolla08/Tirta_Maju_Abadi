@@ -21,7 +21,7 @@ public class MD_Supplier {
             Email,
             No_rekening1,
             No_rekening2;
-    
+    private loadAllData lad;
     public MD_Supplier(int Id_supplier,
             boolean Ppn,
             String Nama,
@@ -30,7 +30,9 @@ public class MD_Supplier {
             String No_telepon2,
             String Email,
             String No_rekening1,
-            String No_rekening2){
+            String No_rekening2,
+            loadAllData lad){
+        this.lad=lad;
         this.Id_supplier=Id_supplier;
         this.Nama=Nama;
         this.Alamat=Alamat;

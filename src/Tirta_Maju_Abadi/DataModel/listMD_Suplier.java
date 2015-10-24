@@ -27,7 +27,7 @@ public class listMD_Suplier {
                                 rs.getString("No_telepon2"), 
                                 rs.getString("Email"), 
                                 rs.getString("No_rekening1"), 
-                                rs.getString("No_rekening2"), lD)
+                                rs.getString("No_rekening2"),lD)
                 );
             }
         } catch (Exception e) {
