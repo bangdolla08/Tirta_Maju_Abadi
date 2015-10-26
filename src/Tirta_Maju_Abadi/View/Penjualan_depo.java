@@ -18,67 +18,153 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import Tirta_Maju_Abadi.View.evetView.view_penjualan_depo;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.View.Form_utama_TMA;
+import com.toedter.calendar.JDateChooser;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 /**
  *
  * @author NEEZAR
  */
 public class Penjualan_depo extends javax.swing.JInternalFrame {
     private MD_Penjualan_po mpel=new MD_Penjualan_po();
+    private MD_Full_penjualan mp;
     private View_penjualan_po vpp;
     private database db;
     private listMD_Penjualan_po lppo;
     private Date date=new Date();
-    private loadAllData ld;
     private loadAllData lad;
+    private MD_Pelanggan pel=new MD_Pelanggan();
+    private MD_Produk pro;
+    private view_penjualan_depo v_depo;
     /**
      * Creates new form Penjualan_depo
      */
-    public Penjualan_depo() {
+    public Penjualan_depo(database db,loadAllData lad) {
         initComponents();
+        this.mp=mp;
+        this.v_depo=v_depo;
+        int defl=0;
+        f_total.setText(0);
+        this.db=db;
+        this.lad=lad;
+        pel.list(c_pembayaran);
+        v_depo=new view_penjualan_depo(tbl_penjualan_depo.getModel(), mp, db,lad,pel,mpel );
+        reset();
+        tbl_penjualan_depo.setModel(v_depo.getdtm());
+      }
+    
+ 
+    public void setlist(){
+        for(MD_Produk mp:lad.getListMD_Produk().getAll()){
+           c_nm_barang.addItem(mp);
+            //mc.addItem(new list2Values(mp.getNama_produk(), mp.getId_produk()));
+        }
+       // mc.setModel(list);
     }
     
-    public void reset(){
-        f_no_nota.setText(mpel.getNo_nota());
-        f_nm_pelanggan.setText("");
+   private void reset(){
+        ngesetTgl();
+        v_depo.reset_nota();
+        f_no_nota.setText(v_depo.getReset_nota());
+        f_nm_pelanggan.reset();
         tex_area_alamat.setText("");
-        c_pembayaran.setSelectedItem("--Pilih--");
-        c_nm_barang.setSelectedItem("--Pilih--");
-        f_banyak.setText("");
-        f_total.setText("");
-        f_pembayaran.setText("");
-        f_kembali.setText("");
+        c_pembayaran.reset();
+        f_banyak.reset();
+        f_pembayaran.reset();
+        f_kembali.reset();
+        pel.setTipe_pembayaran(c_pembayaran.getSelectedIndex());
+        setlist();
     }
-    public Penjualan_depo(loadAllData lad) {
-        this.lad=lad;
-        initComponents();        
-        vpp=new View_penjualan_po(tbl_penjualan_depo.getModel(), lppo, db, f_total);
-        tbl_penjualan_depo.setModel(vpp.getdtm());
-        vpp.list(c_nm_barang);
-    }
+   private void setpeln(){
+       f_nm_pelanggan.reset();
+       tex_area_alamat.setText("");
+   }
+   
+   private void panggil_pelanggan(){
+        Pencarian_pelanggan pen=new Pencarian_pelanggan(this);
+        pen.setVisible(true);
+        pen.requestFocus(true);
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - pen.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - pen.getHeight()) / 2);
+        pen.setLocation(x, y);
+        getParent().add(pen);
+        pen.moveToFront();
+   }
     
      public void list(modelTextFilt mtf){
         List<list2Values> list=new ArrayList<>();
-        for(MD_Pelanggan mp:ld.getListMD_Pelanggan().getAll()){
+        for(MD_Pelanggan mp:lad.getListMD_Pelanggan().getAll()){
             list.add(new list2Values(mp.getNama(), mp.getId_Pelanggan()));
         }
         mtf.setText(list);
     }
+    
+    public void tttt(MD_Pelanggan mp){
+        pel=mp;
+        //System.out.println(lad.getListMD_Harga_pelanggan().getByIDAndProduk(mp.getId_Pelanggan(),3).getHarga());
+        mpel.setId_pelanggan(pel.getId_Pelanggan());
+        mpel.setPel(pel);
+        f_nm_pelanggan.setText(mp.getNama());
+        tex_area_alamat.setText(mp.getAlamat());
+    }
+    
+    public void ngesetTgl(){
+        Date date = new Date();
+//        Calendar calendar = Calendar.getInstance();
+//        int subtractYearValue = 10;
+//        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+//        int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+//        int currentDate= Calendar.getInstance().get(Calendar.DATE);
+//        calendar.set(currentYear - subtractYearValue , currentMonth , currentDate);
+//        date.setTime(calendar.getTimeInMillis());
+        d_penjualan_depo.setDate(date);
+    }
+    
+    public MD_Full_penjualan setPenjualan_depo(){
+        String no_nota=f_no_nota.getText();
+        int bnyk=f_banyak.getInteger();
+        MD_Produk tmpMP=(MD_Produk)c_nm_barang.getSelectedItem();
+        return new MD_Full_penjualan(tmpMP, bnyk, no_nota, lad);
+      }
+    
     private void setMpel(){
         mpel.setNo_nota(f_no_nota.getText());
-        int nm=Integer.valueOf(f_nm_pelanggan.getText());
-        mpel.setId_pelanggan(nm);
+        mpel.setNo_po(f_no_nota.getText());
+        mpel.setId_pelanggan(pel.getId_Pelanggan());
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+//        String tgl=sdf.format(d_penjualan_depo.getDate());
+        mpel.setTanggalpesan(convertUtilDateToSqlDate(d_penjualan_depo.getDate()));
+        int kembali=f_pembayaran.getInteger()-f_total.getInteger();
+        f_kembali.setText(kembali);
     }
     
-    public void tampil_no_nota(){
-        
+    public static java.sql.Date convertUtilDateToSqlDate(java.util.Date date){
+    if(date != null) {
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        return sqlDate;
     }
+    return null;
+}
     
-     public void tambah(){
-        list2Values ls=(list2Values)c_nm_barang.getSelectedItem();
-        MD_Full_penjualan mdfbb=new MD_Full_penjualan(ls.getIsinya(), f_total.getInteger(), f_no_nota.toString(),lad);//dul ini yang no_nota kalau di 
-        vpp.set_TableBawah(mdfbb);                                                                                    //penjualan PO itu no_po disini                  
-        mpel.listMD_Full_penjualan(mdfbb);                                                                            //tak kasih no nota soalnya didesignnya gak ada no po              
-    }                                                                                                                 //trus yang nm_pelanggan itu kalu didesign itu textfilt  
+    public void tambah(){
+        MD_Produk tmpMP=(MD_Produk)c_nm_barang.getSelectedItem();
+        int bannyak=f_banyak.getInteger();
+        int harga=lad.getListMD_Harga_pelanggan().getByIDAndProduk(mpel.getId_pelanggan(),tmpMP.getId_produk()).getHarga();
+        //System.out.println("--ASUUUU--"+lad.getListMD_Harga_pelanggan().getByIDAndProduk(mpel.getId_pelanggan(), tmpMP.getId_produk()).getHarga());
+        //int harga=mpel.getHarga(mp.getId_Produk()).getHarga();
+        MD_Full_penjualan mfp=new MD_Full_penjualan(tmpMP, bannyak,f_no_nota.getString(), lad);
+        v_depo.set_table(mfp,pel.getId_Pelanggan());   
+        f_total.setText(harga*bannyak);
+       }
+                                                                                                                   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,7 +196,7 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
         l_total = new javax.swing.JLabel();
         l_pembayaran = new javax.swing.JLabel();
         l_kembali = new javax.swing.JLabel();
-        f_total = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(l_total);
+        f_total = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         f_pembayaran = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(l_pembayaran);
         f_kembali = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(l_kembali);
         c_nm_barang = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
@@ -121,6 +207,8 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Tanggal");
 
+        d_penjualan_depo.setDateFormatString("dd-MM-yyyy");
+
         l_nota.setText("No Nota");
 
         l_nm_pelanggan.setText("Nama Pelanggan");
@@ -129,9 +217,23 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Pembayaran");
 
+        tex_area_alamat.setEditable(false);
         tex_area_alamat.setColumns(20);
         tex_area_alamat.setRows(5);
         jScrollPane1.setViewportView(tex_area_alamat);
+
+        f_no_nota.setEditable(false);
+
+        f_nm_pelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                f_nm_pelangganMouseClicked(evt);
+            }
+        });
+        f_nm_pelanggan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                f_nm_pelangganActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -249,17 +351,6 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(c_nm_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(l_bnyak)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +361,18 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(f_total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(f_pembayaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(f_kembali, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))))
+                            .addComponent(f_kembali, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(c_nm_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(l_bnyak)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(5, 5, 5))
         );
         jPanel2Layout.setVerticalGroup(
@@ -349,14 +451,27 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_f_kembaliActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-       tambah();
+        // TODO add your handling code here: 
+      tambah();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        vpp.simpanpenjulanpo(mpel);
+        setPenjualan_depo();
+        setMpel();
+        v_depo.simpanpenjulanpo();
+        reset();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void f_nm_pelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_nm_pelangganActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_f_nm_pelangganActionPerformed
+
+    private void f_nm_pelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_f_nm_pelangganMouseClicked
+        // TODO add your handling code here:
+        panggil_pelanggan();
+    }//GEN-LAST:event_f_nm_pelangganMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -365,7 +480,7 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser d_penjualan_depo;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_kembali;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nm_pelanggan;
+    public static Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nm_pelanggan;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_nota;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_pembayaran;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_total;
@@ -387,6 +502,6 @@ public class Penjualan_depo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel l_pembayaran;
     private javax.swing.JLabel l_total;
     private javax.swing.JTable tbl_penjualan_depo;
-    private javax.swing.JTextArea tex_area_alamat;
+    public static javax.swing.JTextArea tex_area_alamat;
     // End of variables declaration//GEN-END:variables
 }

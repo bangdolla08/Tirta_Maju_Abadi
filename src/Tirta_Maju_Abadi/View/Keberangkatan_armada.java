@@ -44,7 +44,7 @@ public class Keberangkatan_armada extends javax.swing.JInternalFrame {
     public Keberangkatan_armada(loadAllData lad) {
         this.lad=lad;
         initComponents();        
-        vpp=new View_penjualan_po(t_keberangkatan_armada.getModel(), lppo, db, f_banyak);
+       // vpp=new View_penjualan_po(t_keberangkatan_armada.getModel(), lppo, db, f_banyak);
         t_keberangkatan_armada.setModel(vpp.getdtm());
         ka.list(f_nama_barang);
     }

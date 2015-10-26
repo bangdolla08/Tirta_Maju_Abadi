@@ -40,10 +40,11 @@ public class listMD_Harga_pelanggan {
         listDB.clear();
         try {
             rs=db.getRs("select * from harga_pelanggan");
-            while(rs.next()){
+            while(rs.next()){                
                 listDB.add(new MD_Harga_pelanggan(rs.getInt("Id_pelanggan"), 
                         lad.getListMD_Produk().getMDByID(rs.getInt("Id_produk")), 
                         rs.getInt("Harga")));
+                System.out.println(rs.getInt("Id_produk")+" "+rs.getInt("Id_produk"));
             }        
         } catch (Exception e) {
             System.out.print(e);

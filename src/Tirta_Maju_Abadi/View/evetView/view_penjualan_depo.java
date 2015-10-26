@@ -23,89 +23,114 @@ import java.util.List;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.*;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author NEEZAR
  */
 public class view_penjualan_depo {
+    private MD_Full_penjualan m_depo;
     private DefaultTableModel dtm;
-    private MD_Pelanggan pel;
+    private MD_Pelanggan pel=new MD_Pelanggan();
     private database db;
     private loadAllData ld;
     private listMD_Penjualan_po lppo;
     private MD_Penjualan_po mpo;
-    private MD_Galon_keluar mgk;
+    private MD_Galon_keluar mgk=new MD_Galon_keluar();
     private modelTextFilt total;
     private modelTextFilt pembayaran;
     private modelTextFilt kembalian;
     
-    public view_penjualan_depo(TableModel tm, listMD_Penjualan_po lppo, database db, modelTextFilt mtf){
+    public view_penjualan_depo(TableModel tm, MD_Full_penjualan m_depo, database db,loadAllData ld, MD_Pelanggan pel,MD_Penjualan_po mpo){
        this.dtm=(DefaultTableModel) tm;
-       this.lppo=lppo;
+       this.m_depo=m_depo;
        this.db=db;
+       this.pel=pel;
+       this.ld=ld;
+       this.mpo=mpo;
        dtm.setRowCount(0);
+      
     }
     
     public DefaultTableModel getdtm(){
         return dtm;
     }
     
-    public void set_table(MD_Full_penjualan mfp){
+    public void set_table(MD_Full_penjualan mfp,int id_pelanggan){
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
-        vct.add(mfp.getMD_produk().getNama_produk());
-        int banyak=mfp.getBanyak(),harga=mpo.getHarga(mfp.getId_Produk()).getHarga();
-        vct.add(banyak);
+        vct.add(mfp.getMp());
+        int banyak=mfp.getBanyak();
+        int harga=ld.getListMD_Harga_pelanggan().getByIDAndProduk(id_pelanggan, mfp.getId_Produk()).getHarga();
+        //System.out.println("Embuh Kok Gak Bisa akukhan galau"+harga+"asdasd"+mfp.getId_Produk()+"    "+pel.getId_Pelanggan());
         vct.add(harga);
+        vct.add(banyak);
         vct.add(banyak*harga);
-        total.setText(total.getInteger()+harga*banyak);
-        pembayaran.setText(pembayaran.getInteger());
-        kembalian.setText(pembayaran.getInteger()-total.getInteger());
+//        total.setText(total.getInteger()+harga*banyak);
+//        pembayaran.setText(pembayaran.getInteger());
+//        kembalian.setText(pembayaran.getInteger()-total.getInteger());
         mpo.listMD_Full_penjualan(mfp);
         dtm.addRow(vct);
     }
-    List<list2Values> list=new ArrayList<>();
-    public void list(ModelChuser mc){
-        //List<list2Values> list=new ArrayList<>();
-         for(MD_Produk mp:ld.getListMD_Produk().getAll()){
-            list.add(new list2Values(mp.getNama_produk(), mp.getId_produk()));
-        }
-        mc.setModel(list);
-    }
     
-    String bln;
+
+    
+    List<list2Values> list=new ArrayList<>();
+    
+   // String bln;
     ResultSet rs;
     public void reset_nota(){
+        Date date=new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int month = cal.get(Calendar.MONTH)+1;
+        int year=cal.get(Calendar.YEAR);
+        System.out.print(month);
         try{
-        rs=db.getRs("SELECT count(id_pelanggan) as a from penjualan_po group by DATE_FORMAT(NOW(), '%d/%m/%Y')");
+        rs=new database().getRs("select count(*) as a " +
+        "from penjualan_po " +
+        "where year(tanggalpesan) = '"+year+"' and month(tanggalpesan) = '"+month+"'");
         if(rs.next()){
-            String nota=String.valueOf(rs.getInt("a")+1)+"/"+mpo.getTanggalpesan()+"/"+pel.getTipe_pembayaran();
+            int myInt = 100;
+            DecimalFormat decimalFormat = new DecimalFormat("0000");
+            String nota=String.valueOf(decimalFormat.format(rs.getInt("a")+1))+"/"+month+"/"+year+" "+pel.getTipe_pembayaran();
             mpo.setNo_nota(nota);
-        }
-        
-        rs=db.getRs("SELECT DATE_FORMAT(NOW(), '%m/%Y') as d");
-        String hsl=String.valueOf("d");
-        if(hsl!=(mpo.getTanggalpesan())){
-           String nota=String.valueOf(1+"/"+mpo.getTanggalpesan()+"/"+pel.getTipe_pembayaran());
-           mpo.setNo_nota(nota);     
-                }
+              }
         } catch(Exception e){
-            
+            System.out.print(e);
         }
+     }
+    
+    public String getReset_nota(){
+        reset_nota();
+        return mpo.getNo_nota();
     }
     
-     public void simpanpenjulanpo(MD_Penjualan_po mp){
-         mpo=mp;
-        db.setDB("insert into penjualan_po set id_marketing='"+mpo.getId_marketing()+"',"
-        +"id_pelanggan='"+mpo.getId_pelanggan()+"',"
+     public void simpanpenjulanpo(){
+     try{
+       if(db.setDB("insert into penjualan_po set id_pelanggan='"+mpo.getId_pelanggan()+"',"
         +"no_nota='"+mpo.getNo_nota()+"',"
-        +"no_po='"+mpo.getNo_po()+"'");
-        
-        for(MD_Full_penjualan tmp:mpo.getListFull()) {
-            db.setDB("insert into full_penjualan set id_produk='"+tmp.getId_Produk()+"',"
+        +"No_po_penjulan='"+mpo.getNo_po()+"',"
+        +"tanggalpesan='"+mpo.getTanggalpesan()+"',"
+        +"id_marketing='"+mpo.getId_marketing()+"'")){
+        boolean tmp=true;
+        for(MD_Full_penjualan mdfp:mpo.getListFull()) {
+        tmp=tmp&&db.setDB("insert into full_penjualan set id_produk='"+mdfp.getId_Produk()+"',"
             +" no_nota='"+mpo.getNo_nota()+"',"
-            +" banyak='"+tmp.getBanyak()+"'");
+            +" banyak='"+mdfp.getBanyak()+"'");
         }
-    } 
+       if(!tmp){
+                JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
+            }else{
+                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            }
+       } 
+    }catch(Exception e){
+        System.out.println("kesalannya adalah "+e);
+    }
+     }
 }

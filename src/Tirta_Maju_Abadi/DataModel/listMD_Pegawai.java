@@ -13,6 +13,7 @@ public class listMD_Pegawai {
     private List<MD_Pegawai> listDB=new ArrayList<MD_Pegawai>();
     private List<MD_Pegawai> listDriver =new ArrayList<MD_Pegawai>();
     private List<MD_Pegawai> listHelper =new ArrayList<MD_Pegawai>();
+    private List<MD_Pegawai> listMarketing =new ArrayList<MD_Pegawai>();
     public listMD_Pegawai(database db){
         this.db=db;
         try {
@@ -26,7 +27,7 @@ public class listMD_Pegawai {
                             rs.getDate("tanggal_masuk"), 
                             rs.getString("nama"), 
                             rs.getString("alamat"), 
-                            rs.getString("no_telepon"), 
+                            rs.getString("no_telpon"), 
                             rs.getString("username"), 
                             rs.getString("password"),rs.getString("email")
                         );
@@ -35,10 +36,20 @@ public class listMD_Pegawai {
                     listDriver.add(plotPegw);
                 if(plotPegw.getJabatan()==11)
                     listHelper.add(plotPegw);
+                 if(plotPegw.getJabatan()==12)
+                    listMarketing.add(plotPegw);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public List<MD_Pegawai> getListMarketing() {
+        return listMarketing;
+    }
+
+    public void setListMarketing(List<MD_Pegawai> listMarketing) {
+        this.listMarketing = listMarketing;
     }
 
     public List<MD_Pegawai> getListDB() {
@@ -65,7 +76,7 @@ public class listMD_Pegawai {
                             rs.getDate("tanggal_masuk"), 
                             rs.getString("nama"), 
                             rs.getString("alamat"), 
-                            rs.getString("no_telepon"), 
+                            rs.getString("no_telpon"), 
                             rs.getString("username"), 
                             rs.getString("password"),rs.getString("email")
                         ));

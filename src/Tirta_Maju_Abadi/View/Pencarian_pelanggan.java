@@ -5,18 +5,67 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.View.evetView.Model_view_Pelanggan;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author NEEZAR
  * Tak tangani Dolla
  */
 public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
-
+    private database db;
+    private loadAllData lD;
+    private MD_Pelanggan mdp;
+    private DefaultTableModel dtm=new DefaultTableModel();
+    private Model_view_Pelanggan mvp;
+    private Penjualan_depo pd=null;
+    private PO_penjualan po=null;
+    private boolean tampil=true;
     /**
      * Creates new form Pencarian_pelanggan
      */
-    public Pencarian_pelanggan() {
+    public Pencarian_pelanggan(Penjualan_depo pd) {
+        tampil=true;
         initComponents();
+       // pd=pdd; Penjualan_depo pdd
+        this.pd=pd;
+        lD=new loadAllData();
+        dtm=(DefaultTableModel) t_pencarian_pelanggan.getModel();
+        t_pencarian_pelanggan.setModel(dtm);
+        settabel_pencarian_pelanggan();
+    }
+     
+    public Pencarian_pelanggan(PO_penjualan po) {
+        tampil=false;
+        initComponents();
+        this.po=po;
+       // pd=pdd; Penjualan_depo pdd
+        lD=new loadAllData();
+        dtm=(DefaultTableModel) t_pencarian_pelanggan.getModel();
+        t_pencarian_pelanggan.setModel(dtm);
+        settabel_pencarian_pelanggan();
+    }
+    
+    private void settabel_pencarian_pelanggan(){
+        int i=1;
+        dtm.setRowCount(0);
+      for(MD_Pelanggan mdPel:lD.getListMD_Pelanggan().getAll()){
+        Vector vct=new Vector();
+        vct.add(i++);
+        vct.add(mdPel);
+        vct.add(mdPel.getAlamat());
+        vct.add(mdPel.getNo_telepon());
+        dtm.addRow(vct);
+        //i++;
+       }
+    
     }
 
     /**
@@ -34,6 +83,7 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         t_pencarian_pelanggan = new javax.swing.JTable();
         c_seacrh_by = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        jButton1 = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Pencarian Pelanggan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
@@ -59,6 +109,14 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
             }
         });
         t_pencarian_pelanggan.getTableHeader().setReorderingAllowed(false);
+        t_pencarian_pelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                t_pencarian_pelangganMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                t_pencarian_pelangganMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(t_pencarian_pelanggan);
         if (t_pencarian_pelanggan.getColumnModel().getColumnCount() > 0) {
             t_pencarian_pelanggan.getColumnModel().getColumn(0).setResizable(false);
@@ -73,6 +131,9 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
 
         c_seacrh_by.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nama", "Hari", "Alamat", "No Telpon" }));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/document_search.png"))); // NOI18N
+        jButton1.setText("Search");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -80,13 +141,15 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(c_seacrh_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(f_search, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(f_search, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,9 +159,10 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(f_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(c_seacrh_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_seacrh_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -115,17 +179,38 @@ public class Pencarian_pelanggan extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void t_pencarian_pelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_t_pencarian_pelangganMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_t_pencarian_pelangganMouseClicked
+
+    private void t_pencarian_pelangganMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_t_pencarian_pelangganMousePressed
+        // TODO add your handling code here:
+        MD_Pelanggan msdp=(MD_Pelanggan)t_pencarian_pelanggan.getValueAt(t_pencarian_pelanggan.getSelectedRow(), 1);
+        //System.out.print(msdp);
+        if(tampil)
+        pd.tttt(msdp);
+        else
+            po.tttt(msdp);
+//        pd.f_nm_pelanggan.setText(this.mdp.getNama());
+  //      pd.tex_area_alamat.setText(this.mdp.getAlamat());
+      //  po.f_nm_pelanggan.setText(this.mdp.getNama());
+        setVisible(false);
+        rootPane.getGlassPane().setVisible(false);
+        
+    }//GEN-LAST:event_t_pencarian_pelangganMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_seacrh_by;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_search;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

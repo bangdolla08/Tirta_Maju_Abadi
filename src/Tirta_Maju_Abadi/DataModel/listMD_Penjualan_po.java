@@ -28,11 +28,11 @@ public class listMD_Penjualan_po {
         listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Penjualan_po(rs.getInt("Id_marketing"),
-                        rs.getInt("Id_pelanggan"), 
-                        rs.getString("No_nota"), 
-                        rs.getString("No_po_penjulan"),
-                        rs.getString("tanggalpesan"), db, lD));
+                listDB.add(new MD_Penjualan_po(rs.getInt("Id_pelanggan"),
+                        rs.getString("no_nota"), 
+                        rs.getString("No_po_penjulan"), 
+                        rs.getDate("tanggalpesan"),
+                        rs.getInt("id_marketing"), db, lD));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -46,11 +46,11 @@ public class listMD_Penjualan_po {
         try {
             rs=db.getRs("select * from penjualan_po");
             while(rs.next()){
-                listDB.add(new MD_Penjualan_po(rs.getInt("Id_marketing"), 
-                        rs.getInt("Id_pelanggan"),
-                        rs.getString("No_nota"), 
-                        rs.getString("No_po_penjulan"),
-                        rs.getString("tanggalpesan"),db, lD));            
+                listDB.add(new MD_Penjualan_po(rs.getInt("Id_pelanggan"),
+                        rs.getString("no_nota"), 
+                        rs.getString("No_po_penjulan"), 
+                        rs.getDate("tanggalpesan"),
+                        rs.getInt("id_marketing"), db, lD));         
             }
         } catch (Exception e) {
             System.out.print(e);

@@ -9,6 +9,7 @@ import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,23 +18,41 @@ import java.util.List;
  */
 public class MD_Penjualan_po {
     private int Id_pelanggan, Id_marketing;
-    private String No_nota, No_po,tanggalpesan;
+    private String No_nota, No_po;
+    Date tanggalpesan;
     private ResultSet rs;
     private database db;
     private loadAllData lD;
+    private MD_Pelanggan pel;
+     private MD_Harga_pelanggan mhp;
+
+    public MD_Harga_pelanggan getMhp() {
+        return mhp;
+    }
+
+    public void setMhp(MD_Harga_pelanggan mhp) {
+        this.mhp = mhp;
+    }
+
+    public MD_Pelanggan getPel() {
+        return pel;
+    }
+
+    public void setPel(MD_Pelanggan pel) {
+        this.pel = pel;
+    }
     //private MD_Harga_pelanggan mhp;
-    public MD_Penjualan_po(int Id_marketing, int Id_pelanggan, String No_nota, String No_po,String tanggalpesan,database db, loadAllData lD){
+    public MD_Penjualan_po(int Id_pelanggan,  String No_nota, String No_po,Date tanggalpesan,int Id_marketing,database db, loadAllData lD){
         this.lD=lD;
         this.Id_marketing=Id_marketing;
         this.Id_pelanggan=Id_pelanggan;
         this.No_nota=No_nota;
         this.No_po=No_po;
-        this.tanggalpesan=tanggalpesan;
+        this.tanggalpesan = tanggalpesan;
         this.db=db;
         listFull.clear();
         listMD_Full_penjualan();
-        
-    }
+       }
     private List<MD_Full_penjualan> listFull=new ArrayList<MD_Full_penjualan>();
     public void listMD_Full_penjualan(){
         try {
@@ -47,9 +66,8 @@ public class MD_Penjualan_po {
             System.out.print(e);
         }
     } 
-    public MD_Harga_pelanggan getHarga(int id_produk){
-        return lD.getListMD_Harga_pelanggan().getByIDAndProduk(Id_pelanggan, id_produk);
-    }
+    
+    
     public void listMD_Full_penjualan(MD_Full_penjualan tmp){
         listFull.clear();
         listFull.add(tmp);
@@ -71,11 +89,11 @@ public class MD_Penjualan_po {
         this.tanggalpesan=null;
     }
 
-    public String getTanggalpesan() {
+    public Date getTanggalpesan() {
         return tanggalpesan;
     }
 
-    public void setTanggalpesan(String tanggalpesan) {
+    public void setTanggalpesan(Date tanggalpesan) {
         this.tanggalpesan = tanggalpesan;
     }
 

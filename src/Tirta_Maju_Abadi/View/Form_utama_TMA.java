@@ -27,6 +27,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Po_bahan_dasar pbd;
     private Gudang_barang_jadi gbj;
     private Keluar_gudang_bahan_mentah kgb;
+    private PO_penjualan po;
 //    private Bahan_mentah b_mentah;
 //    private Pegawai pegawai;
     /**
@@ -43,6 +44,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         pbd=new Po_bahan_dasar(db, lad);
         gbj=new Gudang_barang_jadi(db, lad);
         kgb=new Keluar_gudang_bahan_mentah(db, lad);
+        po=new PO_penjualan(db, lad);
+        mo=new Mobil(db, lad);
+        pd=new Penjualan_depo(db, lad);
  //       b_mentah=new Bahan_mentah(db, lad);
 //        pegawai=new Pegawai(db, lad);
         //pd=new Penjualan_depo(lad);
@@ -56,6 +60,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         centerForm(pbd);
         centerForm(gbj);
         centerForm(kgb);
+        centerForm(po);
+        centerForm(mo);
+        centerForm(pd);
 //        centerForm(b_mentah);
 //        centerForm(pegawai);
     }
@@ -130,7 +137,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu4.setVerifyInputWhenFocusTarget(false);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/pesan.png"))); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/sold.png"))); // NOI18N
         jMenuItem1.setText("Penjualan Depo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,8 +146,13 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/POPenjualan.png"))); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/shopping_cart.png"))); // NOI18N
         jMenuItem2.setText("PO Penjualan");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenuItem11.setText("Produk Griss");
@@ -326,6 +338,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         // TODO add your handling code here:
         ambil(kgb);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        ambil(po);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

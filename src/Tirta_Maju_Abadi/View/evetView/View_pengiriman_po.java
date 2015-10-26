@@ -46,7 +46,7 @@ public class View_pengiriman_po {
     public void set_table(MD_Full_penjualan md_full){
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
-        vct.add(md_full.getMD_produk().getNama_produk());
+        vct.add(md_full.getMp());
         vct.add(md_full.getBanyak());
         mdpo.listMD_Full_penjualan(md_full);
         dtm.addRow(vct);

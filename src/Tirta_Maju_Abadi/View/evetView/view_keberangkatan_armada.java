@@ -47,7 +47,7 @@ public class view_keberangkatan_armada {
     public void set_TableBawah(MD_Full_penjualan md_full){
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
-        vct.add(md_full.getMD_produk().getNama_produk());
+        vct.add(md_full.getMp());
         int bnyk=md_full.getBanyak();
         vct.add(bnyk);
         mdpo.listMD_Full_penjualan(md_full);

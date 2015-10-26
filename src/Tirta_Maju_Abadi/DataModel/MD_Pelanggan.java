@@ -43,7 +43,7 @@ public class MD_Pelanggan {
     }
     @Override
     public String toString() {
-        return getId_Pelanggan()+" | "+getNama(); //To change body of generated methods, choose Tools | Templates.
+        return getNama(); //To change body of generated methods, choose Tools | Templates.
     }
     
     public MD_Pelanggan(int Id_pelanggan, String Nama,
