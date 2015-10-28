@@ -10,41 +10,52 @@ package Tirta_Maju_Abadi.DataModel;
  * @author NEEZAR
  */
 public class MD_Galon_cacat {
-    private int No_urut;
-    private String Treatment,Pecah;
+    private String No_surat_jalan;
+    private int banyak;
+    private boolean Treatment,Pecah;
     
-    public MD_Galon_cacat(int No_urut, String Treatment, String Pecah){
-        this.No_urut=No_urut;
+    public MD_Galon_cacat(String No_surat_jalan, boolean Treatment, boolean Pecah, int banyak){
+        this.No_surat_jalan=No_surat_jalan;
         this.Treatment=Treatment;
         this.Pecah=Pecah;
+        this.banyak=banyak;
     }
     public MD_Galon_cacat(){
-        this.No_urut=0;
-        this.Treatment=null;
-        this.Pecah=null;
+        this.No_surat_jalan=null;
+        this.Treatment=false;
+        this.Pecah=false;
+        this.banyak=0;
     }
 
-    public int getNo_urut() {
-        return No_urut;
+    public int getBanyak() {
+        return banyak;
     }
 
-    public String getTreatment() {
+    public void setBanyak(int banyak) {
+        this.banyak = banyak;
+    }
+
+    public String getNo_urut() {
+        return No_surat_jalan;
+    }
+
+    public boolean getTreatment() {
         return Treatment;
     }
 
-    public String getPecah() {
+    public boolean getPecah() {
         return Pecah;
     }
 
-    public void setNo_urut(int No_urut) {
-        this.No_urut = No_urut;
+    public void setNo_urut(String No_surat_jalan) {
+        this.No_surat_jalan = No_surat_jalan;
     }
 
-    public void setTreatment(String Treatment) {
+    public void setTreatment(boolean Treatment) {
         this.Treatment = Treatment;
     }
 
-    public void setPecah(String Pecah) {
+    public void setPecah(boolean Pecah) {
         this.Pecah = Pecah;
     }
     

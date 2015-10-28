@@ -24,9 +24,10 @@ public class listMD_Galon_cacat {
         listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Galon_cacat(rs.getInt("No_urut"), 
-                        rs.getString("Treatment"), 
-                        rs.getString("Pecah")));
+                listDB.add(new MD_Galon_cacat(rs.getString("No_surat_jalan"), 
+                        rs.getBoolean("Treatment"), 
+                        rs.getBoolean("Pecah"),
+                        rs.getInt("banyak")));
             }
         } catch (Exception e) {
             System.out.print(e);
@@ -39,16 +40,17 @@ public class listMD_Galon_cacat {
         try {
             rs=db.getRs("select * from galon_cacat");
             while(rs.next()){
-                listDB.add(new MD_Galon_cacat(rs.getInt("No_urut"), 
-                        rs.getString("Treatment"), 
-                        rs.getString("Pecah")));
+                listDB.add(new MD_Galon_cacat(rs.getString("No_surat_jalan"), 
+                        rs.getBoolean("Treatment"), 
+                        rs.getBoolean("Pecah"),
+                        rs.getInt("banyak")));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
     
-    public MD_Galon_cacat getMDByID(int No_urut){
+    public MD_Galon_cacat getMDByID(String No_urut){
         MD_Galon_cacat pilih=new MD_Galon_cacat();
         for(MD_Galon_cacat mdgc : listDB){
             if(mdgc.getNo_urut()==No_urut){

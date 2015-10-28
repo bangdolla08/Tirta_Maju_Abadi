@@ -5,19 +5,52 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import java.awt.event.KeyEvent;
+import Tirta_Maju_Abadi.View.evetView.Model_view_galon_cacat;
+import Tirta_Maju_Abadi.DataModel.MD_Galon_cacat;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import Tirta_Maju_Abadi.DataModel.listMD_Galon_cacat;
+import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import javax.swing.JOptionPane;
 /**
  *
  * @author NEEZAR
  */
 public class Galon_cacat extends javax.swing.JInternalFrame {
-
+   private database db;
+   private loadAllData ld;
+   private Model_view_galon_cacat v_gcacat;
+   private MD_Galon_cacat m_gcacat=new MD_Galon_cacat();
+   private listMD_Galon_cacat l_gcacat;
+   private MD_Penjualan_po m_po=new MD_Penjualan_po();
     /**
      * Creates new form Galon_cacat
      */
-    public Galon_cacat() {
+    public Galon_cacat(database db,loadAllData ld) {
         initComponents();
+        this.db=db;
+        this.ld=ld;
+        v_gcacat=new Model_view_galon_cacat(t_galon_cacat.getModel(), l_gcacat, db);
+        this.m_gcacat=m_gcacat;
+        
     }
-
+    
+    public void reset(){
+        f_sj.setText("");
+        f_bnyk.setText("");
+        ch_treat.setSelected(false);
+        ch_pecah.setSelected(false);
+    }
+    
+    public MD_Galon_cacat getToG_cacat(){
+        //MD_Galon_cacat mg_c=null;
+        int bnyk=f_bnyk.getInteger();
+        boolean tret=ch_treat.isSelected();
+        boolean pecah=ch_pecah.isSelected();
+        return new MD_Galon_cacat(f_sj.getString(), tret, pecah, bnyk);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,40 +62,60 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        modelTextFilt1 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_sj = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        f_bnyk = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        ch_treat = new javax.swing.JCheckBox();
+        ch_pecah = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        t_galon_cacat = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Galon Cacat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
+        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel1KeyPressed(evt);
+            }
+        });
 
         jLabel1.setText("No Surat Jalan");
+
+        f_sj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                f_sjKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Galon Cacat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         jLabel2.setText("Banyak");
 
-        modelTextFilt2.addActionListener(new java.awt.event.ActionListener() {
+        f_bnyk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modelTextFilt2ActionPerformed(evt);
+                f_bnykActionPerformed(evt);
             }
         });
 
-        jCheckBox1.setText("Treatment");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        ch_treat.setText("Treatment");
+        ch_treat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                ch_treatActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setText("Pecah");
+        ch_pecah.setText("Pecah");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
@@ -72,7 +125,7 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        t_galon_cacat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,14 +133,14 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "No Surat Jalan", "Banyak", "Treatment", "Boolean"
+                "No Surat Jalan", "Banyak", "Treatment", "Pecah"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,13 +151,13 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        t_galon_cacat.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(t_galon_cacat);
+        if (t_galon_cacat.getColumnModel().getColumnCount() > 0) {
+            t_galon_cacat.getColumnModel().getColumn(0).setResizable(false);
+            t_galon_cacat.getColumnModel().getColumn(1).setResizable(false);
+            t_galon_cacat.getColumnModel().getColumn(2).setResizable(false);
+            t_galon_cacat.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
@@ -129,11 +182,11 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(modelTextFilt2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(f_bnyk, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1)
+                        .addComponent(ch_treat)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox2)
+                        .addComponent(ch_pecah)
                         .addGap(8, 8, 8)
                         .addComponent(jButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -149,9 +202,9 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(modelTextFilt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
+                    .addComponent(f_bnyk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ch_treat)
+                    .addComponent(ch_pecah)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,8 +225,8 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(f_sj, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -183,7 +236,7 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(modelTextFilt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_sj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -209,36 +262,68 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void ch_treatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ch_treatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_ch_treatActionPerformed
 
-    private void modelTextFilt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelTextFilt2ActionPerformed
+    private void f_bnykActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_bnykActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_modelTextFilt2ActionPerformed
+    }//GEN-LAST:event_f_bnykActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        MD_Galon_cacat gc=getToG_cacat();
+       v_gcacat.insertMetode(gc);
+       reset();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        // TODO add your handling code here:
+          
+    }//GEN-LAST:event_jPanel1KeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_formKeyTyped
+
+    private void f_sjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_f_sjKeyPressed
+        // TODO add your handling code here:
+          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+              String sj=f_sj.getString();
+              m_po=ld.getListMD_Penjualan_po().getMDByNO_Surat(sj);
+              if(m_po.getNo_nota()!=null){
+                  JOptionPane.showMessageDialog(null, "NO Surat Jalan ada");
+              }
+              else{
+                  JOptionPane.showMessageDialog(null, "NO Surat Jalan tidak ada");
+              }
+         }
+    }//GEN-LAST:event_f_sjKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ch_pecah;
+    private javax.swing.JCheckBox ch_treat;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_bnyk;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_sj;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
+    private javax.swing.JTable t_galon_cacat;
     // End of variables declaration//GEN-END:variables
 }
