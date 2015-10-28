@@ -6,6 +6,7 @@
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,43 +18,47 @@ import java.util.List;
 public class listMD_Galon_masuk {
     private database db;
     private ResultSet rs;
+    private loadAllData lad;
+    
     private List<MD_Galon_masuk> listDB=new ArrayList<MD_Galon_masuk>();
+    private List<MD_Pelanggan> listDBPel=new ArrayList<MD_Pelanggan>();
     
     public listMD_Galon_masuk(ResultSet rs,database db){
         this.db=db;
     listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Galon_masuk(rs.getInt("No_urut"), 
+                listDB.add(new MD_Galon_masuk(rs.getString("No_surat_jalan"), 
                         rs.getInt("Banyak_masuk"), 
-                        rs.getString("Tanggal"), 
-                        rs.getInt("Id_pelanggan")));
+                        rs.getDate("Tanggal"), 
+                        rs.getInt("Id_pelanggan"), lad));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
-    
-    public listMD_Galon_masuk(database db){
+    private loadAllData lads;
+    public listMD_Galon_masuk(database db, loadAllData lad){
         this.db=db;
+        this.lad=lad;
         listDB.clear();
         try {
             rs=db.getRs("select * from galon_masuk");
             while(rs.next()){
-                listDB.add(new MD_Galon_masuk(rs.getInt("No_urut"), 
+                listDB.add(new MD_Galon_masuk(rs.getString("No_surat_jalan"), 
                         rs.getInt("Banyak_masuk"), 
-                        rs.getString("Tanggal"), 
-                        rs.getInt("Id_pelanggan")));
+                        rs.getDate("Tanggal"), 
+                        rs.getInt("Id_pelanggan"), lad));
             }
         } catch (Exception e) {
             System.out.print(e);
         }
     }
-    
-    public MD_Galon_masuk getMDByID(int No_urut){
-        MD_Galon_masuk pilih=new MD_Galon_masuk();
-        for(MD_Galon_masuk mdgm : listDB){
-            if(mdgm.getNo_urut()==No_urut){
+        
+    public MD_Pelanggan getMDNama(String Nama_pelaggan){
+        MD_Pelanggan pilih=new MD_Pelanggan();
+        for(MD_Pelanggan mdgm : listDBPel){
+            if(mdgm.getNama()==Nama_pelaggan){
                 pilih=mdgm;
                 break;
             }

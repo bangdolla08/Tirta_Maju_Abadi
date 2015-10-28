@@ -69,6 +69,17 @@ public class listMD_Pelanggan {
         return pilih;
     }
     
+    public MD_Pelanggan getMDByName(String Nama_pelaggan){
+        MD_Pelanggan pilih=new MD_Pelanggan();
+        for(MD_Pelanggan mdgm : listDB){
+            if(mdgm.getNama().equals(Nama_pelaggan)){
+                pilih=mdgm;
+                break;
+            }
+        }
+        return pilih;
+    }
+    
     public List<MD_Pelanggan> getAll(){
         return listDB;
     }

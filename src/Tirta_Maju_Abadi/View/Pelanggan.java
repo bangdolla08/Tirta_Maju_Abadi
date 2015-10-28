@@ -30,6 +30,7 @@ public class Pelanggan extends javax.swing.JInternalFrame {
             C_nama_produk.addItem(tmpMp);
         }
     }
+    
     private void reset(){
         mvp.reset();
         t_Harga.setModel(mvp.getDTM());

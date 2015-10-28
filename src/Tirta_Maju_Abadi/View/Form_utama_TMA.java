@@ -28,7 +28,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Gudang_barang_jadi gbj;
     private Keluar_gudang_bahan_mentah kgb;
     private PO_penjualan po;
-//    private Bahan_mentah b_mentah;
+    private Galon_masuk gm;
+    private Bahan_mentah b_mentah;
 //    private Pegawai pegawai;
     /**
      * Creates new form Form_utama_TMA
@@ -47,7 +48,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         po=new PO_penjualan(db, lad);
         mo=new Mobil(db, lad);
         pd=new Penjualan_depo(db, lad);
- //       b_mentah=new Bahan_mentah(db, lad);
+        gm=new Galon_masuk(db, lad);
+        b_mentah=new Bahan_mentah(db, lad);
+        
 //        pegawai=new Pegawai(db, lad);
         //pd=new Penjualan_depo(lad);
         //mo=new Mobil();
@@ -63,7 +66,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         centerForm(po);
         centerForm(mo);
         centerForm(pd);
-//        centerForm(b_mentah);
+        centerForm(gm);
+        centerForm(b_mentah);
 //        centerForm(pegawai);
     }
     
@@ -113,6 +117,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -226,6 +231,14 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem15);
 
+        jMenuItem16.setText("Galon Masuk");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem16);
+
         jMenuBar1.add(jMenu3);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/akutansi.png"))); // NOI18N
@@ -326,7 +339,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
-        //ambil(b_mentah);
+        ambil(b_mentah);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
@@ -343,6 +356,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         // TODO add your handling code here:
         ambil(po);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        ambil(gm);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,6 +415,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

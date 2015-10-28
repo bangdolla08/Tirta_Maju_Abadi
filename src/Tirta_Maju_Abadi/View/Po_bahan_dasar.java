@@ -56,6 +56,8 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
         setNamaBarang();
         t_po_bahan_dasar.setModel(mvpb.getModel());
         f_no_po.reset();
+        Date date=new Date();
+        d_tanggal.setDate(date);
     }
     private void resetFull(){
         targaet_peng.setText("");
@@ -237,7 +239,7 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        d_tanggal.setDateFormatString("yyyy-MM-dd");
+        d_tanggal.setDateFormatString("dd-MM-yyyy");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/pesan.png"))); // NOI18N
         jButton2.setText("Pesan");

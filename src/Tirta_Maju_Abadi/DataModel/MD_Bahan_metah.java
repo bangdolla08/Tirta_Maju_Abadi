@@ -15,7 +15,12 @@ public class MD_Bahan_metah {
         this.unit = null;
     }
     
-    public MD_Bahan_metah(int id_bahan, int stok, int limit_buffer, String nama_bahan, String spesifikasi, String unit, loadAllData lad) {
+    @Override
+    public String toString(){
+        return nama_bahan;
+    }
+    
+    public MD_Bahan_metah(int id_bahan, int stok, int limit_buffer, String nama_bahan,  String unit, String spesifikasi, loadAllData lad) {
         this.id_bahan = id_bahan;
         this.stok = stok;
         this.limit_buffer = limit_buffer;

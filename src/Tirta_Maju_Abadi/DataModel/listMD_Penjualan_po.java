@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -60,6 +61,17 @@ public class listMD_Penjualan_po {
         MD_Penjualan_po pilih=new MD_Penjualan_po();
         for(MD_Penjualan_po mdpo : listDB){
             if(mdpo.getId_marketing()==Id_marketing){
+                pilih=mdpo;
+                break;
+            }
+        }
+        return pilih;
+    }
+    
+    public MD_Penjualan_po getMDByNO_Surat(String No_nota){
+        MD_Penjualan_po pilih=new MD_Penjualan_po();
+        for(MD_Penjualan_po mdpo:listDB){
+            if(mdpo.getNo_nota().equals(No_nota)){
                 pilih=mdpo;
                 break;
             }

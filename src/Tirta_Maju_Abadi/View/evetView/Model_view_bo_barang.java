@@ -37,24 +37,30 @@ public class Model_view_bo_barang {
         this.mbb=mbb;
         this.db=db;
         dtm.setRowCount(0);
+        reset();
     }
     
     public DefaultTableModel getdtm(){
         return dtm;
     }
     
+    public void reset(){
+        dtm.setRowCount(0);
+    }
+    
     
     public void setTabel(MD_Full_Bo_barang mfbb){
         Vector vct=new Vector();
         vct.add(dtm.getRowCount()+1);
-        vct.add(mfbb.getNama_barang());
+        vct.add(mfbb.getMp());
         vct.add(mfbb.getEstimasi_harga());
         dtm.addRow(vct);
+        mbb.addlistFull(mfbb);
     }
     
-    public int reset(){
-        return lD.getListMD_bo_barang().getAll().get(lD.getListMD_bo_barang().getAll().size()-1).getNo_bo()+1;
-    }
+//    public int reset(){
+//        return lD.getListMD_bo_barang().getAll().get(lD.getListMD_bo_barang().getAll().size()-1).getNo_bo()+1;
+//    }
     
     List<list2Values> list=new ArrayList<>();
     public void list(ModelChuser mc){
@@ -90,31 +96,14 @@ public class Model_view_bo_barang {
                 mbb.getTanggal()+"', no_pegawai='"+mbb.getNo_pegawai()+"', id_pegawai_acc='"+mbb.getId_pegawai_acc()+"'")){
             boolean tmp=true;
             for(MD_Full_Bo_barang mfb:mbb.getListFull()){
-                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set No_bo='"+mbb.getNo_bo()+"', "
-                        + "id_barang='"+mfb.getNama_barang()+"', estimasi='"+mfb.getEstimasi_harga()+"'");
+                tmp=tmp&&db.setDB("insert into full_po_bahan_dasar set no_bo='"+mbb.getNo_bo()+"', "
+                        + "nama_barang='"+mfb.getNama_barang()+"', estimasi='"+mfb.getEstimasi_harga()+"'");
             }
-            if(!tmp){
+            if(tmp){
                 JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+                lD.reset();
             }else{
                 JOptionPane.showMessageDialog(null, "Data Gagal Disimpan");
-            }
-        }
-    }
-    
-    public void Update(){
-        if(db.setDB("update into bo_barang set tanggal='"+
-                mbb.getTanggal()+"', no_pegawai='"+mbb.getNo_pegawai()+"',"
-                + " id_pegawai_acc='"+mbb.getId_pegawai_acc()+"' where no_bo='"+mbb.getNo_bo()+"'")){
-            boolean tmp=true;
-            for(MD_Full_Bo_barang mfb:mbb.getListFull()){
-                tmp=tmp&&db.setDB("update into full_po_bahan_dasar set"
-                        + "id_barang='"+mfb.getNama_barang()+"', "
-                        + "estimasi='"+mfb.getEstimasi_harga()+"' where No_bo='"+mbb.getNo_bo()+"'");
-            }
-            if(!tmp){
-                JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
-            }else{
-                JOptionPane.showMessageDialog(null, "Data Gagal Diubah");
             }
         }
     }

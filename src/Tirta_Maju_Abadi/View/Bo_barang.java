@@ -8,6 +8,8 @@ package Tirta_Maju_Abadi.View;
 import Tirta_Maju_Abadi.DataModel.MD_Bahan_metah;
 import Tirta_Maju_Abadi.DataModel.MD_Bo_barang;
 import Tirta_Maju_Abadi.DataModel.MD_Full_Bo_barang;
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Bo_barang;
 import Tirta_Maju_Abadi.View.evetView.Model_view_bo_barang;
@@ -21,35 +23,93 @@ import Tirta_Maju_Abadi.toll.loadAllData;
 public class Bo_barang extends javax.swing.JInternalFrame {
 
     private MD_Bo_barang mbd=new MD_Bo_barang();
-    private Model_view_bo_barang mvbo;
+    private Model_view_bo_barang mvb;
     private database db;
     private listMD_Bo_barang lpb;
     private loadAllData lad;
     /**
      * Creates new form Bo_barang
      */
-    public Bo_barang() {
-        initComponents();
-    }
     
-    public Bo_barang(loadAllData lad){
+    public Bo_barang(database db, loadAllData lad){
+        initComponents();
         this.lad=lad;
-        initComponents();
-        mvbo=new Model_view_bo_barang(t_Bo_barang.getModel(), db, lad, mbd);
-        t_Bo_barang.setModel(mvbo.getdtm());
-        mvbo.list(c_nama_barang);
+        this.db=db;
+        mvb=new Model_view_bo_barang(t_Bo_barang.getModel(), db, lad, mbd);
+        setNamaPegawai();
+        setNamaPegawaiAcc();
+        setNamaBarang();
+        reset();
     }
     
-    public void setMbb(){
-        mbd.setNo_bo(t_no_bo.getInteger());
+    private void setNamaBarang(){
+        for(MD_Produk mp:lad.getListMD_Produk().getAll()){
+            c_nama_barang.addItem(mp);
+            
+        }
     }
     
-    public void tambah(){
-        list2Values l2s=(list2Values)c_nama_barang.getSelectedItem();
-        MD_Full_Bo_barang mfbb=new MD_Full_Bo_barang(t_no_bo.getInteger(), l2s.getStringNya(), t_estimasi.getInteger());
-        mvbo.setTabel(mfbb);
-        mbd.listAdd();
+    private void setNamaPegawai(){
+        for(MD_Pegawai mpp:lad.getListMD_Pegawai().getList()){
+            c_pegawai.addItem(mpp);
+            System.out.println(mpp.getNama());
+        }
     }
+    
+    private void setNamaPegawaiAcc(){
+        for(MD_Pegawai mpp:lad.getListMD_Pegawai().getList()){
+            c_pegawai_approve.addItem(mpp);
+        }
+    }
+    
+    public void reset(){
+        mvb.reset();
+        resetFull();
+        setNamaBarang();
+        setNamaPegawai();
+        t_Bo_barang.setModel(mvb.getdtm());
+        f_no_bo.reset();
+        c_pegawai.setSelectedIndex(0);
+        c_pegawai_approve.setSelectedIndex(0);
+    }
+    
+    private void resetFull(){
+        c_nama_barang.setSelectedIndex(0);
+        f_estimasi.reset();
+    }
+    
+    public void setMD_Bo_Barang(){
+        mbd.setNo_bo(f_no_bo.getInteger());
+        java.sql.Date date=new java.sql.Date(d_tanggal.getDate().getTime());
+        mbd.setTanggal(date);
+        mbd.setNo_pegawai(c_pegawai.getSelectedIndex());
+        mbd.setId_pegawai_acc(c_pegawai_approve.getSelectedIndex());
+    }
+    
+    private MD_Full_Bo_barang insertTable(){
+        setMD_Bo_Barang();
+        MD_Full_Bo_barang mfb=null;
+        MD_Produk mpp=(MD_Produk)c_nama_barang.getSelectedItem();
+        int nobo=f_no_bo.getInteger();
+        int est=f_estimasi.getInteger();
+        return new MD_Full_Bo_barang(nobo, mpp, est);
+    }
+    
+    
+    private boolean cekKosong(){
+        return f_no_bo.Kosongkah()
+                &&c_pegawai.Kosongkah()
+                &&c_pegawai_approve.Kosongkah()
+                &&c_nama_barang.Kosongkah()
+                &&f_estimasi.Kosongkah();
+    }
+    
+    
+    
+//    public void setMbb(){
+//        mbd.setNo_bo(f_no_bo.getInteger());
+//    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,18 +121,18 @@ public class Bo_barang extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jl_no_bo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        t_no_bo = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelChuser1 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        modelChuser2 = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        f_no_bo = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_bo);
+        c_pegawai = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        c_pegawai_approve = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        d_tanggal = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        t_estimasi = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        jl_estimasi = new javax.swing.JLabel();
+        f_estimasi = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_estimasi);
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         t_Bo_barang = new javax.swing.JTable();
@@ -82,7 +142,7 @@ public class Bo_barang extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 4), "BO Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jLabel1.setText("No BO");
+        jl_no_bo.setText("No BO");
 
         jLabel3.setText("Tanggal");
 
@@ -90,11 +150,13 @@ public class Bo_barang extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Nama Pegawai Approvement");
 
+        d_tanggal.setDateFormatString("yyyy-MM-dd");
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 4), "Tabel BO Barang", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jLabel2.setText("Nama Barang");
 
-        jLabel6.setText("Estimasi Harga");
+        jl_estimasi.setText("Estimasi Harga");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
@@ -146,9 +208,9 @@ public class Bo_barang extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(c_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
+                        .addComponent(jl_estimasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(t_estimasi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(f_estimasi, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
                 .addContainerGap())
@@ -159,8 +221,8 @@ public class Bo_barang extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(t_estimasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_estimasi)
+                    .addComponent(f_estimasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(c_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -189,16 +251,16 @@ public class Bo_barang extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(jl_no_bo)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(t_no_bo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(modelChuser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modelChuser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(f_no_bo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(d_tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(c_pegawai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(c_pegawai_approve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -212,20 +274,20 @@ public class Bo_barang extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(t_no_bo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_no_bo)
+                    .addComponent(f_no_bo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(d_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(modelChuser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_pegawai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(modelChuser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(c_pegawai_approve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -255,35 +317,40 @@ public class Bo_barang extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        setMbb();
-        tambah();
+        mvb.setTabel(insertTable());
+        resetFull();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        mvbo.Insert();
+        if(cekKosong()){
+            mvb.Insert();
+            reset();
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_nama_barang;
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_pegawai;
+    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser c_pegawai_approve;
+    private com.toedter.calendar.JDateChooser d_tanggal;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_estimasi;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_bo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser1;
-    private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser modelChuser2;
+    private javax.swing.JLabel jl_estimasi;
+    private javax.swing.JLabel jl_no_bo;
     private javax.swing.JTable t_Bo_barang;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt t_estimasi;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt t_no_bo;
     // End of variables declaration//GEN-END:variables
 }

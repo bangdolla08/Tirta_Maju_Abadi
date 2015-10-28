@@ -6,10 +6,21 @@
 package Tirta_Maju_Abadi.View;
 
 import Tirta_Maju_Abadi.DataModel.MD_Galon_masuk;
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.MD_Pelanggan;
+import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.listMD_Galon_masuk;
+import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
 import Tirta_Maju_Abadi.View.evetView.Model_view_galon_masuk;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,19 +34,50 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
     private MD_Galon_masuk mgm=new MD_Galon_masuk();
     private Model_view_galon_masuk mvgm;
     private listMD_Galon_masuk lgm;
+    private MD_Penjualan_po mpo=new MD_Penjualan_po();
     private database db;
     private loadAllData lad;
+    private loadAllData LD;
+    private MD_Pelanggan mp=new MD_Pelanggan();
+    private int Id_pelanggan;
+    private List<MD_Pelanggan> listDBPel=new ArrayList<MD_Pelanggan>();
     
-    public Galon_masuk() {
-        initComponents();
-    }
-    
-    public Galon_masuk(loadAllData lad){
+    public Galon_masuk(database db, loadAllData lad){
         this.lad=lad;
+        this.db=db;
         initComponents();
-        mvgm=new Model_view_galon_masuk(t_galon_masuk.getModel(), lgm, db, txt_surat_jalan);
-        t_galon_masuk.setModel(mvgm.getdtm());
+        mvgm=new Model_view_galon_masuk(t_galon_masuk.getModel(), db, lad, mp, mgm);
+        reset();
     }
+    
+    private void reset(){
+        mvgm.reset();
+        f_surat_jalan.reset();
+        f_nama_pelanggan.reset();
+        f_banyak.reset();
+        Date date=new Date();
+        d_tanggal.setDate(date);
+    }
+    
+    private boolean cekKosong(){
+        return f_surat_jalan.Kosongkah()
+                &&f_nama_pelanggan.Kosongkah()
+                &&f_banyak.Kosongkah();
+    }
+
+    
+    private MD_Galon_masuk getToMD(){
+        MD_Galon_masuk tmp=null;
+        java.sql.Date date=new java.sql.Date(d_tanggal.getDate().getTime());
+        String nama=f_nama_pelanggan.getString();
+        this.mp=lad.getListMD_Pelanggan().getMDByName(nama);
+        //this.Id_pelanggan=mp.getId_Pelanggan();
+        if(cekKosong())
+            tmp=new MD_Galon_masuk(f_surat_jalan.getString(),f_banyak.getInteger(), date, mp.getId_Pelanggan(), lad);
+        return tmp;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,14 +89,14 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jl_no_surat = new javax.swing.JLabel();
+        jl_banyak = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txt_surat_jalan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        modelTextFilt2 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        modelTextFilt3 = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        jl_nama_pelanggan = new javax.swing.JLabel();
+        f_surat_jalan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_surat);
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_banyak);
+        d_tanggal = new com.toedter.calendar.JDateChooser();
+        f_nama_pelanggan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_nama_pelanggan);
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         t_galon_masuk = new javax.swing.JTable();
@@ -62,33 +104,39 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Galon Masuk", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        jLabel1.setText("No Surat Jalan");
+        jl_no_surat.setText("No Surat Jalan");
 
-        jLabel2.setText("Banyak Masuk");
+        jl_banyak.setText("Banyak Masuk");
 
         jLabel3.setText("Tanggal");
 
-        jLabel4.setText("Nama Pelanggan");
+        jl_nama_pelanggan.setText("Nama Pelanggan");
 
-        modelTextFilt2.setEditable(false);
+        f_surat_jalan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                f_surat_jalanKeyPressed(evt);
+            }
+        });
 
-        modelTextFilt3.setEditable(false);
+        d_tanggal.setDateFormatString("dd-MM-yyyy");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Galon Keluar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
+        f_nama_pelanggan.setEditable(false);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Tabel Galon Masuk", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
         t_galon_masuk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "No Surat Jalan", "Banyak Masuk", "Tanggal", "Nama  Pelanggan"
+                "No", "No Surat Jalan", "Banyak Masuk", "Tanggal", "Nama  Pelanggan"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -99,9 +147,11 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(t_galon_masuk);
         if (t_galon_masuk.getColumnModel().getColumnCount() > 0) {
             t_galon_masuk.getColumnModel().getColumn(0).setResizable(false);
+            t_galon_masuk.getColumnModel().getColumn(0).setPreferredWidth(5);
             t_galon_masuk.getColumnModel().getColumn(1).setResizable(false);
             t_galon_masuk.getColumnModel().getColumn(2).setResizable(false);
             t_galon_masuk.getColumnModel().getColumn(3).setResizable(false);
+            t_galon_masuk.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -141,21 +191,21 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jl_nama_pelanggan)
                                 .addGap(21, 21, 21)
-                                .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(f_nama_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(jl_no_surat)
                                 .addGap(31, 31, 31)
-                                .addComponent(txt_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(f_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(jl_banyak)
                                     .addComponent(jLabel3))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modelTextFilt2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(f_banyak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(d_tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,16 +214,16 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txt_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jl_no_surat)
+                        .addComponent(f_surat_jalan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(d_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(modelTextFilt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(modelTextFilt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_banyak)
+                    .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_nama_pelanggan)
+                    .addComponent(f_nama_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,23 +250,42 @@ public class Galon_masuk extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        mvgm.Insert();
+        MD_Galon_masuk tmp=getToMD();
+        if(tmp!=null){
+            mvgm.Insert(tmp);
+            reset();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void f_surat_jalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_f_surat_jalanKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            String nota=f_surat_jalan.getString();
+                mpo=lad.getListMD_Penjualan_po().getMDByNO_Surat(nota);
+                mpo.getId_pelanggan();
+                mp=lad.getListMD_Pelanggan().getMDByID(mpo.getId_pelanggan());
+                if(mpo.getNo_po()!=null){
+                    f_nama_pelanggan.setText(mp.getNama());   
+                }else{
+                    JOptionPane.showMessageDialog(null, "No Surat Jalan Tidak DiTemukan !", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                }
+        }
+    }//GEN-LAST:event_f_surat_jalanKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser d_tanggal;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_banyak;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nama_pelanggan;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_surat_jalan;
     private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt2;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt modelTextFilt3;
+    private javax.swing.JLabel jl_banyak;
+    private javax.swing.JLabel jl_nama_pelanggan;
+    private javax.swing.JLabel jl_no_surat;
     private javax.swing.JTable t_galon_masuk;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt txt_surat_jalan;
     // End of variables declaration//GEN-END:variables
 }
