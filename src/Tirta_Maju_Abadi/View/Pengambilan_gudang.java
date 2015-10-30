@@ -4,6 +4,17 @@
  */
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.DataModel.MD_Full_pengambilan_gudang;
+import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
+import Tirta_Maju_Abadi.DataModel.MD_Pengambilan_gudang;
+import Tirta_Maju_Abadi.DataModel.MD_Produk;
+import Tirta_Maju_Abadi.DataModel.MD_Supplier;
+import Tirta_Maju_Abadi.DataModel.listMD_pengambilan_gudang;
+import Tirta_Maju_Abadi.View.evetView.Model_view_pengambilan_gudang;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.Date;
+
 /**
  *
  * @author jepank's
@@ -13,9 +24,88 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
     /**
      * Creates new form Pengambilan_gudang
      */
-    public Pengambilan_gudang() {
+    private MD_Pengambilan_gudang mpg=new MD_Pengambilan_gudang();
+    private Model_view_pengambilan_gudang mvp;
+    private database db;
+    private listMD_pengambilan_gudang lpg;
+    private Date date=new Date();
+    private loadAllData lad;
+    
+    
+    public Pengambilan_gudang(database db, loadAllData lad) {
         initComponents();
+        this.lad=lad;
+        this.db=db;
+        mvp=new Model_view_pengambilan_gudang(t_pengambilan_gudang.getModel(), db, lad, mpg);
+        setNamaPegawai();
+        setNamaProduk();
+        setNamaSupplier();
+        reset();
     }
+    
+    private void setNamaPegawai(){
+        for(MD_Pegawai mpeg :lad.getListMD_Pegawai().getList()){
+            c_peminta.addItem(mpeg);
+        }
+    }
+    
+    private void setNamaProduk(){
+     for(MD_Produk mp : lad.getListMD_Produk().getAll()){
+         c_nama_barang.addItem(mp);
+     }   
+    }
+    
+    private void setNamaSupplier(){
+        for(MD_Supplier ms :lad.getListMD_Suplier().getList()){
+            c_supplier.addItem(ms);
+        }
+    }
+    
+    
+    private void reset(){
+        mvp.reset();
+        resetFull();
+        Date date=new Date();
+        d_tanggal.setDate(date);
+        c_peminta.setSelectedIndex(0);
+    }
+    private void resetFull(){
+        c_nama_barang.setSelectedIndex(0);
+        c_supplier.setSelectedIndex(0);
+        f_banyak.reset();
+    }
+    
+    
+    public void setMD_pengambilan(){
+        //MD_Pengambilan_gudang mpgud=null;
+        java.sql.Date date = new java.sql.Date(d_tanggal.getDate().getTime());
+        mpg.setTanggal(date);
+        MD_Pegawai mpeg=(MD_Pegawai)c_peminta.getSelectedItem();
+        mpg.setId_pegawai(mpeg.getNo_pegawai());
+    }
+    
+    private MD_Full_pengambilan_gudang InsertTabel(){
+        setMD_pengambilan();
+        MD_Produk mpro=(MD_Produk)c_nama_barang.getSelectedItem();
+        MD_Supplier msup=(MD_Supplier)c_supplier.getSelectedItem();
+        int banyak=f_banyak.getInteger();
+        return new MD_Full_pengambilan_gudang(mpro, msup, banyak);
+    }
+    
+    private boolean cekKosong(){
+        return c_peminta.Kosongkah()
+                &&c_nama_barang.Kosongkah()
+                &&c_supplier.Kosongkah()
+                &&f_banyak.Kosongkah();
+    }
+    
+//    private MD_Pengambilan_gudang InsertTabel(){
+//        setMD_pengambilan();
+//        mpg.setId_barang(c_nama_barang.getSelectedIndex());
+//        mpg.setId_supplier(c_supplier.getSelectedIndex());
+//        mpg.setBanyak(f_banyak.getInteger());
+//        return new MD_Pengambilan_gudang(date, WIDTH, WIDTH, WIDTH, WIDTH, lad);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,8 +125,8 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
         c_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
         jLabel4 = new javax.swing.JLabel();
         c_supplier = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
-        jLabel5 = new javax.swing.JLabel();
-        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        jl_banyak = new javax.swing.JLabel();
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_banyak);
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         t_pengambilan_gudang = new javax.swing.JTable();
@@ -58,10 +148,15 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Nama Barang");
 
-        jLabel5.setText("Banyak");
+        jl_banyak.setText("Banyak");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         t_pengambilan_gudang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,6 +192,11 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton3.setText("Reset");
@@ -118,7 +218,7 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(c_supplier, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
+                        .addComponent(jl_banyak)
                         .addGap(18, 18, 18)
                         .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -139,7 +239,7 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(c_nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(c_supplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(f_banyak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,6 +251,8 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
                     .addComponent(jButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        d_tanggal.setDateFormatString("dd-MM-yyyy");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,6 +309,20 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(cekKosong()){
+            mvp.setTabel(InsertTabel());
+            resetFull();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        mvp.Insert();
+        reset();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -224,10 +340,10 @@ public class Pengambilan_gudang extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jl_banyak;
     private javax.swing.JTable t_pengambilan_gudang;
     // End of variables declaration//GEN-END:variables
 }
