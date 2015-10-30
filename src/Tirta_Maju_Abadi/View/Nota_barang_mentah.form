@@ -55,23 +55,29 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel2" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jl_no_nota" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jl_Tanggal" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jl_surat_jalan" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jl_suplier" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jl_no_po" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_Tanggal1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="f_no_nota" max="32767" attributes="0"/>
-                              <Component id="d_tanggal" pref="170" max="32767" attributes="0"/>
-                              <Component id="f_no_surat_jalan" max="32767" attributes="0"/>
-                              <Component id="f_supplier" max="32767" attributes="0"/>
+                              <Component id="f_No_pO" alignment="1" max="32767" attributes="0"/>
+                              <Component id="f_no_nota" alignment="1" max="32767" attributes="0"/>
+                              <Component id="d_tanggal" alignment="1" pref="207" max="32767" attributes="0"/>
+                              <Component id="f_no_surat_jalan" alignment="1" max="32767" attributes="0"/>
+                              <Component id="f_supplier" alignment="1" max="32767" attributes="0"/>
+                              <Component id="d_tanggal_tempo" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -83,50 +89,60 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_no_po" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_No_pO" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jl_no_nota" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="f_no_nota" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_Tanggal" min="-2" max="-2" attributes="0"/>
                       <Component id="d_tanggal" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="f_no_surat_jalan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jl_Tanggal1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="d_tanggal_tempo" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_surat_jalan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="f_no_surat_jalan" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jl_suplier" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="f_supplier" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jl_no_nota">
           <Properties>
             <Property name="text" type="java.lang.String" value="No Nota"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jl_Tanggal">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tanggal"/>
+            <Property name="text" type="java.lang.String" value="Tanggal Nota"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="jl_surat_jalan">
           <Properties>
             <Property name="text" type="java.lang.String" value="No Surat Jalan"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="jl_suplier">
           <Properties>
             <Property name="text" type="java.lang.String" value="Supplier"/>
           </Properties>
@@ -162,15 +178,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="Jl_nama_barang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="f_nama_barang" min="-2" pref="121" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <Component id="jl_harga" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="f_harga" min="-2" pref="120" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="Jl_banyak" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="f_banyak" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -181,7 +197,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jl_total" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -199,11 +215,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Jl_nama_barang" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="f_nama_barang" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_harga" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="f_harga" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Jl_banyak" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="f_banyak" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -211,7 +227,7 @@
                       <Component id="jScrollPane1" min="-2" pref="127" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_total" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="f_total" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -225,21 +241,21 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="Jl_nama_barang">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nama Barang"/>
               </Properties>
             </Component>
             <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_nama_barang">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="jl_harga">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Harga"/>
               </Properties>
             </Component>
             <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_harga">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="Jl_banyak">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Banyak"/>
               </Properties>
@@ -308,7 +324,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="jl_total">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Total"/>
               </Properties>
@@ -333,6 +349,20 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jl_no_po">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No PO"/>
+          </Properties>
+        </Component>
+        <Component class="Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt" name="f_No_pO">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jl_Tanggal1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="JatuhTempo"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="d_tanggal_tempo">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
