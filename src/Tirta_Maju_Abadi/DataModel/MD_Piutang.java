@@ -17,6 +17,14 @@ public class MD_Piutang {
     private String NoPembayaran;
     private loadAllData lad;
     private List<MD_Full_Piutang> listFull=new ArrayList<MD_Full_Piutang>();
+
+    public List<MD_Full_Piutang> getListFull() {
+        return listFull;
+    }
+
+    public void setListFull(List<MD_Full_Piutang> listFull) {
+        this.listFull = listFull;
+    }
     public MD_Piutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan) {
         this.No_po = No_po;
         this.No_Nota_Piutang = No_Nota_Piutang;
@@ -32,6 +40,7 @@ public class MD_Piutang {
         this.tanggal_jatuh_tempo = tanggal_jatuh_tempo;
         this.no_surat_jalan = no_surat_jalan;
         this.lad=lad;
+        setList();
     }
 
     public MD_Piutang() {
@@ -48,9 +57,14 @@ public class MD_Piutang {
         this.lad = lad;
     }
     private void setList(){
-        //for(MD_Full_Piutang mfp:)
+        for(MD_Full_Piutang mfp:lad.getLfpiut().getListDB()){
+            if(mfp.getNo_PO()==No_po&&mfp.getNo_nota_piutang()==No_Nota_Piutang)
+                addTolist(mfp);
+        }
     }
-
+    public void addTolist(MD_Full_Piutang tmp){
+        listFull.add(tmp);
+    }
     public MD_Piutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan, boolean statuspembayaran, String NoPembayaran) {
         this.No_po = No_po;
         this.No_Nota_Piutang = No_Nota_Piutang;

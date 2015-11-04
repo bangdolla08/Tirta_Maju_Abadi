@@ -7,6 +7,7 @@ public class loadAllData {
     private MD_Pegawai mp;
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Harga_pelanggan listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
+    private listMD_Full_Piutang Lfpiut=new listMD_Full_Piutang(db);
     private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
@@ -33,7 +34,21 @@ public class loadAllData {
     private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
     private listMD_Bo_Mobil listMD_bo_mobil = new listMD_Bo_Mobil(db, this);
     private listMD_pengambilan_gudang listMD_pengambilan1=new listMD_pengambilan_gudang(db, this);
-    
+
+    public listMD_Full_Piutang getLfpiut() {
+        return Lfpiut;
+    }
+
+    public void setLfpiut(listMD_Full_Piutang Lfpiut) {
+        this.Lfpiut = Lfpiut;
+    }
+    public java.sql.Date convertUtilDateToSqlDate(java.util.Date date){
+    if(date != null) {
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        return sqlDate;
+    }
+    return null;
+    }
     public void reset(){
         listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
         listMD_Ban1=new listMD_Ban(db);
