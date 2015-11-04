@@ -53,7 +53,6 @@ public class Po_bahan_dasar extends javax.swing.JInternalFrame {
     private void reset(){
         mvpb.reset();
         resetFull();
-        setNamaBarang();
         t_po_bahan_dasar.setModel(mvpb.getModel());
         f_no_po.reset();
         Date date=new Date();

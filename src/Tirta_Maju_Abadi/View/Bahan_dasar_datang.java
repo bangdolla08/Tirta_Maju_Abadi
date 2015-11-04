@@ -40,6 +40,8 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
         this.lad=lad;
         this.db=db;
         mvd=new Model_view_datang_barang_dasar(t_bahan_dasar_dtang.getModel(), db, lad, mdb);
+        setNamaProduk();
+        setNamaSupplier();
         reset();
     }
     
@@ -58,8 +60,6 @@ public class Bahan_dasar_datang extends javax.swing.JInternalFrame {
     private void reset(){
         mvd.reset();
         resetFull();
-        setNamaProduk();
-        setNamaSupplier();
         f_no_po.reset();
         t_bahan_dasar_dtang.setModel(mvd.getDtm());
         f_surat_jalan.reset();
