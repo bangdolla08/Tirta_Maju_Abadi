@@ -12,7 +12,10 @@ import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import Tirta_Maju_Abadi.DataModel.listMD_Galon_cacat;
 import Tirta_Maju_Abadi.DataModel.MD_Penjualan_po;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author NEEZAR
@@ -24,6 +27,7 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
    private MD_Galon_cacat m_gcacat=new MD_Galon_cacat();
    private listMD_Galon_cacat l_gcacat;
    private MD_Penjualan_po m_po=new MD_Penjualan_po();
+   private DefaultTableModel dtm=new DefaultTableModel();
     /**
      * Creates new form Galon_cacat
      */
@@ -31,8 +35,8 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
         initComponents();
         this.db=db;
         this.ld=ld;
-        v_gcacat=new Model_view_galon_cacat(t_galon_cacat.getModel(), l_gcacat, db);
-        this.m_gcacat=m_gcacat;
+        v_gcacat=new Model_view_galon_cacat(t_galon_cacat.getModel(), l_gcacat, db,ld);
+        reset();
         
     }
     
@@ -41,16 +45,42 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
         f_bnyk.setText("");
         ch_treat.setSelected(false);
         ch_pecah.setSelected(false);
+        FLipLFop(true);
+        hapus_tabel();
+    }
+    public void FLipLFop(boolean apalah){
+        f_sj.setEnabled(apalah);
+        f_bnyk.setEnabled(!apalah);
+        ch_pecah.setEnabled(!apalah);
+        ch_treat.setEnabled(!apalah);
+        jButton1.setEnabled(!apalah);
     }
     
     public MD_Galon_cacat getToG_cacat(){
-        //MD_Galon_cacat mg_c=null;
         int bnyk=f_bnyk.getInteger();
         boolean tret=ch_treat.isSelected();
+        ch_treat.setSelected(tret);
         boolean pecah=ch_pecah.isSelected();
+        ch_pecah.setSelected(pecah);
         return new MD_Galon_cacat(f_sj.getString(), tret, pecah, bnyk);
     }
     
+    public void hapus_tabel(){
+       DefaultTableModel dm = (DefaultTableModel)t_galon_cacat.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged();
+    }
+//    
+//    public void getTotableindtbase(){
+//        int baris=t_galon_cacat.getRowCount();
+//            for (int i = 0; i < baris; i++) {
+//                m_gcacat.setNo_urut((String) t_galon_cacat.getValueAt(i, 0));
+//                System.out.println(t_galon_cacat.getValueAt(i, 0));
+//                m_gcacat.setBanyak((int) t_galon_cacat.getValueAt(i, 1));
+//                m_gcacat.setTreatment((boolean) t_galon_cacat.getValueAt(i, 2));
+//                m_gcacat.setTreatment((boolean) t_galon_cacat.getValueAt(i, 3));
+//            }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,21 +104,7 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                formKeyTyped(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Galon Cacat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
-        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPanel1KeyPressed(evt);
-            }
-        });
 
         jLabel1.setText("No Surat Jalan");
 
@@ -102,12 +118,6 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Banyak");
 
-        f_bnyk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                f_bnykActionPerformed(evt);
-            }
-        });
-
         ch_treat.setText("Treatment");
         ch_treat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +126,11 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
         });
 
         ch_pecah.setText("Pecah");
+        ch_pecah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ch_pecahActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/tambah.png"))); // NOI18N
         jButton1.setText("Tambahkan");
@@ -162,6 +177,11 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton3.setText("Reset");
@@ -264,37 +284,18 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
 
     private void ch_treatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ch_treatActionPerformed
         // TODO add your handling code here:
+        ch_pecah.setSelected(false);
     }//GEN-LAST:event_ch_treatActionPerformed
-
-    private void f_bnykActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_bnykActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_f_bnykActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        MD_Galon_cacat gc=getToG_cacat();
-       v_gcacat.insertMetode(gc);
-       reset();
+        v_gcacat.isidata(getToG_cacat());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        reset();
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
-        // TODO add your handling code here:
-          
-    }//GEN-LAST:event_jPanel1KeyPressed
-
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_formKeyPressed
-
-    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_formKeyTyped
 
     private void f_sjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_f_sjKeyPressed
         // TODO add your handling code here:
@@ -302,13 +303,26 @@ public class Galon_cacat extends javax.swing.JInternalFrame {
               String sj=f_sj.getString();
               m_po=ld.getListMD_Penjualan_po().getMDByNO_Surat(sj);
               if(m_po.getNo_nota()!=null){
-                  JOptionPane.showMessageDialog(null, "NO Surat Jalan ada");
+                  FLipLFop(false);
+                  f_bnyk.requestFocus(true);
               }
               else{
                   JOptionPane.showMessageDialog(null, "NO Surat Jalan tidak ada");
               }
          }
     }//GEN-LAST:event_f_sjKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       //getTotableindtbase();
+       v_gcacat.insertMetode();
+       reset();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ch_pecahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ch_pecahActionPerformed
+        // TODO add your handling code here:
+        ch_treat.setSelected(false);
+    }//GEN-LAST:event_ch_pecahActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

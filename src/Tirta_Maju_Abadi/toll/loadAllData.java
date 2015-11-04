@@ -11,7 +11,7 @@ public class loadAllData {
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
     private listMD_Full_penjualan listMD_Full_penjualan1=new listMD_Full_penjualan(db, this);
-    private listMD_Galon_cacat listMD_Galon_cacat1=new listMD_Galon_cacat(db);
+    private listMD_Galon_cacat listMD_Galon_cacat1=new listMD_Galon_cacat(db,this);
     private listMD_Galon_keluar listMD_Galon_keluar1=new listMD_Galon_keluar(db);
     private listMD_Galon_masuk listMD_Galon_masuk1=new listMD_Galon_masuk(db, this);
     private listMD_Gudang_barang_jadi listMD_Gudang_barang_jadi1=new listMD_Gudang_barang_jadi(db);
@@ -39,7 +39,7 @@ public class loadAllData {
         listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
         listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
         listMD_Full_penjualan1=new listMD_Full_penjualan(db, this);
-        listMD_Galon_cacat1=new listMD_Galon_cacat(db);
+        listMD_Galon_cacat1=new listMD_Galon_cacat(db,this);
         listMD_Galon_keluar1=new listMD_Galon_keluar(db);
         listMD_Galon_masuk1=new listMD_Galon_masuk(db, this);
         listMD_Gudang_barang_jadi1=new listMD_Gudang_barang_jadi(db);

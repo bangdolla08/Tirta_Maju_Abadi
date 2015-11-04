@@ -5,6 +5,8 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author NEEZAR
@@ -35,7 +37,7 @@ public class MD_Galon_cacat {
         this.banyak = banyak;
     }
 
-    public String getNo_urut() {
+    public String getNo_surat_jalan() {
         return No_surat_jalan;
     }
 
@@ -47,7 +49,7 @@ public class MD_Galon_cacat {
         return Pecah;
     }
 
-    public void setNo_urut(String No_surat_jalan) {
+    public void setNo_surat_jalan(String No_surat_jalan) {
         this.No_surat_jalan = No_surat_jalan;
     }
 
@@ -58,5 +60,6 @@ public class MD_Galon_cacat {
     public void setPecah(boolean Pecah) {
         this.Pecah = Pecah;
     }
+    
     
 }

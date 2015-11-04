@@ -46,6 +46,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/produk_gris.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Produk Griss"/>
               </Properties>
               <Events>
@@ -117,6 +120,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem12">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/setoranProduksi.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Setoran Produksi"/>
               </Properties>
               <Events>
@@ -125,6 +131,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem13">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/TetesanAir.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Bahan Mentah"/>
               </Properties>
               <Events>
@@ -133,6 +142,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem15">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/keluar_gudang.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Keluar Gudang Bahan Mentah"/>
               </Properties>
               <Events>
@@ -141,6 +153,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem16">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/barang_masuk.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Galon Masuk"/>
               </Properties>
               <Events>
@@ -149,6 +164,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem17">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/galon_cacat.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Galon Cacat"/>
               </Properties>
               <Events>
@@ -170,6 +188,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/customer.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pelanggan"/>
               </Properties>
               <Events>
@@ -178,6 +199,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem14">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/supplier.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Supplier"/>
               </Properties>
               <Events>
