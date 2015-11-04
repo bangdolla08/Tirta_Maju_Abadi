@@ -31,6 +31,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Galon_masuk gm;
     private Bahan_mentah b_mentah;
     private Galon_cacat g_cacat;
+    private Pengambilan_gudang pgud;
 //    private Pegawai pegawai;
     /**
      * Creates new form Form_utama_TMA
@@ -52,6 +53,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         gm=new Galon_masuk(db, lad);
         b_mentah=new Bahan_mentah(db, lad);
         g_cacat=new Galon_cacat(db, lad);
+        pgud=new Pengambilan_gudang(db, lad);
 //        pegawai=new Pegawai(db, lad);
         //pd=new Penjualan_depo(lad);
         //mo=new Mobil();
@@ -70,6 +72,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         centerForm(gm);
         centerForm(b_mentah);
         centerForm(g_cacat);
+        centerForm(pgud);
 //        centerForm(pegawai);
     }
     
@@ -121,6 +124,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -256,6 +260,14 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem17);
 
+        jMenuItem18.setText("Pengambilan Gudang");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem18);
+
         jMenuBar1.add(jMenu3);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/akutansi.png"))); // NOI18N
@@ -386,6 +398,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         ambil(g_cacat);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        // TODO add your handling code here:
+        ambil(pgud);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -441,6 +458,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
