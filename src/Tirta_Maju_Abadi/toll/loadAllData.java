@@ -31,7 +31,8 @@ public class loadAllData {
     private listMD_Suplier listMD_Suplier1=new listMD_Suplier(db,this);
     private listMD_full_bahan_dasar_datang listMD_full_bahan_dasar_datang1=new listMD_full_bahan_dasar_datang(db, this);
     private listMD_Bo_barang listMD_bo_barang=new listMD_Bo_barang(db, this);
-    private listMD_Bo_Mobil listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
+    private listMD_Bo_Mobil listMD_bo_mobil = new listMD_Bo_Mobil(db, this);
+    private listMD_pengambilan_gudang listMD_pengambilan1=new listMD_pengambilan_gudang(db, this);
     
     public void reset(){
         listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
@@ -60,8 +61,11 @@ public class loadAllData {
         listMD_full_bahan_dasar_datang1=new listMD_full_bahan_dasar_datang(db, this);
         listMD_bo_barang=new listMD_Bo_barang(db, this);
         listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
+        listMD_pengambilan1=new listMD_pengambilan_gudang(db, this);
         
     }
+    
+    
 
     public listMD_full_bahan_dasar_datang getListMD_full_bahan_dasar_datang1() {
         return listMD_full_bahan_dasar_datang1;
@@ -92,6 +96,14 @@ public class loadAllData {
 
     public listMD_Bahan_mentah getListMD_Bahan_mentah() {
         return listMD_Bahan_mentah1;
+    }
+
+    public listMD_pengambilan_gudang getListMD_pengambilan1() {
+        return listMD_pengambilan1;
+    }
+
+    public void setListMD_pengambilan1(listMD_pengambilan_gudang listMD_pengambilan1) {
+        this.listMD_pengambilan1 = listMD_pengambilan1;
     }
 
     public void setListMD_Bahan_mentah(listMD_Bahan_mentah listMD_Bahan_mentah1) {

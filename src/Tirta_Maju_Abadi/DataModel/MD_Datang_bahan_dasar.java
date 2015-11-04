@@ -21,6 +21,7 @@ public class MD_Datang_bahan_dasar {
     private int Id_supplier, Banyak,No_masuk,id_bahan;
     private List<MD_Full_datang_Bahan_dasar> listDatang_bahan=new ArrayList<MD_Full_datang_Bahan_dasar>();
     
+    
     public List<MD_Full_datang_Bahan_dasar> getListDatang_bahan() {
         return listDatang_bahan;
     }
