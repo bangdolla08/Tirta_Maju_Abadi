@@ -88,11 +88,6 @@ public class View_penjualan_po {
         }
      }
     
-//    public String getReset_nota(){
-//        reset_notadanpo();
-//        return mpo.getNo_nota();
-//    }
-    
      public String getReset_po(){
         reset_notadanpo();
         return mpo.getNo_po();
@@ -101,14 +96,14 @@ public class View_penjualan_po {
    public void simpanpenjulanpo(){
 //   try{
        System.out.println("nota nya "+mpo.getNo_po());
-       if(db.setDB("insert into penjualan_po set Id_pelanggan='"+mpo.getId_pelanggan()+"',"
+       if(db.setDB("insert into penjualan_po set Id_user=' ', Id_pelanggan='"+mpo.getId_pelanggan()+"',"
         +"no_nota='"+mpo.getNo_nota()+"',"
         +"No_po_penjulan='"+mpo.getNo_po()+"',"
         +"tanggalpesan='"+mpo.getTanggalpesan()+"',"
         +"id_marketing='"+mpo.getId_marketing()+"'")){
         boolean tmp=true;
         for(MD_Full_penjualan mdfp:mpo.getListFull()) {
-        tmp=tmp&&db.setDB("insert into full_penjualan set id_produk='"+mdfp.getId_Produk()+"',"
+        tmp=tmp&&db.setDB("insert into full_penjualan set Id_user=' ', id_produk='"+mdfp.getId_Produk()+"',"
             +" no_nota='"+mpo.getNo_nota()+"',"
             +" banyak='"+mdfp.getBanyak()+"'");
         }

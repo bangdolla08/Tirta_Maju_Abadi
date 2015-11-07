@@ -260,6 +260,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem17);
 
+        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/pengembalian_gudang.png"))); // NOI18N
         jMenuItem18.setText("Pengambilan Gudang");
         jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

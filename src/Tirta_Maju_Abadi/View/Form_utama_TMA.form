@@ -175,6 +175,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem18">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Tirta_Maju_Abadi/Images/pengembalian_gudang.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pengambilan Gudang"/>
               </Properties>
               <Events>
