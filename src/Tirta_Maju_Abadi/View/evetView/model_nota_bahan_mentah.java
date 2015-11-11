@@ -21,7 +21,10 @@ public class model_nota_bahan_mentah {
         this.mdp = mdp;
         this.dtm = (DefaultTableModel) dtm;
     }
-    
+    public void reset(){
+        dtm.setRowCount(0);
+        mdp=new MD_Piutang(lad);
+    }
     public boolean insert(){
         boolean INsertAdb=true;
         INsertAdb=INsertAdb&&db.setDB("insert into piutang set No_PO='"+mdp.getNo_po()+"', 	"
@@ -57,10 +60,6 @@ public class model_nota_bahan_mentah {
         vct.add(mfp.getHarga_barang());
         vct.add(mfp.getBnyk_barang());
         dtm.addRow(vct);
-    }
-    
-    public void setMDPitutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan){
-        mdp=new MD_Piutang(No_po, No_Nota_Piutang, tanggal_nota, tanggal_jatuh_tempo, no_surat_jalan);
     }
     
 }

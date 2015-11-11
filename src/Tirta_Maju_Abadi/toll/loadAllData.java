@@ -77,10 +77,7 @@ public class loadAllData {
         listMD_bo_barang=new listMD_Bo_barang(db, this);
         listMD_bo_mobil = new listMD_Bo_Mobil(db, this); 
         listMD_pengambilan1=new listMD_pengambilan_gudang(db, this);
-        
     }
-    
-    
 
     public listMD_full_bahan_dasar_datang getListMD_full_bahan_dasar_datang1() {
         return listMD_full_bahan_dasar_datang1;

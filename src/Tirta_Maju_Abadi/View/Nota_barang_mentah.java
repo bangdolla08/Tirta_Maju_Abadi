@@ -1,23 +1,52 @@
 package Tirta_Maju_Abadi.View;
 
-public class Nota_barang_mentah extends javax.swing.JInternalFrame {
+import Tirta_Maju_Abadi.DataModel.MD_Full_Piutang;
+import Tirta_Maju_Abadi.DataModel.MD_Piutang;
+import Tirta_Maju_Abadi.DataModel.MD_Supplier;
+import Tirta_Maju_Abadi.View.evetView.model_nota_bahan_mentah;
+import Tirta_Maju_Abadi.toll.database;
+import Tirta_Maju_Abadi.toll.loadAllData;
+import java.sql.Date;
+import javax.swing.JOptionPane;
 
-    public Nota_barang_mentah() {
+public class Nota_barang_mentah extends javax.swing.JInternalFrame {
+    
+    private MD_Piutang mp;
+    private model_nota_bahan_mentah mnbm;
+    
+    public Nota_barang_mentah(loadAllData lad,database db) {
         initComponents();
+        mp=new MD_Piutang(lad);
+        mnbm=new model_nota_bahan_mentah(lad, db, mp, t_nota_barang_mentah.getModel());
+        t_nota_barang_mentah.setModel(mnbm.getDtm());
+        for(MD_Supplier tmps:lad.getListMD_Suplier().getList())
+            f_supplier.addItem(tmps);
+        reset();
     }
     private void reset(){
+        mnbm.reset();
         f_No_pO.reset();
         f_no_nota.reset();
         f_supplier.reset();
         f_no_surat_jalan.reset();
         d_tanggal.setDate(null);
         d_tanggal_tempo.setDate(null);
+        resetfull();
     }
     
     private void resetfull(){
         f_banyak.reset();
         f_nama_barang.reset();
         f_harga.reset();
+    }
+    
+    private void insertIN(){
+        mp.setNo_po(f_No_pO.getString());
+        mp.setNo_Nota_Piutang(f_no_nota.getString());
+        mp.setTanggal_nota((Date) d_tanggal.getDate());
+        mp.setTanggal_jatuh_tempo((Date) d_tanggal_tempo.getDate());
+        mp.setNo_surat_jalan(f_no_surat_jalan.getString());
+        mp.setMds((MD_Supplier)f_supplier.getSelectedItem());
     }
     
     @SuppressWarnings("unchecked")
@@ -113,6 +142,11 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton2.setText("Simpan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton3.setText("Reset");
@@ -261,8 +295,17 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        insertIN();
+        mnbm.SetFullPiutang(new MD_Full_Piutang(mp.getNo_po(), mp.getNo_Nota_Piutang(), f_nama_barang.getText(), f_harga.getInteger(), f_banyak.getInteger()));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if(mnbm.insert())
+            JOptionPane.showMessageDialog(null, "Data Telah Berhasil Di Simpan","Sukses",JOptionPane.INFORMATION_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(null, "Data Telah Gagal Di Simpan","Sukses",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

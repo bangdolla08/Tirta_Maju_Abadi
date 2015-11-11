@@ -9,6 +9,8 @@ import java.util.List;
 
 public class MD_Piutang {
     private String No_po;
+    private int suplier;
+    private MD_Supplier mds;
     private String No_Nota_Piutang;
     private Date tanggal_nota;
     private Date tanggal_jatuh_tempo;
@@ -25,16 +27,18 @@ public class MD_Piutang {
     public void setListFull(List<MD_Full_Piutang> listFull) {
         this.listFull = listFull;
     }
-    public MD_Piutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan) {
+    public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan) {
         this.No_po = No_po;
+        this.suplier=suplier;
         this.No_Nota_Piutang = No_Nota_Piutang;
         this.tanggal_nota = tanggal_nota;
         this.tanggal_jatuh_tempo = tanggal_jatuh_tempo;
         this.no_surat_jalan = no_surat_jalan;
     }
     
-    public MD_Piutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan,loadAllData lad) {
+    public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan,loadAllData lad) {
         this.No_po = No_po;
+        this.suplier=suplier;
         this.No_Nota_Piutang = No_Nota_Piutang;
         this.tanggal_nota = tanggal_nota;
         this.tanggal_jatuh_tempo = tanggal_jatuh_tempo;
@@ -43,11 +47,13 @@ public class MD_Piutang {
         setList();
     }
 
-    public MD_Piutang() {
+    public MD_Piutang(loadAllData lad) {
+        this.lad=lad;
     }
 
-    public MD_Piutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan, boolean statuspembayaran, String NoPembayaran, loadAllData lad) {
+    public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan, boolean statuspembayaran, String NoPembayaran, loadAllData lad) {
         this.No_po = No_po;
+        this.suplier=suplier;
         this.No_Nota_Piutang = No_Nota_Piutang;
         this.tanggal_nota = tanggal_nota;
         this.tanggal_jatuh_tempo = tanggal_jatuh_tempo;
@@ -55,6 +61,7 @@ public class MD_Piutang {
         this.statuspembayaran = statuspembayaran;
         this.NoPembayaran = NoPembayaran;
         this.lad = lad;
+        setMDSuplier();
     }
     private void setList(){
         for(MD_Full_Piutang mfp:lad.getLfpiut().getListDB()){
@@ -65,14 +72,36 @@ public class MD_Piutang {
     public void addTolist(MD_Full_Piutang tmp){
         listFull.add(tmp);
     }
-    public MD_Piutang(String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan, boolean statuspembayaran, String NoPembayaran) {
+    public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan, boolean statuspembayaran, String NoPembayaran) {
         this.No_po = No_po;
+        this.suplier=suplier;
         this.No_Nota_Piutang = No_Nota_Piutang;
         this.tanggal_nota = tanggal_nota;
         this.tanggal_jatuh_tempo = tanggal_jatuh_tempo;
         this.no_surat_jalan = no_surat_jalan;
         this.statuspembayaran = statuspembayaran;
         this.NoPembayaran = NoPembayaran;
+        setMDSuplier();
+    }
+
+    private void setMDSuplier(){
+        mds=lad.getListMD_Suplier().getSuplier(suplier);
+    }
+    
+    public MD_Supplier getMds() {
+        return mds;
+    }
+
+    public void setMds(MD_Supplier mds) {
+        this.mds = mds;
+    }
+
+    public int getSuplier() {
+        return suplier;
+    }
+
+    public void setSuplier(int suplier) {
+        this.suplier = suplier;
     }
 
     public String getNo_po() {

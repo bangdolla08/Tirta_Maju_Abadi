@@ -21,7 +21,7 @@ public class listMD_Piutang {
         try {
             ResultSet rs=db.getRs("select * from piutang ");
             while(rs.next()){
-                loadDB.add(new MD_Piutang(rs.getString("No_PO"), 
+                loadDB.add(new MD_Piutang(rs.getInt("Id_supplier"),rs.getString("No_PO"), 
                         rs.getString("no_nota_piutang"), 
                         rs.getDate("tanggal_nota"), 
                         rs.getDate("tanggal_jatuhTempo"), 

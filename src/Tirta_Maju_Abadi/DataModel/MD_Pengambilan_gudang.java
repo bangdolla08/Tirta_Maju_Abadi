@@ -107,7 +107,7 @@ public class MD_Pengambilan_gudang {
     
     
     public void listMD_Full_pengambilan_gudang(MD_Full_pengambilan_gudang mpgu){
-        listFullDb.clear();
+        //listFullDb.clear();
         listFullDb.add(mpgu);
     }
     
