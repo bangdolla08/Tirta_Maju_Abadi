@@ -36,7 +36,7 @@ public class listMD_Pegawai {
                     listDriver.add(plotPegw);
                 if(plotPegw.getJabatan()==11)
                     listHelper.add(plotPegw);
-                 if(plotPegw.getJabatan()==12)
+                 if(plotPegw.getJabatan()==14)
                     listMarketing.add(plotPegw);
             }
         } catch (Exception e) {

@@ -79,7 +79,7 @@ public class view_penjualan_depo {
     
 
     
-    List<list2Values> list=new ArrayList<>();
+   // List<list2Values> list=new ArrayList<>();
     
    // String bln;
     ResultSet rs;
@@ -89,38 +89,39 @@ public class view_penjualan_depo {
         cal.setTime(date);
         int month = cal.get(Calendar.MONTH)+1;
         int year=cal.get(Calendar.YEAR);
-        System.out.print(month);
         try{
         rs=new database().getRs("select count(*) as a " +
         "from penjualan_po " +
-        "where year(tanggalpesan) = '"+year+"' and month(tanggalpesan) = '"+month+"'");
+        "where year(tanggalpesan) = '"+year+"' and month(tanggalpesan) = '"+month+"' and no_po_penjulan like 'PD%'");
         if(rs.next()){
+            System.out.println("cobabababa="+rs.getInt("a"));
             int myInt = 100;
             DecimalFormat decimalFormat = new DecimalFormat("0000");
-            String nota=String.valueOf(decimalFormat.format(rs.getInt("a")+1))+"/"+month+"/"+year+" "+pel.getTipe_pembayaran();
+            String nota="PD "+String.valueOf(decimalFormat.format(rs.getInt("a")+1))+"/"+month+"/"+year+" "+pel.getTipe_pembayaran();
             mpo.setNo_nota(nota);
               }
         } catch(Exception e){
             System.out.print(e);
         }
      }
-    
+        
     public String getReset_nota(){
         reset_nota();
         return mpo.getNo_nota();
     }
     
+    
      public void simpanpenjulanpo(){
      try{
-       if(db.setDB("insert into penjualan_po set Id_user=' ', id_pelanggan='"+mpo.getId_pelanggan()+"',"
+       if(db.setDB("insert into penjualan_po set id_pelanggan='"+mpo.getId_pelanggan()+"',"
         +"no_nota='"+mpo.getNo_nota()+"',"
         +"No_po_penjulan='"+mpo.getNo_po()+"',"
         +"tanggalpesan='"+mpo.getTanggalpesan()+"',"
         +"id_marketing='"+mpo.getId_marketing()+"'")){
         boolean tmp=true;
         for(MD_Full_penjualan mdfp:mpo.getListFull()) {
-        tmp=tmp&&db.setDB("insert into full_penjualan set Id_user=' ', id_produk='"+mdfp.getId_Produk()+"',"
-            +" no_nota='"+mpo.getNo_nota()+"',"
+        tmp=tmp&&db.setDB("insert into full_penjualan set id_produk='"+mdfp.getId_Produk()+"',"
+            +" no_nota='"+mpo.getNo_po()+"',"
             +" banyak='"+mdfp.getBanyak()+"'");
         }
        if(!tmp){

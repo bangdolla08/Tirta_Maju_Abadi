@@ -27,6 +27,7 @@ public class MD_Pegawai {
         listTypePegawai.add(new list2Values("Helper", 11));
         listTypePegawai.add(new list2Values("Helper", 12));
         listTypePegawai.add(new list2Values("Helper", 13));
+        listTypePegawai.add(new list2Values("Marketing", 14));
     }
     public String cariDarijabatan(int no){
         list2Values tmp=null;

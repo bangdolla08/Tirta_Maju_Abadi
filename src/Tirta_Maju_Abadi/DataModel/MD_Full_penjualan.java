@@ -5,7 +5,11 @@
  */
 package Tirta_Maju_Abadi.DataModel;
 
+import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,6 +20,8 @@ public class MD_Full_penjualan {
     private String No_nota;
     private loadAllData lD;
     private MD_Produk mp;
+    private ResultSet rs;
+    private database db;
    
 
     public MD_Produk getMp() {
@@ -40,6 +46,9 @@ public class MD_Full_penjualan {
         this.Id_produk=id_produk;
         this.No_nota=No_nota;
         this.Banyak=Banyak;
+        this.db=db;
+        listFull.clear();
+        listMD_penjualan_po();
     }
     
     public MD_Full_penjualan(){
@@ -70,5 +79,35 @@ public class MD_Full_penjualan {
     }
     public void setNo_nota(String No_nota){
         this.No_nota=No_nota;
+    }
+    
+    private List<MD_Penjualan_po> listFull=new ArrayList<MD_Penjualan_po>();
+    public void listMD_penjualan_po(){
+        try {
+            rs=db.getRs("select * from Penjualan_po where No_po='"+No_nota+"'");
+            while(rs.next()){
+                listFull.add(new MD_Penjualan_po(rs.getInt("Id_marketing"), 
+                        rs.getString("No_nota"), 
+                        rs.getString("No_po"),
+                        rs.getDate("tanggalpesan"),
+                        rs.getInt("Id_pelanggan"),db,lD));
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+    } 
+    
+    
+    public void listMD_penjualan_po(MD_Penjualan_po tmp){
+        listFull.clear();
+        listFull.add(tmp);
+    } 
+
+    public List<MD_Penjualan_po> getListFull() {
+        return listFull;
+    }
+
+    public void setListFull(List<MD_Penjualan_po> listFull) {
+        this.listFull = listFull;
     }
 }
