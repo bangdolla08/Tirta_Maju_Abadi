@@ -60,6 +60,16 @@ public class listMD_Full_penjualan {
         return pilih;
     }
     
+    public MD_Full_penjualan getMDByNo_nota(String No_nota){
+        MD_Full_penjualan pilih=new MD_Full_penjualan();
+        for(MD_Full_penjualan mdfp : listDB){
+            if(mdfp.getNo_nota().equals(No_nota)){
+                pilih=mdfp;
+                break;
+            }
+        }
+        return pilih;
+    }
     public List<MD_Full_penjualan> getAll(){
         return listDB;
     }

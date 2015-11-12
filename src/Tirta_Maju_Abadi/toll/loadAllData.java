@@ -7,7 +7,7 @@ public class loadAllData {
     private MD_Pegawai mp;
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Harga_pelanggan listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
-    private listMD_Full_Piutang Lfpiut=new listMD_Full_Piutang(db);
+    private listMD_Full_Piutang Lfpiut=new listMD_Full_Piutang(db,this);
     private listMD_Bahan_mentah listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
     private listMD_Ban listMD_Ban1=new listMD_Ban(db);
     private listMD_Datang_bahan_dasar listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);

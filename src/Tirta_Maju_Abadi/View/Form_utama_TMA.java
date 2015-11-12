@@ -32,6 +32,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Bahan_mentah b_mentah;
     private Galon_cacat g_cacat;
     private Pengambilan_gudang pgud;
+    private Laporan_penjualan laporpen;
+    private Laporan_piutang laporPiu;
+    private Pembayaran pmb;
 //    private Pegawai pegawai;
     /**
      * Creates new form Form_utama_TMA
@@ -54,6 +57,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         b_mentah=new Bahan_mentah(db, lad);
         g_cacat=new Galon_cacat(db, lad);
         pgud=new Pengambilan_gudang(db, lad);
+        laporpen=new Laporan_penjualan(db, lad);
+        laporPiu=new Laporan_piutang(db, lad);
+        pmb=new Pembayaran(db, lad);
 //        pegawai=new Pegawai(db, lad);
         //pd=new Penjualan_depo(lad);
         //mo=new Mobil();
@@ -73,6 +79,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         centerForm(b_mentah);
         centerForm(g_cacat);
         centerForm(pgud);
+        centerForm(laporpen);
+        centerForm(laporPiu);
+        centerForm(pmb);
 //        centerForm(pegawai);
     }
     
@@ -114,6 +123,9 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -175,6 +187,30 @@ public class Form_utama_TMA extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem11);
+
+        jMenuItem19.setText("Laporan Penjualan");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem19);
+
+        jMenuItem20.setText("Laporan Piutang");
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem20);
+
+        jMenuItem21.setText("Pembayaran");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem21);
 
         jMenuBar1.add(jMenu4);
 
@@ -404,6 +440,21 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         ambil(pgud);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        // TODO add your handling code here:
+        ambil(laporpen);
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        // TODO add your handling code here:
+        ambil(laporPiu);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        // TODO add your handling code here:
+        ambil(pmb);
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -460,7 +511,10 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

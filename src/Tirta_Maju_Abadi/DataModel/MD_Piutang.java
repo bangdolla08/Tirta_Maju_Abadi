@@ -19,6 +19,9 @@ public class MD_Piutang {
     private String NoPembayaran;
     private loadAllData lad;
     private List<MD_Full_Piutang> listFull=new ArrayList<MD_Full_Piutang>();
+    
+    public MD_Piutang(){
+    }
 
     public List<MD_Full_Piutang> getListFull() {
         return listFull;
@@ -50,7 +53,8 @@ public class MD_Piutang {
     public MD_Piutang(loadAllData lad) {
         this.lad=lad;
     }
-
+    
+   
     public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan, boolean statuspembayaran, String NoPembayaran, loadAllData lad) {
         this.No_po = No_po;
         this.suplier=suplier;

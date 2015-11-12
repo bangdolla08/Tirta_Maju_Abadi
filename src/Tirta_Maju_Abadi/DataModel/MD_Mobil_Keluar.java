@@ -7,6 +7,7 @@ package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.Date;
 
 /**
  *
@@ -14,14 +15,14 @@ import Tirta_Maju_Abadi.toll.loadAllData;
  */
 public class MD_Mobil_Keluar {
     private int id_bo;
-    private String tgl,nopol, tujuan;
+    private String nopol, tujuan;
     private MD_Mobil mdmobil;
-    
+    private Date tgl;
     public MD_Mobil_Keluar(){
         
     }
     
-    public MD_Mobil_Keluar(int id_bo,String tgl,String nopol, String tujuan,database db,loadAllData lad)
+    public MD_Mobil_Keluar(int id_bo,Date tgl,String nopol, String tujuan,database db,loadAllData lad)
     {
         this.id_bo=id_bo;
         this.nopol=nopol;
@@ -46,11 +47,11 @@ public class MD_Mobil_Keluar {
         this.id_bo = id_bo;
     }
 
-    public String getTgl() {
+    public Date getTgl() {
         return tgl;
     }
 
-    public void setTgl(String tgl) {
+    public void setTgl(Date tgl) {
         this.tgl = tgl;
     }
 

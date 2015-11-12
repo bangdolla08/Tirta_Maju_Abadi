@@ -9,6 +9,7 @@ import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class listMD_Mobil_Keluar {
             ResultSet rs=db.getRs("select * from mobil_keluar");
             while(rs.next()){
                 listDB.add(new MD_Mobil_Keluar(rs.getInt("Id_bo"), 
-                        rs.getString("Tgl"), 
+                        rs.getDate("Tanggal"), 
                         rs.getString("Nopol"),rs.getString("Tujuan"),db,lad));
             }
         } catch (Exception e) {
@@ -41,7 +42,7 @@ public class listMD_Mobil_Keluar {
         try {
             while(rs.next()){
                 listDB.add(new MD_Mobil_Keluar(rs.getInt("id_bo"), 
-                        rs.getString("tgl"), 
+                        rs.getDate("Tanggal"), 
                         rs.getString("nopol"),rs.getString("tujuan"),db,lad));
             }
         } catch (Exception e) {
@@ -59,7 +60,17 @@ public class listMD_Mobil_Keluar {
         }
         return pilih;
     }
-    
+
+    public MD_Mobil_Keluar getMDByTanggal(Date Tanggal){
+        MD_Mobil_Keluar pilih=new MD_Mobil_Keluar();
+        for(MD_Mobil_Keluar mbk : listDB){
+            if(mbk.getTgl().getTime()==Tanggal.getTime()){
+                pilih=mbk;
+                break;
+            }
+        }
+        return pilih;
+    }
     public List<MD_Mobil_Keluar> getAll(){
         return listDB;
     }
