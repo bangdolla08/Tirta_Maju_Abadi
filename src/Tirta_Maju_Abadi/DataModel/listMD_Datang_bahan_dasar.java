@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.naming.spi.DirStateFactory;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -56,6 +57,17 @@ public class listMD_Datang_bahan_dasar {
         for(MD_Datang_bahan_dasar dbd : listDB){
             if(dbd.getId_supplier()==Id_supplier){
                 pilih=dbd;
+                break;
+            }
+        }
+        return pilih;
+    }
+    
+    public MD_Datang_bahan_dasar getMDByNo_po(String No_po){
+        MD_Datang_bahan_dasar pilih=new MD_Datang_bahan_dasar();
+        for(MD_Datang_bahan_dasar dbds : listDB){
+            if(dbds.getNo_po().equals(No_po)){
+                pilih=dbds;
                 break;
             }
         }
