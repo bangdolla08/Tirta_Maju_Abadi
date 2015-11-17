@@ -22,11 +22,15 @@
 
 package Tirta_Maju_Abadi.Report;
 
+import Tirta_Maju_Abadi.DataModel.MD_Bahan_metah;
+import Tirta_Maju_Abadi.DataModel.listMD_Bahan_mentah;
+import Tirta_Maju_Abadi.toll.loadAllData;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -37,44 +41,62 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 public class InvoiceData {
 	private Invoice invoice;
         Date dNow=new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("dd MMMMM yyyy");
-        String tgl=ft.format(dNow);
+//        SimpleDateFormat ft = new SimpleDateFormat("dd MMMMM yyyy");
+//        String tgl=ft.format(dNow);
+        private listMD_Bahan_mentah listMD_bahan_mentah;
+        private MD_Bahan_metah mb=new MD_Bahan_metah();
+        private loadAllData lad;
+        private List<Item> items = new ArrayList<Item>();
 	public InvoiceData() {
 		invoice = createInvoice();
 	}
+        
+        private void loop(){
+            int no=3;
+//            for(MD_Bahan_metah md:lad.getListMD_Bahan_mentah().getAll()){
+//                    items.add(createItem(String.valueOf(no), String.valueOf(md.getNama_bahan()), "9"));
+//                    no++;
+//                    JOptionPane.showMessageDialog(null, "1");
+//            }
+            items.add(createItem("1", "Barang", "9"));
+            items.add(createItem("2", "Galon", "10"));
+            items.add(createItem("3", "BHA", "12"));
+            
+            for(int i=1;i<=11-no;i++){
+                    items.add(createItem("", "", ""));
+                }
+        }
 
 	private Invoice createInvoice() {
 		Invoice invoice = new Invoice();
-		invoice.setId(5);
-		invoice.setShipping(new BigDecimal(10));
-		invoice.setTax(0.2);
-
-		//invoice.setBillTo(createCustomer("Mary Patterson", "151 Pompton St.", "Washington", "mpatterson@noemail.com"));
-		invoice.setShipTo(createCustomer(tgl, "Paijan", "Suarabaya"));
-
-		List<Item> items = new ArrayList<Item>();
-		items.add(createItem("Notebook", 1, new BigDecimal(1000)));
-		items.add(createItem("DVD", 5, new BigDecimal(40)));
-		items.add(createItem("Book", 2, new BigDecimal(10)));
-		items.add(createItem("Phone", 1, new BigDecimal(200)));
+                int no=0;
+                loop();
+//		List<Item> items = new ArrayList<Item>();
+//                for(MD_Bahan_metah md:listMD_bahan_mentah.getAll()){
+//                    items.add(createItem(String.valueOf(no), String.valueOf(md.getNama_bahan()), "9"));
+//                    no++;
+//                    JOptionPane.showMessageDialog(null, "1");
+//                }
+                
+//		items.add(createItem("1", "Mineral", "5"));
+//		items.add(createItem("2", "Galon", "9"));
+                
+//                for(int i=1;i<=11-no;i++){
+//                    items.add(createItem("", "", ""));
+//                }
+                
+//		items.add(createItem("Phone", 1, new BigDecimal(200)));
+                
 		invoice.setItems(items);
-
 		return invoice;
 	}
+        
 
-	private Customer createCustomer(String tanggal, String nama, String tujuan) {
-		Customer customer = new Customer();
-		customer.setNama(nama);
-		customer.setTujuan(tujuan);
-		customer.setTgl(tanggal);
-		return customer;
-	}
-
-	private Item createItem(String description, Integer quantity, BigDecimal unitprice) {
+	private Item createItem(String no, String nama_barang, String quantity) {
 		Item item = new Item();
-		item.setDescription(description);
+                item.setNo(no);
+		item.setNama_barang(nama_barang);
 		item.setQuantity(quantity);
-		item.setUnitprice(unitprice);
 		return item;
 	}
 

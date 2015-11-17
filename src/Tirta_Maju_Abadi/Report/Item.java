@@ -28,31 +28,32 @@ import java.math.BigDecimal;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class Item {
-	private String description;
-	private Integer quantity;
-	private BigDecimal unitprice;
+        private String no;
+	private String nama_barang;
+	private String quantity;
 
-	public String getDescription() {
-		return description;
-	}
+    public String getNo() {
+        return no;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setNo(String no) {
+        this.no = no;
+    }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+    public String getNama_barang() {
+        return nama_barang;
+    }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+    public void setNama_barang(String nama_barang) {
+        this.nama_barang = nama_barang;
+    }
 
-	public BigDecimal getUnitprice() {
-		return unitprice;
-	}
+    public String getQuantity() {
+        return quantity;
+    }
 
-	public void setUnitprice(BigDecimal unitprice) {
-		this.unitprice = unitprice;
-	}
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+        
 }

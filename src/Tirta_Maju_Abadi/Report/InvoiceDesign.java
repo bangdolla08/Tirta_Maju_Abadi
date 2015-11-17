@@ -28,6 +28,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import Tirta_Maju_Abadi.Report.Templates;
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import net.sf.dynamicreports.jasper.builder.JasperReportBuilder;
 import net.sf.dynamicreports.report.base.expression.AbstractSimpleExpression;
 import net.sf.dynamicreports.report.builder.column.TextColumnBuilder;
@@ -36,6 +38,9 @@ import net.sf.dynamicreports.report.builder.component.HorizontalListBuilder;
 import net.sf.dynamicreports.report.builder.style.StyleBuilder;
 import net.sf.dynamicreports.report.builder.subtotal.AggregationSubtotalBuilder;
 import net.sf.dynamicreports.report.constant.HorizontalAlignment;
+import net.sf.dynamicreports.report.constant.ListType;
+import net.sf.dynamicreports.report.constant.RunDirection;
+import net.sf.dynamicreports.report.constant.VerticalAlignment;
 import net.sf.dynamicreports.report.definition.ReportParameters;
 import net.sf.dynamicreports.report.exception.DRException;
 
@@ -43,121 +48,69 @@ import net.sf.dynamicreports.report.exception.DRException;
  * @author Ricardo Mariaca (r.mariaca@dynamicreports.org)
  */
 public class InvoiceDesign {
-    Date dNow=new Date();
-	private InvoiceData data = new InvoiceData();
+        Date dNow=new Date();
+	private InvoiceData data;
 	private AggregationSubtotalBuilder<BigDecimal> totalSum;
+        private SimpleDateFormat ft = new SimpleDateFormat("dd MMMMM yyyy");
 
 	public JasperReportBuilder build() throws DRException {
+                data=new InvoiceData();
 		JasperReportBuilder report = report();
 
 		//init styles
-		StyleBuilder columnStyle = stl.style(Templates.columnStyle)
-			.setBorder(stl.pen1Point());
-		StyleBuilder subtotalStyle = stl.style(columnStyle)
-			.bold();
-		StyleBuilder shippingStyle = stl.style(Templates.boldStyle)
-			.setHorizontalAlignment(HorizontalAlignment.RIGHT);
-
+		StyleBuilder columnStyle = stl.style(Templates.columnStyle);
+                
+                StyleBuilder columnnStyle = stl.style(Templates.groupStyle).
+                        setRightBorder(stl.pen1Point())
+                        .setLeftBorder(stl.pen1Point());
+                
 		//init columns
-		TextColumnBuilder<Integer> rowNumberColumn = col.reportRowNumberColumn()
-			.setFixedColumns(2)
-			.setHorizontalAlignment(HorizontalAlignment.CENTER);
-		TextColumnBuilder<String> descriptionColumn = col.column("Description", "description", type.stringType())
-			.setFixedWidth(250);
-		TextColumnBuilder<Integer> quantityColumn = col.column("Quantity", "quantity", type.integerType())
-			.setHorizontalAlignment(HorizontalAlignment.CENTER);
-		TextColumnBuilder<BigDecimal> unitPriceColumn = col.column("Unit Price", "unitprice", Templates.currencyType);
-		TextColumnBuilder<String> taxColumn = col.column("Tax", exp.text("20%"))
-			.setFixedColumns(3);
-		//price = unitPrice * quantity
-		TextColumnBuilder<BigDecimal> priceColumn = unitPriceColumn.multiply(quantityColumn)
-			.setTitle("Price")
-			.setDataType(Templates.currencyType);
-		//vat = price * tax
-		TextColumnBuilder<BigDecimal> vatColumn = priceColumn.multiply(data.getInvoice().getTax())
-			.setTitle("VAT")
-			.setDataType(Templates.currencyType);
-		//total = price + vat
-		TextColumnBuilder<BigDecimal> totalColumn = priceColumn.add(vatColumn)
-			.setTitle("Total Price")
-			.setDataType(Templates.currencyType)
-			.setRows(2)
-			.setStyle(subtotalStyle);
-		//init subtotals
-		totalSum = sbt.sum(totalColumn)
-			.setLabel("Total:")
-			.setLabelStyle(Templates.boldStyle);
+		TextColumnBuilder<String> rowNumberColumn = col.column("No.","no",type.stringType())
+			.setWidth(60).setHorizontalAlignment(HorizontalAlignment.CENTER);
+		TextColumnBuilder<String> descriptionColumn = col.column("N A M A  B A R A N G", "nama_barang", type.stringType())
+			.setWidth(300).setHorizontalAlignment(HorizontalAlignment.LEFT);;
+		TextColumnBuilder<String> quantityColumn = col.column("QUANTITY", "quantity", type.stringType())
+			.setHorizontalAlignment(HorizontalAlignment.CENTER).setWidth(150);
+                
 
 		//configure report
 		report
 			.setTemplate(Templates.reportTemplate)
-			.setColumnStyle(columnStyle)
-			.setSubtotalStyle(subtotalStyle)
+                        .setColumnStyle(columnnStyle)
 			//columns
 			.columns(
-				rowNumberColumn, descriptionColumn, quantityColumn, unitPriceColumn, totalColumn, priceColumn, taxColumn, vatColumn)
-			.columnGrid(
-				rowNumberColumn, descriptionColumn, quantityColumn, unitPriceColumn,
-				grid.horizontalColumnGridList()
-					.add(totalColumn).newRow()
-					.add(priceColumn, taxColumn, vatColumn))
-			//subtotals
-			.subtotalsAtSummary(
-				totalSum, sbt.sum(priceColumn), sbt.sum(vatColumn))
+				rowNumberColumn, descriptionColumn, quantityColumn)
 			//band components
 			.title(
-				Templates.createTitleComponent("Surabaya, " + data.getInvoice().getId()+"\nKepada YTH: "+
-                                        "\nPaidi"+"\nAlamat"+"\nTelp."),
+				Templates.createTitleComponent("Surabaya, " + ft.format(dNow)+"\n"
+                                        + "Kepada YTH: \n"
+                                        + data.getInvoice().getNo()+"\n"
+                                        + "Alamat"+"\n"
+                                        + "Telp. "+data.getInvoice().getNo()),
+                                cmp.text("Alamat Kirim : "+data.getInvoice().getNo()),
 				cmp.horizontalList().setStyle(stl.style(1)).setGap(1).add(
-					//cmp.hListCell(createCustomerComponent("Bill To", data.getInvoice().getBillTo())).heightFixedOnTop(),
-                                        //cmp.hListCell(createCustomerComponent("Alamat", data.getInvoice().getShipTo())).heightFixedOnMiddle()),
-					//cmp.hListCell(createCustomerComponent("", data.getInvoice().getShipTo())).heightFixedOnMiddle()),
 				cmp.verticalGap(10)))
+                        
 			.pageFooter(
 				Templates.footerComponent)
-			.summary(
-				cmp.text(data.getInvoice().getShipping()).setValueFormatter(Templates.createCurrencyValueFormatter("Shipping:")).setStyle(shippingStyle),
+                        .summary(cmp.line())
+                        
+                        .summary(
 				cmp.horizontalList(
-					cmp.text("Payment terms: 30 days").setStyle(Templates.bold12CenteredStyle),
-					cmp.text(new TotalPaymentExpression()).setStyle(Templates.bold12CenteredStyle)),
-				cmp.verticalGap(30),
-				cmp.text("Thank you for your business").setStyle(Templates.bold12CenteredStyle))
+					cmp.text("Penerima,                Pengirim,    ").setStyle(Templates.bold12Rightt)),
+				cmp.verticalGap(40),
+                                cmp.horizontalList(
+					cmp.text("   (......................)       (......................)").setStyle(Templates.bold12Rightt)),
+				cmp.verticalGap(1)
+                        )
 			.setDataSource(data.createDataSource());
-
 		return report;
 	}
 
-	private ComponentBuilder<?, ?> createCustomerComponent(String label, Customer customer) {
-		HorizontalListBuilder list = cmp.horizontalList();//.setBaseStyle(stl.style().setTopBorder(stl.pen1Point()).setLeftPadding(10));
-		addCustomerAttribute(list, "Tanggal", customer.getTgl());
-                addCustomerAttribute(list, "Nama", customer.getNama());
-		addCustomerAttribute(list, "Tujuan", customer.getTujuan());
-		return cmp.verticalList(
-							cmp.text(label).setStyle(Templates.boldStyle),
-							list);
-	}
-
-	private void addCustomerAttribute(HorizontalListBuilder list, String label, String value) {
-		if (value != null) {
-			list.add(cmp.text(label + ":").setFixedColumns(8).setStyle(Templates.boldStyle), cmp.text(value)).newRow();
-		}
-	}
-
-	private class TotalPaymentExpression extends AbstractSimpleExpression<String> {
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public String evaluate(ReportParameters reportParameters) {
-			BigDecimal total = reportParameters.getValue(totalSum);
-			BigDecimal shipping = total.add(data.getInvoice().getShipping());
-			return "Total payment: " + Templates.currencyType.valueToString(shipping, reportParameters.getLocale());
-		}
-	}
-
-	public static void main(String[] args) {
-		InvoiceDesign design = new InvoiceDesign();
+	public InvoiceDesign() {
+//		InvoiceDesign design = new InvoiceDesign();
 		try {
-			JasperReportBuilder report = design.build();
+			JasperReportBuilder report = build();
 			report.show();
 		} catch (DRException e) {
 			e.printStackTrace();

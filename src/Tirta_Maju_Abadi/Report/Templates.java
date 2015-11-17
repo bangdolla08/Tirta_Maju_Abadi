@@ -38,11 +38,16 @@ public class Templates {
 	public static final StyleBuilder bold18CenteredStyle;
 	public static final StyleBuilder bold22CenteredStyle;
 	public static final StyleBuilder columnStyle;
+//        public static final StyleBuilder kolomStyle;
 	public static final StyleBuilder columnTitleStyle;
 	public static final StyleBuilder groupStyle;
 	public static final StyleBuilder subtotalStyle;
         public static final StyleBuilder bold14;
         public static final StyleBuilder bold14Left;
+        public static final StyleBuilder bold12Leftt;
+        public static final StyleBuilder bold12Rightt;
+        public static final StyleBuilder left10;
+        public static final StyleBuilder underleft10;
 
 	public static final ReportTemplateBuilder reportTemplate;
 	public static final CurrencyType currencyType;
@@ -57,16 +62,27 @@ public class Templates {
 		                         .setAlignment(HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
                 bold14Left          = stl.style(boldStyle)
                                           .setAlignment(HorizontalAlignment.LEFT, VerticalAlignment.TOP);
+                bold12Leftt          = stl.style(boldStyle).setFontSize(10)
+                                          .setAlignment(HorizontalAlignment.LEFT, VerticalAlignment.TOP);
+                bold12Rightt         = stl.style(boldStyle).setFontSize(10)
+                                          .setAlignment(HorizontalAlignment.RIGHT, VerticalAlignment.TOP);
 		bold12CenteredStyle = stl.style(boldCenteredStyle)
 		                         .setFontSize(12);
                 bold14              = stl.style(bold14Left)
                                         .setFontName("Arial").setFontSize(14);
+                left10              = stl.style(rootStyle)
+                                        .setFontName("Arial").setFontSize(8);
+                underleft10          = stl.style(boldStyle)
+                                          .setAlignment(HorizontalAlignment.LEFT, VerticalAlignment.TOP);
+                
 
 		bold18CenteredStyle = stl.style(boldCenteredStyle)
 		                         .setFontSize(18);
 		bold22CenteredStyle = stl.style(boldCenteredStyle)
                              .setFontSize(22);
 		columnStyle         = stl.style(rootStyle).setVerticalAlignment(VerticalAlignment.MIDDLE);
+//                kolomStyle    =  stl.style(rootStyle).setHorizontalAlignment(HorizontalAlignment.LEFT);
+                
 		columnTitleStyle    = stl.style(columnStyle)
 		                         .setBorder(stl.pen1Point())
 		                         .setHorizontalAlignment(HorizontalAlignment.CENTER)
@@ -94,7 +110,6 @@ public class Templates {
 		                   .setColumnTitleStyle(columnTitleStyle)
 		                   .setGroupStyle(groupStyle)
 		                   .setGroupTitleStyle(groupStyle)
-		                   .setSubtotalStyle(subtotalStyle)
 		                   //.highlightDetailEvenRows()
 		                    .crosstabHighlightEvenRows()
 		                   .setCrosstabGroupStyle(crosstabGroupStyle)
@@ -105,10 +120,10 @@ public class Templates {
 
 		currencyType = new CurrencyType();
 
-		HyperLinkBuilder link = hyperLink("http://www.homemediaart.com");
+		HyperLinkBuilder link = hyperLink("http://www.GGSOFT.com");
 		dynamicReportsComponent =
 		  cmp.horizontalList(
-		  	cmp.image(Templates.class.getResource("../Images/ACCBO.png")).setFixedDimension(60, 60),
+		  	cmp.image(Templates.class.getResource("../Images/Logos.png")).setFixedDimension(70, 70),
 		  	cmp.verticalList(
 		  		cmp.text("PT. Triasta Sejahtera").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT),
                                 cmp.text("No. Nota : ").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT)
@@ -128,9 +143,7 @@ public class Templates {
 		        .add(
 		        	dynamicReportsComponent,
 		        	cmp.text(label).setStyle(rootStyle).setHorizontalAlignment(HorizontalAlignment.JUSTIFIED))
-                                //cmp.text(label).setStyle(italicStyle).setHorizontalAlignment(HorizontalAlignment.JUSTIFIED))
 		        .newRow()
-		        //.add(cmp.line())
 		        .newRow()
 		        .add(cmp.verticalGap(10));
 	}
