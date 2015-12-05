@@ -69,7 +69,7 @@ public class MD_Penjualan_po {
     
     
     public void listMD_Full_penjualan(MD_Full_penjualan tmp){
-        listFull.clear();
+        //listFull.clear();
         listFull.add(tmp);
     } 
 

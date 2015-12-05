@@ -1,6 +1,7 @@
 
 package Tirta_Maju_Abadi.View;
 
+import Tirta_Maju_Abadi.Report.InvoiceDesignPenj;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.jdesktopPane;
 import Tirta_Maju_Abadi.toll.loadAllData;

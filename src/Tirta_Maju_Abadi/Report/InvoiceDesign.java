@@ -68,7 +68,7 @@ public class InvoiceDesign {
 		TextColumnBuilder<String> rowNumberColumn = col.column("No.","no",type.stringType())
 			.setWidth(60).setHorizontalAlignment(HorizontalAlignment.CENTER);
 		TextColumnBuilder<String> descriptionColumn = col.column("N A M A  B A R A N G", "nama_barang", type.stringType())
-			.setWidth(300).setHorizontalAlignment(HorizontalAlignment.LEFT);;
+			.setWidth(300).setHorizontalAlignment(HorizontalAlignment.LEFT);
 		TextColumnBuilder<String> quantityColumn = col.column("QUANTITY", "quantity", type.stringType())
 			.setHorizontalAlignment(HorizontalAlignment.CENTER).setWidth(150);
                 

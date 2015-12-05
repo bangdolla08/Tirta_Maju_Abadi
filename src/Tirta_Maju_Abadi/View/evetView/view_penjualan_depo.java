@@ -22,11 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 import Tirta_Maju_Abadi.DataModel.list2Values;
 import Tirta_Maju_Abadi.DataModel.*;
+import Tirta_Maju_Abadi.Report.Items;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  *
@@ -44,6 +47,15 @@ public class view_penjualan_depo {
     private modelTextFilt total;
     private modelTextFilt pembayaran;
     private modelTextFilt kembalian;
+    private List<Items> items = new ArrayList<Items>();
+
+    public List<Items> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Items> items) {
+        this.items = items;
+    }
     
     public view_penjualan_depo(TableModel tm, MD_Full_penjualan m_depo, database db,loadAllData ld, MD_Pelanggan pel,MD_Penjualan_po mpo){
        this.dtm=(DefaultTableModel) tm;

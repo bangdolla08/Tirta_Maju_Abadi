@@ -29,12 +29,12 @@ import net.sf.dynamicreports.report.constant.VerticalAlignment;
 import net.sf.dynamicreports.report.definition.ReportParameters;
 
 
-public class Templates {
+public class Templatess {
     public static final StyleBuilder rootStyle;
 	public static final StyleBuilder boldStyle;
 	public static final StyleBuilder italicStyle;
 	public static final StyleBuilder boldCenteredStyle;
-	public static final StyleBuilder bold12CenteredStyle;
+	public static final StyleBuilder bold10CenteredStyle;
 	public static final StyleBuilder bold18CenteredStyle;
 	public static final StyleBuilder bold22CenteredStyle;
 	public static final StyleBuilder columnStyle;
@@ -46,6 +46,8 @@ public class Templates {
         public static final StyleBuilder bold14Left;
         public static final StyleBuilder bold12Leftt;
         public static final StyleBuilder bold12Rightt;
+        public static final StyleBuilder root12Rightt;
+        public static final StyleBuilder root10Left;
         public static final StyleBuilder left10;
         public static final StyleBuilder underleft10;
 
@@ -53,6 +55,11 @@ public class Templates {
 	public static final CurrencyType currencyType;
 	public static final ComponentBuilder<?, ?> dynamicReportsComponent;
 	public static final ComponentBuilder<?, ?> footerComponent;
+        private String No_nota;
+        
+        public Templatess(String No_nota){
+            this.No_nota=No_nota;
+        }
 
 	static {
 		rootStyle           = stl.style().setPadding(2);
@@ -66,8 +73,14 @@ public class Templates {
                                           .setAlignment(HorizontalAlignment.LEFT, VerticalAlignment.TOP);
                 bold12Rightt         = stl.style(boldStyle).setFontSize(10)
                                           .setAlignment(HorizontalAlignment.RIGHT, VerticalAlignment.TOP);
-		bold12CenteredStyle = stl.style(boldCenteredStyle)
-		                         .setFontSize(12);
+                root12Rightt         = stl.style(boldStyle).setFontSize(10)
+                                          .setAlignment(HorizontalAlignment.RIGHT, VerticalAlignment.TOP)
+                                           .setBorder(stl.pen1Point());
+                root10Left         = stl.style(rootStyle).setFontSize(8)
+                                          .setAlignment(HorizontalAlignment.LEFT, VerticalAlignment.TOP)
+                                           .setBorder(stl.pen1Point());
+		bold10CenteredStyle = stl.style(rootStyle)
+		                         .setFontSize(10);
                 bold14              = stl.style(bold14Left)
                                         .setFontName("Arial").setFontSize(14);
                 left10              = stl.style(rootStyle)
@@ -125,8 +138,8 @@ public class Templates {
 		  cmp.horizontalList(
 		  	cmp.image(Templates.class.getResource("../Images/Logos.png")).setFixedDimension(70, 70),
 		  	cmp.verticalList(
-		  		cmp.text("PT. Triasta Sejahtera").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT),
-                                cmp.text("No. Surat Jalan : ").setStyle(bold12CenteredStyle).setHorizontalAlignment(HorizontalAlignment.LEFT)
+		  		cmp.text("PT. Triasta Sejahtera").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT)
+//                                cmp.text("No. Nota :").setStyle(bold10CenteredStyle).setHorizontalAlignment(HorizontalAlignment.LEFT)
 		  		.setHyperLink(link))).setFixedWidth(300);
 
 		footerComponent = cmp.pageXofY()
