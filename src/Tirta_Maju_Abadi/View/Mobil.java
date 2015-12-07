@@ -70,6 +70,9 @@ public class Mobil extends javax.swing.JInternalFrame {
         c_type.setSelectedIndex(0);
         t_armada.setModel(mvb.getDTM());
         t_ban.setModel(mvb.getDtmb());
+         ban61.setVisible(false);
+            ban101.setVisible(false);
+            ban41.setVisible(true);
     }
     
     private void setMD_Mobil()

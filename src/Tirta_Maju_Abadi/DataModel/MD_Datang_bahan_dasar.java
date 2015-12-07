@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
@@ -122,5 +117,4 @@ public class MD_Datang_bahan_dasar {
     public void setBanyak(int Banyak) {
         this.Banyak = Banyak;
     }
-                    
 }

@@ -33,6 +33,7 @@ public class model_nota_bahan_mentah {
                 + "tanggal_jatuhTempo='"+lad.convertUtilDateToSqlDate(mdp.getTanggal_jatuh_tempo())+"',"
                 + "no_surat_jalan='"+mdp.getNo_surat_jalan()+"', "
                 + "setatusPembayaran=0, "
+                + "ppn="+mdp.isPpn()+", "
                 + "NO_pembayaran='belum'");
         for(MD_Full_Piutang tmp:mdp.getListFull()){
             INsertAdb=INsertAdb&&db.setDB("inset into full_piutang set No_PO='"+mdp.getNo_po()+"', "

@@ -101,6 +101,11 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/rp_icon.png"))); // NOI18N
         jButton1.setText("Bayar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton2.setText("Reset");
@@ -217,6 +222,10 @@ public class Pembayaran_tagihan extends javax.swing.JInternalFrame {
     private void f_type_pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_type_pembayaranActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_f_type_pembayaranActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

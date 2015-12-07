@@ -21,7 +21,15 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
         t_nota_barang_mentah.setModel(mnbm.getDtm());
         for(MD_Supplier tmps:lad.getListMD_Suplier().getList())
             f_supplier.addItem(tmps);
+        visiblefilt(false);
         reset();
+    }
+    public Nota_barang_mentah(loadAllData lad,database db,MD_Piutang mdp) {
+        initComponents();
+        mp=mdp;
+        //mnbm=new model_nota_bahan_mentah(lad, db, mp, t_nota_barang_mentah.getModel());
+        //reset();
+        visiblefilt(true);
     }
     private void reset(){
         mnbm.reset();
@@ -31,9 +39,18 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
         f_no_surat_jalan.reset();
         d_tanggal.setDate(null);
         d_tanggal_tempo.setDate(null);
+        f_total.setText(0);
+        f_total_ppn.setVisible(false);
+        jLabel1.setVisible(false);
         resetfull();
     }
-    
+    private void visiblefilt(boolean a){
+        jt_no_pem.setVisible(a);
+        jl_setatus_pembayaran.setVisible(a);
+        txt_setatus_pembayaran.setVisible(a);
+        jl_dari_no_rekening.setVisible(a);
+        jl_dari_norek.setVisible(a);
+    }
     private void resetfull(){
         f_banyak.reset();
         f_nama_barang.reset();
@@ -58,17 +75,17 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
         jl_Tanggal = new javax.swing.JLabel();
         jl_surat_jalan = new javax.swing.JLabel();
         jl_suplier = new javax.swing.JLabel();
-        f_no_nota = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_no_nota = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_nota);
         d_tanggal = new com.toedter.calendar.JDateChooser();
-        f_no_surat_jalan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
-        f_supplier = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser();
+        f_no_surat_jalan = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_surat_jalan);
+        f_supplier = new Tirta_Maju_Abadi.View.ModelSwing.ModelChuser(jl_suplier);
         jPanel2 = new javax.swing.JPanel();
         Jl_nama_barang = new javax.swing.JLabel();
-        f_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_nama_barang = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(Jl_nama_barang);
         jl_harga = new javax.swing.JLabel();
-        f_harga = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_harga = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_harga);
         Jl_banyak = new javax.swing.JLabel();
-        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_banyak = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(Jl_banyak);
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         t_nota_barang_mentah = new javax.swing.JTable();
@@ -76,14 +93,23 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
         f_total = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        f_total_ppn = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jl_no_po = new javax.swing.JLabel();
-        f_No_pO = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
+        f_No_pO = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_no_po);
         jl_Tanggal1 = new javax.swing.JLabel();
         d_tanggal_tempo = new com.toedter.calendar.JDateChooser();
+        jl_setatus_pembayaran = new javax.swing.JLabel();
+        txt_setatus_pembayaran = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_setatus_pembayaran);
+        JL_no_pembayaran = new javax.swing.JLabel();
+        jt_no_pem = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(JL_no_pembayaran);
+        jl_dari_no_rekening = new javax.swing.JLabel();
+        jl_dari_norek = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt(jl_dari_no_rekening);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Nota Barang Mentah", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4), "Nota Bahan Baku", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(153, 0, 0))); // NOI18N
 
-        jl_no_nota.setText("No Nota");
+        jl_no_nota.setText("No Nota Hutang");
 
         jl_Tanggal.setText("Tanggal Nota");
 
@@ -140,6 +166,8 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
 
         jl_total.setText("Total");
 
+        f_total.setEditable(false);
+
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/simpan.png"))); // NOI18N
         jButton2.setText("Simpan");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +178,17 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Tirta_Maju_Abadi/Images/Reset.png"))); // NOI18N
         jButton3.setText("Reset");
+
+        jCheckBox1.setText("PPN");
+        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox1MouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("Total + PPN");
+
+        f_total_ppn.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -176,13 +215,22 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addComponent(jl_total))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(f_total, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jl_total))
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(f_total, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                    .addComponent(f_total_ppn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -202,8 +250,13 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_total)
-                    .addComponent(f_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(f_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(f_total_ppn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
@@ -213,6 +266,18 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
         jl_no_po.setText("No PO");
 
         jl_Tanggal1.setText("JatuhTempo");
+
+        jl_setatus_pembayaran.setText("Pembayaran");
+
+        txt_setatus_pembayaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_setatus_pembayaranActionPerformed(evt);
+            }
+        });
+
+        JL_no_pembayaran.setText("Nomor Transaksi");
+
+        jl_dari_no_rekening.setText("Dari No Rekening");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -231,7 +296,7 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
                                 .addComponent(jl_suplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jl_no_po)
                             .addComponent(jl_Tanggal1))
-                        .addGap(23, 23, 23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(f_No_pO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(f_no_nota, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,7 +304,16 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
                             .addComponent(f_no_surat_jalan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(f_supplier, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(d_tanggal_tempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(154, 154, 154)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_setatus_pembayaran)
+                            .addComponent(JL_no_pembayaran)
+                            .addComponent(jl_dari_no_rekening))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_setatus_pembayaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jt_no_pem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jl_dari_norek, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -248,15 +322,22 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_no_po)
-                    .addComponent(f_No_pO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_No_pO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_setatus_pembayaran)
+                    .addComponent(txt_setatus_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jl_no_nota)
-                    .addComponent(f_no_nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_no_nota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JL_no_pembayaran)
+                    .addComponent(jt_no_pem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_Tanggal)
-                    .addComponent(d_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(d_tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jl_dari_no_rekening)
+                        .addComponent(jl_dari_norek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_Tanggal1)
@@ -297,6 +378,7 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         insertIN();
         mnbm.SetFullPiutang(new MD_Full_Piutang(mp.getNo_po(), mp.getNo_Nota_Piutang(), f_nama_barang.getText(), f_harga.getInteger(), f_banyak.getInteger()));
+        f_total.setText(f_total.getInteger()+(f_harga.getInteger()* f_banyak.getInteger()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -307,8 +389,27 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Data Telah Gagal Di Simpan","Sukses",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
+        // TODO add your handling code here:
+        //try {
+            if(jCheckBox1.isSelected()){
+                f_total_ppn.setText(f_total.getInteger()+(f_total.getInteger()*(10/100)));
+                f_total_ppn.setVisible(true);
+                jLabel1.setVisible(true);
+            }else{
+                f_total_ppn.setVisible(false);
+                jLabel1.setVisible(false);
+            }
+        
+    }//GEN-LAST:event_jCheckBox1MouseClicked
+
+    private void txt_setatus_pembayaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_setatus_pembayaranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_setatus_pembayaranActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JL_no_pembayaran;
     private javax.swing.JLabel Jl_banyak;
     private javax.swing.JLabel Jl_nama_barang;
     private com.toedter.calendar.JDateChooser d_tanggal;
@@ -321,20 +422,28 @@ public class Nota_barang_mentah extends javax.swing.JInternalFrame {
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_surat_jalan;
     private Tirta_Maju_Abadi.View.ModelSwing.ModelChuser f_supplier;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_total;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_total_ppn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jl_Tanggal;
     private javax.swing.JLabel jl_Tanggal1;
+    private javax.swing.JLabel jl_dari_no_rekening;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt jl_dari_norek;
     private javax.swing.JLabel jl_harga;
     private javax.swing.JLabel jl_no_nota;
     private javax.swing.JLabel jl_no_po;
+    private javax.swing.JLabel jl_setatus_pembayaran;
     private javax.swing.JLabel jl_suplier;
     private javax.swing.JLabel jl_surat_jalan;
     private javax.swing.JLabel jl_total;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt jt_no_pem;
     private javax.swing.JTable t_nota_barang_mentah;
+    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt txt_setatus_pembayaran;
     // End of variables declaration//GEN-END:variables
 }

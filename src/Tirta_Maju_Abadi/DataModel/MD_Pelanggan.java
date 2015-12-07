@@ -1,29 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.View.ModelSwing.ModelChuser;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author NEEZAR
- */
 public class MD_Pelanggan {
+    
     private int Id_pelanggan,Tipe_pembayaran;
     private String Nama,Alamat,No_telepon;
     private List<MD_Harga_pelanggan> listHargag=new ArrayList<MD_Harga_pelanggan>();
     private database db;
     private loadAllData lAD;
-    
+    private List<MD_Penjualan_po> lisstNota=new ArrayList<MD_Penjualan_po>();
+    private List<MD_pemasukan_dana> listPembarayan=new ArrayList<MD_pemasukan_dana>();
     private List<list2Values> list=new ArrayList<>();
+    
     public void list(ModelChuser mc){
         mc.setModel(list);
     }
@@ -41,6 +36,7 @@ public class MD_Pelanggan {
         }
         return l2v;
     }
+
     @Override
     public String toString() {
         return getNama(); //To change body of generated methods, choose Tools | Templates.
@@ -58,6 +54,24 @@ public class MD_Pelanggan {
         listHargag.clear();
         this.lAD=lAD;
         setHarga();
+    }
+    public void setPiutangDanPEmbayaran() {
+        try {
+            ResultSet rs=db.getRs("select * from mobil_keluar , penjualan_po  "
+                + "where penjualan_po.No_po_penjulan=mobil_keluar.id_bo AND "
+                + "b.Id_pelanggan='"+Id_pelanggan+"'");
+            while(rs.next()){
+                lisstNota.add(new MD_Penjualan_po(Id_pelanggan,rs.getString("No_nota") , rs.getString("No_po_penjulan"), rs.getDate("tanggalpesan"), rs.getInt("id_marketing"), db, lAD));
+            }
+            ResultSet rs1=db.getRs("select * from pemasukan_dana where id_pelanggan='"+Id_pelanggan+"'");
+            while(rs1.next()){
+                listPembarayan.add(new MD_pemasukan_dana(rs1.getInt("no_masukkan"), rs1.getInt("type_pemasukkan"), rs1.getInt("banyak"), rs1.getInt("id_no_rekening"),
+                        rs1.getInt("No_nota"), Id_pelanggan));
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        
     }
     public List<MD_Harga_pelanggan> getlistHarga(){
         return listHargag;

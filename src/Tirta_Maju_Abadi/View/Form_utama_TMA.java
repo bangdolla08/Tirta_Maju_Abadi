@@ -9,7 +9,11 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.beans.PropertyVetoException;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.UIManager;
+import javax.swing.plaf.DesktopPaneUI;
 
 /**
  *
@@ -40,9 +44,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     /**
      * Creates new form Form_utama_TMA
      */
-    public Form_utama_TMA() {
+    public Form_utama_TMA() throws Exception{
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(0, 0, screenSize.width, screenSize.height);
+        //setBounds(0, 0, screenSize.width, screenSize.height);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); 
         initComponents();
         lad=new loadAllData();
         plg=new Pelanggan(db, lad);
@@ -64,7 +70,18 @@ public class Form_utama_TMA extends javax.swing.JFrame {
 //        pegawai=new Pegawai(db, lad);
         //pd=new Penjualan_depo(lad);
         //mo=new Mobil();
-        
+        jdesktopPane1.setUI(new DesktopPaneUI() {
+   
+            public void installUI(JComponent c) {
+                // TODO Auto-generated method stub
+                try {
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                super.installUI(c);
+            }   
+        });
 //        centerForm(pd);
 //        centerForm(mo);
         centerForm(plg);
@@ -489,7 +506,10 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_utama_TMA().setVisible(true);
+                try {
+                    new Form_utama_TMA().setVisible(true);
+                } catch (Exception e) {
+                }
             }
         });
     }

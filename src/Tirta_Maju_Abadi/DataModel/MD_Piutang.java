@@ -18,6 +18,15 @@ public class MD_Piutang {
     private boolean statuspembayaran;
     private String NoPembayaran;
     private loadAllData lad;
+    private boolean ppn;
+
+    public boolean isPpn() {
+        return ppn;
+    }
+
+    public void setPpn(boolean ppn) {
+        this.ppn = ppn;
+    }
     private List<MD_Full_Piutang> listFull=new ArrayList<MD_Full_Piutang>();
     
     public MD_Piutang(){
@@ -39,13 +48,14 @@ public class MD_Piutang {
         this.no_surat_jalan = no_surat_jalan;
     }
     
-    public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan,loadAllData lad) {
+    public MD_Piutang(int suplier,String No_po, String No_Nota_Piutang, Date tanggal_nota, Date tanggal_jatuh_tempo, String no_surat_jalan,loadAllData lad,boolean ppn) {
         this.No_po = No_po;
         this.suplier=suplier;
         this.No_Nota_Piutang = No_Nota_Piutang;
         this.tanggal_nota = tanggal_nota;
         this.tanggal_jatuh_tempo = tanggal_jatuh_tempo;
         this.no_surat_jalan = no_surat_jalan;
+        this.ppn=ppn;
         this.lad=lad;
         setList();
     }

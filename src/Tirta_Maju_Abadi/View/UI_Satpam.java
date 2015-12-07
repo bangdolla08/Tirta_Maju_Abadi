@@ -4,6 +4,7 @@ public class UI_Satpam extends javax.swing.JInternalFrame {
 
     public UI_Satpam() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
