@@ -138,7 +138,7 @@ public class Templatess {
 		  cmp.horizontalList(
 		  	cmp.image(Templates.class.getResource("../Images/Logos.png")).setFixedDimension(70, 70),
 		  	cmp.verticalList(
-		  		cmp.text("PT. Triasta Sejahtera").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT)
+		  		cmp.text("PT. Triasta Maju Abadi").setStyle(bold14).setHorizontalAlignment(HorizontalAlignment.LEFT)
 //                                cmp.text("No. Nota :").setStyle(bold10CenteredStyle).setHorizontalAlignment(HorizontalAlignment.LEFT)
 		  		.setHyperLink(link))).setFixedWidth(300);
 

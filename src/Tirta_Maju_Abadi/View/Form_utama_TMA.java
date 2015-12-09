@@ -40,7 +40,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private Laporan_penjualan laporpen;
     private Laporan_piutang laporPiu;
     private Pembayaran pmb;
-//    private Pegawai pegawai;
+    private Pegawai pegawai;
+    private Suplier Suplierr;
     /**
      * Creates new form Form_utama_TMA
      */
@@ -67,7 +68,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         laporpen=new Laporan_penjualan(db, lad);
         laporPiu=new Laporan_piutang(db, lad);
         pmb=new Pembayaran(db, lad);
-//        pegawai=new Pegawai(db, lad);
+        pegawai=new Pegawai(db, lad);
+        Suplierr=new Suplier(db, lad);
         //pd=new Penjualan_depo(lad);
         //mo=new Mobil();
         jdesktopPane1.setUI(new DesktopPaneUI() {
@@ -100,7 +102,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         centerForm(laporpen);
         centerForm(laporPiu);
         centerForm(pmb);
-//        centerForm(pegawai);
+        centerForm(pegawai);
+        centerForm(Suplierr);
     }
     
      public void centerForm(JInternalFrame jin){
@@ -164,6 +167,8 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem22 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PT. TIRTA MAJU ABADI");
@@ -382,9 +387,21 @@ public class Form_utama_TMA extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
+        jMenu7.setText("Super User");
+
+        jMenuItem22.setText("Pegawai");
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem22ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem22);
+
+        jMenuBar1.add(jMenu7);
+
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(743, 532));
+        setSize(new java.awt.Dimension(806, 532));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -430,7 +447,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         // TODO add your handling code here:
-        //ambil(pegawai);
+        ambil(Suplierr);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
@@ -473,46 +490,11 @@ public class Form_utama_TMA extends javax.swing.JFrame {
         ambil(pmb);
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_utama_TMA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        // TODO add your handling code here:
+        ambil(pegawai);
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Form_utama_TMA().setVisible(true);
-                } catch (Exception e) {
-                }
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -521,6 +503,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -536,6 +519,7 @@ public class Form_utama_TMA extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

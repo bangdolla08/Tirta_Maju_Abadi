@@ -1,30 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Tirta_Maju_Abadi.DataModel;
 
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-/**
- *
- * @author PUTRA
- */
 public class MD_Mobil_Keluar {
-    private int id_bo;
+    private String id_PO_keluar;
     private String nopol, tujuan;
     private MD_Mobil mdmobil;
     private Date tgl;
+    private List<MD_Full_penjualan> listfull=new ArrayList<MD_Full_penjualan>();
     public MD_Mobil_Keluar(){
         
     }
     
-    public MD_Mobil_Keluar(int id_bo,Date tgl,String nopol, String tujuan,database db,loadAllData lad)
+    public MD_Mobil_Keluar(String id_PO_keluar,Date tgl,String nopol, String tujuan,database db,loadAllData lad)
     {
-        this.id_bo=id_bo;
+        this.id_PO_keluar=id_PO_keluar;
         this.nopol=nopol;
         this.mdmobil=lad.getListMD_Mobil().getMDByID(nopol);
         this.tgl=tgl;
@@ -39,12 +33,12 @@ public class MD_Mobil_Keluar {
         this.mdmobil = mdmobil;
     }
 
-    public int getId_bo() {
-        return id_bo;
+    public String getId_bo() {
+        return id_PO_keluar;
     }
 
-    public void setId_bo(int id_bo) {
-        this.id_bo = id_bo;
+    public void setId_bo(String id_PO_keluar) {
+        this.id_PO_keluar = id_PO_keluar;
     }
 
     public Date getTgl() {
@@ -69,6 +63,22 @@ public class MD_Mobil_Keluar {
 
     public void setTujuan(String tujuan) {
         this.tujuan = tujuan;
+    }
+
+    public String getId_PO_keluar() {
+        return id_PO_keluar;
+    }
+
+    public void setId_PO_keluar(String id_PO_keluar) {
+        this.id_PO_keluar = id_PO_keluar;
+    }
+
+    public List<MD_Full_penjualan> getListfull() {
+        return listfull;
+    }
+
+    public void setListfull(List<MD_Full_penjualan> listfull) {
+        this.listfull = listfull;
     }
     
 }

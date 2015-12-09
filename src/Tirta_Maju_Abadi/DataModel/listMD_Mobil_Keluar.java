@@ -27,7 +27,7 @@ public class listMD_Mobil_Keluar {
         try {
             ResultSet rs=db.getRs("select * from mobil_keluar");
             while(rs.next()){
-                listDB.add(new MD_Mobil_Keluar(rs.getInt("Id_bo"), 
+                listDB.add(new MD_Mobil_Keluar(rs.getString("Id_bo"), 
                         rs.getDate("Tanggal"), 
                         rs.getString("Nopol"),rs.getString("Tujuan"),db,lad));
             }
@@ -41,7 +41,7 @@ public class listMD_Mobil_Keluar {
     listDB.clear();
         try {
             while(rs.next()){
-                listDB.add(new MD_Mobil_Keluar(rs.getInt("id_bo"), 
+                listDB.add(new MD_Mobil_Keluar(rs.getString("id_bo"), 
                         rs.getDate("Tanggal"), 
                         rs.getString("nopol"),rs.getString("tujuan"),db,lad));
             }
@@ -50,10 +50,10 @@ public class listMD_Mobil_Keluar {
         }
     }
     
-    public MD_Mobil_Keluar getMDByID(int Id_bo){
+    public MD_Mobil_Keluar getMDByID(String Id_bo){
         MD_Mobil_Keluar pilih=new MD_Mobil_Keluar();
         for(MD_Mobil_Keluar dbd : listDB){
-            if(dbd.getId_bo()==Id_bo){
+            if(dbd.getId_bo().equals(Id_bo)){
                 pilih=dbd;
                 break;
             }

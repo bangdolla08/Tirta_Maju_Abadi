@@ -5,6 +5,15 @@ import Tirta_Maju_Abadi.DataModel.*;
 public class loadAllData {
     private database db=new database();
     private MD_Pegawai mp;
+
+    public MD_Pegawai getMp() {
+        return mp;
+    }
+
+    public void setMp(MD_Pegawai mp) {
+        this.mp = mp;
+    }
+    private listMD_Pegawai listMD_Pegawai1=new listMD_Pegawai(db);
     private listMD_Produk listMD_Produk1=new listMD_Produk(db, this);
     private listMD_Harga_pelanggan listMD_Harga_pelanggan1=new listMD_Harga_pelanggan(db,this);
     private listMD_Full_Piutang Lfpiut=new listMD_Full_Piutang(db,this);
@@ -23,7 +32,6 @@ public class loadAllData {
     private listMD_Mobil listMD_Mobil1=new listMD_Mobil(db);
     private listMD_Mobil_Keluar listMD_Mobil_Keluar1=new listMD_Mobil_Keluar(db,this);
     private listMD_Nota_pesan listMD_Nota_pesan1=new listMD_Nota_pesan(db);
-    private listMD_Pegawai listMD_Pegawai1=new listMD_Pegawai(db);
     private listMD_Pelanggan listMD_Pelanggan1=new listMD_Pelanggan(db,this);
     private listMD_Penjualan_po listMD_Penjualan_po1=new listMD_Penjualan_po(db, this);
     private listMD_Pesan_barang listMD_Pesan_barang1=new listMD_Pesan_barang(db);
@@ -50,6 +58,7 @@ public class loadAllData {
     return null;
     }
     public void reset(){
+        listMD_Pegawai1=new listMD_Pegawai(db);
         listMD_Bahan_mentah1=new listMD_Bahan_mentah(db, this);
         listMD_Ban1=new listMD_Ban(db);
         listMD_Datang_bahan_dasar1=new listMD_Datang_bahan_dasar(db);
@@ -66,7 +75,7 @@ public class loadAllData {
         listMD_Mobil1=new listMD_Mobil(db);
         listMD_Mobil_Keluar1=new listMD_Mobil_Keluar(db,this);
         listMD_Nota_pesan1=new listMD_Nota_pesan(db);
-        listMD_Pegawai1=new listMD_Pegawai(db);
+        
         listMD_Pelanggan1=new listMD_Pelanggan(db,this);
         listMD_Penjualan_po1=new listMD_Penjualan_po(db, this);
         listMD_Pesan_barang1=new listMD_Pesan_barang(db);

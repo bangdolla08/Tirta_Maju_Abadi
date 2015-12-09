@@ -15,7 +15,11 @@ public class Triasta_Maju_Abadi {
      */
     public static void main(String[] args) {
        //new loadAllData();
-        new Form_utama_TMA().setVisible(true);
+        try {
+            new Form_utama_TMA().setVisible(true);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Tirta_Maju_Abadi.View;
 
 import Tirta_Maju_Abadi.DataModel.MD_Pegawai;
@@ -22,7 +17,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
     private View_pegawai vp;
     public Pegawai(database db,loadAllData lad) {
         initComponents();
-        vp=new View_pegawai(L_nama_pegawai.getModel(), db, lad,f_no_pegawai);
+        vp=new View_pegawai(L_nama_pegawai, db, lad,f_no_pegawai);
         L_nama_pegawai.setModel(vp.getDefaultListModel());
     }
     
@@ -30,9 +25,10 @@ public class Pegawai extends javax.swing.JInternalFrame {
        f_email.reset();
        f_nama.reset();
        f_no_pegawai.reset();
-       f_tempat_lahir.reset();
+       //f_tempat_lahir.reset();
        tex_area_alamat.setText("");
-       
+       modelChuser1.reset();
+       modelChuser1.setModel(new MD_Pegawai().setJlist());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +43,6 @@ public class Pegawai extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -56,7 +51,6 @@ public class Pegawai extends javax.swing.JInternalFrame {
         f_nama = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         jScrollPane1 = new javax.swing.JScrollPane();
         tex_area_alamat = new javax.swing.JTextArea();
-        f_tempat_lahir = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         d_tanggal_lahir = new com.toedter.calendar.JDateChooser();
         no_telepon = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
         f_email = new Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt();
@@ -74,8 +68,6 @@ public class Pegawai extends javax.swing.JInternalFrame {
         jLabel2.setText("Nama");
 
         jLabel3.setText("Alamat");
-
-        jLabel4.setText("Tempat Lahir");
 
         jLabel5.setText("Tanggal Lahir");
 
@@ -122,7 +114,6 @@ public class Pegawai extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel3)
-                                .addComponent(jLabel4)
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel7)
@@ -133,7 +124,6 @@ public class Pegawai extends javax.swing.JInternalFrame {
                             .addComponent(f_no_pegawai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(f_nama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(f_tempat_lahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(d_tanggal_lahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(no_telepon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(f_email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -162,11 +152,7 @@ public class Pegawai extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(f_tempat_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(d_tanggal_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -220,7 +206,13 @@ public class Pegawai extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         MD_Pegawai mptmp=(MD_Pegawai)L_nama_pegawai.getSelectedValue();
         f_no_pegawai.setText(mptmp.getNo_pegawai());
-        
+        f_nama.setText(mptmp.getNama());
+        tex_area_alamat.setText(mptmp.getAlamat());
+        d_tanggal_lahir.setDate(mptmp.getTanggal_lahir());
+        d_tanggal_masuk.setDate(mptmp.getTanggal_masuk());
+        f_email.setText(mptmp.getEmail());
+        no_telepon.setText(mptmp.getNo_telpon());
+        modelChuser1.setSelectedIndex(mptmp.getJabatan());
     }//GEN-LAST:event_L_nama_pegawaiMouseClicked
 
 
@@ -231,12 +223,10 @@ public class Pegawai extends javax.swing.JInternalFrame {
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_email;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_nama;
     private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_no_pegawai;
-    private Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt f_tempat_lahir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

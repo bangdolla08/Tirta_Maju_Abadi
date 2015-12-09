@@ -6,6 +6,7 @@ import Tirta_Maju_Abadi.View.ModelSwing.modelTextFilt;
 import Tirta_Maju_Abadi.toll.database;
 import Tirta_Maju_Abadi.toll.loadAllData;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
@@ -19,8 +20,9 @@ public class View_pegawai {
     private loadAllData lad;
     private listMD_Pegawai lmp;
     private modelTextFilt no_pegawi;
-    public View_pegawai(ListModel dlm, database db, loadAllData lad,modelTextFilt no_pegawai) {
-        this.dlm = (DefaultListModel) dlm;
+    public View_pegawai(JList dlm, database db, loadAllData lad,modelTextFilt no_pegawai) {
+        isiLisT();
+        this.dlm = new DefaultListModel();
         this.db = db;
         this.lad = lad;
         lmp=lad.getListMD_Pegawai();
@@ -29,12 +31,17 @@ public class View_pegawai {
     }
     
     private void isiLisT(){
-        dlm.removeAllElements();
+        try {
+            
+        this.dlm = new DefaultListModel();
         for(MD_Pegawai mp:lmp.getList()){
-            dlm.addElement(dlm);
+            dlm.addElement(mp);
+        }
+        } catch (Exception e) {
         }
     }
     public void reset(){
+        isiLisT();
         no_pegawi.setText(lmp.getList().get(lmp.getList().size()-1).getNo_pegawai());
     }
     public DefaultListModel getDefaultListModel(){

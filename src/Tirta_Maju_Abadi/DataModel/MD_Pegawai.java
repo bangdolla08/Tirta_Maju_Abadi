@@ -65,8 +65,8 @@ public class MD_Pegawai {
     
     private List<list2Values> listTypePegawai=new ArrayList<list2Values>();
     
-    public DefaultListModel<list2Values> setJlist(){
-        return (DefaultListModel<list2Values>) listTypePegawai;
+    public List<list2Values> setJlist(){
+        return listTypePegawai;
     } 
     
     public MD_Pegawai(int no_pegawai, int jabatan, Date tanggal_lahir, Date tanggal_masuk, String nama, String alamat, String no_telpon, String username, String password, String email) {

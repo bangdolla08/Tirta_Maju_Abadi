@@ -38,9 +38,7 @@
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Gudang Barang Jadi">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="4">
-                  <Color PropertyName="color" blue="0" green="0" red="99" type="rgb"/>
-                </LineBorder>
+                <LineBorder thickness="4"/>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="12" style="1"/>
               <Color PropertyName="color" blue="0" green="0" red="99" type="rgb"/>
